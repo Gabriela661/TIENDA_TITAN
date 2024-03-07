@@ -1,0 +1,12 @@
+
+    /* Estilo personalizado para alinear el modal a la derecha */
+    .modal-dialog-right {
+        position: fixed;
+        right: 0;
+        max-width: none;
+    }
+/* Alinea el cuadro de búsqueda al lado de la tabla */
+.dataTables_filter {
+    float: right;
+}
+

@@ -1,0 +1,290 @@
+
+/* Typography */
+body, ul, li, p, a, label, input, div {
+  font-family: 'Berlin Sans FB Demi', sans-serif;
+  font-size: 15px !important;
+  font-weight: 300 !important;
+  font-weight: bold;
+  font-style: italic;
+}
+.h1 {
+  font-family: 'Berlin Sans FB Demi', sans-serif;
+  font-size: 40px !important;
+  font-weight: 200 !important;
+}
+.h2 {
+  font-family: 'Berlin Sans FB Demi', sans-serif;
+  font-size: 30px !important;
+  font-weight: 300;
+}
+.h3 {
+  font-family: 'Berlin Sans FB Demi', sans-serif;
+  font-size: 22px !important;
+}
+/* General */
+.logo { font-weight: 700 !important;}
+.text-warning {  color: #ede861 !important;}
+.text-muted { color: #bcbcbc !important;}
+.text-success { color: #59ab6e !important;}
+.text-light { color: #cfd6e1 !important;}
+.text-dark { color: #232324 !important;}
+.text-orange { color: #c58610 !important;}
+.bg-dark { background-color: #212934 !important;}
+.bg-light { background-color: #e9eef5 !important;}
+.bg-black { background-color: #1d242d !important;}
+.bg-success { background-color: #59ab6e !important;}
+.bg-footer { background-color: #585856 !important;}
+.btn-success {
+  background-color: #eb9e3b !important;
+  border-color: #eb9e3b !important;
+}
+.pagination .page-link:hover {color: #000;}
+.pagination .page-link:hover, .pagination .page-link.active {
+  background-color: #f1b04c;
+  color: #fff;
+}
+/* Nav */
+#templatemo_nav_top { min-height: 20px;}
+#templatemo_nav_top * { font-size: .9em !important;}
+#templatemo_main_nav a { color: #212934;}
+#templatemo_main_nav a:hover { color: #f1b04c;}
+#templatemo_main_nav .navbar .nav-icon { margin-right: 25px;}
+.encuadre{
+  margin: 20px;
+}
+/* Hero Carousel */
+#template-mo-zay-hero-carousel { background-color:rgb(230, 228, 228) !important;}
+/* Accordion */
+.templatemo-accordion a { color: #000;}
+.templatemo-accordion a:hover { color: #333d4a;}
+/* Shop */
+.shop-top-menu a:hover { color: #f1b04c !important;}
+/* Product */
+.product-wap { box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.10);}
+.product-wap .product-color-dot.color-dot-red { background:#f71515;}
+.product-wap .product-color-dot.color-dot-blue { background:#6db4fe;}
+.product-wap .product-color-dot.color-dot-black { background:#000000;}
+.product-wap .product-color-dot.color-dot-light { background:#e0e0e0;}
+.product-wap .product-color-dot.color-dot-green { background:#0bff7e;}
+.card.product-wap .card .product-overlay {
+  background: rgba(0,0,0,.2);
+  visibility: hidden;
+  opacity: 0;
+  transition: .3s;
+}
+.card.product-wap:hover .card .product-overlay {
+  visibility: visible;
+  opacity: 1;
+}
+.card.product-wap a { color: #000;}
+#carousel-related-product .slick-slide:focus { outline: none !important;}
+#carousel-related-product .slick-dots li button:before {
+  font-size: 1%;
+  margin-top: 5px;
+}
+/* Brand */
+.brand-img {
+  filter: grayscale(100%);
+  opacity: 0.5;
+  transition: .5s;
+}
+.brand-img:hover {
+  filter: grayscale(0%);
+  opacity: 1;
+}
+.tiltle{
+  width: 90px;
+  height: 50px;
+}
+/* Carousel Hero */
+#template-mo-zay-hero-carousel .carousel-indicators li {
+  margin-top: -50px;
+  background-color: #d49216;
+}
+#template-mo-zay-hero-carousel .carousel-control-next i,
+#template-mo-zay-hero-carousel .carousel-control-prev i {
+  color: #d49216 !important;
+  font-size: 1.3em !important;
+}
+/* Carousel Brand */
+.tempaltemo-carousel .h1 {
+  font-size: .5em !important;
+  color: #000 !important;
+}
+.img-fluid{
+ max-width:100%;
+ max-height:100%;
+}
+.sombra{
+  width: 300px;
+  height: 300px;
+  background-color: #ffffff; /* Color de fondo del contenedor */
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5); /* Sombras */
+  padding: 20px; 
+}
+.sombra p{
+  margin-top: 0;
+}
+.descuento{
+  position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #ff0000; /* Color de fondo del cartel */
+    color: #ffffff; /* Color del texto del cartel */
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    z-index: 1;
+}
+/* Estilo para el contenedor */
+.encuadre {
+  background-color: #f3f5f8; /* Color de fondo */
+  padding: 10px; /* Espaciado interno */
+  box-shadow: 10px 10px 10px rgb(167, 164, 164);
+}
+
+/* Estilo para la lista de categorías */
+.templatemo-accordion {
+  list-style: none;
+  padding-left: 0;
+}
+
+/* Estilo para los elementos de la lista */
+.templatemo-accordion > li {
+  margin-bottom: 20px;
+}
+
+/* Estilo para los enlaces */
+.templatemo-accordion a {
+  color: #333; /* Color del texto */
+  transition: color 0.3s ease;
+}
+
+.templatemo-accordion a:hover {
+  color: #df9a32; /* Color del texto al pasar el mouse */
+}
+
+/* Estilo para los íconos de flecha */
+.fa-chevron-circle-down {
+  transition: transform 0.3s ease;
+  color: #555; /* Color del ícono */
+}
+
+/* Rotación del ícono de flecha cuando el enlace está abierto */
+.templatemo-accordion .show .fa-chevron-circle-down {
+  transform: rotate(180deg);
+}
+
+/* Estilo para los enlaces secundarios */
+.templatemo-accordion ul li a {
+  color: #777; /* Color del texto */
+  transition: color 0.3s ease;
+}
+
+.templatemo-accordion ul li a:hover {
+  color: #df9a32; /* Color del texto al pasar el mouse */
+}
+.proforma{
+  padding: 30px;
+}
+/* proforma */
+.funcion{
+  background-color: white;
+  box-shadow: 5px 5px 5px rgb(167, 164, 164);
+}
+.none{
+  border: 0px;
+}
+/* Services */
+.services-icon-wap {transition: .3s;}
+.services-icon-wap:hover, .services-icon-wap:hover i {color: #fff;}
+.services-icon-wap:hover {background: #f1b04c;}
+/* Contact map */
+.leaflet-control a, .leaflet-control { font-size: 10px !important;}
+.form-control { border: 2px solid #e8e8e8;}
+/* Footer */
+
+#tempaltemo_footer a { color: #dcdde1;}
+#tempaltemo_footer a:hover { color: orange;}
+#tempaltemo_footer ul.footer-link-list li { padding-top: 10px;}
+#tempaltemo_footer ul.footer-icons li {
+  width: 2.6em;
+  height: 2.6em;
+  line-height: 2.6em;
+}
+#tempaltemo_footer ul.footer-icons li:hover {
+  background-color: #cfd6e1;
+  transition: .5s;
+}
+#tempaltemo_footer ul.footer-icons li:hover i {
+  color: #60656b;
+  transition: .5s;
+}
+#tempaltemo_footer .border-light { border-color: #8c8e91 !important;}
+/*
+// Extra small devices (portrait phones, less than 576px)
+// No media query since this is the default in Bootstrap
+*/
+/* Small devices (landscape phones, 576px and up)*/
+.product-wap .h3, .product-wap li, .product-wap i, .product-wap p {
+  font-size: 12px !important;
+}
+.product-wap .product-color-dot {
+  width: 6px;
+  height: 6px;
+}
+
+@media (min-width: 100px) {
+  .tempaltemo-carousel .h1 { font-size: 1em !important;}
+}
+
+/*// Medium devices (tablets, 768px and up)*/
+@media (min-width: 500px) {
+  #templatemo_main_nav .navbar-nav {max-width: 450px;}
+ }
+
+/* Large devices (desktops, 992px and up)*/
+@media (min-width: 892px) {
+  #templatemo_main_nav .navbar-nav {max-width: 400px;}
+  #template-mo-zay-hero-carousel .carousel-item {min-height: 20rem !important;}
+  .product-wap .h3, .product-wap li, .product-wap i, .product-wap p {font-size: 18px !important;}
+  .product-wap .product-color-dot {
+    width: 12px;
+    height: 12px;
+  }
+}
+
+/* Extra large devices (large desktops, 1200px and up)*/
+@media (min-width: 1200px) {}
+
+.btnchat{
+position:fixed;
+width:60px;
+height:60px;
+bottom:40px;
+right:40px;
+background-color:#08db5c;
+color:#FFF;
+border-radius:50px;
+text-align:center;
+font-size:30px;
+box-shadow: 2px 2px 3px #999;
+z-index:100;
+}
+.btnchat:hover {
+text-decoration: none;
+color: #0beb64;
+background-color:#fff;
+}
+
+.my-btnchat{
+margin-top:25px;
+width:60px;
+height:60px;
+bottom:40px;
+}
+
+
+ 

@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Start your development with FoodHut landing page.">
     <meta name="author" content="Devcrud">
-    <title>FoodHut | Free Bootstrap 4.3.x template</title>
+    <title>TITAN_TIENDA</title>
+    <!-- <link rel="stylesheet" href="../js/adminlte.min.js"> -->
 
     <!-- font icons -->
     <!-- <link rel="stylesheet" href="assets/vendors/themify-icons/css/themify-icons.css"> -->
@@ -16,45 +17,45 @@
     <!-- Bootstrap + FoodHut main styles -->
     <link rel="stylesheet" href="assets/css/foodhut.css">
 </head>
-
+<!-- Preloader -->
 <body data-spy="scroll" data-target=".navbar" data-offset="40" id="home">
-
     <!-- Navbar -->
+    
     <nav class="custom-navbar navbar navbar-expand-lg navbar-dark fixed-top" data-spy="affix" data-offset-top="10">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent" >
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="#home">Home</a>
+                    <a class="nav-link" href="#home">INICIO</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#about">About</a>
+                    <a class="nav-link" href="#about">TIENDA</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#gallary">Gallary</a>
+                    <a class="nav-link" href="#gallary">NOSOTROS</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#book-table">Book-Table</a>
+                    <a class="nav-link" href="#book-table">CONTACTO</a>
                 </li>
             </ul>
             <a class="navbar-brand m-auto" href="#">
-                <img src="assets/imgs/logo.svg" class="brand-img" alt="">
-                <span class="brand-txt">Food Hut</span>
+                <img src="assets/img/logo_titan1.png" class="brand-img" alt="">
+                <span class="brand-txt">TIENDA TITAN</span>
             </a>
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="#blog">Blog<span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="#blog">Preguntas<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#testmonial">Reviews</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#contact">Contact Us</a>
+                    <a class="nav-link" href="#contact">Buscar</a>
                 </li>
                 <li class="nav-item">
-                    <a href="components.html" class="btn btn-primary ml-xl-4">Components</a>
+                    <a href="components.html" class="btn btn-primary ml-xl-4">Iniciar Sesion</a>
                 </li>
             </ul>
         </div>
@@ -62,9 +63,9 @@
     <!-- header -->
     <header id="home" class="header">
         <div class="overlay text-white text-center">
-            <h1 class="display-2 font-weight-bold my-3">Food Hut</h1>
-            <h2 class="display-4 mb-5">Always fresh &amp; Delightful</h2>
-            <a class="btn btn-lg btn-primary" href="#gallary">View Our gallary</a>
+            <h1 class="display-2 font-weight-bold my-3">TITAN TIENDA</h1>
+            <h2 class="display-4 mb-5">Mejores productos a mejores precios</h2>
+            <a class="btn btn-lg btn-primary" href="#gallary">Iniciar</a>
         </div>
     </header>
 
@@ -76,10 +77,7 @@
                 <div class="row justify-content-center">
                     <div class="col-sm-8 py-5 my-5">
                         <h2 class="mb-4">About Us</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur, quisquam accusantium nostrum modi, nemo, officia veritatis ipsum facere maxime assumenda voluptatum enim! Labore maiores placeat impedit, vero sed est voluptas!Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita alias dicta autem, maiores doloremque quo perferendis, ut obcaecati harum, <br><br>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum necessitatibus iste,
-                            nulla recusandae porro minus nemo eaque cum repudiandae quidem voluptate magnam voluptatum? <br>Nobis, saepe sapiente omnis qui eligendi pariatur. quis voluptas. Assumenda facere adipisci quaerat. Illum doloremque quae omnis vitae.</p>
-                        <p><b>Lonsectetur adipisicing elit. Blanditiis aspernatur, ratione dolore vero asperiores explicabo.</b></p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos ab itaque modi, reprehenderit fugit soluta, molestias optio repellat incidunt iure sed deserunt nemo magnam rem explicabo vitae. Cum, nostrum, quidem.</p>
+                        
                     </div>
                 </div>
             </div>
@@ -87,82 +85,61 @@
     </div>
 
     <!--  gallary Section  -->
-    <div id="gallary" class="text-center bg-dark text-light has-height-md middle-items wow fadeIn">
-        <h2 class="section-title">OUR MENU</h2>
+    <div id="gallary" class="text-center bg-secondary text-light has-height-md middle-items wow fadeIn">
+        <h2 class="section-title">Productos</h2>
     </div>
     <div class="gallary row">
         <div class="col-sm-6 col-lg-3 gallary-item wow fadeIn">
-            <img src="assets/imgs/gallary-1.jpg" alt="template by DevCRID http://www.devcrud.com/" class="gallary-img">
+            <img src="assets/img/drywall-sinfondo.png" alt="template by DevCRID http://www.devcrud.com/" class="gallary-img">
             <a href="#" class="gallary-overlay">
                 <i class="gallary-icon ti-plus"></i>
             </a>
         </div>
         <div class="col-sm-6 col-lg-3 gallary-item wow fadeIn">
-            <img src="assets/imgs/gallary-2.jpg" alt="template by DevCRID http://www.devcrud.com/" class="gallary-img">
+            <img src="assets/img/fierrps.JPG" alt="template by DevCRID http://www.devcrud.com/" class="gallary-img">
             <a href="#" class="gallary-overlay">
                 <i class="gallary-icon ti-plus"></i>
             </a>
         </div>
         <div class="col-sm-6 col-lg-3 gallary-item wow fadeIn">
-            <img src="assets/imgs/gallary-3.jpg" alt="template by DevCRID http://www.devcrud.com/" class="gallary-img">
+            <img src="assets/img/fierros.png" alt="template by DevCRID http://www.devcrud.com/" class="gallary-img">
             <a href="#" class="gallary-overlay">
                 <i class="gallary-icon ti-plus"></i>
             </a>
         </div>
         <div class="col-sm-6 col-lg-3 gallary-item wow fadeIn">
-            <img src="assets/imgs/gallary-4.jpg" alt="template by DevCRID http://www.devcrud.com/" class="gallary-img">
+            <img src="assets/img/contruccion-sinfondo.png" alt="template by DevCRID http://www.devcrud.com/" class="gallary-img">
             <a href="#" class="gallary-overlay">
                 <i class="gallary-icon ti-plus"></i>
             </a>
         </div>
         <div class="col-sm-6 col-lg-3 gallary-item wow fadeIn">
-            <img src="assets/imgs/gallary-5.jpg" alt="template by DevCRID http://www.devcrud.com/" class="gallary-img">
+            <img src="assets/img/tubos.jpg" alt="template by DevCRID http://www.devcrud.com/" class="gallary-img">
             <a href="#" class="gallary-overlay">
                 <i class="gallary-icon ti-plus"></i>
             </a>
         </div>
         <div class="col-sm-6 col-lg-3 gallary-item wow fadeIn">
-            <img src="assets/imgs/gallary-6.jpg" alt="template by DevCRID http://www.devcrud.com/" class="gallary-img">
+            <img src="assets/img/drywall1.JPG" alt="template by DevCRID http://www.devcrud.com/" class="gallary-img">
             <a href="#" class="gallary-overlay">
                 <i class="gallary-icon ti-plus"></i>
             </a>
         </div>
         <div class="col-sm-6 col-lg-3 gallary-item wow fadeIn">
-            <img src="assets/imgs/gallary-7.jpg" alt="template by DevCRID http://www.devcrud.com/" class="gallary-img">
+            <img src="assets/img/tubo_curva-removebg-preview.png" alt="template by DevCRID http://www.devcrud.com/" class="gallary-img">
             <a href="#" class="gallary-overlay">
                 <i class="gallary-icon ti-plus"></i>
             </a>
         </div>
         <div class="col-sm-6 col-lg-3 gallary-item wow fadeIn">
-            <img src="assets/imgs/gallary-8.jpg" alt="template by DevCRID http://www.devcrud.com/" class="gallary-img">
+            <img src="assets/img/producto1-sinfondo.png" alt="template by DevCRID http://www.devcrud.com/" class="gallary-img">
             <a href="#" class="gallary-overlay">
                 <i class="gallary-icon ti-plus"></i>
             </a>
         </div>
-        <div class="col-sm-6 col-lg-3 gallary-item wow fadeIn">
-            <img src="assets/imgs/gallary-9.jpg" alt="template by DevCRID http://www.devcrud.com/" class="gallary-img">
-            <a href="#" class="gallary-overlay">
-                <i class="gallary-icon ti-plus"></i>
-            </a>
-        </div>
-        <div class="col-sm-6 col-lg-3 gallary-item wow fadeIn">
-            <img src="assets/imgs/gallary-10.jpg" alt="template by DevCRID http://www.devcrud.com/" class="gallary-img">
-            <a href="#" class="gallary-overlay">
-                <i class="gallary-icon ti-plus"></i>
-            </a>
-        </div>
-        <div class="col-sm-6 col-lg-3 gallary-item wow fadeIn">
-            <img src="assets/imgs/gallary-11.jpg" alt="template by DevCRID http://www.devcrud.com/" class="gallary-img">
-            <a href="#" class="gallary-overlay">
-                <i class="gallary-icon ti-plus"></i>
-            </a>
-        </div>
-        <div class="col-sm-6 col-lg-3 gallary-item wow fadeIn">
-            <img src="assets/imgs/gallary-12.jpg" alt="template by DevCRID http://www.devcrud.com/" class="gallary-img">
-            <a href="#" class="gallary-overlay">
-                <i class="gallary-icon ti-plus"></i>
-            </a>
-        </div>
+
+
+
     </div>
 
     <!-- book a table Section  -->
@@ -327,34 +304,14 @@
     </div>
 
     <!-- page footer  -->
-    <!-- <div class="container-fluid bg-dark text-light has-height-md middle-items border-top text-center wow fadeIn">
-        <div class="row">
-            <div class="col-sm-4">
-                <h3>EMAIL US</h3>
-                <P class="text-muted">info@website.com</P>
-            </div>
-            <div class="col-sm-4">
-                <h3>CALL US</h3>
-                <P class="text-muted">(123) 456-7890</P>
-            </div>
-            <div class="col-sm-4">
-                <h3>FIND US</h3>
-                <P class="text-muted">12345 Fake ST NoWhere AB Country</P>
-            </div>
-        </div>
-    </div>
-    <div class="bg-dark text-light text-center border-top wow fadeIn">
-        <p class="mb-0 py-3 text-muted small">&copy; Copyright <script>
-                document.write(new Date().getFullYear())
-            </script> Made with <i class="ti-heart text-danger"></i> By <a href="http://devcrud.com">DevCRUD</a></p>
-    </div> -->
+    <?php include 'assets/views/footer.php' ?>
     <!-- end of page footer -->
 
     <!-- core  -->
-    <script src="assets/js/jquery-3.4.1.js"></script>
+    <script src="assets/js/jquery-1.11.0.min.js"></script>
     <script src="assets/vendors/bootstrap/bootstrap.bundle.js"></script>
     <!-- bootstrap affix -->
-    <script src="assets/vendors/bootstrap/bootstrap.affix.js"></script> 
+    <script src="assets/vendors/bootstrap/bootstrap.affix.js"></script>
 
     <!-- wow.js -->
     <!-- <script src="assets/vendors/wow/wow.js"></script> -->

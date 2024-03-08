@@ -1,22 +1,16 @@
-<title>Usuarios</title>
+<title>Adm || Categorias</title>
 <?php
 include_once "assets/views/nav.php";
 ?>
+<!-- J QUERY -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<link href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css" rel="stylesheet">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 
 <!-- Google Font: Source Sans Pro -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-<!-- Theme style -->
-<!-- <link rel="stylesheet" href="../../dist/css/adminlte.min.css"> -->
-<link rel="stylesheet" href="../vista/assets/css/adminlte.min.css">
-<!-- <link rel="stylesheet" href="assets/css/stilos.css"> -->
-<link rel="stylesheet" href="../vista/assets/css/stilos.css">
 
 <body>
     <div class="wrapper">
-        <!-- Modal -->
+        <!-- Modal para agregar la categoria-->
         <div class="modal fade" id="crearCategoria" tabindex="-1" role="dialog" aria-labelledby="#crearCategoria" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -27,26 +21,53 @@ include_once "assets/views/nav.php";
                         </button>
                     </div>
                     <div class="modal-body">
-
-                        <form id="datos_usuario" method="POST">
+                        <form id="form_categoria" method="POST">
                             <div class="card-body">
-
                                 <div class="form-group">
                                     <label for="nombres">Nombre Categoria:</label>
-                                    <input type="text" class="form-control" id="" name="" placeholder="Nombre del usuario">
+                                    <input type="text" class="form-control" id="nombre_categoria" name="nombre_categoria" placeholder="Nombre de la categoria">
                                 </div>
                             </div>
-                            <!-- /.card-body -->
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                        <button type="submit" class="btn btn-primary">Guardar</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fas fa-times-circle"></i> Cancelar</button>
+                        <button type="submit" class="btn btn-success"><i class="fas fa-save"></i> Guardar</button>
                     </div>
                 </div>
             </div>
         </div>
         </form>
+        <!-- ./Modal para agregar la categoria-->
 
+        <!-- Modal para editar la categoria -->
+        <div class="modal fade" id="editarCategoria" tabindex="-1" role="dialog" aria-labelledby="editarCategoriaLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="editarCategoriaLabel">Editar Categoría</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="form_editar_categoria" method="POST">
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label for="nombre_editar">Nombre Categoría</label>
+                                    <input type="hidden" class="form-control" id="id_categoria" name="id_categoria">
+                                    <input type="text" class="form-control" id="nombre_editar_categoria" name="nombre_editar_categoria" placeholder="Nombre de la Categoría">
+                                </div>
+                            </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fas fa-times-circle"></i> Cancelar</button>
+                        <button type="submit" class="btn btn-success"><i class="fas fa-save"></i> Guardar Cambios</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- ./Modal para editar la categoria -->
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
@@ -56,11 +77,13 @@ include_once "assets/views/nav.php";
                     <div class="row mb-2">
                         <div class="col-sm-6">
                             <h4><i class="fa fa-list-alt" aria-hidden="true"></i> <b>Lista Categorias</b></h4>
-                            <button type="button" class="btn btn-info ml-3" data-toggle="modal" data-target="#crearCategoria">
-                                Nuevo Categoria</button></h1>
+                            <button type="button" class="btn btn-primary ml-3" data-toggle="modal" data-target="#crearCategoria">
+                                <i class="fas fa-plus"></i> Nueva Categoria
+                            </button>
+                            </h1>
                         </div>
                     </div>
-                </div><!-- /.container-fluid -->
+                </div>
             </section>
 
             <!-- Main content -->
@@ -73,34 +96,28 @@ include_once "assets/views/nav.php";
                                     <div class="card-header">
                                         <h3 class="card-title">Listado de Categorias</h3>
                                     </div>
-                                    <!-- /.card-header -->
                                     <div class="card-body">
-                                        <table id="" class="table table-bordered table-striped">
-                                            <thead>
-                                                <tr>
-                                                    <th>N°</th>
-                                                    <th>NOMBRES CATEGORIA</th>
-                                                    <th>EDITAR</th>
-                                                   
-                                                </tr>
-                                            </thead>
-                                            <tbody id="categoria_lista">
-
-
-                                            </tbody>
-                                        </table>
+                                        <div class="table-responsive">
+                                            <!-- Tabla de categorias -->
+                                            <table id="" class="table table-bordered table-striped ">
+                                                <thead>
+                                                    <tr>
+                                                        <th>N°</th>
+                                                        <th>NOMBRES CATEGORIA</th>
+                                                        <th>EDITAR</th>
+                                                        <th>ELIMINAR</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="categoria_lista">
+                                                </tbody>
+                                            </table>
+                                            <!-- ./Tabla de categorias -->
+                                        </div>
                                     </div>
-                                    <!-- /.card-body -->
                                 </div>
-                                <!-- /.card -->
                             </div>
-                            <!-- /.col -->
                         </div>
-                        <!-- /.row -->
-                    </div>
-                    <!-- /.container-fluid -->
             </section>
-            <!-- /.content -->
         </div>
 
         <!-- Control Sidebar -->
@@ -118,4 +135,6 @@ include_once "assets/views/nav.php";
 <script src="../vista/assets/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 
+<!-- Archivo js para las funcionalidades -->
+<script src="js/categoria.js"></script>
 </div>

@@ -1,13 +1,15 @@
 <?php
 include_once '../modelo/usuarioModelo.php';
+// Se instancia la clase 'usuario'
 $usuario = new usuario();
 
-/* FUNCION PARA LISTAR LOS USUARIOS DE LA BASE DE DATOS*/
+/* FUNCION PARA LISTAR EL PERSONAL DE LA BASE DE DATOS*/
 if ($_POST['funcion'] == 'listar_personal') {
     $json = array();
+    // Se llama al método listarpersonal() del objeto '$categoria' 
     $usuario->listar_personal();
     foreach ($usuario->objetos as $objeto) {
-
+    // Se recorre el array de objetos de usuaris y se crea un nuevo array asociativo para cada usuario
         $json[] = array(
             'id_usuario' => $objeto->id_usuario,
             'nombre_usuario' => $objeto->nombre_usuario,
@@ -17,8 +19,9 @@ if ($_POST['funcion'] == 'listar_personal') {
             'nombre_rol' => $objeto->nombre_rol,
         );
     }
+    //Se convierte el array a formato JSON y se devuelve como respuesta 
     $jsonstring = json_encode($json);
-    echo $jsonstring;
+    echo $jsonstring; //Se devuelve el JSON como respuesta 
 }
 /*FIN FUNCION PARA LISTAR LOS USUARIOS DE LA BASE DE DATOS*/
 
@@ -27,7 +30,7 @@ if ($_POST['funcion'] == 'listar_cliente') {
     $json = array();
     $usuario->listar_cliente();
     foreach ($usuario->objetos as $objeto) {
-
+    // Se recorre el array de objetos de usuario y se crea un nuevo array asociativo para cada cliente
         $json[] = array(
             'id_usuario' => $objeto->id_usuario,
             'nombre_usuario' => $objeto->nombre_usuario,
@@ -36,6 +39,7 @@ if ($_POST['funcion'] == 'listar_cliente') {
             'foto_usuario' => '../vista/assets/img/perfil_us/' . $objeto->foto_usuario,
         );
     }
+    //Se convierte el array a formato JSON y se devuelve como respuesta 
     $jsonstring = json_encode($json);
     echo $jsonstring;
 }
@@ -46,11 +50,13 @@ if ($_POST['funcion'] == 'rol_usuario') {
     $json = array();
     $usuario->rol_usuario();
     foreach ($usuario->objetos as $objeto) {
+         // Se recorre el array de objetos de usuario y se crea un nuevo array asociativo para cada rol
         $json[] = array(
             'id_rol' => $objeto->id_rol,
             'nombre_rol' => $objeto->nombre_rol,
         );
     }
+     //Se convierte el array a formato JSON y se devuelve como respuesta
     $jsonstring = json_encode($json);
     echo $jsonstring;
 }

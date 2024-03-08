@@ -78,7 +78,7 @@ $(document).ready(function () {
 
   /*FUNCION PARA AÑADIR UNA NUEVA CATEGORIA A LA BASE DE DATOS */
   $("#form_categoria").submit((e) => {
-    e.preventDefault(); // Evita que el formulario se envíe de manera convencional
+    e.preventDefault(); 
 
     // Obtiene el valor del nombre de la categoría del formulario
     const nombre_categoria = $("#nombre_categoria").val();
@@ -93,7 +93,7 @@ $(document).ready(function () {
       "../controlador/categoriaControlador.php", // URL del controlador
       formData, // Datos del formulario
       function (response) {
-        // Función de éxito: se ejecuta cuando la solicitud es exitosa
+        // Condicional de acuerdo a la respuesta del servidor
         if (response.trim() === "add_categoria") {
           // Muestra un mensaje de éxito utilizando SweetAlert
           Swal.fire({
@@ -136,7 +136,7 @@ $(document).ready(function () {
       (response) => {
         // Se convierte la respuesta JSON en un objeto JavaScript
         const categoriaEdit = JSON.parse(response);
-        // Se llenan los campos del formulario de edición con los datos de la categoría
+        // Se llenan el modal de edicion
         $("#nombre_editar_categoria").val(categoriaEdit.nombre_categoria);
         $("#id_categoria").val(categoriaEdit.id_categoria);
         // Se muestra el modal de edición

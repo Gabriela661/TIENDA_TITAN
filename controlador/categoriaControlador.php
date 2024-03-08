@@ -2,12 +2,12 @@
 // Se incluye el archivo que contiene la definición de la clase 'categoria'
 include_once '../modelo/categoriaModelo.php';
 
-// Se instancia la clase 'categoria'
+
 $categoria = new categoria();
 
 /* FUNCION PARA LISTAR LA CATEGORIA  */
 if ($_POST['funcion'] == 'listarCategoria') {
-    $json = array(); // Se inicializa un array para almacenar los datos de las categorías
+    $json = array(); 
     $categoria->listarCategoria(); // Se llama al método 'listarCategoria()' del objeto '$categoria' para obtener las categorías desde la base de datos
     foreach ($categoria->objetos as $objeto) {
         // Se recorre el array de objetos de categorías y se crea un nuevo array asociativo para cada categoría

@@ -18,7 +18,7 @@ class categoria
     {
         $sql = "SELECT id_categoria, nombre_categoria FROM categoria"; // Consulta SQL para seleccionar todas las categorías
         $query = $this->acceso->prepare($sql); 
-        $query->execute(); // Ejecución de la consulta
+        $query->execute();
         $this->objetos = $query->fetchAll(); // Almacenamiento de los resultados en la propiedad 'objetos'
         return $this->objetos; // Devolución de las categorías obtenidas
     }
@@ -40,7 +40,7 @@ class categoria
     function cargar_categoria($id_categoria)
     {
         $sql = "SELECT id_categoria, nombre_categoria FROM categoria WHERE id_categoria=:id_categoria"; // Consulta SQL para obtener los datos de una categoría específica
-        $query = $this->acceso->prepare($sql); // Preparación de la consulta SQL
+        $query = $this->acceso->prepare($sql); 
         $query->execute(array(':id_categoria' => $id_categoria)); // Ejecución de la consulta con el ID de la categoría proporcionado
         $this->objetos = $query->fetchAll(); // Almacenamiento de los resultados en la propiedad 'objetos'
         return $this->objetos; // Devolución de los datos de la categoría obtenidos
@@ -53,10 +53,10 @@ class categoria
     {
         try {
             $sql = "UPDATE categoria SET nombre_categoria=:nombre_categoria WHERE id_categoria=:id"; // Consulta SQL para actualizar el nombre de una categoría
-            $query = $this->acceso->prepare($sql); // Preparación de la consulta SQL
+            $query = $this->acceso->prepare($sql); 
             $query->bindParam(':id', $id_categoria, PDO::PARAM_INT); // Vinculación de parámetros
             $query->bindParam(':nombre_categoria', $nombre_categoria, PDO::PARAM_STR); // Vinculación de parámetros
-            $query->execute(); // Ejecución de la consulta
+            $query->execute(); 
             echo 'edits'; // Mensaje de éxito
         } catch (PDOException $e) {
             // Manejo de errores en caso de que ocurra una excepción
@@ -70,7 +70,7 @@ class categoria
     function borrar_categoria($id_categoria)
     {
         $sql = "DELETE FROM categoria WHERE id_categoria = :id_categoria"; // Consulta SQL para eliminar la categoría y sus productos asociados
-        $query = $this->acceso->prepare($sql); // Preparación de la consulta SQL
+        $query = $this->acceso->prepare($sql); 
         $query->execute(array(':id_categoria' => $id_categoria)); // Ejecución de la consulta con el ID de la categoría proporcionado
         if ($query->rowCount() >= 0) {
             echo 'delete'; // Mensaje de éxito si se eliminó la categoría

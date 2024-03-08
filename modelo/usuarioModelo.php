@@ -20,42 +20,57 @@ class usuario
     //     return $this->objetos;
     // }
 
-    //listar personal
+
+  /* FUNCION PARA LISTAR EL PERSONAL DE LA BASE DE DATOS*/
     function listar_personal()
     {
-        $sql = "SELECT u.id_usuario,u.nombre_usuario,u.apellido_usuario,u.correo_usuario,u.foto_usuario, r.nombre_rol FROM usuario u INNER JOIN rol r ON u.id_rol = r.id_rol WHERE  r.id_rol IN (2, 3, 4)";
+        $sql = "SELECT u.id_usuario,u.nombre_usuario,u.apellido_usuario,u.correo_usuario,u.foto_usuario, r.nombre_rol FROM usuario u INNER JOIN rol r ON u.id_rol = r.id_rol WHERE  r.id_rol IN (2, 3, 4)";// Consulta SQL para seleccionar todas los usuarios tipo personal
         $query = $this->acceso->prepare($sql);
         $query->execute();
         $this->objetos = $query->fetchAll();
+        // Devolución de los personales
+        // Almacenamiento de los resultados en la propiedad 'objetos'
         return $this->objetos;
     }
-    //listar cliente
+    /* FIN FUNCION PARA LISTAR EL PERSONAL DE LA BASE DE DATOS*/
+
+
+  /* FUNCION PARA LISTAR LOS CLIENTES DE LA BASE DE DATOS*/
     function listar_cliente()
     {
         $sql = "SELECT id_usuario,nombre_usuario,apellido_usuario,correo_usuario,foto_usuario FROM usuario where id_rol=3";
+        // Consulta SQL para seleccionar todas los clientes
         $query = $this->acceso->prepare($sql);
         $query->execute();
         $this->objetos = $query->fetchAll();
-        return $this->objetos;
+        // Almacenamiento de los resultados en la propiedad 'objetos'
+        return $this->objetos;// Devolución de los clientes obtenidas
     }
+    /* FIN FUNCION PARA LISTAR LOS CLIENTES DE LA BASE DE DATOS*/
 
-    //listar roles
+
+    /*FUNCION PARA LISTAR LOS ROLES EN EL MODAL DE AGREGAR PRODUCTOS*/
     function rol_usuario()
     {
         $sql = "SELECT id_rol,nombre_rol FROM rol";
+        // Consulta SQL para seleccionar todas los roles
         $query = $this->acceso->prepare($sql);
         $query->execute();
         $this->objetos = $query->fetchAll();
+        // Almacenamiento de los resultados en la propiedad 'objetos'
         return $this->objetos;
     }
+    /*FIN FUNCION PARA LISTAR LOS ROLES EN EL MODAL DE AGREGAR PRODUCTOS*/
 
 
-    //crear usuario
+    /* FUNCION PARA AGREGAR UN NUEVO USUARIO  */
     function crear_usuario($nombre_usuario, $apellido_usuario,  $correo_electronico_usuario, $hashed_password, $foto_usuario, $rol_usuario)
     {
         $sql = "INSERT INTO usuario (nombre_usuario,apellido_usuario,correo_usuario,password,foto_usuario,id_rol) 
         VALUES (:nombre_usuario,:apellido_usuario,:correo_usuario,:password,:foto_usuario,:id_rol )";
+         // Consulta SQL para agregrar los prodcutos  al db
         $query = $this->acceso->prepare($sql);
+
         $query->execute(array(
 
             ':nombre_usuario' => $nombre_usuario,
@@ -66,7 +81,10 @@ class usuario
             ':id_rol' => $rol_usuario
         ));
         echo 'add';
+        //devuelvo en mensaje de exito cuando se registe un usuario
     }
+        /* FUNCION PARA AGREGAR UN NUEVO USUARIO  */
+
 
     //editar usuario
     function obtenerUsuario($id_usuario)

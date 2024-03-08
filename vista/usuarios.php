@@ -40,7 +40,7 @@ include_once "assets/views/nav.php";
                 <div class="form-group">
                   <label for="foto_usuario">Fotografia del Usuario</label>
                   <br>
-                  <input type="file" name="foto_usuario" id="foto_usuario" >
+                  <input type="file" name="foto_usuario" id="foto_usuario">
                   <center>
                     <div id="imagen_preview" style="margin-top: 10px;" class="img-thumbnail"></div>
                   </center>
@@ -89,6 +89,20 @@ include_once "assets/views/nav.php";
                 <div class="form-group">
                   <label for="correo_electronico_usuario">Correo Electronico</label>
                   <input type="text" class="form-control" id="correo_electronico_usuarioe" name="correo_electronico_usuarioe" placeholder="Correo Electronico">
+                </div>
+                <div class="form-group">
+                  <label for="">
+                    Foto de perfil actual
+                  </label>
+                  <center>
+                    <div id="imagen_preview" style="margin-top: 10px;" class="img-thumbnail"></div>
+                  </center>
+                </div>
+                <div class="form-group">
+                  <label for="">
+                    Foto de perfil
+                  </label>
+                  <input type="file" id="foto_usuario" name="foto_usuario" placeholder="Ingrese la foto">
                 </div>
               </div>
               <!-- /.card-body -->

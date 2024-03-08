@@ -7,10 +7,10 @@ $(document).ready(function () {
 
   /* condicional para listar segun el rol del usuario*/
   if (personal) {
-
     /* FUNCION PARA LISTAR LOS USUARIOS DE LA BASE DE DATOS*/
     listar_personal();
     function listar_personal(consulta) {
+      // Se define la función a ejecutar en el controlador
       funcion = "listar_personal";
       $.post(
         "../controlador/usuarioControlador.php",
@@ -51,6 +51,7 @@ $(document).ready(function () {
   if (cliente) {
     listar_cliente();
     function listar_cliente(consulta) {
+      // Se define la función a ejecutar en el controlador
       funcion = "listar_cliente";
       $.post(
         "../controlador/usuarioControlador.php",
@@ -90,6 +91,7 @@ $(document).ready(function () {
   /*FUNCION PARA LISTAR LOS ROLES EN EL MODAL DE AGREGAR PRODUCTOS*/
   rol_usuario();
   function rol_usuario(consulta) {
+    // Se define la función a ejecutar en el controlador
     funcion = "rol_usuario";
     $.post(
       "../controlador/usuarioControlador.php",
@@ -126,6 +128,26 @@ $(document).ready(function () {
   }
   /*FIN FUNCION PARA PREVISUALIZAR LA FOTO DE PERFIL DEL USUARIO*/
 
+  /*FUNCION PARA PREVISUALIZAR LA FOTO ACTUAL DEL PERFIL DEL USUARIO*/
+  previstaproducto();
+  function previstaproducto() {
+    document
+      .getElementById("foto_usuario")
+      .addEventListener("change", function (event) {
+        const file = event.target.files[0];
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          const preview = document.getElementById("imagen_preview");
+          preview.innerHTML =
+            '<img src="' +
+            e.target.result +
+            '" style="max-width: 100px; max-height: 200px;">';
+        };
+        reader.readAsDataURL(file);
+      });
+  }
+  /*FIN FUNCION PARA PREVISUALIZAR LA FOTO ACTUAL DEL USUARIO EN EL MODAL*/
+
   /*
    * Esta función se utiliza para enviar datos al controlador del servidor mediante una solicitud AJAX.
    * Recibe los siguientes parámetros:
@@ -151,17 +173,17 @@ $(document).ready(function () {
   /*FUNCION PARA AGREGAR UN USUARIO A LA BASE DE DATOS*/
   $("#form_usuario").submit((e) => {
     e.preventDefault();
-
+    // Se obtiene los valores del formulario
     const nombre_usuario = $("#nombre_usuario").val();
     const apellido_usuario = $("#apellido_usuario").val();
     const correo_electronico_usuario = $("#correo_electronico_usuario").val();
     const password_usuario = $("#password_usuario").val();
     const foto_usuario = $("#foto_usuario")[0].files[0];
     const rol_usuario = $("#rol_usuario").val();
+
+    // Crea un objeto FormData
     const formData = new FormData($("#form_usuario")[0]);
-
     formData.append("funcion", "crear_usuario");
-
     formData.append("nombre_usuario", nombre_usuario);
     formData.append("apellido_usuario", apellido_usuario);
     formData.append("correo_electronico_usuario", correo_electronico_usuario);
@@ -169,11 +191,12 @@ $(document).ready(function () {
     formData.append("foto_usuario", foto_usuario);
     formData.append("rol_usuario", rol_usuario);
 
+    // Envía los datos al controlador utilizando la función enviarDatos
     enviarDatos(
       "../controlador/usuarioControlador.php",
       formData,
       function (response) {
-        console.log(response);
+        // Condicional de acuerdo a la respuesta del servidor
         if (response.trim() === "add") {
           Swal.fire({
             icon: "success",
@@ -200,4 +223,33 @@ $(document).ready(function () {
     );
   });
   /*FIN FUNCION PARA AGREGAR UN USUARIO A LA BASE DE DATOS*/
+
+  /*FUNCION PARA CARGAR DATOS DEL USUARIO PARA EDITAR EN LA BASE DE DATOS*/
+  $(document).on("click", "#btn_editar", (e) => {
+    e.preventDefault();
+    // Se define la función a ejecutar en el controlador
+    funcion = "cargar_usuario";
+    const id_usuario = $(e.currentTarget).data("id_usuario");
+    console.log(id_usuario);
+    // Se realiza una solicitud AJAX para obtener la información de la categoría seleccionada
+    $.post(
+      "../controlador/usuarioControlador.php",
+      { funcion, id_usuario },
+      (response) => {
+        console.log(response);
+        const usuarioEdit = JSON.parse(response);
+        // Se llena el modal de edicion
+        $("#id_usuarioe").val(usuarioEdit.id_usuario);
+        $("#nombre_usuarioe").val(usuarioEdit.nombres);
+        $("#apellido_usuarioe").val(usuarioEdit.apellidos);
+        $("#dni_usuarioe").val(usuarioEdit.dni);
+        $("#telefono_usuarioe").val(usuarioEdit.telefono);
+        $("#correo_electronico_usuarioe").val(usuarioEdit.correo_electronico);
+        $("#direccion_usuarioe").val(usuarioEdit.direccion_usuario);
+        // Mostrar el modal de edición
+        $("#editar_usuarioe").modal("show");
+      }
+    );
+  });
+  /*FIN FUNCION PARA CARGAR DATOS DEL USUARIO PARA EDITAR EN LA BASE DE DATOS*/
 });

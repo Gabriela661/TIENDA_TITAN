@@ -14,10 +14,8 @@ class egreso{
     /* FUNCION PARA LISTAR LA CATEGORIA  */
     function listarEgresos()
     {
-        $sql = "SELECT cliente.nombre_cliente, v.id_venta, v.tipo_pago, v.cantidad_total, v.fecha, v.id_usuario
-        FROM venta v
-        INNER JOIN cliente 
-        ON cliente.id_cliente = v.id_cliente;
+        $sql = "SELECT p.codigo_producto,p.nombre_producto,c.cantidad_carrito, c.id_usuario FROM producto p
+        INNER JOIN carrito c ON c.id_producto = p.id_producto
         "; // Consulta SQL para seleccionar todas las categorías
         $query = $this->acceso->prepare($sql); 
         $query->execute(); // Ejecución de la consulta

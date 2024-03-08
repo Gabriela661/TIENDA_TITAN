@@ -21,10 +21,13 @@ $(document).ready(function () {
                         <tr data-id="${ingresos.id_venta}">
                             <th scope="row">${contador}</th>
                             <td>${ingresos.nombre_cliente}</td>
-                            <td>${ingresos.tipo_pago}</td>
-                            <td>${ingresos.cantidad_total}</td>
                             <td>${ingresos.fecha}</td>
-                            <td>${ingresos.id_usuario}</td>
+                            <td>${ingresos.nombre_tipo_pago}</td>
+                            <td>${ingresos.nombre_usuario}</td>
+                            <td>${ingresos.nombre_producto}</td>
+                            <td>${ingresos.cantidad}</td>
+                            <td>${ingresos.precio_producto}</td>
+                            <td>${ingresos.cantidad_total}</td>
                         </tr>`;
                     
                     sumaCantidadTotal += parseFloat(ingresos.cantidad_total); // Suma de cantidad_total
@@ -32,10 +35,9 @@ $(document).ready(function () {
                 // Agregar fila con la suma de cantidad_total
                 template += `
                     <tr>
-                        <td colspan="3"></td>
+                        <td colspan="7"></td>
                         <td><strong>Total:</strong></td>
                         <td>${sumaCantidadTotal}</td>
-                        <td></td>
                     </tr>`;
 
                 $("#ingresos_lista").html(template);

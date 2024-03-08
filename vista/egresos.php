@@ -48,25 +48,20 @@
                             <div class="card">
                                 <div class="card">
                                     <div class="card-header">
-                                        <h5>Ingresos</h5>
+                                        <h5>Egresos</h5>
                                     </div>
                                     <div class="card-body">
                                         <div class="table-responsive">
                                             <table id="ingresos" class="table table-bordered table-striped">
                                                 <thead>
                                                     <tr>
-                                                        <th>N°</th>
-                                                        <th>CLIENTE</th>
-                                                        <th>FECHA</th>
-                                                        <th>TIPO DE PAGO</th>
-                                                        <th>USUARIO</th>
-                                                        <th>PRODUCTO</th>
+                                                        <th>CODIGO </th>
+                                                        <th>NOMBRE PRODUCTO</th>
                                                         <th>CANTIDAD</th>
-                                                        <th>PRECIO</th>
-                                                        <th>TOTAL</th>
+                                                        <th>USUARIO</th>
                                                     </tr>
                                                 </thead>
-                                                <tbody id="ingresos_lista">
+                                                <tbody id="egresos_lista">
                                                 </tbody>
                                             </table>
                                         </div>
@@ -100,5 +95,5 @@
 <script src="../vista/assets/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <!-- <script src="vista/assets/js/buscar.js"></script> -->
-<script src="js/ingresos.js "></script>
+<script src="js/egresos.js "></script>
 </div>

@@ -18,6 +18,9 @@ if ($_POST['funcion'] == 'listarIngresos') {
             'cantidad_total' => $objeto->cantidad_total,
             'fecha' => $objeto->fecha,
             'nombre_usuario' => $objeto->nombre_usuario,
+            'cantidad' => $objeto->cantidad,
+            'nombre_producto' => $objeto->nombre_producto,
+            'precio_producto' => $objeto->precio_producto,
         );
     }
     $jsonstring = json_encode($json); // Se convierte el array de categorías a formato JSON

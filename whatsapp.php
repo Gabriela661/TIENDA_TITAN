@@ -27,7 +27,7 @@
             <i class="fa fa-play"></i>
         </div>
         <div class="wcs_popup_avatar">
-            <img src="" alt="">
+            <img src="vista/assets/img/logo_titan1.png" alt="">
         </div>
     </div>
 </div>

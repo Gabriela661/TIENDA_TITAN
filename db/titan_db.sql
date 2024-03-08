@@ -11,7 +11,7 @@
  Target Server Version : 80030 (8.0.30)
  File Encoding         : 65001
 
- Date: 08/03/2024 12:16:48
+ Date: 08/03/2024 12:34:00
 */
 
 SET NAMES utf8mb4;
@@ -146,7 +146,7 @@ CREATE TABLE `favorito_producto`  (
 DROP TABLE IF EXISTS `imagen`;
 CREATE TABLE `imagen`  (
   `id_imagen` int NOT NULL AUTO_INCREMENT,
-  `url_imagen` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `url_imagen` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT 'deafult_producto.png',
   `id_producto` int NOT NULL,
   `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
@@ -163,7 +163,7 @@ INSERT INTO `imagen` VALUES (5, 'fimg1_3.jpg', 1, '2024-03-08 10:05:11', '2024-0
 INSERT INTO `imagen` VALUES (4, 'timg2_1.jpg', 2, '2024-03-08 10:05:11', '2024-03-08 10:05:11');
 INSERT INTO `imagen` VALUES (3, 'timg3_1.jpg', 3, '2024-03-08 10:05:11', '2024-03-08 10:05:11');
 INSERT INTO `imagen` VALUES (2, 'dwimg4_1.jpg', 4, '2024-03-08 10:05:11', '2024-03-08 10:05:11');
-INSERT INTO `imagen` VALUES (1, 'fimg1.jpg', 1, '2024-03-08 10:05:11', '2024-03-08 10:05:41');
+INSERT INTO `imagen` VALUES (1, 'fimg1_1.jpg', 1, '2024-03-08 10:05:11', '2024-03-08 12:32:53');
 
 -- ----------------------------
 -- Table structure for producto
@@ -289,3 +289,25 @@ INSERT INTO `usuario` VALUES (3, 'Juan', 'Perez', '0000001@gmail.com', '0000001'
 DROP TABLE IF EXISTS `venta`;
 CREATE TABLE `venta`  (
   `id_venta` int NOT NULL AUTO_INCREMENT,
+  `id_cliente` int NOT NULL,
+  `id_tipo_pago` int NOT NULL,
+  `total_venta` float NOT NULL,
+  `fecha` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `id_usuario` int NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `url_factura` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  PRIMARY KEY (`id_venta`) USING BTREE,
+  INDEX `id_cliente`(`id_cliente` ASC) USING BTREE,
+  INDEX `id_usuario`(`id_usuario` ASC) USING BTREE,
+  INDEX `id_tipo_pago`(`id_tipo_pago` ASC) USING BTREE,
+  CONSTRAINT `fk_factura_cliente` FOREIGN KEY (`id_cliente`) REFERENCES `cliente` (`id_cliente`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fk_factura_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `venta_ibfk_1` FOREIGN KEY (`id_tipo_pago`) REFERENCES `tipo_pago` (`id_tipo_pago`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of venta
+-- ----------------------------
+
+SET FOREIGN_KEY_CHECKS = 1;

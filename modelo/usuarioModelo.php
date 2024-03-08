@@ -23,7 +23,7 @@ class usuario
     //listar personal
     function listar_personal()
     {
-        $sql = "SELECT u.id_usuario,u.nombre_usuario,u.apellido_usuario,u.correo_usuario,u.foto_usuario, r.nombre_rol FROM usuario u INNER JOIN rol r ON u.id_rol = r.id_rol WHERE r.id_rol=1";
+        $sql = "SELECT u.id_usuario,u.nombre_usuario,u.apellido_usuario,u.correo_usuario,u.foto_usuario, r.nombre_rol FROM usuario u INNER JOIN rol r ON u.id_rol = r.id_rol WHERE  r.id_rol IN (2, 3, 4)";
         $query = $this->acceso->prepare($sql);
         $query->execute();
         $this->objetos = $query->fetchAll();
@@ -49,6 +49,24 @@ class usuario
         return $this->objetos;
     }
 
+
+    //crear usuario
+    function crear_usuario($nombre_usuario, $apellido_usuario,  $correo_electronico_usuario, $hashed_password, $foto_usuario, $rol_usuario)
+    {
+        $sql = "INSERT INTO usuario (nombre_usuario,apellido_usuario,correo_usuario,password,foto_usuario,id_rol) 
+        VALUES (:nombre_usuario,:apellido_usuario,:correo_usuario,:password,:foto_usuario,:id_rol )";
+        $query = $this->acceso->prepare($sql);
+        $query->execute(array(
+
+            ':nombre_usuario' => $nombre_usuario,
+            ':apellido_usuario' => $apellido_usuario,
+            ':correo_usuario' => $correo_electronico_usuario,
+            ':password' => $hashed_password,
+            ':foto_usuario' => $foto_usuario,
+            ':id_rol' => $rol_usuario
+        ));
+        echo 'add';
+    }
 
     //editar usuario
     function obtenerUsuario($id_usuario)
@@ -104,24 +122,4 @@ class usuario
         }
     }
 
-    //crear usuario
-    function crear_usuario($nombre_usuario, $apellido_usuario, $dni_usuario, $telefono_usuario, $correo_electronico_usuario, $hashed_password, $direccion_usuario, $foto_usuario, $rol_usuario)
-    {
-        $sql = "INSERT INTO usuario (nombres,apellidos,dni,telefono,correo_electronico,password,direccion_usuario,foto_usuario,rol_usuario) 
-        VALUES (:nombre_usuario,:apellido_usuario,:dni_usuario,:telefono_usuario,:correo_electronico_usuario,:password_usuario,:direccion_usuario,:foto_usuario,:rol_usuario )";
-        $query = $this->acceso->prepare($sql);
-        $query->execute(array(
-
-            ':nombre_usuario' => $nombre_usuario,
-            ':apellido_usuario' => $apellido_usuario,
-            ':dni_usuario' => $dni_usuario,
-            ':telefono_usuario' => $telefono_usuario,
-            ':correo_electronico_usuario' => $correo_electronico_usuario,
-            ':password_usuario' => $hashed_password,
-            ':direccion_usuario' => $direccion_usuario,
-            ':foto_usuario' => $foto_usuario,
-            ':rol_usuario' => $rol_usuario
-        ));
-        echo 'add';
-    }
 }

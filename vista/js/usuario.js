@@ -4,22 +4,23 @@ var cliente = document.getElementsByClassName("btn-cliente");
 $(document).ready(function () {
   var funcion;
   var funcion = "";
+
   /* condicional para listar segun el rol del usuario*/
   if (personal) {
-    // Funcion para listar los usuarios de tipo personal
+
+    /* FUNCION PARA LISTAR LOS USUARIOS DE LA BASE DE DATOS*/
     listar_personal();
     function listar_personal(consulta) {
       funcion = "listar_personal";
       $.post(
         "../controlador/usuarioControlador.php",
         { consulta, funcion },
-          (response) => {
-              console.log(response);
+        (response) => {
+          console.log(response);
           const personals = JSON.parse(response);
           let template = "";
           let contador = 0; // Inicializamos el contador
-            personals.forEach((personal) => {
-              
+          personals.forEach((personal) => {
             let imagenStyle = `width: 50px; height: 50px;`;
             contador++; // Incrementamos el contador en cada iteración
             template += `
@@ -44,7 +45,9 @@ $(document).ready(function () {
       );
     }
   }
-  //cliente
+  /*FIN FUNCION PARA LISTAR LOS USUARIOS DE LA BASE DE DATOS*/
+
+  /*FUNCION PARA LISTAR LOS CLIENTES DE LA BASE DE DATOS*/
   if (cliente) {
     listar_cliente();
     function listar_cliente(consulta) {
@@ -52,8 +55,8 @@ $(document).ready(function () {
       $.post(
         "../controlador/usuarioControlador.php",
         { consulta, funcion },
-          (response) => {
-            console.log(response)
+        (response) => {
+          console.log(response);
           const clientes = JSON.parse(response);
           let template = "";
           let contador = 0; // Inicializamos el contador
@@ -77,9 +80,124 @@ $(document).ready(function () {
                             <th scope="row"><button class="btn btn-danger borrar_usuario" data-id="${cliente.id_usuario}">Eliminar</button></th>
                             `;
           });
-          $("#listar_cliente").html(template);
+          $("#listar_clientes").html(template);
         }
       );
     }
   }
+  /*FIN FUNCION PARA LISTAR LOS CLIENTES DE LA BASE DE DATOS*/
+
+  /*FUNCION PARA LISTAR LOS ROLES EN EL MODAL DE AGREGAR PRODUCTOS*/
+  rol_usuario();
+  function rol_usuario(consulta) {
+    funcion = "rol_usuario";
+    $.post(
+      "../controlador/usuarioControlador.php",
+      { consulta, funcion },
+      (response) => {
+        const rols = JSON.parse(response);
+        options = "";
+        rols.forEach((rol) => {
+          options += `<option value="${rol.id_rol}">${rol.nombre_rol}</option>`;
+        });
+        $("#rol_usuario").html(options);
+      }
+    );
+  }
+  /*FIN FUNCION PARA LISTAR LOS ROLES EN EL MODAL DE AGREGAR PRODUCTOS*/
+
+  /*FUNCION PARA PREVISUALIZAR LA FOTO DE PERFIL DEL USUARIO*/
+  previstaproducto();
+  function previstaproducto() {
+    document
+      .getElementById("foto_usuario")
+      .addEventListener("change", function (event) {
+        const file = event.target.files[0];
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          const preview = document.getElementById("imagen_preview");
+          preview.innerHTML =
+            '<img src="' +
+            e.target.result +
+            '" style="max-width: 100px; max-height: 200px;">';
+        };
+        reader.readAsDataURL(file);
+      });
+  }
+  /*FIN FUNCION PARA PREVISUALIZAR LA FOTO DE PERFIL DEL USUARIO*/
+
+  /*
+   * Esta función se utiliza para enviar datos al controlador del servidor mediante una solicitud AJAX.
+   * Recibe los siguientes parámetros:
+   *   - url: la URL a la que se enviarán los datos.
+   *   - formData: los datos que se enviarán al servidor, generalmente en formato FormData.
+   *   - successCallback: la función que se ejecutará si la solicitud es exitosa.
+   *   - errorCallback: la función que se ejecutará si la solicitud produce un error.
+   */
+  function enviarDatos(url, formData, successCallback, errorCallback) {
+    $.ajax({
+      url: url,
+      type: "POST",
+      data: formData,
+      cache: false,
+      processData: false,
+      contentType: false,
+      success: successCallback,
+      error: errorCallback,
+    });
+  }
+  /*FIN FUNCION PARA ENVIAR DATOS AL CONTROLADOR*/
+
+  /*FUNCION PARA AGREGAR UN USUARIO A LA BASE DE DATOS*/
+  $("#form_usuario").submit((e) => {
+    e.preventDefault();
+
+    const nombre_usuario = $("#nombre_usuario").val();
+    const apellido_usuario = $("#apellido_usuario").val();
+    const correo_electronico_usuario = $("#correo_electronico_usuario").val();
+    const password_usuario = $("#password_usuario").val();
+    const foto_usuario = $("#foto_usuario")[0].files[0];
+    const rol_usuario = $("#rol_usuario").val();
+    const formData = new FormData($("#form_usuario")[0]);
+
+    formData.append("funcion", "crear_usuario");
+
+    formData.append("nombre_usuario", nombre_usuario);
+    formData.append("apellido_usuario", apellido_usuario);
+    formData.append("correo_electronico_usuario", correo_electronico_usuario);
+    formData.append("password_usuario", password_usuario);
+    formData.append("foto_usuario", foto_usuario);
+    formData.append("rol_usuario", rol_usuario);
+
+    enviarDatos(
+      "../controlador/usuarioControlador.php",
+      formData,
+      function (response) {
+        console.log(response);
+        if (response.trim() === "add") {
+          Swal.fire({
+            icon: "success",
+            title: "Creación exitosa",
+            text: "El usuario ha sido creada con éxito.",
+          }).then(() => {
+            $("#form_usuario").trigger("reset");
+            window.location.href = "usuarios.php";
+            $("#crear_usuario").modal("hide");
+            $("body").removeClass("modal-open");
+            $(".modal-backdrop").remove();
+          });
+        } else {
+          Swal.fire({
+            icon: "error",
+            title: "Error",
+            text: "Creacion Incorrecta de Usuario",
+          });
+        }
+      },
+      function (error) {
+        mostrarMensaje("noadd", "Error en la solicitud AJAX");
+      }
+    );
+  });
+  /*FIN FUNCION PARA AGREGAR UN USUARIO A LA BASE DE DATOS*/
 });

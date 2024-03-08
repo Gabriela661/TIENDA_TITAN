@@ -21,7 +21,7 @@ include_once "assets/views/nav.php";
             <form id="form_usuario" method="POST">
               <div class="card-body">
                 <div class="form-group">
-                  <label for="nombre_usuario">Nombre</label>
+                  <label for="nombre_usuario">Nombres</label>
                   <input type="text" class="form-control" id="nombre_usuario" name="nombre_usuario" placeholder="Nombres" required>
                 </div>
                 <div class="form-group">
@@ -40,7 +40,7 @@ include_once "assets/views/nav.php";
                 <div class="form-group">
                   <label for="foto_usuario">Fotografia del Usuario</label>
                   <br>
-                  <input type="file" name="foto_usuario" id="foto_usuario" required>
+                  <input type="file" name="foto_usuario" id="foto_usuario" >
                   <center>
                     <div id="imagen_preview" style="margin-top: 10px;" class="img-thumbnail"></div>
                   </center>
@@ -114,7 +114,7 @@ include_once "assets/views/nav.php";
           <div class="row mb-2">
             <div class="col-sm-6">
               <h4><i class="fas fa-users"></i> <b>Lista de Usuarios</b></h4>
-              <button type="button" class="btn btn-info ml-3" data-toggle="modal" data-target="#crearUsuario">
+              <button type="button" class="btn btn-primary ml-3" data-toggle="modal" data-target="#crearUsuario">
                 Nuevo Usuario</button></h1>
             </div>
           </div>
@@ -173,6 +173,7 @@ include_once "assets/views/nav.php";
                             <th>Nombres Personal</th>
                             <th>Apellidos</th>
                             <th>Correo Electronico</th>
+                            <th>Tipo de cliente</th>
                             <th>Foto</th>
                             <th>Editar</th>
                             <th>Eliminar</th>

@@ -24,12 +24,12 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h4><i class="fa fa-file" aria-hidden="true"></i><b>Reporte de Ingresos</b></h4>
+                            <h4><i class="fa fa-file" aria-hidden="true"></i><b>Reporte de Egresos</b></h4>
                             <div class="container">
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <button class="btn btn-primary">
-                                            <i class="fa fa-user"></i> Total de Ingresos
+                                            <i class="fa fa-user"></i> Total de Egresos
                                             <span id="total" class="badge bg-color6 text-c2"></span>
                                         </button>
                                     </div>

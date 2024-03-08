@@ -134,7 +134,26 @@ include "header.php"
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-                <li class="nav-header">DISEÑOS</li>
+               <li class="nav-item">
+                    <a href="soporte.php" class="nav-link">
+                        <i class="fa fa-info-circle"></i>
+                        <p>Ingresos y Egresos</p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="ingresos.php" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Ingresos</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="egresos.php" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Egresos</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
 
                 <li class="nav-item">
                     <a href="usuarios.php" class="nav-link">
@@ -178,26 +197,6 @@ include "header.php"
                             <a href="reporteProductos.php" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Reporte de Productos</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="nav-item">
-                    <a href="soporte.php" class="nav-link">
-                        <i class="fa fa-info-circle"></i>
-                        <p>Ingresos y Egresos</p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="ingresos.php" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Ingresos</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="egresos.php" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Egresos</p>
                             </a>
                         </li>
                     </ul>

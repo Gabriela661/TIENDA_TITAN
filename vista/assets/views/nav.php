@@ -185,6 +185,26 @@ include "header.php"
                 <li class="nav-item">
                     <a href="soporte.php" class="nav-link">
                         <i class="fa fa-info-circle"></i>
+                        <p>Ingresos y Egresos</p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="ingresos.php" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Ingresos</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Egresos</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="soporte.php" class="nav-link">
+                        <i class="fa fa-info-circle"></i>
                         <p>Soporte</p>
                     </a>
                 </li>

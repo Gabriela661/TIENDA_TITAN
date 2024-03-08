@@ -2,7 +2,6 @@
  <?php
     include_once "assets/views/nav.php";
     ?>
- <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js" integrity="sha256-i4vDW9EgtaJmeauDDymtNF2omPZ1fCKpf4w1gBlU1IE=" crossorigin="anonymous"></script>
  <script src="../vista/assets/js/calendario.js"></script>
  <div class="content-wrapper">
      <div class="content-header">
@@ -87,22 +86,25 @@
                          </a>
                      </div>
                  </div>
-             </div>
-         </div>
-         <!-- Calendario funcion -->
-         <div class="col-md-12">
-             <div class="card shadow mb-4">
-                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                     <h6 class="m-0 font-weight-bold text-dark">CALENDARIO</h6>
+                 <div class="col-lg-3 col-6">
+                     <div class="small-box bg-success">
+                         <div class="inner text-white">
+                             <h3>3</h3>
+                             <p>Ingresos</p>
+                         </div>
+                         <a href="ingresos.php">
+                             <div class="icon text-white">
+                                 <i class="fas fa-chart-bar text-white"></i>
+                             </div>
+                         </a>
+                         <a href="ingresos.php" class="small-box-footer">
+                             Más detalle <i class="fas fa-arrow-circle-right"></i>
+                         </a>
+                     </div>
                  </div>
-                 <br>
-                 <div id='calendar'></div>
-                 <br>
              </div>
          </div>
      </div>
-     <!-- Pie Chart -->
- </div>
 
- <?php
-    require_once "assets/views/footer.php" ?>
+     <?php
+        require_once "assets/views/footer.php" ?>

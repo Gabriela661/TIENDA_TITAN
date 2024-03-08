@@ -57,7 +57,6 @@ $(document).ready(function () {
         "../controlador/usuarioControlador.php",
         { consulta, funcion },
         (response) => {
-          console.log(response);
           const clientes = JSON.parse(response);
           let template = "";
           let contador = 0; // Inicializamos el contador
@@ -230,26 +229,73 @@ $(document).ready(function () {
     // Se define la función a ejecutar en el controlador
     funcion = "cargar_usuario";
     const id_usuario = $(e.currentTarget).data("id_usuario");
-    console.log(id_usuario);
     // Se realiza una solicitud AJAX para obtener la información de la categoría seleccionada
     $.post(
       "../controlador/usuarioControlador.php",
       { funcion, id_usuario },
       (response) => {
-        console.log(response);
         const usuarioEdit = JSON.parse(response);
         // Se llena el modal de edicion
         $("#id_usuarioe").val(usuarioEdit.id_usuario);
-        $("#nombre_usuarioe").val(usuarioEdit.nombres);
-        $("#apellido_usuarioe").val(usuarioEdit.apellidos);
-        $("#dni_usuarioe").val(usuarioEdit.dni);
-        $("#telefono_usuarioe").val(usuarioEdit.telefono);
-        $("#correo_electronico_usuarioe").val(usuarioEdit.correo_electronico);
-        $("#direccion_usuarioe").val(usuarioEdit.direccion_usuario);
+        $("#nombre_usuarioe").val(usuarioEdit.nombre_usuario);
+        $("#apellido_usuarioe").val(usuarioEdit.apellido_usuario);
+        $("#correo_usuarioe").val(usuarioEdit.correo_usuario);
+
         // Mostrar el modal de edición
         $("#editar_usuarioe").modal("show");
       }
     );
   });
   /*FIN FUNCION PARA CARGAR DATOS DEL USUARIO PARA EDITAR EN LA BASE DE DATOS*/
+
+  //Editar usuario
+  $("#form_usuario_editar").submit((e) => {
+    e.preventDefault();
+    const id_usuarioe = $("#id_usuarioe").val();
+
+    const nombrese = $("#nombre_usuarioe").val();
+    const apellidose = $("#apellido_usuarioe").val();
+    const correo_usuarioe = $("#correo_usuarioe").val();
+    console.log(nombrese);
+    const formData = new FormData($("#form_usuario_editar")[0]);
+
+    formData.append("funcion", "editar_usuario");
+    formData.append("id_usuarioe", id_usuarioe);
+
+    formData.append("nombrese", nombrese);
+    formData.append("apellidose", apellidose);
+    formData.append("correo_electronicoe", correo_usuarioe);
+
+
+    enviarDatos(
+      "../controlador/usuarioControlador.php",
+      formData,
+      function (response) {
+        console.log(response);
+        if (response.trim() === "edits") {
+          Swal.fire({
+            icon: "success",
+            title: "Edición exitosa",
+            text: "Se edito con exito el usuario.",
+          }).then(() => {
+            $("#form_usuario_editar").trigger("reset");
+            $("#editar_usuario").modal("hide");
+            $("body").removeClass("modal-open");
+            $(".modal-backdrop").remove();
+            // Actualizar la página después de cerrar la alerta
+            location.reload();
+          });
+        } else {
+          Swal.fire({
+            icon: "error",
+            title: "Error",
+            text: "Creacion Incorrecta de Usuario.",
+          });
+        }
+      },
+      function (error) {
+        mostrarMensaje("noadd", "Error en la solicitud AJAX");
+      }
+    );
+  });
 });

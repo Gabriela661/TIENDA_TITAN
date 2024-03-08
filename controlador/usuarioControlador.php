@@ -121,13 +121,9 @@ if ($_POST['funcion'] == 'cargar_usuario') {
     foreach ($usuario->objetos as $objeto) {
         $json[] = array(
             'id_usuario' => $objeto->id_usuario,
-            'nombres' => $objeto->nombres,
-            'apellidos' => $objeto->apellidos,
-            'dni' => $objeto->dni,
-            'telefono' => $objeto->telefono,
-            'correo_electronico' => $objeto->correo_electronico,
-            'direccion_usuario' => $objeto->direccion_usuario,
-
+            'nombre_usuario' => $objeto->nombre_usuario,
+            'apellido_usuario' => $objeto->apellido_usuario,
+            'correo_usuario' => $objeto->correo_usuario,
         );
     }
 
@@ -140,11 +136,8 @@ if ($_POST['funcion'] == 'editar_usuario') {
         $id_usuarioe = $_POST['id_usuarioe'];
         $nombrese = $_POST['nombrese'];
         $apellidose = $_POST['apellidose'];
-        $dnie = $_POST['dnie'];
-        $telefonoe = $_POST['telefonoe'];
-        $correo_electronicoe = $_POST['correo_electronicoe'];
-        $direccion_usuarioe = $_POST['direccion_usuarioe'];
-        $usuario->editar_usuario($id_usuarioe, $nombrese, $apellidose, $dnie, $telefonoe, $correo_electronicoe, $direccion_usuarioe);
+        $correo_usuarioe = $_POST['correo_usuarioe'];
+        $usuario->editar_usuario($id_usuarioe, $nombrese, $apellidose,$correo_usuarioe);
     } catch (Exception $e) {
         echo 'error';
     }

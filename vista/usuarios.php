@@ -87,22 +87,8 @@ include_once "assets/views/nav.php";
                   <input type="text" class="form-control" id="apellido_usuarioe" name="apellido_usuarioe" placeholder="Apellidos">
                 </div>
                 <div class="form-group">
-                  <label for="correo_electronico_usuario">Correo Electronico</label>
-                  <input type="text" class="form-control" id="correo_electronico_usuarioe" name="correo_electronico_usuarioe" placeholder="Correo Electronico">
-                </div>
-                <div class="form-group">
-                  <label for="">
-                    Foto de perfil actual
-                  </label>
-                  <center>
-                    <div id="imagen_preview" style="margin-top: 10px;" class="img-thumbnail"></div>
-                  </center>
-                </div>
-                <div class="form-group">
-                  <label for="">
-                    Foto de perfil
-                  </label>
-                  <input type="file" id="foto_usuario" name="foto_usuario" placeholder="Ingrese la foto">
+                  <label for="correo_usuarioe">Correo Electronico</label>
+                  <input type="text" class="form-control" id="correo_usuarioe" name="correo_usuarioe" placeholder="Correo Electronico">
                 </div>
               </div>
               <!-- /.card-body -->

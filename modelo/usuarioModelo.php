@@ -89,7 +89,7 @@ class usuario
     //editar usuario
     function obtenerUsuario($id_usuario)
     {
-        $sql = "SELECT nombres,apellidos,dni,telefono,correo_electronico,direccion_usuario FROM usuario WHERE id_usuario=:id_usuario";
+        $sql = "SELECT id_usuario,nombres,apellidos,dni,telefono,correo_electronico,direccion_usuario FROM usuario WHERE id_usuario=:id_usuario";
         $query = $this->acceso->prepare($sql);
         $query->execute(array(':id_usuario' => $id_usuario));
         $this->objetos = $query->fetchAll();
@@ -98,25 +98,22 @@ class usuario
     //Datos para cargar en el modal de editar
     function cargar_usuario($id_usuario)
     {
-        $sql = "SELECT id_usuario,nombres,apellidos,dni,telefono,correo_electronico,direccion_usuario FROM usuario WHERE id_usuario=:id_usuario";
+        $sql = "SELECT id_usuario,nombre_usuario,apellido_usuario,correo_usuario FROM usuario WHERE id_usuario=:id_usuario";
         $query = $this->acceso->prepare($sql);
         $query->execute(array(':id_usuario' => $id_usuario));
         $this->objetos = $query->fetchAll();
         return $this->objetos;
     }
     //editar usuario
-    function editar_usuario($id_usuarioe, $nombrese, $apellidose, $dnie, $telefonoe, $correo_electronicoe, $direccion_usuarioe)
+    function editar_usuario($id_usuarioe, $nombrese, $apellidose,$correo_usuarioe)
     {
         try {
-            $sql = "UPDATE usuario SET nombres=:nombre, apellidos=:apellido, dni=:dni, telefono=:telefono, correo_electronico=:correo, direccion_usuario=:direccion WHERE id_usuario=:id";
+            $sql = "UPDATE usuario SET nombre_usuario=:nombre_usuario, apellido_usuario=:apellido_usuario,correo_usuario=:correo_usuario WHERE id_usuario=:id";
             $query = $this->acceso->prepare($sql);
             $query->bindParam(':id', $id_usuarioe, PDO::PARAM_INT);
-            $query->bindParam(':nombre', $nombrese, PDO::PARAM_STR);
-            $query->bindParam(':apellido', $apellidose, PDO::PARAM_STR);
-            $query->bindParam(':dni', $dnie, PDO::PARAM_STR);
-            $query->bindParam(':telefono', $telefonoe, PDO::PARAM_STR);
-            $query->bindParam(':correo', $correo_electronicoe, PDO::PARAM_STR);
-            $query->bindParam(':direccion', $direccion_usuarioe, PDO::PARAM_STR);
+            $query->bindParam(':nombre_usuario', $nombrese, PDO::PARAM_STR);
+            $query->bindParam(':apellido_usuario', $apellidose, PDO::PARAM_STR);
+            $query->bindParam(':correo_usuario', $correo_usuarioe, PDO::PARAM_STR);
             $query->execute();
             echo 'edits';
         } catch (PDOException $e) {

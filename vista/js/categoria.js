@@ -54,7 +54,6 @@ $(document).ready(function () {
   /*FIN DE LA FUNCION PARA LISTAR LAS CATEGORIAS */
 
   /*
-   * FUNCION PARA ENVIAR DATOS AL CONTROLADOR
    * Esta función se utiliza para enviar datos al controlador del servidor mediante una solicitud AJAX.
    * Recibe los siguientes parámetros:
    *   - url: la URL a la que se enviarán los datos.
@@ -75,6 +74,7 @@ $(document).ready(function () {
     });
   }
   /*FIN FUNCION PARA ENVIAR DATOS AL CONTROLADOR*/
+
 
   /*FUNCION PARA AÑADIR UNA NUEVA CATEGORIA A LA BASE DE DATOS */
   $("#form_categoria").submit((e) => {
@@ -122,6 +122,7 @@ $(document).ready(function () {
   });
   /*FIN FUNCION PARA AÑADIR UNA NUEVA CATEGORIA A LA BASE DE DATOS */
 
+
   /*CARGAR LA INFORMACION DE LA CATEGORIA AL MODAL PARA EDITAR*/
   $(document).on("click", "#btn_editar", (e) => {
     // Se define la función a ejecutar en el controlador
@@ -144,6 +145,7 @@ $(document).ready(function () {
     );
   });
   /*FIN CARGAR LA INFORMACION DE LA CATEGORIA AL MODAL PARA EDITAR*/
+
 
   /* FUNCION PARA EDITAR CATEGORIA*/
   $("#form_editar_categoria").submit((e) => {
@@ -194,8 +196,10 @@ $(document).ready(function () {
   });
   /* FIN FUNCION PARA EDITAR CATEGORIA*/
 
+
   /* FUNCION PARA MOSTRAR UNA ADVERTENCIA ANTES DE BORRAR LA CATEGORIA DE LA BASE DE DATOS*/
   $(document).on("click", ".borrar_categoria", function () {
+
     // Se obtiene el ID de la categoría a eliminar desde el botón correspondiente
     const id_categoria = $(this).data("id");
 
@@ -216,6 +220,7 @@ $(document).ready(function () {
     });
   });
   /* FIN FUNCION PARA MOSTRAR UNA ADVERTENCIA ANTES DE BORRAR LA CATEGORIA DE LA BASE DE DATOS*/
+
 
   /* FUNCION PARA BORRAR LA CATEGORIA DE LA BASE DE DATOS*/
   function eliminarCategoria(id_categoria) {

@@ -2,7 +2,7 @@
 class conexion
 {
     private $servidor = "localhost";
-    private $db = "empresa_venta";
+    private $db = "titan_db";
     private $chartset = "utf8mb4";
     private $usuario = "root";
     private $password = "";

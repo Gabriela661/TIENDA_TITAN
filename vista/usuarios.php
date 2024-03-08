@@ -2,6 +2,7 @@
 <?php
 include_once "assets/views/nav.php";
 ?>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <body>
   <div class="wrapper">
@@ -27,14 +28,7 @@ include_once "assets/views/nav.php";
                   <label for="apellidos_usuario">Apellidos</label>
                   <input type="text" class="form-control" id="apellido_usuario" name="apellido_usuario" placeholder="Apellidos" required>
                 </div>
-                <div class="form-group">
-                  <label for="dni_usuario">Documento Nacional de Identidad</label>
-                  <input type="text" class="form-control" id="dni_usuario" name="dni_usuario" placeholder="DNI" required maxlength="8">
-                </div>
-                <div class="form-group">
-                  <label for="telefono_usuario">Número de teléfono</label>
-                  <input type="text" class="form-control" id="telefono_usuario" name="telefono_usuario" placeholder="Número de teléfono" required maxlength="9">
-                </div>
+
                 <div class="form-group">
                   <label for="correo_electronico_usuario">Correo Electrónico</label>
                   <input type="email" class="form-control" id="correo_electronico_usuario" name="correo_electronico_usuario" placeholder="Correo Electrónico" required>
@@ -42,10 +36,6 @@ include_once "assets/views/nav.php";
                 <div class="form-group">
                   <label for="password_usuario">Contraseña</label>
                   <input type="text" class="form-control" id="password_usuario" name="password_usuario" placeholder="Contraseña" required>
-                </div>
-                <div class="form-group">
-                  <label for="direccion_usuario">Direccion</label>
-                  <input type="text" class="form-control" id="direccion_usuario" name="direccion_usuario" placeholder="Direccion" required>
                 </div>
                 <div class="form-group">
                   <label for="foto_usuario">Fotografia del Usuario</label>
@@ -97,20 +87,8 @@ include_once "assets/views/nav.php";
                   <input type="text" class="form-control" id="apellido_usuarioe" name="apellido_usuarioe" placeholder="Apellidos">
                 </div>
                 <div class="form-group">
-                  <label for="dni_usuario">Documento Nacional de Identidad</label>
-                  <input type="number" class="form-control" id="dni_usuarioe" name="dni_usuarioe" placeholder="DNI">
-                </div>
-                <div class="form-group">
-                  <label for="telefono_usuario"> Numero de telefono </label>
-                  <input type="number" class="form-control" id="telefono_usuarioe" name="telefono_usuarioe" placeholder="Numero de telefono">
-                </div>
-                <div class="form-group">
                   <label for="correo_electronico_usuario">Correo Electronico</label>
                   <input type="text" class="form-control" id="correo_electronico_usuarioe" name="correo_electronico_usuarioe" placeholder="Correo Electronico">
-                </div>
-                <div class="form-group">
-                  <label for="direccion_usuario">Direccion</label>
-                  <input type="text" class="form-control" id="direccion_usuarioe" name="direccion_usuarioe" placeholder="Direccion">
                 </div>
               </div>
               <!-- /.card-body -->
@@ -157,11 +135,11 @@ include_once "assets/views/nav.php";
             </div>
             <div class="card-body">
               <div class="tab-content">
-                <!-- Tabla del personal -->
                 <div class="active tab-pane btn-personal" id="personal">
                   <div class="timeline timeline-inverse">
                     <div class="card">
                       <div class="card-header">Personal</div>
+                      <!-- Tabla del personal -->
                       <div class="card-body table-responsive">
                         <table id="example1" class="table table-bordered table-striped">
                           <thead>
@@ -169,24 +147,21 @@ include_once "assets/views/nav.php";
                               <th>N°</th>
                               <th>Nombres Personal</th>
                               <th>Apellidos</th>
-                              <th>DNI</th>
-                              <th>Telefono</th>
                               <th>Correo Electronico</th>
-                              <th>Direccion</th>
                               <th>Foto</th>
+                              <th>Rol</th>
                               <th>Editar</th>
                               <th>Eliminar</th>
                             </tr>
                           </thead>
                           <tbody id="listar_personal">
-
                           </tbody>
                         </table>
                       </div>
+                      <!-- ./Tabla del personal -->
                     </div>
                   </div>
                 </div>
-                <!-- Tabla de clientes -->
                 <div class="tab-pane btn-cliente" id="cliente">
                   <div class="card">
                     <div class="card-header">Clientes</div>
@@ -195,22 +170,15 @@ include_once "assets/views/nav.php";
                         <thead>
                           <tr>
                             <th>N°</th>
-                            <th>Nombres Cliente</th>
+                            <th>Nombres Personal</th>
                             <th>Apellidos</th>
-                            <th>DNI</th>
-                            <th>Telefono</th>
                             <th>Correo Electronico</th>
-                            <th>Direccion</th>
                             <th>Foto</th>
-                            <?php if ($_SESSION['rol_usuario'] == 1) {
-                            ?>
-                              <th>Editar</th>
-                              <th>Eliminar</th>
-                            <?php
-                            } ?>
+                            <th>Editar</th>
+                            <th>Eliminar</th>
                           </tr>
                         </thead>
-                        <tbody id="listar_cliente">
+                        <tbody id="listar_clientes">
                         </tbody>
                       </table>
                     </div>
@@ -239,4 +207,6 @@ include_once "assets/views/nav.php";
 <!-- AdminLTE for demo purposes -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <!-- J query -->
+
+<script src="js/usuario.js"></script>
 </div>

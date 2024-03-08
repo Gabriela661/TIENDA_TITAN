@@ -21,10 +21,10 @@ class usuario
     // }
 
 
-  /* FUNCION PARA LISTAR EL PERSONAL DE LA BASE DE DATOS*/
+    /* FUNCION PARA LISTAR EL PERSONAL DE LA BASE DE DATOS*/
     function listar_personal()
     {
-        $sql = "SELECT u.id_usuario,u.nombre_usuario,u.apellido_usuario,u.correo_usuario,u.foto_usuario, r.nombre_rol FROM usuario u INNER JOIN rol r ON u.id_rol = r.id_rol WHERE  r.id_rol IN (2, 3, 4)";// Consulta SQL para seleccionar todas los usuarios tipo personal
+        $sql = "SELECT u.id_usuario,u.nombre_usuario,u.apellido_usuario,u.correo_usuario,u.foto_usuario, r.nombre_rol FROM usuario u INNER JOIN rol r ON u.id_rol = r.id_rol WHERE  r.id_rol IN (2, 3, 4)"; // Consulta SQL para seleccionar todas los usuarios tipo personal
         $query = $this->acceso->prepare($sql);
         $query->execute();
         $this->objetos = $query->fetchAll();
@@ -35,7 +35,7 @@ class usuario
     /* FIN FUNCION PARA LISTAR EL PERSONAL DE LA BASE DE DATOS*/
 
 
-  /* FUNCION PARA LISTAR LOS CLIENTES DE LA BASE DE DATOS*/
+    /* FUNCION PARA LISTAR LOS CLIENTES DE LA BASE DE DATOS*/
     function listar_cliente()
     {
         $sql = "SELECT id_usuario,nombre_usuario,apellido_usuario,correo_usuario,foto_usuario FROM usuario where id_rol=3";
@@ -44,7 +44,7 @@ class usuario
         $query->execute();
         $this->objetos = $query->fetchAll();
         // Almacenamiento de los resultados en la propiedad 'objetos'
-        return $this->objetos;// Devolución de los clientes obtenidas
+        return $this->objetos; // Devolución de los clientes obtenidas
     }
     /* FIN FUNCION PARA LISTAR LOS CLIENTES DE LA BASE DE DATOS*/
 
@@ -68,7 +68,7 @@ class usuario
     {
         $sql = "INSERT INTO usuario (nombre_usuario,apellido_usuario,correo_usuario,password,foto_usuario,id_rol) 
         VALUES (:nombre_usuario,:apellido_usuario,:correo_usuario,:password,:foto_usuario,:id_rol )";
-         // Consulta SQL para agregrar los prodcutos  al db
+        // Consulta SQL para agregrar los prodcutos  al db
         $query = $this->acceso->prepare($sql);
 
         $query->execute(array(
@@ -83,7 +83,7 @@ class usuario
         echo 'add';
         //devuelvo en mensaje de exito cuando se registe un usuario
     }
-        /* FUNCION PARA AGREGAR UN NUEVO USUARIO  */
+    /* FUNCION PARA AGREGAR UN NUEVO USUARIO  */
 
 
     //editar usuario
@@ -105,7 +105,7 @@ class usuario
         return $this->objetos;
     }
     //editar usuario
-    function editar_usuario($id_usuarioe, $nombrese, $apellidose,$correo_usuarioe)
+    function editar_usuario($id_usuarioe, $nombrese, $apellidose, $correo_usuarioe)
     {
         try {
             $sql = "UPDATE usuario SET nombre_usuario=:nombre_usuario, apellido_usuario=:apellido_usuario,correo_usuario=:correo_usuario WHERE id_usuario=:id";
@@ -136,5 +136,4 @@ class usuario
             echo 'dontdelete';
         }
     }
-
 }

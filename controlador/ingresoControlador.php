@@ -14,10 +14,10 @@ if ($_POST['funcion'] == 'listarIngresos') {
         $json[] = array(
             'nombre_cliente' => $objeto->nombre_cliente,
             'id_venta' => $objeto->id_venta,
-            'tipo_pago' => $objeto->tipo_pago,
+            'nombre_tipo_pago' => $objeto->nombre_tipo_pago,
             'cantidad_total' => $objeto->cantidad_total,
             'fecha' => $objeto->fecha,
-            'id_usuario' => $objeto->id_usuario,
+            'nombre_usuario' => $objeto->nombre_usuario,
         );
     }
     $jsonstring = json_encode($json); // Se convierte el array de categorías a formato JSON

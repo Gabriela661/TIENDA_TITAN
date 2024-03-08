@@ -24,13 +24,13 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h4><i class="fa fa-file" aria-hidden="true"></i><b>Reporte de Facturas</b></h4>
+                            <h4><i class="fa fa-file" aria-hidden="true"></i><b>Reporte de Ingresos</b></h4>
                             <div class="container">
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <button class="btn btn-primary">
-                                            <i class="fa fa-user"></i> Total de Ventas
-                                            <span class="badge bg-color6 text-c2">1</span>
+                                            <i class="fa fa-user"></i> Total de Ingresos
+                                            <span id="total" class="badge bg-color6 text-c2"></span>
                                         </button>
                                     </div>
                                 </div>
@@ -47,9 +47,12 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card">
+                                    <div class="card-header">
+                                        <h5>Ingresos</h5>
+                                    </div>
                                     <div class="card-body">
                                         <div class="table-responsive">
-                                            <table id="reporte_ingresos" class="table table-bordered table-striped">
+                                            <table id="ingresos" class="table table-bordered table-striped">
                                                 <thead>
                                                     <tr>
                                                         <th>N°</th>
@@ -58,7 +61,6 @@
                                                         <th>CANTIDAD TOTAL</th>
                                                         <th>FECHA</th>
                                                         <th>USUARIO</th>
-                                                        <th>ACCIONES</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody id="ingresos_lista">
@@ -94,6 +96,6 @@
 
 <script src="../vista/assets/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="../vista/assets/js/buscar.js   "></script>
+<!-- <script src="vista/assets/js/buscar.js"></script> -->
 <script src="js/ingresos.js "></script>
 </div>

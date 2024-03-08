@@ -1,4 +1,5 @@
-<?php include './assets/views/navbar.php'?>
+<?php include './assets/views/navbar.php' ?>
+
 <body>
 
     <section class="bg-secondary py-5">
@@ -14,7 +15,7 @@
                     </p>
                 </div>
                 <div class="col-md-4">
-                    <img src="vista/assets/img/figura2.png" style="width:300px;height:300px"alt="About Hero">
+                    <img src="vista/assets/img/figura2.png" style="width:300px;height:300px" alt="About Hero">
                 </div>
             </div>
         </div>
@@ -45,13 +46,11 @@
         </div>
     </section>
     <!-- End Section -->
-    <a href="https://api.whatsapp.com/send?phone=51916232342&text=Hola!%20Estoy%20interesado%20en%20comprar%20productos%20de%20la%20categor%C3%ADa%20Perfiles%20met%C3%A1licos%20%C2%BFPodr%C3%ADas%20asistirme?" class="btnchat" target="_blank">
-        <i class="fab fa-whatsapp my-btnchat "></i>  
-    </a>
-   
+    <!-- page whatsapp  -->
+    <?php include 'whatsapp.php' ?>
 
     <!-- Start Footer -->
-    <?php include 'assets/views/footer.php'?>
+    <?php include 'assets/views/footer.php' ?>
     <!-- End Footer -->
 
     <!-- Start Script -->

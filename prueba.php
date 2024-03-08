@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Start your development with FoodHut landing page.">
+    <meta name="description" content="Start your development">
     <meta name="author" content="Devcrud">
     <link rel="stylesheet" href="assets/css/templatemo.css">
     <title>TITAN_TIENDA</title>
@@ -71,8 +71,8 @@
         </div>
     </header>
     <br>
-      <!-- book a table Section  -->
-      <div class="container-fluid has-bg-secondary text-center text-light has-height-lg middle-items" id="book-table">
+    <!-- book a table Section  -->
+    <div class="container-fluid has-bg-secondary text-center text-light has-height-lg middle-items" id="book-table">
         <div class="">
             <h2 class="section-title mb-5">Calcular</h2>
             <div class="row mb-5">
@@ -230,12 +230,10 @@
             </div>
         </div>
     </div>
-    <div class="container-boton">
-        <a href="https://api.whatsapp.com/send?phone=51900891855&text=Hola!%20Estoy%20interesado%20en%20comprar%20productos%20de%20la%20categor%C3%ADa%20Perfiles%20met%C3%A1licos%20%C2%BFPodr%C3%ADas%20asistirme?" class="btnchat" target="">
-            <img class="boton" src="assets/img/icon.png" style="width:50px;height:50px" alt="">
-        </a>
-    </div>
 
+    <!-- page whatsapp  -->
+    <?php include 'whatsapp.php' ?>
+    <!-- end of page footer -->
     <!-- page footer  -->
     <?php include 'assets/views/footer.php' ?>
     <!-- end of page footer -->
@@ -245,12 +243,8 @@
     <script src="assets/vendors/bootstrap/bootstrap.bundle.js"></script>
     <!-- bootstrap affix -->
     <script src="assets/vendors/bootstrap/bootstrap.affix.js"></script>
-
-    <!-- wow.js -->
-    <!-- <script src="assets/vendors/wow/wow.js"></script> -->
-
     <!-- google maps -->
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCtme10pzgKSPeJVJrG1O3tjR6lk98o4w8&callback=initMap"></script>
+    <!-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCtme10pzgKSPeJVJrG1O3tjR6lk98o4w8&callback=initMap"></script> -->
 
     <!-- FoodHut js -->
     <script src="assets/js/foodhut.js"></script>

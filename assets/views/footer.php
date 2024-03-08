@@ -1,7 +1,7 @@
    <!-- Start Footer -->
    <footer class="bg-footer" id="tempaltemo_footer">
        
-   <div class="container-fluid bg-dark text-light has-height-md middle-items border-top text-center wow fadeIn">
+   <div class="container-fluid bg-dark text-light has-height-md middle-items border-top text-center ">
         <div class="row">
             <div class="col-sm-4">
                 <h3>EMAIL US</h3>
@@ -17,9 +17,8 @@
             </div>
         </div>
     </div>
-    <div class="bg-dark text-light text-center border-top wow fadeIn">
+    <div class="bg-dark text-light text-center border-top ">
         <p class="mb-0 py-3 text-muted small">&copy; Copyright <script>
-                document.write(new Date().getFullYear())
-            </script> Made with <i class="ti-heart text-danger"></i> By <a href="http://devcrud.com">DevCRUD</a></p>
+            </script> <i class="ti-heart text-danger"></i> <a href="#">HYPERIUM</a></p>
     </div>  
    </footer>

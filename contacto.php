@@ -100,10 +100,6 @@
   </div>
 </div>
 
-    <!-- End Contact -->
-    <a href="https://api.whatsapp.com/send?phone=51916232342&text=Hola!%20Estoy%20interesado%20en%20comprar%20productos%20de%20la%20categor%C3%ADa%20Perfiles%20met%C3%A1licos%20%C2%BFPodr%C3%ADas%20asistirme?" class="btnchat" target="_blank">
-        <i class="fab fa-whatsapp my-btnchat "></i>  
-    </a>
    
     <!-- Start Footer -->
   <?php include 'assets/views/footer.php'?>
@@ -114,9 +110,9 @@
     <script src="assets/js/jquery-migrate-1.2.1.min.js"></script>
     <script src="assets/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/templatemo.js"></script>
-    <script src="assets/js/custom.js"></script>
+    <!-- <script src="assets/js/custom.js"></script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"></script>
-    <script src="assets/js/map.js"></script>
+    <script src="assets/js/map.js"></script> -->
     <!-- End Script -->
 </body>
 

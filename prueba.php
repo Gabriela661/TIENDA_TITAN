@@ -8,13 +8,6 @@
     <meta name="author" content="Devcrud">
     <link rel="stylesheet" href="assets/css/templatemo.css">
     <title>TITAN_TIENDA</title>
-    <!-- <link rel="stylesheet" href="../js/adminlte.min.js"> -->
-
-    <!-- font icons -->
-    <!-- <link rel="stylesheet" href="assets/vendors/themify-icons/css/themify-icons.css"> -->
-
-    <!-- <link rel="stylesheet" href="assets/vendors/animate/animate.css"> -->
-
     <!-- Bootstrap + FoodHut main styles -->
     <link rel="stylesheet" href="assets/css/foodhut.css">
 </head>

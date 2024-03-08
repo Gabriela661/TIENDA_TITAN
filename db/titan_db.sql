@@ -11,7 +11,7 @@
  Target Server Version : 80030 (8.0.30)
  File Encoding         : 65001
 
- Date: 08/03/2024 11:49:21
+ Date: 08/03/2024 12:16:48
 */
 
 SET NAMES utf8mb4;
@@ -103,6 +103,23 @@ CREATE TABLE `detalle_venta`  (
 -- ----------------------------
 
 -- ----------------------------
+-- Table structure for especificacion_tecnica
+-- ----------------------------
+DROP TABLE IF EXISTS `especificacion_tecnica`;
+CREATE TABLE `especificacion_tecnica`  (
+  `id_especificacion_tecnica` int NOT NULL AUTO_INCREMENT,
+  `nombre_especificacion_tecnica` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `url_especificacion_tecnica` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id_especificacion_tecnica`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of especificacion_tecnica
+-- ----------------------------
+
+-- ----------------------------
 -- Table structure for favorito_producto
 -- ----------------------------
 DROP TABLE IF EXISTS `favorito_producto`;
@@ -165,21 +182,24 @@ CREATE TABLE `producto`  (
   `descuento` float NOT NULL DEFAULT 0,
   `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `update_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `id_especificacion_tecnica` int NULL DEFAULT NULL,
   PRIMARY KEY (`id_producto` DESC) USING BTREE,
   INDEX `id_unidad`(`id_unidad_medida` ASC) USING BTREE,
   INDEX `id_categoria`(`id_categoria` ASC) USING BTREE,
   INDEX `id_descuento`(`descuento` ASC) USING BTREE,
+  INDEX `id_especificacion_tecnica`(`id_especificacion_tecnica` ASC) USING BTREE,
   CONSTRAINT `fk_producto_categoria` FOREIGN KEY (`id_categoria`) REFERENCES `categoria` (`id_categoria`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `fk_producto_unidad` FOREIGN KEY (`id_unidad_medida`) REFERENCES `unidad_medida` (`id_unidad_medida`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `fk_producto_unidad` FOREIGN KEY (`id_unidad_medida`) REFERENCES `unidad_medida` (`id_unidad_medida`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `producto_ibfk_1` FOREIGN KEY (`id_especificacion_tecnica`) REFERENCES `especificacion_tecnica` (`id_especificacion_tecnica`) ON DELETE SET NULL ON UPDATE CASCADE
 ) ENGINE = InnoDB AUTO_INCREMENT = 9 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of producto
 -- ----------------------------
-INSERT INTO `producto` VALUES (4, 'T00001', 'Tubo Liviano PVC 4p SP | Desague', 'Ideal para conexiones de agua o desagüe', 'Matusita', 100, 28.69, 1, 1, 0, '2024-03-08 10:00:40', '2024-03-08 11:41:53');
-INSERT INTO `producto` VALUES (3, 'DWALL1', 'Multiplaca 1.22 m x 2.44 m x 4 mm', 'Fibrocemento. Garantía 1 año. Ideal para interiores', 'Eternit', 2, 32, 1, 3, 0, '2024-03-08 10:01:53', '2024-03-08 11:41:55');
-INSERT INTO `producto` VALUES (2, 'F00002', 'Barras de Acero 6 mm', 'Barra de construcción ASTM A615 Grado 60. Barras de acero rectas de sección circular, con resaltes Hi-bond de alta adherencia con el concreto. Norma NTP 341.031 Grado 60', 'Aceros Arequipa', 5, 9.32, 1, 2, 0, '2024-03-08 10:01:53', '2024-03-08 11:41:56');
-INSERT INTO `producto` VALUES (1, 'F00001', 'Barras de Acero 1/2', 'Estas son barras de construcción ASTM A615 con Grado 60, rectas de sección circular, con resaltes Hi-bond de alta adherencia con el concreto. Cumplen con la Norma NTP 341.031 Grado 60.\r\n\r\nEs ideal para la construcción de edificaciones de concreto armado de todo tipo: Viviendas, edificios, puentes, obras industriales, etc.\r\n\r\nSon barras de acero con una excelente calidad, por lo que tus construcciones serán más fijas y resistentes. No lo pienses más y compra aquí en Sodimac.', 'Aceros Arequipa', 20, 41.39, 1, 2, 0, '2024-03-08 10:01:53', '2024-03-08 11:42:00');
+INSERT INTO `producto` VALUES (4, 'T00001', 'Tubo Liviano PVC 4p SP | Desague', 'Ideal para conexiones de agua o desagüe', 'Matusita', 100, 28.69, 1, 1, 0, '2024-03-08 10:00:40', '2024-03-08 11:41:53', NULL);
+INSERT INTO `producto` VALUES (3, 'DWALL1', 'Multiplaca 1.22 m x 2.44 m x 4 mm', 'Fibrocemento. Garantía 1 año. Ideal para interiores', 'Eternit', 2, 32, 1, 3, 0, '2024-03-08 10:01:53', '2024-03-08 11:41:55', NULL);
+INSERT INTO `producto` VALUES (2, 'F00002', 'Barras de Acero 6 mm', 'Barra de construcción ASTM A615 Grado 60. Barras de acero rectas de sección circular, con resaltes Hi-bond de alta adherencia con el concreto. Norma NTP 341.031 Grado 60', 'Aceros Arequipa', 5, 9.32, 1, 2, 0, '2024-03-08 10:01:53', '2024-03-08 11:41:56', NULL);
+INSERT INTO `producto` VALUES (1, 'F00001', 'Barras de Acero 1/2', 'Estas son barras de construcción ASTM A615 con Grado 60, rectas de sección circular, con resaltes Hi-bond de alta adherencia con el concreto. Cumplen con la Norma NTP 341.031 Grado 60.\r\n\r\nEs ideal para la construcción de edificaciones de concreto armado de todo tipo: Viviendas, edificios, puentes, obras industriales, etc.\r\n\r\nSon barras de acero con una excelente calidad, por lo que tus construcciones serán más fijas y resistentes. No lo pienses más y compra aquí en Sodimac.', 'Aceros Arequipa', 20, 41.39, 1, 2, 0, '2024-03-08 10:01:53', '2024-03-08 11:42:00', NULL);
 
 -- ----------------------------
 -- Table structure for rol
@@ -191,14 +211,16 @@ CREATE TABLE `rol`  (
   `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id_rol`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 72 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of rol
 -- ----------------------------
 INSERT INTO `rol` VALUES (1, 'administrador', '2024-03-08 10:09:28', '2024-03-08 10:09:28');
-INSERT INTO `rol` VALUES (2, 'vendedor', '2024-03-08 10:09:28', '2024-03-08 10:09:28');
-INSERT INTO `rol` VALUES (3, 'cliente', '2024-03-08 10:09:28', '2024-03-08 10:09:28');
+INSERT INTO `rol` VALUES (2, 'supervisor', '2024-03-08 12:02:44', '2024-03-08 12:03:40');
+INSERT INTO `rol` VALUES (3, 'inventario', '2024-03-08 12:02:19', '2024-03-08 12:03:47');
+INSERT INTO `rol` VALUES (4, 'vendedor', '2024-03-08 10:09:28', '2024-03-08 12:03:48');
+INSERT INTO `rol` VALUES (5, 'cliente', '2024-03-08 10:09:28', '2024-03-08 12:04:29');
 
 -- ----------------------------
 -- Table structure for tipo_pago
@@ -257,9 +279,9 @@ CREATE TABLE `usuario`  (
 -- ----------------------------
 -- Records of usuario
 -- ----------------------------
-INSERT INTO `usuario` VALUES (1, 'online', 'cliente', 'sistema_online_titan@gmail.com', 'online', 2, 'default.png', '2024-03-08 09:18:52', '2024-03-08 09:45:18');
+INSERT INTO `usuario` VALUES (1, 'online', 'cliente', 'sistema_online_titan@gmail.com', 'online', 4, 'default.png', '2024-03-08 09:18:52', '2024-03-08 09:45:18');
 INSERT INTO `usuario` VALUES (2, 'admin', 'sistema', 'adminTitan4212@gmail.com', 'adminpass', 1, 'default.png', '2024-03-08 09:18:52', '2024-03-08 09:45:22');
-INSERT INTO `usuario` VALUES (3, 'Juan', 'Perez', '0000001@gmail.com', '0000001', 3, 'default.png', '2024-03-08 09:18:52', '2024-03-08 09:48:15');
+INSERT INTO `usuario` VALUES (3, 'Juan', 'Perez', '0000001@gmail.com', '0000001', 5, 'default.png', '2024-03-08 09:18:52', '2024-03-08 09:48:15');
 
 -- ----------------------------
 -- Table structure for venta
@@ -267,25 +289,3 @@ INSERT INTO `usuario` VALUES (3, 'Juan', 'Perez', '0000001@gmail.com', '0000001'
 DROP TABLE IF EXISTS `venta`;
 CREATE TABLE `venta`  (
   `id_venta` int NOT NULL AUTO_INCREMENT,
-  `id_cliente` int NOT NULL,
-  `id_tipo_pago` int NOT NULL,
-  `total_venta` float NOT NULL,
-  `fecha` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `id_usuario` int NOT NULL,
-  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `url_factura` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  PRIMARY KEY (`id_venta`) USING BTREE,
-  INDEX `id_cliente`(`id_cliente` ASC) USING BTREE,
-  INDEX `id_usuario`(`id_usuario` ASC) USING BTREE,
-  INDEX `id_tipo_pago`(`id_tipo_pago` ASC) USING BTREE,
-  CONSTRAINT `fk_factura_cliente` FOREIGN KEY (`id_cliente`) REFERENCES `cliente` (`id_cliente`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `fk_factura_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `venta_ibfk_1` FOREIGN KEY (`id_tipo_pago`) REFERENCES `tipo_pago` (`id_tipo_pago`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Records of venta
--- ----------------------------
-
-SET FOREIGN_KEY_CHECKS = 1;

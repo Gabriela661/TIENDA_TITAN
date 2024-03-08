@@ -60,7 +60,7 @@
                                     <ul class="list-unstyled">
                                         <li><a class="btn btn-success text-white" href="#"><i class="far fa-heart"></i></a></li>
                                         <li><a class="btn btn-success text-white mt-2" href="detalle.php?title=<?php echo 'Barras de acero'; ?>&price=<?php echo '$250'; ?>&brand=<?php echo 'Easy wear'; ?>&desc=<?php echo 'Barras de Acero 3/8'; ?>&img=<?php echo 'fierros.png'; ?>"><i class="far fa-eye"></i></a></li>
-                                       
+
 
                                     </ul>
                                 </div>
@@ -98,7 +98,7 @@
                                     <ul class="list-unstyled">
                                         <li><a class="btn btn-success text-white" href="#"><i class="far fa-heart"></i></a></li>
                                         <li><a class="btn btn-success text-white mt-2" href="detalle.php?title=<?php echo 'Tubos'; ?>&price=<?php echo '$250'; ?>&brand=<?php echo 'Easy wear'; ?>&desc=<?php echo 'Tubo PVC 1/2 SP-Agua Fria'; ?>&img=<?php echo 'tubos.jpg'; ?>"><i class="far fa-eye"></i></a></li>
-                                       
+
                                     </ul>
                                 </div>
                             </div>
@@ -135,7 +135,7 @@
                                     <ul class="list-unstyled">
                                         <li><a class="btn btn-success text-white" href="#"><i class="far fa-heart"></i></a></li>
                                         <li><a class="btn btn-success text-white mt-2" href="detalle.php?title=<?php echo 'Drywall'; ?>&price=<?php echo '$250'; ?>&brand=<?php echo 'Easy wear'; ?>&desc=<?php echo 'Placa de Drywall Volcanita St 1/2 1.22mx2.44m'; ?>&img=<?php echo 'drywall-sinfondo.png'; ?>"><i class="far fa-eye"></i></a></li>
-                                        
+
                                     </ul>
                                 </div>
                             </div>
@@ -172,7 +172,7 @@
                                     <ul class="list-unstyled">
                                         <li><a class="btn btn-success text-white" href="#"><i class="far fa-heart"></i></a></li>
                                         <li><a class="btn btn-success text-white mt-2" href="detalle.php?title=<?php echo 'Alambre recocido n8'; ?>&price=<?php echo '$250'; ?>&brand=<?php echo 'Easy wear'; ?>&desc=<?php echo 'Alambre Recocido de Albañil N°16x50kg'; ?>&img=<?php echo 'alambre-recocido-n8.png'; ?>"><i class="far fa-eye"></i></a></li>
-                                        
+
                                     </ul>
                                 </div>
                             </div>
@@ -209,7 +209,7 @@
                                     <ul class="list-unstyled">
                                         <li><a class="btn btn-success text-white" href="#"><i class="far fa-heart"></i></a></li>
                                         <li><a class="btn btn-success text-white mt-2" href="detalle.php?title=<?php echo 'Tubo PVC 1/2'; ?>&price=<?php echo '$250'; ?>&brand=<?php echo 'Easy wear'; ?>&desc=<?php echo 'Tubo PVC 1/2 C/R | Agua Fria'; ?>&img=<?php echo 'Mesa-de-trabajo-3-9.png'; ?>"><i class="far fa-eye"></i></a></li>
-                                        
+
                                     </ul>
                                 </div>
                             </div>
@@ -246,7 +246,7 @@
                                     <ul class="list-unstyled">
                                         <li><a class="btn btn-success text-white" href="#"><i class="far fa-heart"></i></a></li>
                                         <li><a class="btn btn-success text-white mt-2" href="detalle.php?title=<?php echo 'Barra de Construcción 1/2'; ?>&price=<?php echo '$250'; ?>&brand=<?php echo 'Easy wear'; ?>&desc=<?php echo 'Barra de Construcción 1/2 x9m'; ?>&img=<?php echo 'fierros1.JPG'; ?>"><i class="far fa-eye"></i></a></li>
-                                     
+
                                     </ul>
                                 </div>
                             </div>
@@ -283,7 +283,7 @@
                                     <ul class="list-unstyled">
                                         <li><a class="btn btn-success text-white" href="#"><i class="far fa-heart"></i></a></li>
                                         <li><a class="btn btn-success text-white mt-2" href="detalle.php?title=<?php echo 'Drywall '; ?>&price=<?php echo '$250'; ?>&brand=<?php echo 'Easy wear'; ?>&desc=<?php echo 'Placa de Drywall Volcanita St 3/8 1.22mx2.44m'; ?>&img=<?php echo 'drywall1.JPG'; ?>"><i class="far fa-eye"></i></a></li>
-                                        
+
                                     </ul>
                                 </div>
                             </div>
@@ -320,7 +320,7 @@
                                     <ul class="list-unstyled">
                                         <li><a class="btn btn-success text-white" href="#"><i class="far fa-heart"></i></a></li>
                                         <li><a class="btn btn-success text-white mt-2" href="detalle.php?title=<?php echo 'Tubo Curva'; ?>&price=<?php echo '$250'; ?>&brand=<?php echo 'Easy wear'; ?>&desc=<?php echo 'Curva Presión 3/4'; ?>&img=<?php echo 'tubo_curva-removebg-preview.png'; ?>"><i class="far fa-eye"></i></a></li>
-                                        
+
                                     </ul>
                                 </div>
                             </div>
@@ -370,11 +370,12 @@
     <!-- Fin productos -->
 
     <a href="https://api.whatsapp.com/send?phone=51916232342&text=Hola!%20Estoy%20interesado%20en%20comprar%20productos%20de%20la%20categor%C3%ADa%20Perfiles%20met%C3%A1licos%20%C2%BFPodr%C3%ADas%20asistirme?" class="btnchat" target="_blank">
-        <i class="fab fa-whatsapp my-btnchat "></i>  
+        <i class="fab fa-whatsapp my-btnchat "></i>
     </a>
 
 
-
+    <!-- page whatsapp  -->
+    <?php include 'whatsapp.php' ?>
     <!-- Start Footer -->
     <?php include 'assets/views/footer.php' ?>
     <!-- End Footer -->

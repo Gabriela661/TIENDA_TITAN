@@ -24,7 +24,7 @@
   --cyan: #47D8E0;
   --white: #fff;
   --gray: #6c757d;
-  --gray-dark: #343a40;
+  --gray-dark: #b5babe;
   --primary: #ff214f;
   --secondary: #6c757d;
   --success: #A3C14A;
@@ -32,7 +32,7 @@
   --warning: #FF8882;
   --danger: #F85C70;
   --light: #f8f9fa;
-  --dark: #343a40;
+  --dark: #d4dae0;
   --breakpoint-xs: 0;
   --breakpoint-sm: 576px;
   --breakpoint-md: 768px;
@@ -67,7 +67,7 @@ body {
   line-height: 1.5;
   color: #f8f9fa;
   text-align: left;
-  background-color: #343a40;
+  background-color: #7b8085;
 }
 
 [tabindex="-1"]:focus {
@@ -370,7 +370,7 @@ h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
   margin-bottom: 0.5rem;
   font-family: "Oswald", sans-serif;
-  font-weight: 500;
+  font-weight: 400;
   line-height: 1.2;
 }
 
@@ -379,7 +379,7 @@ h1, .h1 {
 }
 
 h2, .h2 {
-  font-size: 2.5rem;
+  font-size: 2.0rem;
 }
 
 h3, .h3 {
@@ -491,7 +491,7 @@ mark,
 
 .img-thumbnail {
   padding: 0.25rem;
-  background-color: #343a40;
+  background-color: #a4acb4;
   border: 1px solid #dee2e6;
   border-radius: 0.2rem;
   max-width: 100%;
@@ -2079,7 +2079,7 @@ pre code {
 
 .table-dark {
   color: #fff;
-  background-color: #343a40;
+  background-color: #787f86;
 }
 
 .table-dark th,
@@ -2771,18 +2771,18 @@ fieldset:disabled a.btn {
 
 .btn-primary {
   color: #fff;
-  background-color: #ff214f;
-  border-color: #ff214f;
+  background-color: #eb691e;
+  border-color: #eb691e;
 }
 
 .btn-primary:hover {
   color: #fff;
-  background-color: #fa0034;
-  border-color: #ed0031;
+  background-color: #fd9e22;
+  border-color: #fd9e22;
 }
 
 .btn-primary:focus, .btn-primary.focus {
-  box-shadow: 0 0 0 0.2rem rgba(255, 66, 105, 0.5);
+  box-shadow: 0 0 0 0.2rem #eb691e;
 }
 
 .btn-primary.disabled, .btn-primary:disabled {
@@ -2794,8 +2794,8 @@ fieldset:disabled a.btn {
 .btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active,
 .show > .btn-primary.dropdown-toggle {
   color: #fff;
-  background-color: #ed0031;
-  border-color: #e0002e;
+  background-color: #eb691e;
+  border-color: #eb691e;
 }
 
 .btn-primary:not(:disabled):not(.disabled):active:focus, .btn-primary:not(:disabled):not(.disabled).active:focus,
@@ -4994,11 +4994,11 @@ input[type="button"].btn-block {
 }
 
 .navbar-dark .navbar-brand {
-  color: #ff214f;
+  color: #f3731d;
 }
 
 .navbar-dark .navbar-brand:hover, .navbar-dark .navbar-brand:focus {
-  color: #ff214f;
+  color: #f3ab0f;
 }
 
 .navbar-dark .navbar-nav .nav-link {
@@ -5010,19 +5010,19 @@ input[type="button"].btn-block {
 }
 
 .navbar-dark .navbar-nav .nav-link.disabled {
-  color: rgba(255, 255, 255, 0.25);
+  color: rgba(218, 178, 145, 0.25);
 }
 
 .navbar-dark .navbar-nav .show > .nav-link,
 .navbar-dark .navbar-nav .active > .nav-link,
 .navbar-dark .navbar-nav .nav-link.show,
 .navbar-dark .navbar-nav .nav-link.active {
-  color: #ff214f;
+  color: #f3731d;
 }
 
 .navbar-dark .navbar-toggler {
   color: #fff;
-  border-color: rgba(255, 255, 255, 0.1);
+  border-color: rgba(209, 154, 132, 0.1);
 }
 
 .navbar-dark .navbar-toggler-icon {
@@ -5034,11 +5034,11 @@ input[type="button"].btn-block {
 }
 
 .navbar-dark .navbar-text a {
-  color: #ff214f;
+  color: #f3731d;
 }
 
 .navbar-dark .navbar-text a:hover, .navbar-dark .navbar-text a:focus {
-  color: #ff214f;
+  color: #f3ab0f;
 }
 
 .card {
@@ -11168,7 +11168,7 @@ pre {
           transform: translate(-50%, 50%);
   font-weight: bold;
   font-size: 2rem;
-  color: #ff214f;
+  color: #f3731d;
   opacity: 0;
   visibility: hidden;
   -webkit-transition: all 0.2s linear 0s;
@@ -11192,7 +11192,7 @@ pre {
 }
 
 .affix .navbar-brand .brand-txt {
-  opacity: 1;
+  opacity: 0.5;
   visibility: visible;
   bottom: 50%;
 }
@@ -11200,7 +11200,7 @@ pre {
 .header {
   height: 100vh;
   max-height: 900px;
-  background: url(../imgs/main.jpg) no-repeat center center fixed;
+  background: url(../img/main.jpg) no-repeat center center fixed;
   background-size: cover;
   min-height: 750px;
 }
@@ -11280,7 +11280,7 @@ pre {
   left: 0;
   width: 100%;
   height: 100%;
-  background: url(../imgs/book-table-img.jpg) no-repeat center center fixed;
+  background: url(../img/main.jpg) no-repeat center center fixed;
   background-size: cover;
   z-index: -1;
   opacity: .3;

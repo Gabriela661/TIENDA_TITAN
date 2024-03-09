@@ -1,9 +1,9 @@
-var personal = document.getElementsByClassName("btn-personal");
-var cliente = document.getElementsByClassName("btn-cliente");
+var personal = document.getElementsByClassName('btn-personal');
+var cliente = document.getElementsByClassName('btn-cliente');
 
 $(document).ready(function () {
   var funcion;
-  var funcion = "";
+  var funcion = '';
 
   /* condicional para listar segun el rol del usuario*/
   if (personal) {
@@ -11,14 +11,14 @@ $(document).ready(function () {
     listar_personal();
     function listar_personal(consulta) {
       // Se define la función a ejecutar en el controlador
-      funcion = "listar_personal";
+      funcion = 'listar_personal';
       $.post(
-        "../controlador/usuarioControlador.php",
+        '../controlador/usuarioControlador.php',
         { consulta, funcion },
         (response) => {
           console.log(response);
           const personals = JSON.parse(response);
-          let template = "";
+          let template = '';
           let contador = 0; // Inicializamos el contador
           personals.forEach((personal) => {
             let imagenStyle = `width: 50px; height: 50px;`;
@@ -40,7 +40,7 @@ $(document).ready(function () {
                         <th scope="row"><button class="btn btn-danger borrar_usuario" data-id="${personal.id_usuario}">Eliminar</button></th>
                         `;
           });
-          $("#listar_personal").html(template);
+          $('#listar_personal').html(template);
         }
       );
     }
@@ -52,13 +52,13 @@ $(document).ready(function () {
     listar_cliente();
     function listar_cliente(consulta) {
       // Se define la función a ejecutar en el controlador
-      funcion = "listar_cliente";
+      funcion = 'listar_cliente';
       $.post(
-        "../controlador/usuarioControlador.php",
+        '../controlador/usuarioControlador.php',
         { consulta, funcion },
         (response) => {
           const clientes = JSON.parse(response);
-          let template = "";
+          let template = '';
           let contador = 0; // Inicializamos el contador
           clientes.forEach((cliente) => {
             let imagenStyle = `width: 50px; height: 50px;`;
@@ -80,7 +80,7 @@ $(document).ready(function () {
                             <th scope="row"><button class="btn btn-danger borrar_usuario" data-id="${cliente.id_usuario}">Eliminar</button></th>
                             `;
           });
-          $("#listar_clientes").html(template);
+          $('#listar_clientes').html(template);
         }
       );
     }
@@ -91,17 +91,17 @@ $(document).ready(function () {
   rol_usuario();
   function rol_usuario(consulta) {
     // Se define la función a ejecutar en el controlador
-    funcion = "rol_usuario";
+    funcion = 'rol_usuario';
     $.post(
-      "../controlador/usuarioControlador.php",
+      '../controlador/usuarioControlador.php',
       { consulta, funcion },
       (response) => {
         const rols = JSON.parse(response);
-        options = "";
+        options = '';
         rols.forEach((rol) => {
           options += `<option value="${rol.id_rol}">${rol.nombre_rol}</option>`;
         });
-        $("#rol_usuario").html(options);
+        $('#rol_usuario').html(options);
       }
     );
   }
@@ -111,12 +111,12 @@ $(document).ready(function () {
   previstaproducto();
   function previstaproducto() {
     document
-      .getElementById("foto_usuario")
-      .addEventListener("change", function (event) {
+      .getElementById('foto_usuario')
+      .addEventListener('change', function (event) {
         const file = event.target.files[0];
         const reader = new FileReader();
         reader.onload = function (e) {
-          const preview = document.getElementById("imagen_preview");
+          const preview = document.getElementById('imagen_preview');
           preview.innerHTML =
             '<img src="' +
             e.target.result +
@@ -131,12 +131,12 @@ $(document).ready(function () {
   previstaproducto();
   function previstaproducto() {
     document
-      .getElementById("foto_usuario")
-      .addEventListener("change", function (event) {
+      .getElementById('foto_usuario')
+      .addEventListener('change', function (event) {
         const file = event.target.files[0];
         const reader = new FileReader();
         reader.onload = function (e) {
-          const preview = document.getElementById("imagen_preview");
+          const preview = document.getElementById('imagen_preview');
           preview.innerHTML =
             '<img src="' +
             e.target.result +
@@ -158,7 +158,7 @@ $(document).ready(function () {
   function enviarDatos(url, formData, successCallback, errorCallback) {
     $.ajax({
       url: url,
-      type: "POST",
+      type: 'POST',
       data: formData,
       cache: false,
       processData: false,
@@ -170,132 +170,195 @@ $(document).ready(function () {
   /*FIN FUNCION PARA ENVIAR DATOS AL CONTROLADOR*/
 
   /*FUNCION PARA AGREGAR UN USUARIO A LA BASE DE DATOS*/
-  $("#form_usuario").submit((e) => {
+  $('#form_usuario').submit((e) => {
     e.preventDefault();
     // Se obtiene los valores del formulario
-    const nombre_usuario = $("#nombre_usuario").val();
-    const apellido_usuario = $("#apellido_usuario").val();
-    const correo_electronico_usuario = $("#correo_electronico_usuario").val();
-    const password_usuario = $("#password_usuario").val();
-    const foto_usuario = $("#foto_usuario")[0].files[0];
-    const rol_usuario = $("#rol_usuario").val();
+    const nombre_usuario = $('#nombre_usuario').val();
+    const apellido_usuario = $('#apellido_usuario').val();
+    const correo_electronico_usuario = $('#correo_electronico_usuario').val();
+    const password_usuario = $('#password_usuario').val();
+    const foto_usuario = $('#foto_usuario')[0].files[0];
+    const rol_usuario = $('#rol_usuario').val();
 
     // Crea un objeto FormData
-    const formData = new FormData($("#form_usuario")[0]);
-    formData.append("funcion", "crear_usuario");
-    formData.append("nombre_usuario", nombre_usuario);
-    formData.append("apellido_usuario", apellido_usuario);
-    formData.append("correo_electronico_usuario", correo_electronico_usuario);
-    formData.append("password_usuario", password_usuario);
-    formData.append("foto_usuario", foto_usuario);
-    formData.append("rol_usuario", rol_usuario);
+    const formData = new FormData($('#form_usuario')[0]);
+    formData.append('funcion', 'crear_usuario');
+    formData.append('nombre_usuario', nombre_usuario);
+    formData.append('apellido_usuario', apellido_usuario);
+    formData.append('correo_electronico_usuario', correo_electronico_usuario);
+    formData.append('password_usuario', password_usuario);
+    formData.append('foto_usuario', foto_usuario);
+    formData.append('rol_usuario', rol_usuario);
 
     // Envía los datos al controlador utilizando la función enviarDatos
     enviarDatos(
-      "../controlador/usuarioControlador.php",
+      '../controlador/usuarioControlador.php',
       formData,
       function (response) {
         // Condicional de acuerdo a la respuesta del servidor
-        if (response.trim() === "add") {
+        if (response.trim() === 'add') {
           Swal.fire({
-            icon: "success",
-            title: "Creación exitosa",
-            text: "El usuario ha sido creada con éxito.",
+            icon: 'success',
+            title: 'Creación exitosa',
+            text: 'El usuario ha sido creada con éxito.',
           }).then(() => {
-            $("#form_usuario").trigger("reset");
-            window.location.href = "usuarios.php";
-            $("#crear_usuario").modal("hide");
-            $("body").removeClass("modal-open");
-            $(".modal-backdrop").remove();
+            $('#form_usuario').trigger('reset');
+            window.location.href = 'usuarios.php';
+            $('#crear_usuario').modal('hide');
+            $('body').removeClass('modal-open');
+            $('.modal-backdrop').remove();
           });
         } else {
           Swal.fire({
-            icon: "error",
-            title: "Error",
-            text: "Creacion Incorrecta de Usuario",
+            icon: 'error',
+            title: 'Error',
+            text: 'Creacion Incorrecta de Usuario',
           });
         }
       },
       function (error) {
-        mostrarMensaje("noadd", "Error en la solicitud AJAX");
+        mostrarMensaje('noadd', 'Error en la solicitud AJAX');
       }
     );
   });
   /*FIN FUNCION PARA AGREGAR UN USUARIO A LA BASE DE DATOS*/
 
   /*FUNCION PARA CARGAR DATOS DEL USUARIO PARA EDITAR EN LA BASE DE DATOS*/
-  $(document).on("click", "#btn_editar", (e) => {
+  $(document).on('click', '#btn_editar', (e) => {
     e.preventDefault();
     // Se define la función a ejecutar en el controlador
-    funcion = "cargar_usuario";
-    const id_usuario = $(e.currentTarget).data("id_usuario");
+    funcion = 'cargar_usuario';
+    const id_usuario = $(e.currentTarget).data('id_usuario');
     // Se realiza una solicitud AJAX para obtener la información de la categoría seleccionada
     $.post(
-      "../controlador/usuarioControlador.php",
+      '../controlador/usuarioControlador.php',
       { funcion, id_usuario },
       (response) => {
         const usuarioEdit = JSON.parse(response);
         // Se llena el modal de edicion
-        $("#id_usuarioe").val(usuarioEdit.id_usuario);
-        $("#nombre_usuarioe").val(usuarioEdit.nombre_usuario);
-        $("#apellido_usuarioe").val(usuarioEdit.apellido_usuario);
-        $("#correo_usuarioe").val(usuarioEdit.correo_usuario);
+        $('#id_usuarioe').val(usuarioEdit.id_usuario);
+        $('#nombre_usuarioe').val(usuarioEdit.nombre_usuario);
+        $('#apellido_usuarioe').val(usuarioEdit.apellido_usuario);
+        $('#correo_usuarioe').val(usuarioEdit.correo_usuario);
 
         // Mostrar el modal de edición
-        $("#editar_usuarioe").modal("show");
+        $('#editar_usuarioe').modal('hide');
       }
     );
   });
   /*FIN FUNCION PARA CARGAR DATOS DEL USUARIO PARA EDITAR EN LA BASE DE DATOS*/
 
   //Editar usuario
-  $("#form_usuario_editar").submit((e) => {
+  $('#form_usuario_editar').submit((e) => {
     e.preventDefault();
-    const id_usuarioe = $("#id_usuarioe").val();
+    const id_usuarioe = $('#id_usuarioe').val();
 
-    const nombrese = $("#nombre_usuarioe").val();
-    const apellidose = $("#apellido_usuarioe").val();
-    const correo_usuarioe = $("#correo_usuarioe").val();
+    const nombrese = $('#nombre_usuarioe').val();
+    const apellidose = $('#apellido_usuarioe').val();
+    const correo_usuarioe = $('#correo_usuarioe').val();
     console.log(nombrese);
-    const formData = new FormData($("#form_usuario_editar")[0]);
+    const formData = new FormData($('#form_usuario_editar')[0]);
 
-    formData.append("funcion", "editar_usuario");
-    formData.append("id_usuarioe", id_usuarioe);
+    formData.append('funcion', 'editar_usuario');
+    formData.append('id_usuarioe', id_usuarioe);
 
-    formData.append("nombrese", nombrese);
-    formData.append("apellidose", apellidose);
-    formData.append("correo_electronicoe", correo_usuarioe);
-
+    formData.append('nombrese', nombrese);
+    formData.append('apellidose', apellidose);
+    formData.append('correo_electronicoe', correo_usuarioe);
 
     enviarDatos(
-      "../controlador/usuarioControlador.php",
+      '../controlador/usuarioControlador.php',
       formData,
       function (response) {
         console.log(response);
-        if (response.trim() === "edits") {
+        if (response.trim() === 'edits') {
           Swal.fire({
-            icon: "success",
-            title: "Edición exitosa",
-            text: "Se edito con exito el usuario.",
+            icon: 'success',
+            title: 'Edición exitosa',
+            text: 'Se edito con exito el usuario.',
           }).then(() => {
-            $("#form_usuario_editar").trigger("reset");
-            $("#editar_usuario").modal("hide");
-            $("body").removeClass("modal-open");
-            $(".modal-backdrop").remove();
+            $('#form_usuario_editar').trigger('reset');
+            window.location.href = 'usuarios.php';
+            $('#form_usuario_editar').modal('hide');
+            $('body').removeClass('modal-open');
+            $('.modal-backdrop').remove();
             // Actualizar la página después de cerrar la alerta
             location.reload();
           });
         } else {
           Swal.fire({
-            icon: "error",
-            title: "Error",
-            text: "Creacion Incorrecta de Usuario.",
+            icon: 'error',
+            title: 'Error',
+            text: 'Creacion Incorrecta de Usuario.',
           });
         }
       },
       function (error) {
-        mostrarMensaje("noadd", "Error en la solicitud AJAX");
+        mostrarMensaje('noadd', 'Error en la solicitud AJAX');
       }
     );
   });
+
+  //funcion advertencia de borrar datos
+  $(document).on('click', '.borrar_usuario', function () {
+    const id_usuario = $(this).data('id');
+    Swal.fire({
+      title: '¿Estás seguro?',
+      text: '¡No podrás revertir esto!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Sí, eliminarlo',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        eliminarUsuario(id_usuario);
+      }
+    });
+  });
+
+  //funcion borrar
+  $(document).on('click', '.borrar_usuario', function () {
+    const id_usuario = $(this).data('id');
+    Swal.fire({
+      title: '¿Estás seguro?',
+      text: '¡No podrás revertir esto!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Sí, eliminarlo',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        eliminarUsuario(id_usuario);
+      }
+    });
+  });
+
+  // ELiminar datos del usuario
+  function eliminarUsuario(id_usuario) {
+    const funcion = 'borrar_usuario';
+    $.post(
+      '../controlador/usuarioControlador.php',
+      { id_usuario, funcion },
+      function (response) {
+        console.log(response);
+        if (response.trim() === 'delete') {
+          Swal.fire({
+            icon: 'success',
+            title: 'Eliminación exitosa',
+            text: 'El Usuario ha sido eliminada con éxito.',
+          }).then(() => {
+            location.reload();
+          });
+        } else {
+          Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'No se pudo eliminar al Usuario.',
+          });
+        }
+      }
+    );
+  }
 });

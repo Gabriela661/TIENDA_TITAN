@@ -125,8 +125,7 @@ class usuario
     //eliminar usuario
     function borrar_usuario($id_usuario)
     {
-        $sql = "DELETE FROM compras WHERE cliente_designado = (SELECT id_usuario FROM usuario WHERE id_usuario = :id_usuario);
-        DELETE FROM usuario WHERE id_usuario = :id_usuario;
+        $sql = "DELETE FROM usuario WHERE id_usuario = :id_usuario;
         ";
         $query = $this->acceso->prepare($sql);
         $query->execute(array(':id_usuario' => $id_usuario));

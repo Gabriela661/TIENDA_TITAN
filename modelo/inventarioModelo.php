@@ -1,52 +1,110 @@
 <?php
 include_once 'conexion.php';
 
-//creacion de  la class
-class inventario {
+//creacion de la class
+class inventario
+{
     var $objetos;
-    public function __construct() {
+    var $acceso;
+    public function __construct()
+    {
         $db = new conexion();
         $this->acceso = $db->pdo;
     }
 
-
-// listar inventario
-function inventario(){
-        $sql = "SELECT * FROM producto INNER JOIN categoria ON producto.categoria_designada = categoria.id_categoria";
+    // listar inventario
+    function inventario()
+    {
+        $sql = "SELECT 
+        p.id_producto, 
+        p.nombre_producto, 
+        p.marca_producto, 
+        p.descripcion_producto, 
+        p.stock_producto, 
+        p.precio_producto, 
+        c.nombre_categoria, 
+        GROUP_CONCAT(i.url_imagen SEPARATOR ', ') AS url_imagenes 
+        FROM producto p 
+        INNER JOIN imagen i ON i.id_producto = p.id_producto 
+        INNER JOIN categoria c ON c.id_categoria = p.id_categoria 
+        GROUP BY p.id_producto";
         $query = $this->acceso->prepare($sql);
         $query->execute();
         $this->objetos = $query->fetchAll();
         return $this->objetos;
     }
 
+    //listar categoria
+    function listar_categoria()
+    {
+        $sql = "SELECT id_categoria, nombre_categoria FROM categoria";
+        $query = $this->acceso->prepare($sql);
+        $query->execute();
+        $this->objetos = $query->fetchAll();
+        return $this->objetos;
+    }
 
-//listar categoria
-    function listar_categoria(){
-    $sql = "SELECT id_categoria,nombre_categoria FROM categoria";
-    $query = $this->acceso->prepare($sql);
-    $query->execute();
-    $this->objetos = $query->fetchAll();
-    return $this->objetos;
-}
- //crear producto
-function crear_producto($nombre_producto,$precio_producto,$descripcion_producto,$cantidad_producto,$marca_producto,$categoria_producto,$imagen_producto){
-        $sql = "INSERT INTO producto (nombre,precio,descripcion_producto,cantidad,marca_producto,categoria_designada,imagen_producto) VALUES (:nombre_producto,:precio_producto,:descripcion_producto,:cantidad_producto,:marca_producto,:categoria_producto,:imagen_producto )";
+    //crear producto
+    function crear_producto($codigo_producto, $nombre_producto, $precio_producto, $descripcion_producto, $cantidad_producto, $marca_producto, $categoria_producto, $imagen_producto_principal, $imagen_producto_s1, $imagen_producto_s2, $imagen_producto_s3)
+    {
+        $sql = "INSERT INTO producto (codigo_producto, nombre_producto, precio_producto, descripcion_producto, stock_producto, marca_producto, id_categoria) VALUES (:codigo_producto, :nombre_producto, :precio_producto, :descripcion_producto, :cantidad_producto, :marca_producto, :categoria_producto)";
         $query = $this->acceso->prepare($sql);
         $query->execute(array(
-        ':nombre_producto'=>$nombre_producto,
-        ':precio_producto'=>$precio_producto,
-        ':descripcion_producto'=>$descripcion_producto,
-        ':cantidad_producto'=>$cantidad_producto,
-        ':marca_producto'=>$marca_producto,
-        ':categoria_producto'=>$categoria_producto,
-        ':imagen_producto'=>$imagen_producto,
+            ':codigo_producto' => $codigo_producto,
+            ':nombre_producto' => $nombre_producto,
+            ':precio_producto' => $precio_producto,
+            ':descripcion_producto' => $descripcion_producto,
+            ':cantidad_producto' => $cantidad_producto,
+            ':marca_producto' => $marca_producto,
+            ':categoria_producto' => $categoria_producto
         ));
-        echo 'add';
+
+        // Obtiene el ID del último producto insertado
+        $producto_id = $this->acceso->lastInsertId();
+
+        if ($imagen_producto_principal=='') {
+            $sql_imagen = "INSERT INTO imagen (id_producto) VALUES (:producto_id)";
+            $query_imagen = $this->acceso->prepare(($sql_imagen));
+            $query_imagen->execute(array(':producto_id' => $producto_id));
+        } else {
+            $sql_imagen = "INSERT INTO imagen (url_imagen, id_producto) VALUES (:url_imagen, :producto_id)";
+            $query_imagen = $this->acceso->prepare(($sql_imagen));
+            $query_imagen->execute(array(
+                ':url_imagen' => $imagen_producto_principal,
+                ':producto_id' => $producto_id
+            ));
+            if ($imagen_producto_s1=!'') {
+                $sql_imagen = "INSERT INTO imagen (url_imagen, id_producto) VALUES (:url_imagen, :producto_id)";
+                $query_imagen = $this->acceso->prepare(($sql_imagen));
+                $query_imagen->execute(array(
+                    ':url_imagen' => $imagen_producto_s1,
+                    ':producto_id' => $producto_id
+                ));
+            }
+            if ($imagen_producto_s2=!'') {
+                $sql_imagen = "INSERT INTO imagen (url_imagen, id_producto) VALUES (:url_imagen, :producto_id)";
+                $query_imagen = $this->acceso->prepare(($sql_imagen));
+                $query_imagen->execute(array(
+                    ':url_imagen' => $imagen_producto_s2,
+                    ':producto_id' => $producto_id
+                ));
+            }
+            if ($imagen_producto_s3=!'') {
+                $sql_imagen = "INSERT INTO imagen (url_imagen, id_producto) VALUES (:url_imagen, :producto_id)";
+                $query_imagen = $this->acceso->prepare(($sql_imagen));
+                $query_imagen->execute(array(
+                    ':url_imagen' => $imagen_producto_s3,
+                    ':producto_id' => $producto_id
+                ));
+            }
         }
+
+        echo 'Producto Agregado';
+    }
     //Datos para cargar en el modal de editar
     function cargar_inventario($id_producto)
     {
-        $sql = "SELECT id_producto,nombre,precio,descripcion_producto,cantidad,marca_producto FROM producto WHERE id_producto=:id_producto";
+        $sql = "SELECT id_producto,nombre_producto,precio_producto,descripcion_producto,stock_producto,marca_producto FROM producto WHERE id_producto=:id_producto";
         $query = $this->acceso->prepare($sql);
         $query->execute(array(':id_producto' => $id_producto));
         $this->objetos = $query->fetchAll();
@@ -54,10 +112,10 @@ function crear_producto($nombre_producto,$precio_producto,$descripcion_producto,
     }
 
     //Editar producto del inventario
-    function editar_inventario($id_productoe, $nombre_productoe, $precio_productoe, $descripcion_productoe, $cantidad_productoe,$marca_productoe )
+    function editar_inventario($id_productoe, $nombre_productoe, $precio_productoe, $descripcion_productoe, $cantidad_productoe, $marca_productoe)
     {
         try {
-            $sql = "UPDATE producto SET nombre=:nombre,precio=:precio,descripcion_producto=:descripcion_producto,cantidad=:cantidad,marca_producto=:marca_producto WHERE id_producto=:id";
+            $sql = "UPDATE producto SET nombre_producto=:nombre,precio_producto=:precio,descripcion_producto=:descripcion_producto,stock_producto=:cantidad,marca_producto=:marca_producto WHERE id_producto=:id";
             $query = $this->acceso->prepare($sql);
             $query->bindParam(':id', $id_productoe, PDO::PARAM_INT);
             $query->bindParam(':nombre', $nombre_productoe, PDO::PARAM_STR);
@@ -69,7 +127,7 @@ function crear_producto($nombre_producto,$precio_producto,$descripcion_producto,
             echo 'edits';
         } catch (PDOException $e) {
             // Manejo de errores
-            echo 'Error al editar la categoría: ' . $e->getMessage();
+            echo 'Error al editar producto: ' . $e->getMessage();
         }
     }
     //eliminar producto del inventario
@@ -122,9 +180,4 @@ function crear_producto($nombre_producto,$precio_producto,$descripcion_producto,
             echo 'Error al actualizar stock: ' . $e->getMessage();
         }
     }
-   
-   
-
-
-
 }

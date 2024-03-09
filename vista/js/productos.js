@@ -42,7 +42,8 @@ $(document).ready(function () {
       }
     );
   }
-  //listar inventario en una tabla
+  
+
   ListarMasVendidos();
   function ListarMasVendidos(consulta) {
     funcion = "ListarMasVendidos";
@@ -51,32 +52,39 @@ $(document).ready(function () {
       { consulta, funcion },
       (response) => {
         console.log(response);
-        const inventarios = JSON.parse(response);
+        const productosMV = JSON.parse(response);
         let template = "";
         let contador = 0; // Inicializamos el contador
-        inventarios.forEach((inventario) => {
+        productosMV.forEach((productoMV) => {
           let imagenStyle = `width: 50px; height: 50px;`;
           contador++; // Incrementamos el contador en cada iteración
           template += `
-                    <tr data-id="${inventario.id_producto}">
-                    <th scope="row">${contador}</th>
-                        <th scope="row">${inventario.nombre}</th>
-                        <th scope="row">${inventario.marca_producto}</th>
-                        <th scope="row">${inventario.descripcion_producto}</th>
-                        <th scope="row">${inventario.cantidad}</th>
-                        <th scope="row">${inventario.precio}</th>
-                        
-                        <th scope="row"><div class="text-center">
-                        <img src="${inventario.imagen_producto}" style="${imagenStyle}"  class="img-circle" alt="...">
-                      </div></th>
-                        <th scope="row"><button id="btn_editar" data-id_inventario="${inventario.id_producto} type="button" class="btn btn-info">
-                        Editar
-                     </button></th>
-                        <th scope="row"> <button id="btn_eliminar" class="btn btn-danger" data-id="${inventario.id_producto}">Eliminar</button>
-                        </th>
+    <div class="col-md-6 col-lg-3 mb-3">
+        <div class="card h-100 shadow position-relative">
+            <!-- Ribbon inclinado utilizando clases de Bootstrap -->
+            <div class="ribbon ribbon-danger">
+                <span class="ribbon-text">Más Vendido</span>
+            </div>
+
+            <img src="assets/img/drywall-sinfondo.png" alt="Producto" class="card-img-top">
+            <div class="card-body text-dark">
+                <h5 class="card-title">${productoMV.nombre_producto}</h5>
+                <p class="card-text">Descripcion:${productoMV.nombre_producto}</p>
+                <p class="card-text">Marca: ${productoMV.marca_producto}</p>
+                <p class="card-text">Precio: ${productoMV.precio_producto}</p>
+                <p class="card-text">Stock: ${productoMV.nombre_producto}</p>
+                <span class="badge bg-primary">En Stock</span>
+                <a href="#" class="btn btn-primary">Ver Detalles</a>
+            </div>
+        </div>
+
+
+</div>
+
+
                         `;
         });
-        $("#inventario").html(template);
+        $("#masVendidos").html(template);
       }
     );
   }

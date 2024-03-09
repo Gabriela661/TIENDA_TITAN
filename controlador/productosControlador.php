@@ -15,7 +15,7 @@ if ($_POST['funcion'] == 'ListarMasVendidos') {
             'precio_producto' => $objeto->precio_producto,
             'descripcion_producto' => $objeto->descripcion_producto,
             'stock_producto' => $objeto->stock_producto,
-            'url_imagen' => '../vista/assets/img/inventario/' . $objeto->url_imagen,
+            'imagen_producto' => '../vista/assets/img/inventario/' . $objeto->imagen_producto,
             'marca_producto' => $objeto->marca_producto,
 
         );

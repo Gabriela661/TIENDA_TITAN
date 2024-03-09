@@ -23,7 +23,7 @@ class productos
     p.marca_producto,
     p.stock_producto,
     p.precio_producto,
-    i.url_imagen AS primera_imagen
+    i.url_imagen AS imagen_producto
 FROM
     producto p
 LEFT JOIN
@@ -32,13 +32,13 @@ LEFT JOIN
     (
         SELECT
             id_producto,
-            MIN(id_imagen) AS id_primera_imagen
+            MIN(id_imagen) AS id_imagen_producto
         FROM
             imagen
         GROUP BY
             id_producto
     ) subquery ON p.id_producto = subquery.id_producto
-        AND i.id_imagen = subquery.id_primera_imagen;
+        AND i.id_imagen = subquery.id_imagen_producto;
 ";
         $query = $this->acceso->prepare($sql);
         $query->execute();

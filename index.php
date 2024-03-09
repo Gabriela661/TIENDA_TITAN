@@ -123,7 +123,7 @@
     <div id="gallary" class="text-center bg-secondary text-light has-height-md middle-items wow fadeIn">
         <h2 class="section-title">Productos</h2>
     </div>
-    <div class="gallary row">
+    <div class="gallary row" id="masVendidos">
         <div class="col-sm-6 col-lg-3 gallary-item wow fadeIn">
             <img src="assets/img/drywall-sinfondo.png" alt="template by DevCRID http://www.devcrud.com/" class="gallary-img">
             <a href="#" class="gallary-overlay">

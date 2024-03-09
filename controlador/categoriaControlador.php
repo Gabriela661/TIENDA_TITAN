@@ -71,3 +71,20 @@ if ($_POST['funcion'] == 'borrar_categoria') {
     }
 }
 /* FIN FUNCION PARA BORRAR UNA NUEVA CATEGORIA  */
+
+
+/* FUNCION PARA LISTAR LA CATEGORIA PARA LA PANTALLA PRINCIPAL */
+if ($_POST['funcion'] == 'listarCategoriaIndex') {
+    $json = array();
+    $categoria->listarCategoriaIndex(); // Se llama al método 'listarCategoria()' del objeto '$categoria' para obtener las categorías desde la base de datos
+    foreach ($categoria->objetos as $objeto) {
+        // Se recorre el array de objetos de categorías y se crea un nuevo array asociativo para cada categoría
+        $json[] = array(
+            'id_categoria' => $objeto->id_categoria,
+            'nombre_categoria' => $objeto->nombre_categoria,
+        );
+    }
+    $jsonstring = json_encode($json); // Se convierte el array de categorías a formato JSON
+    echo $jsonstring; // Se devuelve el JSON como respuesta al cliente
+}
+/* FIN FUNCION PARA LISTAR LA CATEGORIA  */

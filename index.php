@@ -85,10 +85,13 @@
             <a href="#" class="btn btn-lg btn-primary" id="rounded-btn">FIND TABLE</a>
         </div>
     </div>
-    <!--  About Section  -->
+    <!-- About Section 
+    <div id="gallary" class="text-center bg-secondary text-light has-height-md middle-items wow fadeIn" style="height: 100px;">
+        <h2 class="section-title">Categorias</h2>
+    </div> -->
+
     <div id="about" class="container-fluid has-bg-overlay fadeIn" id="about" data-wow-duration="1.5s">
-        <div class="row justify-content-center">
-            <h2>Categorias</h2>
+        <div class="row justify-content-center" id="categoriaIndex">
             <div class="col-md-4 col-lg-3 pb-5">
                 <div class="py-7 services-icon-wap shadow" style="background-color:white">
                     <a href="#">
@@ -241,7 +244,7 @@
 
     <!-- FoodHut js -->
     <script src="assets/js/foodhut.js"></script>
-
+    <script src="vista/js/productos.js"></script>
 
 </body>
 

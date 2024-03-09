@@ -79,4 +79,15 @@ class categoria
         }
     }
     /* FIN FUNCION PARA BORRAR UNA NUEVA CATEGORIA  */
+
+    /* FUNCION PARA LISTAR LA CATEGORIA  INDEX */
+    function listarCategoriaIndex()
+    {
+        $sql = "SELECT id_categoria, nombre_categoria FROM categoria"; // Consulta SQL para seleccionar todas las categorías
+        $query = $this->acceso->prepare($sql);
+        $query->execute();
+        $this->objetos = $query->fetchAll(); // Almacenamiento de los resultados en la propiedad 'objetos'
+        return $this->objetos; // Devolución de las categorías obtenidas
+    }
+    /* FIN FUNCION PARA LISTAR LA CATEGORIA  INDEX*/
 }

@@ -45,4 +45,23 @@ LEFT JOIN
         $this->objetos = $query->fetchAll();
         return $this->objetos;
     }
+
+    // listar productos de la tienda
+    function productosTienda()
+    {
+        $sql = "SELECT p.id_producto, p.nombre_producto,  p.marca_producto, p.descripcion_producto, p.stock_producto, p.precio_producto, (
+        SELECT url_imagen 
+        FROM imagen i 
+        WHERE i.id_producto = p.id_producto 
+        ORDER BY i.id_imagen ASC 
+        LIMIT 1
+            ) AS imagen_producto
+        FROM producto p;
+        ";
+
+        $query = $this->acceso->prepare($sql);
+        $query->execute();
+        $this->objetos = $query->fetchAll();
+        return $this->objetos;
+    }
 }

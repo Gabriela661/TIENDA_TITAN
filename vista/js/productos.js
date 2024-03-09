@@ -50,7 +50,6 @@ $(document).ready(function () {
       "controlador/productosControlador.php",
       { consulta, funcion },
       (response) => {
-        console.log(response);
         const productosMV = JSON.parse(response);
         let template = "";
         let contador = 0; // Inicializamos el contador
@@ -58,7 +57,7 @@ $(document).ready(function () {
           let imagenStyle = `width: 50px; height: 50px;`;
           contador++; // Incrementamos el contador en cada iteración
           template += `
-  <div class="col-md-4 col-lg-3 mb-4">
+    <div class="col-md-4 col-lg-3 mb-4">
     <div class="card shadow position-relative" style="margin: 10px;">
         <!-- Ribbon inclinado utilizando clases de Bootstrap -->
         <div class="ribbon ribbon-danger">
@@ -76,14 +75,64 @@ $(document).ready(function () {
             <a href="#" class="btn btn-primary">Ver Detalles</a>
         </div>
     </div>
-</div>
-
-
-
-
-                        `;
+    </div>                 `;
         });
         $("#masVendidos").html(template);
+      }
+    );
+  }
+
+  productosTienda();
+  function productosTienda(consulta) {
+    funcion = "productosTienda";
+    $.post(
+      "controlador/productosControlador.php",
+      { consulta, funcion },
+      (response) => {
+        console.log(response);
+        const productosTienda = JSON.parse(response);
+        let template = "";
+        let contador = 0; // Inicializamos el contador
+        productosTienda.forEach((productoTienda) => {
+          let imagenStyle = `width: 50px; height: 50px;`;
+          template += `  <div class="col-md-3">
+                        <div class="card mb-4 product-wap rounded-0">
+                            <div class="card rounded-0">
+                                <img class="card-img rounded-0 img-fluid" src="assets/img/fierros.png">
+                                <div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
+                                    <ul class="list-unstyled">
+                                        <li><a class="btn btn-success text-white" href="#"><i class="far fa-heart"></i></a></li>
+                                        <li><a class="btn btn-success text-white mt-2" href="detalle.php?title=<?php echo 'Barras de acero'; ?>&price=<?php echo '$250'; ?>&brand=<?php echo 'Easy wear'; ?>&desc=<?php echo 'Barras de Acero 3/8'; ?>&img=<?php echo 'fierros.png'; ?>"><i class="far fa-eye"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <a href="#" class="h5 text-decoration-none">${productoTienda.nombre_producto}</a>
+                                <ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
+                                    <li>Marca: ${productoTienda.marca_producto}</li>
+                                    <li class="pt-2">
+                                        <span class="product-color-dot color-dot-red float-left rounded-circle ml-1"></span>
+                                        <span class="product-color-dot color-dot-blue float-left rounded-circle ml-1"></span>
+                                        <span class="product-color-dot color-dot-black float-left rounded-circle ml-1"></span>
+                                        <span class="product-color-dot color-dot-light float-left rounded-circle ml-1"></span>
+                                        <span class="product-color-dot color-dot-green float-left rounded-circle ml-1"></span>
+                                    </li>
+                                </ul>
+                                <ul class="list-unstyled d-flex justify-content-center mb-1">
+                                    <li>
+                                        <i class="text-warning fa fa-star"></i>
+                                        <i class="text-warning fa fa-star"></i>
+                                        <i class="text-warning fa fa-star"></i>
+                                        <i class="text-muted fa fa-star"></i>
+                                        <i class="text-muted fa fa-star"></i>
+                                    </li>
+                                </ul>
+                                <p class="text-center mb-0">S/. ${productoTienda.precio_producto}</p>
+                            </div>
+                        </div>
+                    </div>`;
+        });
+        $("#productos_tienda").html(template);
       }
     );
   }

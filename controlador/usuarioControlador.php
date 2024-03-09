@@ -32,11 +32,11 @@ if ($_POST['funcion'] == 'listar_cliente') {
     foreach ($usuario->objetos as $objeto) {
         // Se recorre el array de objetos de usuario y se crea un nuevo array asociativo para cada cliente
         $json[] = array(
-            'id_usuario' => $objeto->id_usuario,
-            'nombre_usuario' => $objeto->nombre_usuario,
-            'apellido_usuario' => $objeto->apellido_usuario,
-            'correo_usuario' => $objeto->correo_usuario,
-            'foto_usuario' => '../vista/assets/img/perfil_us/' . $objeto->foto_usuario,
+            'id' => $objeto->id,
+            'nombre' => $objeto->nombre,
+            'apellido' => $objeto->apellido,
+            'correo' => $objeto->correo,
+            'tipo'=> $objeto->tipo,
         );
     }
     //Se convierte el array a formato JSON y se devuelve como respuesta 

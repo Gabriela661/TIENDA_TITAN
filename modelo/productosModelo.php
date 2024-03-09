@@ -13,32 +13,25 @@ class productos
     }
 
 
-    // listar inventario
     function ListarMasVendidos()
     {
-        $sql = "SELECT
+        $sql = "SELECT 
     p.id_producto,
     p.nombre_producto,
-    p.descripcion_producto,
-    p.marca_producto,
-    p.stock_producto,
+
     p.precio_producto,
-    i.url_imagen AS imagen_producto
+    c.nombre_categoria AS categoria_producto,
+    (
+        SELECT url_imagen
+        FROM imagen i
+        WHERE i.id_producto = p.id_producto
+        ORDER BY i.id_imagen ASC
+        LIMIT 1
+    ) AS imagen_producto
 FROM
     producto p
-LEFT JOIN
-    imagen i ON p.id_producto = i.id_producto
-LEFT JOIN
-    (
-        SELECT
-            id_producto,
-            MIN(id_imagen) AS id_imagen_producto
-        FROM
-            imagen
-        GROUP BY
-            id_producto
-    ) subquery ON p.id_producto = subquery.id_producto
-        AND i.id_imagen = subquery.id_imagen_producto;
+JOIN
+    categoria c ON p.id_categoria = c.id_categoria limit 4;
 ";
         $query = $this->acceso->prepare($sql);
         $query->execute();
@@ -49,19 +42,105 @@ LEFT JOIN
     // listar productos de la tienda
     function productosTienda()
     {
-        $sql = "SELECT p.id_producto, p.nombre_producto,  p.marca_producto, p.descripcion_producto, p.stock_producto, p.precio_producto, (
-        SELECT url_imagen 
-        FROM imagen i 
-        WHERE i.id_producto = p.id_producto 
-        ORDER BY i.id_imagen ASC 
-        LIMIT 1
-            ) AS imagen_producto
-        FROM producto p;
-        ";
+        if (!empty($_POST['consulta'])) {
+            $idCategoria = $_POST['consulta'];
+            $sql = "SELECT 
+                p.id_producto,
+                p.nombre_producto,
+                p.marca_producto,
+                p.descripcion_producto,
+                p.stock_producto,
+                p.precio_producto,
+                c.nombre_categoria AS categoria_producto,
+                (
+                    SELECT url_imagen
+                    FROM imagen i
+                    WHERE i.id_producto = p.id_producto
+                    ORDER BY i.id_imagen ASC
+                    LIMIT 1
+                ) AS imagen_producto
+            FROM
+                producto p
+            JOIN
+                categoria c ON p.id_categoria = c.id_categoria
+            WHERE
+                p.id_categoria = :idCategoria;";
 
+            $query = $this->acceso->prepare($sql);
+            $query->bindParam(':idCategoria', $idCategoria, PDO::PARAM_INT);
+            $query->execute();
+            $this->objetos = $query->fetchAll();
+            return $this->objetos;
+        } else {
+            $sql = "SELECT 
+                    p.id_producto,
+                    p.nombre_producto,
+                    p.marca_producto,
+                    p.descripcion_producto,
+                    p.stock_producto,
+                    p.precio_producto,
+                    c.nombre_categoria AS categoria_producto,
+                    (
+                        SELECT url_imagen
+                        FROM imagen i
+                        WHERE i.id_producto = p.id_producto
+                        ORDER BY i.id_imagen ASC
+                        LIMIT 1
+                    ) AS imagen_producto
+                FROM
+                    producto p
+                JOIN
+                    categoria c ON p.id_categoria = c.id_categoria; 
+        ";
+            $query = $this->acceso->prepare($sql);
+            $query->execute();
+            $this->objetos = $query->fetchAll();
+            return $this->objetos;
+        }
+    }
+
+
+    /* FUNCION PARA LISTAR LA CATEGORIA  */
+    function listarCategoriaTienda()
+    {
+        $sql = "SELECT id_categoria, nombre_categoria FROM categoria"; // Consulta SQL para seleccionar todas las categorías
         $query = $this->acceso->prepare($sql);
         $query->execute();
+        $this->objetos = $query->fetchAll(); // Almacenamiento de los resultados en la propiedad 'objetos'
+        return $this->objetos; // Devolución de las categorías obtenidas
+    }
+    /* FIN FUNCION PARA LISTAR LA CATEGORIA  */
+
+    function detalleProducto($id_producto)
+    {
+        $sql = "SELECT 
+                p.id_producto,
+                p.nombre_producto,
+                p.marca_producto,
+                p.descripcion_producto,
+                p.stock_producto,
+                p.precio_producto,
+                c.nombre_categoria AS categoria_producto,
+                (
+                    SELECT url_imagen
+                    FROM imagen i
+                    WHERE i.id_producto = p.id_producto
+                    ORDER BY i.id_imagen ASC
+                    LIMIT 1
+                ) AS imagen_producto
+            FROM
+                producto p
+            JOIN
+                categoria c ON p.id_categoria = c.id_categoria
+            WHERE
+                p.id_producto = :id_producto;";
+        $query = $this->acceso->prepare($sql);
+
+        $query->execute(array(
+            ':id_producto' => $id_producto
+        ));
         $this->objetos = $query->fetchAll();
+
         return $this->objetos;
     }
 }

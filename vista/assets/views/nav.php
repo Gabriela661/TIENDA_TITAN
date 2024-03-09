@@ -134,7 +134,7 @@ include "header.php"
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-               <li class="nav-item">
+                <li class="nav-item">
                     <a href="soporte.php" class="nav-link">
                         <i class="fa fa-info-circle"></i>
                         <p>Ingresos y Egresos</p>
@@ -169,13 +169,13 @@ include "header.php"
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="productos.php" class="nav-link">
+                    <a href="inventario.php" class="nav-link">
                         <i class="fas fa-toolbox"></i>
                         <p>Productos</p>
                     </a>
 
                 </li>
-                 <li class="nav-item">
+                <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="fas fa-chart-bar"></i>
                         <p>Reportes</p>

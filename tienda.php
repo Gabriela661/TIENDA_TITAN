@@ -1,4 +1,5 @@
 <?php include './assets/views/navbar.php' ?>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <body>
 
@@ -8,37 +9,7 @@
             <div class="col-lg-2">
                 <img src="assets/img/CATEGORIAS (1) (1).png">
                 <br><br>
-                <ul class="list-unstyled templatemo-accordion">
-                    <li class="pb-1">
-                        <a class="collapsed d-flex justify-content-between h4 text-decoration-none" href="#">
-                            FIERROS
-                            <i class="fa fa-fw fa-chevron-circle-down mt-1"></i>
-                        </a>
-                        <ul class="collapse show list-unstyled pl-3">
-                            <li><a class="text-decoration-none" href="#">Liso</a></li>
-                            <li><a class="text-decoration-none" href="#">Corrugado</a></li>
-                        </ul>
-                    </li>
-                    <li class="pb-2">
-                        <a class="collapsed d-flex justify-content-between h4 text-decoration-none" href="#">
-                            TUBOS
-                            <i class="pull-right fa fa-fw fa-chevron-circle-down mt-1"></i>
-                        </a>
-                        <ul id="collapseTwo" class="collapse list-unstyled pl-3">
-                            <li><a class="text-decoration-none" href="#">Tubos de agua</a></li>
-                            <li><a class="text-decoration-none" href="#">Tubos de desagüe</a></li>
-                        </ul>
-                    </li>
-                    <li class="pb-2">
-                        <a class="collapsed d-flex justify-content-between h4 text-decoration-none" href="#">
-                            DRYWALL
-                            <i class="pull-right fa fa-fw fa-chevron-circle-down mt-1"></i>
-                        </a>
-                        <ul id="collapseThree" class="collapse list-unstyled pl-3">
-                            <li><a class="text-decoration-none" href="#">estándar (ST)</a></li>
-                            <li><a class="text-decoration-none" href="#">resistentes al fuego (RF)</a></li>
-                        </ul>
-                    </li>
+                <ul id="categoriaMenu" class="list-unstyled templatemo-accordion">
                 </ul>
             </div>
             <!-- Fin menu tienda -->
@@ -50,6 +21,9 @@
 
                         </ul>
                     </div>
+                </div>
+                <div class="row">
+
                 </div>
                 <div class="row" id="productos_tienda">
 

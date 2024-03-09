@@ -42,7 +42,6 @@ $(document).ready(function () {
       }
     );
   }
-  
 
   ListarMasVendidos();
   function ListarMasVendidos(consulta) {
@@ -59,27 +58,27 @@ $(document).ready(function () {
           let imagenStyle = `width: 50px; height: 50px;`;
           contador++; // Incrementamos el contador en cada iteración
           template += `
-    <div class="col-md-6 col-lg-3 mb-3">
-        <div class="card h-100 shadow position-relative">
-            <!-- Ribbon inclinado utilizando clases de Bootstrap -->
-            <div class="ribbon ribbon-danger">
-                <span class="ribbon-text">Más Vendido</span>
-            </div>
-
-            <img src="assets/img/drywall-sinfondo.png" alt="Producto" class="card-img-top">
-            <div class="card-body text-dark">
-                <h5 class="card-title">${productoMV.nombre_producto}</h5>
-                <p class="card-text">Descripcion:${productoMV.nombre_producto}</p>
-                <p class="card-text">Marca: ${productoMV.marca_producto}</p>
-                <p class="card-text">Precio: ${productoMV.precio_producto}</p>
-                <p class="card-text">Stock: ${productoMV.nombre_producto}</p>
-                <span class="badge bg-primary">En Stock</span>
-                <a href="#" class="btn btn-primary">Ver Detalles</a>
-            </div>
+  <div class="col-md-4 col-lg-3 mb-4">
+    <div class="card shadow position-relative" style="margin: 10px;">
+        <!-- Ribbon inclinado utilizando clases de Bootstrap -->
+        <div class="ribbon ribbon-danger">
+            <span class="ribbon-text">Más Vendido</span>
         </div>
 
-
+        <img src="${productoMV.imagen_producto}" alt="Producto" class="card-img-top">
+        <div class="card-body text-dark">
+            <h5 class="card-title">Nombre del Producto: ${productoMV.nombre_producto}</h5>
+           
+            <p class="card-text">Marca: ${productoMV.marca_producto}</p>
+            <p class="card-text">Precio: ${productoMV.precio_producto}</p>
+            <p class="card-text">Stock: ${productoMV.stock_producto}</p>
+            <span class="badge bg-primary">En Stock</span>
+            <a href="#" class="btn btn-primary">Ver Detalles</a>
+        </div>
+    </div>
 </div>
+
+
 
 
                         `;

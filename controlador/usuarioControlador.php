@@ -9,7 +9,7 @@ if ($_POST['funcion'] == 'listar_personal') {
     // Se llama al método listarpersonal() del objeto '$categoria' 
     $usuario->listar_personal();
     foreach ($usuario->objetos as $objeto) {
-    // Se recorre el array de objetos de usuaris y se crea un nuevo array asociativo para cada usuario
+        // Se recorre el array de objetos de usuaris y se crea un nuevo array asociativo para cada usuario
         $json[] = array(
             'id_usuario' => $objeto->id_usuario,
             'nombre_usuario' => $objeto->nombre_usuario,
@@ -30,13 +30,13 @@ if ($_POST['funcion'] == 'listar_cliente') {
     $json = array();
     $usuario->listar_cliente();
     foreach ($usuario->objetos as $objeto) {
-    // Se recorre el array de objetos de usuario y se crea un nuevo array asociativo para cada cliente
+        // Se recorre el array de objetos de usuario y se crea un nuevo array asociativo para cada cliente
         $json[] = array(
-            'id_usuario' => $objeto->id_usuario,
-            'nombre_usuario' => $objeto->nombre_usuario,
-            'apellido_usuario' => $objeto->apellido_usuario,
-            'correo_usuario' => $objeto->correo_usuario,
-            'foto_usuario' => '../vista/assets/img/perfil_us/' . $objeto->foto_usuario,
+            'id' => $objeto->id,
+            'nombre' => $objeto->nombre,
+            'apellido' => $objeto->apellido,
+            'correo' => $objeto->correo,
+            'tipo'=> $objeto->tipo,
         );
     }
     //Se convierte el array a formato JSON y se devuelve como respuesta 
@@ -50,13 +50,13 @@ if ($_POST['funcion'] == 'rol_usuario') {
     $json = array();
     $usuario->rol_usuario();
     foreach ($usuario->objetos as $objeto) {
-         // Se recorre el array de objetos de usuario y se crea un nuevo array asociativo para cada rol
+        // Se recorre el array de objetos de usuario y se crea un nuevo array asociativo para cada rol
         $json[] = array(
             'id_rol' => $objeto->id_rol,
             'nombre_rol' => $objeto->nombre_rol,
         );
     }
-     //Se convierte el array a formato JSON y se devuelve como respuesta
+    //Se convierte el array a formato JSON y se devuelve como respuesta
     $jsonstring = json_encode($json);
     echo $jsonstring;
 }
@@ -137,7 +137,7 @@ if ($_POST['funcion'] == 'editar_usuario') {
         $nombrese = $_POST['nombrese'];
         $apellidose = $_POST['apellidose'];
         $correo_usuarioe = $_POST['correo_usuarioe'];
-        $usuario->editar_usuario($id_usuarioe, $nombrese, $apellidose,$correo_usuarioe);
+        $usuario->editar_usuario($id_usuarioe, $nombrese, $apellidose, $correo_usuarioe);
     } catch (Exception $e) {
         echo 'error';
     }
@@ -145,6 +145,10 @@ if ($_POST['funcion'] == 'editar_usuario') {
 
 //eliminar usuario
 if ($_POST['funcion'] == 'borrar_usuario') {
-    $id_usuario = $_POST['id_usuario'];
-    $usuario->borrar_usuario($id_usuario);
+    try {
+        $id_usuario = $_POST['id_usuario'];
+        $usuario->borrar_usuario($id_usuario);
+    } catch (Exception $e) {
+        echo 'error controler';
+    }
 }

@@ -38,7 +38,9 @@ class usuario
     /* FUNCION PARA LISTAR LOS CLIENTES DE LA BASE DE DATOS*/
     function listar_cliente()
     {
-        $sql = "SELECT id_usuario,nombre_usuario,apellido_usuario,correo_usuario,foto_usuario FROM usuario where id_rol=3";
+        $sql = "SELECT 'virtual' as tipo, id_usuario as id, nombre_usuario as nombre, apellido_usuario as apellido, correo_usuario as correo FROM usuario  where id_rol='5' 
+        UNION 
+        SELECT 'presencial' as tipo, id_cliente as id, nombre_cliente as nombre, apellido_cliente  as apellido, correo_cliente as correo  FROM cliente;";
         // Consulta SQL para seleccionar todas los clientes
         $query = $this->acceso->prepare($sql);
         $query->execute();
@@ -125,8 +127,7 @@ class usuario
     //eliminar usuario
     function borrar_usuario($id_usuario)
     {
-        $sql = "DELETE FROM compras WHERE cliente_designado = (SELECT id_usuario FROM usuario WHERE id_usuario = :id_usuario);
-        DELETE FROM usuario WHERE id_usuario = :id_usuario;
+        $sql = "DELETE FROM usuario WHERE id_usuario = :id_usuario;
         ";
         $query = $this->acceso->prepare($sql);
         $query->execute(array(':id_usuario' => $id_usuario));

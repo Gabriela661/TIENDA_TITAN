@@ -15,7 +15,8 @@ if ($_POST['funcion'] == 'ListarMasVendidos') {
             'precio_producto' => $objeto->precio_producto,
             'descripcion_producto' => $objeto->descripcion_producto,
             'stock_producto' => $objeto->stock_producto,
-            'imagen_producto' => '../vista/assets/img/inventario/' . $objeto->imagen_producto,
+            // 'imagen_producto' => 'vista/assets/img/inventario/' . $objeto->imagen_producto,
+            'imagen_producto' => 'vista/assets/img/FIERRO_CORRUGADO2.jpg',
             'marca_producto' => $objeto->marca_producto,
 
         );

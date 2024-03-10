@@ -1,5 +1,12 @@
 <?php include './assets/views/navbar.php' ?>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<?php
+if (isset($_GET['id_categoria'])) {
+    $idCategoria = $_GET['id_categoria'];
+} else {
+    $idCategoria = ""; // Puedes establecer un valor predeterminado si el parámetro no está presente
+}
+?>
 
 <body>
 
@@ -29,6 +36,7 @@
 
                 </div>
                 <div div="row">
+                    <input id="idCategoria" class="d-none" type="text" value="<?php echo $idCategoria ?>">
                     <ul class="pagination pagination-lg justify-content-end">
                         <li class="page-item disabled">
                             <a class="page-link active rounded-0 mr-3 shadow-sm border-top-0 border-left-0" href="#" tabindex="-1">1</a>

@@ -1,46 +1,74 @@
 <?php
 include_once 'conexion.php';
 
-//creacion de  la class
-class productos
+/**
+ * Clase Productos
+ */
+class Productos
 {
     var $objetos;
     var $acceso;
+
+    /**
+     * Constructor de la clase. Inicializa la conexión a la base de datos.
+     */
     public function __construct()
     {
-        $db = new conexion();
+        $db = new Conexion();
         $this->acceso = $db->pdo;
     }
 
-
-    function ListarMasVendidos()
+    /**
+     * Obtiene y devuelve la lista de productos más vendidos.
+     *
+     * @return array Lista de productos más vendidos.
+     */
+    public function ListarMasVendidos()
     {
         $sql = "SELECT 
-    p.id_producto,
-    p.nombre_producto,
+            p.id_producto,
+            p.nombre_producto,
+            p.precio_producto,
+            c.nombre_categoria AS categoria_producto,
+            (
+                SELECT url_imagen
+                FROM imagen i
+                WHERE i.id_producto = p.id_producto
+                ORDER BY i.id_imagen ASC
+                LIMIT 1
+            ) AS imagen_producto
+        FROM
+            producto p
+        JOIN
+            categoria c ON p.id_categoria = c.id_categoria
+        LIMIT 4;";
 
-    p.precio_producto,
-    c.nombre_categoria AS categoria_producto,
-    (
-        SELECT url_imagen
-        FROM imagen i
-        WHERE i.id_producto = p.id_producto
-        ORDER BY i.id_imagen ASC
-        LIMIT 1
-    ) AS imagen_producto
-FROM
-    producto p
-JOIN
-    categoria c ON p.id_categoria = c.id_categoria limit 4;
-";
         $query = $this->acceso->prepare($sql);
         $query->execute();
         $this->objetos = $query->fetchAll();
         return $this->objetos;
     }
 
-    // listar productos de la tienda
-    function productosTienda()
+    /**
+     * Obtiene y devuelve la lista de categorías para ser mostradas en la página de inicio.
+     *
+     * @return array Lista de categorías.
+     */
+    public function listarCategoriaIndex()
+    {
+        $sql = "SELECT id_categoria, nombre_categoria FROM categoria";
+        $query = $this->acceso->prepare($sql);
+        $query->execute();
+        $this->objetos = $query->fetchAll();
+        return $this->objetos;
+    }
+
+    /**
+     * Obtiene y devuelve la lista de productos de la tienda, filtrados por categoría si se proporciona una.
+     *
+     * @return array Lista de productos de la tienda.
+     */
+    public function productosTienda()
     {
         if (!empty($_POST['consulta'])) {
             $idCategoria = $_POST['consulta'];
@@ -90,8 +118,7 @@ JOIN
                 FROM
                     producto p
                 JOIN
-                    categoria c ON p.id_categoria = c.id_categoria; 
-        ";
+                    categoria c ON p.id_categoria = c.id_categoria;";
             $query = $this->acceso->prepare($sql);
             $query->execute();
             $this->objetos = $query->fetchAll();
@@ -99,19 +126,27 @@ JOIN
         }
     }
 
-
-    /* FUNCION PARA LISTAR LA CATEGORIA  */
-    function listarCategoriaTienda()
+    /**
+     * Obtiene y devuelve la lista de categorías para ser mostradas en la página de la tienda.
+     *
+     * @return array Lista de categorías.
+     */
+    public function listarCategoriaTienda()
     {
-        $sql = "SELECT id_categoria, nombre_categoria FROM categoria"; // Consulta SQL para seleccionar todas las categorías
+        $sql = "SELECT id_categoria, nombre_categoria FROM categoria";
         $query = $this->acceso->prepare($sql);
         $query->execute();
-        $this->objetos = $query->fetchAll(); // Almacenamiento de los resultados en la propiedad 'objetos'
-        return $this->objetos; // Devolución de las categorías obtenidas
+        $this->objetos = $query->fetchAll();
+        return $this->objetos;
     }
-    /* FIN FUNCION PARA LISTAR LA CATEGORIA  */
 
-    function detalleProducto($id_producto)
+    /**
+     * Obtiene y devuelve los detalles de un producto específico.
+     *
+     * @param int $id_producto ID del producto a detallar.
+     * @return array Detalles del producto.
+     */
+    public function detalleProducto($id_producto)
     {
         $sql = "SELECT 
                 p.id_producto,
@@ -134,13 +169,10 @@ JOIN
                 categoria c ON p.id_categoria = c.id_categoria
             WHERE
                 p.id_producto = :id_producto;";
+
         $query = $this->acceso->prepare($sql);
-
-        $query->execute(array(
-            ':id_producto' => $id_producto
-        ));
+        $query->execute(array(':id_producto' => $id_producto));
         $this->objetos = $query->fetchAll();
-
         return $this->objetos;
     }
 }

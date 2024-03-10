@@ -8,6 +8,9 @@ if (isset($_GET['id_categoria'])) {
     $idCategoria = ""; // Puedes establecer un valor predeterminado si el parámetro no está presente
 }
 ?>
+<!-- Incluye jQuery desde CDN -->
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ZeidV6fP3dL3mE7vBwmoW27jGxm21U9Pz5l3S5DN/z4ZxyNo5WH2x5cP9viXnLE" crossorigin="anonymous">
 
 <body>
     <div id="modal2" class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
@@ -121,74 +124,17 @@ if (isset($_GET['id_categoria'])) {
 
 
     <!-- Start Footer -->
-    <?php include 'footer.php' ?>
+    <?php include 'assets/views/footer.php' ?>
     <!-- End Footer -->
 
-    <!-- Start Script -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Obtener el identificador del producto de la URL
-            const urlParams = new URLSearchParams(window.location.search);
-            const productoID = urlParams.get('producto');
-            console.log(productoID)
-
-            // Ocultar todas las secciones de productos
-            const seccionesProductos = document.querySelectorAll('.container[id^="producto_"]');
-            seccionesProductos.forEach(seccion => {
-                seccion.style.display = 'none';
-            });
-
-            // Mostrar solo la sección correspondiente al producto indicado en la URL
-            const productoMostrar = document.getElementById(productoID);
-            if (productoMostrar) {
-                productoMostrar.style.display = 'block';
-            } else {
-                console.error('El producto especificado no existe.');
-            }
-        });
-    </script>
-    <script src="assets/js/jquery-1.11.0.min.js"></script>
-    <script src="assets/js/jquery-migrate-1.2.1.min.js"></script>
-    <script src="assets/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/js/templatemo.js"></script>
     <!-- End Script -->
 
     <!-- Start Slider Script -->
     <script src="assets/js/slick.min.js"></script>
-    <script>
-        $('#carousel-related-product').slick({
-            infinite: true,
-            arrows: false,
-            slidesToShow: 4,
-            slidesToScroll: 3,
-            dots: true,
-            responsive: [{
-                    breakpoint: 1024,
-                    settings: {
-                        slidesToShow: 3,
-                        slidesToScroll: 3
-                    }
-                },
-                {
-                    breakpoint: 600,
-                    settings: {
-                        slidesToShow: 2,
-                        slidesToScroll: 3
-                    }
-                },
-                {
-                    breakpoint: 480,
-                    settings: {
-                        slidesToShow: 2,
-                        slidesToScroll: 3
-                    }
-                }
-            ]
-        });
-    </script>
+
     <script src="vista/js/productos.js"></script>
     <!-- End Slider Script -->
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-lxkD1a4lFNEzUWx5ePACnXHvZ2is9vRyGCEAawuH3PaYsKcDS+au8lW8Ekb4l7xj" crossorigin="anonymous"></script>
 </body>
 
 </html>

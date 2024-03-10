@@ -92,30 +92,6 @@
 
     <div id="about" class="container-fluid has-bg-overlay fadeIn" id="about" data-wow-duration="1.5s">
         <div class="row justify-content-center" id="categoriaIndex">
-            <div class="col-md-4 col-lg-3 pb-5">
-                <div class="py-7 services-icon-wap shadow" style="background-color:white">
-                    <a href="#">
-                        <div class="text-center"><img src="assets/img/tubos_sinfondo.png" style="width:100px;height:100px;"></div>
-                    </a>
-                    <h4 class="h5 mt-4 text-center" style="color:black">Tubos</h4>
-                </div>
-            </div>
-            <div class="col-md-4 col-lg-3 pb-5">
-                <div class="py-7 services-icon-wap shadow" style="background-color:white">
-                    <a href="#">
-                        <div class="h1 text-primary text-center"><img src="assets/img/fierros.png" style="width:60px;height:100px"></div>
-                    </a>
-                    <h2 class="h5 mt-4 text-center" style="color:black">Fierros</h2>
-                </div>
-            </div>
-            <div class="col-md-4 col-lg-3 pb-5">
-                <div class=" py-7 services-icon-wap shadow secondary" style="background-color:white">
-                    <a href="#">
-                        <div class="h1 text-primary text-center"><img src="assets/img/drywall-sinfondo.png" style="width:60px;height:100px"></div>
-                    </a>
-                    <h2 class="h5 mt-4 text-center" style="color:grey">Drywall</h2>
-                </div>
-            </div>
         </div>
     </div>
 

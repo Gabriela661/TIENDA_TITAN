@@ -3,7 +3,29 @@
 include_once '../modelo/productosModelo.php';
 $productos = new productos();
 
-//funcion para mostrar los productos mas vendidos
+/* 
+ * FUNCION PARA LISTAR LA CATEGORIA  
+ */
+if ($_POST['funcion'] == 'listarCategoriaIndex') {
+    $json = array();
+    $productos->listarCategoriaIndex(); // Se llama al método 'listarCategoria()' del objeto '$categoria' para obtener las categorías desde la base de datos
+    foreach ($productos->objetos as $objeto) {
+        // Se recorre el array de objetos de categorías y se crea un nuevo array asociativo para cada categoría
+        $json[] = array(
+            'id_categoria' => $objeto->id_categoria,
+            'nombre_categoria' => $objeto->nombre_categoria,
+        );
+    }
+    $jsonstring = json_encode($json); // Se convierte el array de categorías a formato JSON
+    echo $jsonstring; // Se devuelve el JSON como respuesta al cliente
+}
+/* 
+ * FIN FUNCION PARA LISTAR LA CATEGORIA  
+ */
+
+/* 
+ * FUNCION PARA LISTAR LOS PRODUCTOS MÁS VENDIDOS
+ */
 if ($_POST['funcion'] == 'ListarMasVendidos') {
     $json = array();
     $productos->ListarMasVendidos();
@@ -19,8 +41,13 @@ if ($_POST['funcion'] == 'ListarMasVendidos') {
     $jsonstring = json_encode($json);
     echo $jsonstring;
 }
+/* 
+ * FIN FUNCION PARA LISTAR LOS PRODUCTOS MÁS VENDIDOS
+ */
 
-//mostrar los prodcutos en la tienda
+/* 
+ * FUNCION PARA MOSTRAR LOS PRODUCTOS EN LA TIENDA
+ */
 if ($_POST['funcion'] == 'productosTienda') {
     $json = array();
     $productos->productosTienda();
@@ -39,8 +66,13 @@ if ($_POST['funcion'] == 'productosTienda') {
     $jsonstring = json_encode($json);
     echo $jsonstring;
 }
+/* 
+ * FIN FUNCION PARA MOSTRAR LOS PRODUCTOS EN LA TIENDA
+ */
 
-/* FUNCION PARA LISTAR LA CATEGORIA  */
+/* 
+ * FUNCION PARA LISTAR LA CATEGORIA EN LA TIENDA
+ */
 if ($_POST['funcion'] == 'listarCategoriaTienda') {
     $json = array();
     $productos->listarCategoriaTienda(); // Se llama al método 'listarCategoria()' del objeto '$categoria' para obtener las categorías desde la base de datos
@@ -54,9 +86,13 @@ if ($_POST['funcion'] == 'listarCategoriaTienda') {
     $jsonstring = json_encode($json); // Se convierte el array de categorías a formato JSON
     echo $jsonstring; // Se devuelve el JSON como respuesta al cliente
 }
-/* FIN FUNCION PARA LISTAR LA CATEGORIA  */
+/* 
+ * FIN FUNCION PARA LISTAR LA CATEGORIA EN LA TIENDA
+ */
 
-//Detallar el producto
+/* 
+ * FUNCION PARA DETALLAR UN PRODUCTO
+ */
 if ($_POST['funcion'] == 'detalleProducto') {
     $id_producto = $_POST['idProducto'];
 
@@ -78,3 +114,7 @@ if ($_POST['funcion'] == 'detalleProducto') {
     $jsonstring = json_encode($json);
     echo $jsonstring;
 }
+/* 
+ * FIN FUNCION PARA DETALLAR UN PRODUCTO
+ */
+

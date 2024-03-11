@@ -1,4 +1,13 @@
 $(document).ready(function () {
+  const idCategoria1 = $("#idCategoria").val();
+
+  // Verifica si el valor no está vacío
+  if (idCategoria1 != "") {
+    // El campo está lleno, realiza la acción que deseas aquí
+    productosTienda(idCategoria1);
+  } else {
+    productosTienda();
+  }
   /*
    * FUNCION PARA LISTAR LAS CATEGORIAS EN EL INDEX
    */
@@ -14,22 +23,23 @@ $(document).ready(function () {
         const categorias = JSON.parse(response);
         let template = "";
         categorias.forEach((categoria) => {
-          template += `<a style="background-color: white; padding: 15px; border-radius: 8px; margin: 20px;" href="tienda.php?id_categoria=${categoria.id_categoria}">
+          template += `<a style="background-color: white; padding: 15px; border-radius: 8px; margin: 20px; overflow: hidden; transition: transform 0.3s ease-in-out;" href="tienda.php?id_categoria=${categoria.id_categoria}" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
     <div class="col-md-4 col-lg-3 pb-5">
         <div>
             <div>
                 <div class="text-center">
-                <div style="width: 150px; display: flex; align-items: center; justify-content: center; margin: auto;">
+                    <div style="width: 150px; display: flex; align-items: center; justify-content: center; margin: auto;">
                         <h4 class="h5 mt-4 text-center" style="color: black; background-color: white;">${categoria.nombre_categoria}</h4>
                     </div>
                     <div style="width: 150px; height: 150px; display: flex; align-items: center; justify-content: center; margin: auto;">
-                        <img src="assets/img/tubos_sinfondo.png" style="width:100px;height:100px;">
+                        <img src="${categoria.imagen_producto}" style="width:100px;height:100px;">
                     </div>
                 </div>
             </div> 
         </div>
     </div>
-</a>`;
+</a>
+`;
         });
         $("#categoriaIndex").html(template);
       }
@@ -56,10 +66,10 @@ $(document).ready(function () {
         productosMV.forEach((productoMV) => {
           let imagenStyle = `width: 150px; height: 180px;`;
           template += `
-    <div class="col-md-4 col-lg-3 mb-3 mt-3">
-        <div class="card shadow position-relative" style="margin:30px;">
+   <div class="col-md-4 col-lg-3 mb-3 mt-3" style="overflow: hidden; transition: transform 0.3s ease-in-out;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+    <div class="card shadow position-relative" style="transform-origin: center center; margin: 30px; overflow: hidden; transition: transform 0.3s ease-in-out;">
             <div class="ribbon ribbon-danger">
-                <span class="ribbon-text">Más Vendido</span>
+                <span class="ribbon-text"></span>
             </div>
             <div class="text-center">
                 <img src="${productoMV.imagen_producto}" alt="Producto" class="card-img-top" style="${imagenStyle}">
@@ -79,17 +89,6 @@ $(document).ready(function () {
   /*
    * FIN FUNCION PARA LISTAR LOS PRODUCTOS MÁS VENDIDOS
    */
-
-  const idCategoria1 = $("#idCategoria").val();
-
-  // Verifica si el valor no está vacío
-  if (idCategoria1.trim() !== "") {
-    // El campo está lleno, realiza la acción que deseas aquí
-    productosTienda(idCategoria1);
-    console.log("El campo #id_producto está lleno. Realiza alguna acción.");
-  } else {
-    productosTienda();
-  }
 
   /*
    * FUNCION PARA LISTAR LOS PRODUCTOS DE LA TIENDA
@@ -120,15 +119,7 @@ $(document).ready(function () {
                 <div class="card-body text-center">
                     <a href="#" class="h5 text-decoration-none d-block" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-height: 1.5em;">${productoTienda.nombre_producto}</a>
                     <p class="mb-1 small" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Marca: ${productoTienda.marca_producto}</p>
-                    <ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
-                        <li>
-                            <span class="product-color-dot color-dot-red float-left rounded-circle ml-1"></span>
-                            <span class="product-color-dot color-dot-blue float-left rounded-circle ml-1"></span>
-                            <span class="product-color-dot color-dot-black float-left rounded-circle ml-1"></span>
-                            <span class="product-color-dot color-dot-light float-left rounded-circle ml-1"></span>
-                            <span class="product-color-dot color-dot-green float-left rounded-circle ml-1"></span>
-                        </li>
-                    </ul>
+                   
                     <ul class="list-unstyled d-flex justify-content-center mb-1">
                         <li>
                             <i class="text-warning fa fa-star"></i>
@@ -198,6 +189,7 @@ $(document).ready(function () {
   function detalleProducto() {
     funcion = "detalleProducto";
     const idProducto = $("#id_producto").val();
+    console.log(idProducto);
     $.post(
       "controlador/productosControlador.php",
       { idProducto, funcion },
@@ -229,7 +221,7 @@ $(document).ready(function () {
                         </div>
                         <div class="col-4">
                             <a href="#">
-                                <img class="card-img img-fluid secondary-image" src="assets/img/tubos_sinfondo.png" alt="Product Image 2" style="width: 80px; height: 100px;">
+                                <img class="card-img img-fluid secondary-image" src="${detalle.imagen_producto}" alt="Product Image 2" style="width: 80px; height: 100px;">
                             </a>
                         </div>
                         <div class="col-4">
@@ -310,6 +302,7 @@ $(document).ready(function () {
    * FIN FUNCION PARA DETALLAR UN PRODUCTO
    */
 });
+
 $(".secondary-image").on("click", function () {
   // Obtén la ruta de la imagen clicada
   var newImageSrc = $(this).attr("src");
@@ -317,3 +310,17 @@ $(".secondary-image").on("click", function () {
   // Cambia la imagen principal con la nueva ruta
   $(".main-image").attr("src", newImageSrc);
 });
+  function handleMouseMove(event, card) {
+    const rect = card.getBoundingClientRect();
+    const x = event.clientX - rect.left;
+    const y = event.clientY - rect.top;
+
+    const offsetX = (x / card.clientWidth - 0.5) * 20; // Ajusta el valor según tu preferencia
+    const offsetY = (y / card.clientHeight - 0.5) * 20; // Ajusta el valor según tu preferencia
+
+    card.style.transform = `scale(1.1) translate(${offsetX}px, ${offsetY}px)`;
+  }
+
+  function handleMouseLeave(card) {
+    card.style.transform = "scale(1) translate(0, 0)";
+  }

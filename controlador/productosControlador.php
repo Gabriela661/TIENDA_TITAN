@@ -14,6 +14,7 @@ if ($_POST['funcion'] == 'listarCategoriaIndex') {
         $json[] = array(
             'id_categoria' => $objeto->id_categoria,
             'nombre_categoria' => $objeto->nombre_categoria,
+            'imagen_producto' => 'vista/assets/img/' .  strtolower($objeto->nombre_categoria) . '/' . $objeto->imagen,
         );
     }
     $jsonstring = json_encode($json); // Se convierte el array de categorías a formato JSON
@@ -93,7 +94,10 @@ if ($_POST['funcion'] == 'listarCategoriaTienda') {
 /* 
  * FUNCION PARA DETALLAR UN PRODUCTO
  */
+
 if ($_POST['funcion'] == 'detalleProducto') {
+
+
     $id_producto = $_POST['idProducto'];
 
     $json = array();
@@ -117,4 +121,3 @@ if ($_POST['funcion'] == 'detalleProducto') {
 /* 
  * FIN FUNCION PARA DETALLAR UN PRODUCTO
  */
-

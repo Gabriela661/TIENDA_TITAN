@@ -74,7 +74,7 @@ if (isset($_GET['id_categoria'])) {
     <script src="assets/js/custom.js"></script>
     <!-- End Script -->
 
-    <script src="vista/js/productos.js"></script>
+    <script src="vista/js/productos1.js"></script>
 </body>
 
 </html>

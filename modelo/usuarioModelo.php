@@ -38,9 +38,7 @@ class usuario
     /* FUNCION PARA LISTAR LOS CLIENTES DE LA BASE DE DATOS*/
     function listar_cliente()
     {
-        $sql = "SELECT 'virtual' as tipo, id_usuario as id, nombre_usuario as nombre, apellido_usuario as apellido, correo_usuario as correo FROM usuario  where id_rol='5' 
-        UNION 
-        SELECT 'presencial' as tipo, id_cliente as id, nombre_cliente as nombre, apellido_cliente  as apellido, correo_cliente as correo  FROM cliente;";
+        $sql = "SELECT id_cliente,nombre_cliente, apellido_cliente, correo_cliente, id_usuario FROM cliente;";
         // Consulta SQL para seleccionar todas los clientes
         $query = $this->acceso->prepare($sql);
         $query->execute();
@@ -87,6 +85,26 @@ class usuario
     }
     /* FUNCION PARA AGREGAR UN NUEVO USUARIO  */
 
+    /* FUNCION PARA AGREGAR UN NUEVO USUARIO  */
+    function crear_cliente($nombre_cliente, $apellido_cliente, $correo_electronico_cliente, $contacto_cliente, $id_usuario)
+    {
+        $sql = "INSERT INTO cliente (nombre_cliente, apellido_cliente, correo_cliente,contacto_cliente, id_usuario) 
+        VALUES (:nombre_cliente, :apellido_cliente, :correo_cliente, :contacto_cliente, :id_usuario)";
+        // Consulta SQL para agregrar los prodcutos  al db
+        $query = $this->acceso->prepare($sql);
+
+        $query->execute(array(
+            ':nombre_cliente' => $nombre_cliente,
+            ':apellido_cliente' => $apellido_cliente,
+            ':correo_cliente' => $correo_electronico_cliente,
+            ':contacto_cliente' => $contacto_cliente,
+            ':id_usuario' => $id_usuario
+        ));
+        echo 'add cliente';
+        //devuelvo en mensaje de exito cuando se registe un usuario
+    }
+    /* FUNCION PARA AGREGAR UN NUEVO USUARIO  */
+
 
     //editar usuario
     function obtenerUsuario($id_usuario)
@@ -97,6 +115,7 @@ class usuario
         $this->objetos = $query->fetchAll();
         return $this->objetos;
     }
+
     //Datos para cargar en el modal de editar
     function cargar_usuario($id_usuario)
     {
@@ -106,6 +125,17 @@ class usuario
         $this->objetos = $query->fetchAll();
         return $this->objetos;
     }
+
+    //Datos para cargar en el modal de editar cliente
+    function cargar_cliente($id_cliente)
+    {
+        $sql = "SELECT id_cliente, nombre_cliente, apellido_cliente, correo_cliente FROM cliente WHERE id_cliente=:id_cliente";
+        $query = $this->acceso->prepare($sql);
+        $query->execute(array(':id_cliente' => $id_cliente));
+        $this->objetos = $query->fetchAll();
+        return $this->objetos;
+    }
+
     //editar usuario
     function editar_usuario($id_usuarioe, $nombrese, $apellidose, $correo_usuarioe)
     {
@@ -121,6 +151,24 @@ class usuario
         } catch (PDOException $e) {
             // Manejo de errores
             echo 'Error al editar el usuario: ' . $e->getMessage();
+        }
+    }
+
+    //editar cliente
+    function editar_cliente($id_clientee, $nombrese, $apellidose, $correo_clientee)
+    {
+        try {
+            $sql = "UPDATE cliente SET nombre_cliente=:nombre_cliente, apellido_cliente=:apellido_cliente, correo_cliente=:correo_cliente WHERE id_cliente=:id";
+            $query = $this->acceso->prepare($sql);
+            $query->bindParam(':id', $id_clientee, PDO::PARAM_INT);
+            $query->bindParam(':nombre_cliente', $nombrese, PDO::PARAM_STR);
+            $query->bindParam(':apellido_cliente', $apellidose, PDO::PARAM_STR);
+            $query->bindParam(':correo_cliente', $correo_clientee, PDO::PARAM_STR);
+            $query->execute();
+            echo 'edits';
+        } catch (PDOException $e) {
+            // Manejo de errores
+            echo 'Error al editar el cliente: ' . $e->getMessage();
         }
     }
 

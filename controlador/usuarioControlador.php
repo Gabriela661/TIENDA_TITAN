@@ -32,11 +32,11 @@ if ($_POST['funcion'] == 'listar_cliente') {
     foreach ($usuario->objetos as $objeto) {
         // Se recorre el array de objetos de usuario y se crea un nuevo array asociativo para cada cliente
         $json[] = array(
-            'id' => $objeto->id,
-            'nombre' => $objeto->nombre,
-            'apellido' => $objeto->apellido,
-            'correo' => $objeto->correo,
-            'tipo'=> $objeto->tipo,
+            'id_cliente' => $objeto->id_cliente,
+            'nombre_cliente' => $objeto->nombre_cliente,
+            'apellido_cliente' => $objeto->apellido_cliente,
+            'correo_cliente' => $objeto->correo_cliente,
+            'id_usuario' => $objeto->id_usuario,
         );
     }
     //Se convierte el array a formato JSON y se devuelve como respuesta 
@@ -113,7 +113,27 @@ if ($_POST['funcion'] == 'crear_usuario') {
         $rol_usuario
     );
 }
-// Cargar Inventario
+
+//crear usuario
+if ($_POST['funcion'] == 'crear_cliente') {
+
+    $nombre_cliente = $_POST['nombre_cliente'];
+    $apellido_cliente = $_POST['apellido_cliente'];
+    $correo_electronico_cliente = $_POST['correo_electronico_cliente'];
+    $contacto_cliente = $_POST['contacto_cliente'];
+    $id_usuario = 1;
+    /* $id_usuario = $_POST['id_usuario']; cuando haya session tomar el id del usuario */
+
+    $usuario->crear_cliente(
+        $nombre_cliente,
+        $apellido_cliente,
+        $correo_electronico_cliente,
+        $contacto_cliente,
+        $id_usuario
+    );
+}
+
+// Cargar usuarios
 if ($_POST['funcion'] == 'cargar_usuario') {
     $json = array();
     $id_usuario = $_POST['id_usuario'];
@@ -126,11 +146,28 @@ if ($_POST['funcion'] == 'cargar_usuario') {
             'correo_usuario' => $objeto->correo_usuario,
         );
     }
-
     $jsonstring = json_encode($json[0]);
     echo $jsonstring;
 }
-//Editar usuarios
+
+// Cargar cliente
+if ($_POST['funcion'] == 'cargar_cliente') {
+    $json = array();
+    $id_cliente = $_POST['id_cliente'];
+    $usuario->cargar_cliente($id_cliente);
+    foreach ($usuario->objetos as $objeto) {
+        $json[] = array(
+            'id_cliente' => $objeto->id_cliente,
+            'nombre_cliente' => $objeto->nombre_cliente,
+            'apellido_cliente' => $objeto->apellido_cliente,
+            'correo_cliente' => $objeto->correo_cliente,
+        );
+    }
+    $jsonstring = json_encode($json[0]);
+    echo $jsonstring;
+}
+
+//Editar usuario
 if ($_POST['funcion'] == 'editar_usuario') {
     try {
         $id_usuarioe = $_POST['id_usuarioe'];
@@ -138,6 +175,19 @@ if ($_POST['funcion'] == 'editar_usuario') {
         $apellidose = $_POST['apellidose'];
         $correo_usuarioe = $_POST['correo_usuarioe'];
         $usuario->editar_usuario($id_usuarioe, $nombrese, $apellidose, $correo_usuarioe);
+    } catch (Exception $e) {
+        echo 'error';
+    }
+}
+
+//Editar cliente
+if ($_POST['funcion'] == 'editar_cliente') {
+    try {
+        $id_clientee = $_POST['id_clientee'];
+        $nombrese = $_POST['nombrese'];
+        $apellidose = $_POST['apellidose'];
+        $correo_clientee = $_POST['correo_clientee'];
+        $usuario->editar_cliente($id_clientee, $nombrese, $apellidose, $correo_clientee);
     } catch (Exception $e) {
         echo 'error';
     }

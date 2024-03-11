@@ -21,7 +21,7 @@
          <div class="container-fluid">
              <h4><i class="fa fa-briefcase" aria-hidden="true"></i><b>Contenido del sistema</b></h4>
 
-             <div class="row">
+             <div class="row mb-5">
                  <div class="col-lg-3 col-6">
                      <div class="small-box bg-gradient-primary">
                          <div class="inner text-white">
@@ -103,8 +103,43 @@
                      </div>
                  </div>
              </div>
+
+             <!-- Gráficos -->
+             <div class="row">
+                 <div class="col-md-6">
+                     <h2>Gráfico 1</h2>
+                     <div id="grafico1"><!-- Aquí se incrustaría tu primer gráfico --></div>
+                 </div>
+                 <div class="col-md-6">
+                     <h2>Gráfico 2</h2>
+                     <div id="grafico2"><!-- Aquí se incrustaría tu segundo gráfico --></div>
+                 </div>
+             </div>
+             <div class="row mt-4">
+                 <div class="col-md-4">
+                     <label for="fechaInicioG3">Fecha Inicial:</label>
+                     <input type="date" id="fechaInicioG3" class="form-control">
+                 </div>
+                 <div class="col-md-4">
+                     <label for="fechaFinG3">Fecha Final:</label>
+                     <input type="date" id="fechaFinG3" class="form-control">
+                 </div>
+                 <div class="col-md-4">
+                     <button id="btnCargarGrap3" class="btn btn-primary">Cargar Datos</button>
+                 </div>
+             </div>
+             <div class="row mt-4">
+                 <div class="col-md-4">
+                <canvas id="graph3" width="100" height="100"></canvas>
+                 </div>
+             </div>
+
+
          </div>
      </div>
+ </div>
+ <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+ <script src="assets/js/graph/graph.js"></script>
 
-     <?php
-        require_once "assets/views/footer.php" ?>
+ <?php
+   /*  require_once "assets/views/footer.php" */ ?>

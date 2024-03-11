@@ -77,7 +77,8 @@ if (isset($_GET['id_categoria'])) {
 
     <script src="vista/js/productos.js"></script>
     <script src="vista/js/busquedaProductos.js"></script>
-    <script src="vista/js/busquedaProductos.js"></script>
+
+
 </body>
 
 </html>

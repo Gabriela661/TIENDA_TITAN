@@ -1,29 +1,23 @@
-var personal = document.getElementsByClassName('btn-personal');
-var cliente = document.getElementsByClassName('btn-cliente');
-
 $(document).ready(function () {
   var funcion;
   var funcion = '';
-
   /* condicional para listar segun el rol del usuario*/
-  if (personal) {
-    /* FUNCION PARA LISTAR LOS USUARIOS DE LA BASE DE DATOS*/
-    listar_personal();
-    function listar_personal(consulta) {
-      // Se define la función a ejecutar en el controlador
-      funcion = 'listar_personal';
-      $.post(
-        '../controlador/usuarioControlador.php',
-        { consulta, funcion },
-        (response) => {
-          console.log(response);
-          const personals = JSON.parse(response);
-          let template = '';
-          let contador = 0; // Inicializamos el contador
-          personals.forEach((personal) => {
-            let imagenStyle = `width: 50px; height: 50px;`;
-            contador++; // Incrementamos el contador en cada iteración
-            template += `
+  /* FUNCION PARA LISTAR LOS USUARIOS DE LA BASE DE DATOS*/
+  listar_personal();
+  function listar_personal(consulta) {
+    // Se define la función a ejecutar en el controlador
+    funcion = 'listar_personal';
+    $.post(
+      '../controlador/usuarioControlador.php',
+      { consulta, funcion },
+      (response) => {
+        const personals = JSON.parse(response);
+        let template = '';
+        let contador = 0; // Inicializamos el contador
+        personals.forEach((personal) => {
+          let imagenStyle = `width: 50px; height: 50px;`;
+          contador++; // Incrementamos el contador en cada iteración
+          template += `
                     <tr data-id="${personal.id_usuario}">
                     <th scope="row">${contador}</th>
                         <th scope="row">${personal.nombre_usuario}</th>
@@ -39,51 +33,54 @@ $(document).ready(function () {
                             </button></th>
                         <th scope="row"><button class="btn btn-danger borrar_usuario" data-id="${personal.id_usuario}">Eliminar</button></th>
                         `;
-          });
-          $('#listar_personal').html(template);
-        }
-      );
-    }
+        });
+        $('#listar_personal').html(template);
+      }
+    );
   }
+
   /*FIN FUNCION PARA LISTAR LOS USUARIOS DE LA BASE DE DATOS*/
 
   /*FUNCION PARA LISTAR LOS CLIENTES DE LA BASE DE DATOS*/
-  if (cliente) {
-    listar_cliente();
-    function listar_cliente(consulta) {
-      // Se define la función a ejecutar en el controlador
-      funcion = 'listar_cliente';
-      $.post(
-        '../controlador/usuarioControlador.php',
-        { consulta, funcion },
-        (response) => {
-          const clientes = JSON.parse(response);
-          let template = '';
-          let contador = 0; // Inicializamos el contador
-          clientes.forEach((cliente) => {
-            let imagenStyle = `width: 50px; height: 50px;`;
-            contador++; // Incrementamos el contador en cada iteración
-            template += `
-                        <tr data-id="${cliente.id_usuario}">
+
+  listar_cliente();
+  function listar_cliente(consulta) {
+    // Se define la función a ejecutar en el controlador
+    funcion = 'listar_cliente';
+    $.post(
+      '../controlador/usuarioControlador.php',
+      { consulta, funcion },
+      (response) => {
+        const clientes = JSON.parse(response);
+        let template = '';
+        let contador = 0; // Inicializamos el contador
+        clientes.forEach((cliente) => {
+          // Asignar tipo_cliente en comparación de usuario
+          // Usuarios = (cliente online)
+          // Usuarios != (cliente presencial), porque el id_usuario
+          if (cliente.id_usuario == cliente.id_cliente) {
+            tipo_cliente = 'Online';
+          } else {
+            tipo_cliente = 'Presencial';
+          }
+          contador++; // Incrementamos el contador en cada iteración
+          template += `
+                        <tr data-id="${cliente.id_cliente}">
                         <th scope="row">${contador}</th>
-                            <th scope="row">${cliente.nombre_usuario}</th>
-                            <th scope="row">${cliente.apellido_usuario}</th>
-                            <th scope="row">${cliente.correo_usuario}</th>                                                   
-                            <th scope="row"><div class="text-center">
-                                <img src="${cliente.foto_usuario}" style="${imagenStyle}"  class="img-circle" alt="...">
-                              </div></th>
-    
-                            <th scope="row">  <button id="btn_editar" class="btn btn-warning btn-editarAdm" type="button"
-                                  data-toggle="modal" data-target="#editar_usuario" data-id_usuario="${cliente.id_usuario}">
+                            <th scope="row">${cliente.nombre_cliente}</th>
+                            <th scope="row">${cliente.apellido_cliente}</th>
+                            <th scope="row">${cliente.correo_cliente}</th>
+                            <th scope="row">${tipo_cliente}</th>
+                            <th scope="row">  <button id="btn_editarc" class="btn btn-warning btn-editarAdm" type="button"
+                                  data-toggle="modal" data-target="#editar_cliente" data-id_cliente="${cliente.id_cliente}">
                                 Editar
                             </button></th>
-                            <th scope="row"><button class="btn btn-danger borrar_usuario" data-id="${cliente.id_usuario}">Eliminar</button></th>
+                            <th scope="row"><button class="btn btn-danger borrar_cliente" data-id="${cliente.id_cliente}">Eliminar</button></th>
                             `;
-          });
-          $('#listar_clientes').html(template);
-        }
-      );
-    }
+        });
+        $('#listar_clientes').html(template);
+      }
+    );
   }
   /*FIN FUNCION PARA LISTAR LOS CLIENTES DE LA BASE DE DATOS*/
 
@@ -221,7 +218,131 @@ $(document).ready(function () {
       }
     );
   });
+  /*FIN FUNCION PARA AGREGAR UN CLIENTE A LA BASE DE DATOS*/
+
+  /*FUNCION PARA AGREGAR UN CLIENTE A LA BASE DE DATOS*/
+  $('#form_cliente').submit((e) => {
+    e.preventDefault();
+    // Se obtiene los valores del formulario
+    const nombre_cliente = $('#nombre_cliente').val();
+    const apellido_cliente = $('#apellido_cliente').val();
+    const correo_electronico_cliente = $('#correo_electronico_cliente').val();
+    const contacto_cliente = $('#contacto_cliente').val();
+
+    // Crea un objeto FormData
+    const formData = new FormData($('#form_cliente')[0]);
+    formData.append('funcion', 'crear_cliente');
+    formData.append('nombre_cliente', nombre_cliente);
+    formData.append('apellido_cliente', apellido_cliente);
+    formData.append('correo_electronico_cliente', correo_electronico_cliente);
+    formData.append('contacto_cliente', contacto_cliente);
+
+    // Envía los datos al controlador utilizando la función enviarDatos
+    enviarDatos(
+      '../controlador/usuarioControlador.php',
+      formData,
+      function (response) {
+        // Condicional de acuerdo a la respuesta del servidor
+        if (response.trim() === 'add cliente') {
+          Swal.fire({
+            icon: 'success',
+            title: 'Creación exitosa',
+            text: 'El cliente ha sido creada con éxito.',
+          }).then(() => {
+            $('#form_cliente').trigger('reset');
+            window.location.href = 'usuarios.php';
+            $('#crear_cliente').modal('hide');
+            $('body').removeClass('modal-open');
+            $('.modal-backdrop').remove();
+          });
+        } else {
+          Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Creacion Incorrecta de cliente',
+          });
+        }
+      },
+      function (error) {
+        mostrarMensaje('noadd', 'Error en la solicitud AJAX');
+      }
+    );
+  });
   /*FIN FUNCION PARA AGREGAR UN USUARIO A LA BASE DE DATOS*/
+
+  /*FUNCION PARA CARGAR DATOS DEL CLIENTE PARA EDITAR EN LA BASE DE DATOS*/
+  $(document).on('click', '#btn_editarc', (e) => {
+    e.preventDefault();
+    // Se define la función a ejecutar en el controlador
+    funcion = 'cargar_cliente';
+    const id_cliente = $(e.currentTarget).data('id_cliente');
+    // Se realiza una solicitud AJAX para obtener la información de la categoría seleccionada
+    $.post(
+      '../controlador/usuarioControlador.php',
+      { funcion, id_cliente },
+      (response) => {
+        const clienteEdit = JSON.parse(response);
+        // Se llena el modal de edicion
+        $('#id_clientee').val(clienteEdit.id_cliente);
+        $('#nombre_clientee').val(clienteEdit.nombre_cliente);
+        $('#apellido_clientee').val(clienteEdit.apellido_cliente);
+        $('#correo_clientee').val(clienteEdit.correo_cliente);
+      }
+    );
+  });
+  /*FIN FUNCION PARA CARGAR DATOS DEL CLIENTE PARA EDITAR EN LA BASE DE DATOS*/
+
+  //Editar cliente
+  $('#form_cliente_editar').submit((e) => {
+    e.preventDefault();
+    const id_clientee = $('#id_clientee').val();
+
+    const nombrese = $('#nombre_clientee').val();
+    const apellidose = $('#apellido_clientee').val();
+    const correo_clientee = $('#correo_clientee').val();
+    console.log(nombrese);
+    const formData = new FormData($('#form_cliente_editar')[0]);
+
+    formData.append('funcion', 'editar_cliente');
+    formData.append('id_clientee', id_clientee);
+
+    formData.append('nombrese', nombrese);
+    formData.append('apellidose', apellidose);
+    formData.append('correo_clientee', correo_clientee);
+
+    enviarDatos(
+      '../controlador/usuarioControlador.php',
+      formData,
+      function (response) {
+        console.log(response);
+        if (response.trim() === 'edits') {
+          Swal.fire({
+            icon: 'success',
+            title: 'Edición exitosa',
+            text: 'Se edito con exito el cliente.',
+          }).then(() => {
+            $('#form_cliente_editar').trigger('reset');
+            window.location.href = 'usuarios.php';
+            $('#form_cliente_editar').modal('hide');
+            $('body').removeClass('modal-open');
+            $('.modal-backdrop').remove();
+            // Actualizar la página después de cerrar la alerta
+            location.reload();
+          });
+        } else {
+          Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Edición Incorrecta de cliente.',
+          });
+        }
+      },
+      function (error) {
+        mostrarMensaje('noadd', 'Error en la solicitud AJAX');
+      }
+    );
+  });
+
 
   /*FUNCION PARA CARGAR DATOS DEL USUARIO PARA EDITAR EN LA BASE DE DATOS*/
   $(document).on('click', '#btn_editar', (e) => {
@@ -248,56 +369,55 @@ $(document).ready(function () {
   });
   /*FIN FUNCION PARA CARGAR DATOS DEL USUARIO PARA EDITAR EN LA BASE DE DATOS*/
 
-  //Editar usuario
-  $('#form_usuario_editar').submit((e) => {
-    e.preventDefault();
-    const id_usuarioe = $('#id_usuarioe').val();
-
-    const nombrese = $('#nombre_usuarioe').val();
-    const apellidose = $('#apellido_usuarioe').val();
-    const correo_usuarioe = $('#correo_usuarioe').val();
-    console.log(nombrese);
-    const formData = new FormData($('#form_usuario_editar')[0]);
-
-    formData.append('funcion', 'editar_usuario');
-    formData.append('id_usuarioe', id_usuarioe);
-
-    formData.append('nombrese', nombrese);
-    formData.append('apellidose', apellidose);
-    formData.append('correo_electronicoe', correo_usuarioe);
-
-    enviarDatos(
-      '../controlador/usuarioControlador.php',
-      formData,
-      function (response) {
-        console.log(response);
-        if (response.trim() === 'edits') {
-          Swal.fire({
-            icon: 'success',
-            title: 'Edición exitosa',
-            text: 'Se edito con exito el usuario.',
-          }).then(() => {
-            $('#form_usuario_editar').trigger('reset');
-            window.location.href = 'usuarios.php';
-            $('#form_usuario_editar').modal('hide');
-            $('body').removeClass('modal-open');
-            $('.modal-backdrop').remove();
-            // Actualizar la página después de cerrar la alerta
-            location.reload();
-          });
-        } else {
-          Swal.fire({
-            icon: 'error',
-            title: 'Error',
-            text: 'Creacion Incorrecta de Usuario.',
-          });
+    //Editar usuario
+    $('#form_usuario_editar').submit((e) => {
+      e.preventDefault();
+      const id_usuarioe = $('#id_usuarioe').val();
+  
+      const nombrese = $('#nombre_usuarioe').val();
+      const apellidose = $('#apellido_usuarioe').val();
+      const correo_usuarioe = $('#correo_usuarioe').val();
+      const formData = new FormData($('#form_usuario_editar')[0]);
+  
+      formData.append('funcion', 'editar_usuario');
+      formData.append('id_usuarioe', id_usuarioe);
+  
+      formData.append('nombrese', nombrese);
+      formData.append('apellidose', apellidose);
+      formData.append('correo_electronicoe', correo_usuarioe);
+  
+      enviarDatos(
+        '../controlador/usuarioControlador.php',
+        formData,
+        function (response) {
+          console.log(response);
+          if (response.trim() === 'edits') {
+            Swal.fire({
+              icon: 'success',
+              title: 'Edición exitosa',
+              text: 'Se edito con exito el usuario.',
+            }).then(() => {
+              $('#form_usuario_editar').trigger('reset');
+              window.location.href = 'usuarios.php';
+              $('#form_usuario_editar').modal('hide');
+              $('body').removeClass('modal-open');
+              $('.modal-backdrop').remove();
+              // Actualizar la página después de cerrar la alerta
+              location.reload();
+            });
+          } else {
+            Swal.fire({
+              icon: 'error',
+              title: 'Error',
+              text: 'Edición Incorrecta de Usuario.',
+            });
+          }
+        },
+        function (error) {
+          mostrarMensaje('noadd', 'Error en la solicitud AJAX');
         }
-      },
-      function (error) {
-        mostrarMensaje('noadd', 'Error en la solicitud AJAX');
-      }
-    );
-  });
+      );
+    });
 
   //funcion advertencia de borrar datos
   $(document).on('click', '.borrar_usuario', function () {

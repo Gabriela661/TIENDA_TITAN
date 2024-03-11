@@ -141,6 +141,7 @@ $(document).ready(function () {
             $('#crearInventario').modal('hide');
             $('body').removeClass('modal-open');
             $('.modal-backdrop').remove();
+            window.location.href = 'inventario.php';
           });
         } else {
           Swal.fire({

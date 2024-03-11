@@ -23,19 +23,34 @@ include_once "assets/views/nav.php";
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h4><i class="fa fa-file" aria-hidden="true"></i><b>Reporte de Facturas</b></h4>
+                            <h4><i class="fa fa-file" aria-hidden="true"></i><b>Reporte de Ventas</b></h4>
                             <div class="container">
                                 <div class="row">
                                     <div class="col-lg-12">
-                                        <a id="btnPaciente" type="button" href="#" class="btn btn-primary"><i class="fa fa-plus-square"></i></a>
-                                        &nbsp; <a type="button" class="btn btn-warning" id="openPdfModal"><i class="fas fa-print"></i></a>
-                                        &nbsp; <a type="button" class="btn btn-success" href="#"><i class="far fa-file-excel"></i></a>
-                                        &nbsp; <a type="button" class="btn btn-danger" href="#"><i class="far fa-file-pdf"></i></a>
-                                        &nbsp;&nbsp;&nbsp;
-                                        <button class="btn btn-primary">
-                                            <i class="fa fa-user"></i> Total de Facturas
-                                            <span class="badge bg-color6 text-c2">1</span>
-                                        </button>
+                                        <div class="row mb-5"><a id="diaFactura" type="button" href="#" class="btn btn-primary"><i class="fa fa-plus-square"></i> Día</a>
+                                            <a id="mesFactura" type="button" href="#" class="btn btn-primary"><i class="fa fa-plus-square"></i> Mes</a>
+                                            &nbsp; <a type="button" class="btn btn-warning" id="openPdfModal"><i class="fas fa-print"></i></a>
+                                            &nbsp; <a type="button" class="btn btn-success" href="#"><i class="far fa-file-excel"></i></a>
+                                            &nbsp; <a type="button" class="btn btn-danger" href="#" id="generatePDFF"><i class="far fa-file-pdf"></i></a>
+                                            &nbsp;&nbsp;&nbsp;
+                                            <button class="btn btn-primary">
+                                                <i class="fa fa-user"></i> Total de ventas
+                                                <span class="badge bg-color6 text-c2">1</span>
+                                            </button>
+                                        </div>
+                                        <div class="row mb-6">
+                                            <div class="col-md-3">
+                                                <label for="fecha_inicio" class="form-label">Fecha de inicio:</label>
+                                                <input type="date" class="form-control" id="fecha_inicio">
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label for="fecha_fin" class="form-label">Fecha de fin:</label>
+                                                <input type="date" class="form-control" id="fecha_fin">
+                                            </div>
+                                            <div class="col-md-2 align-self-end">
+                                                <a href="#" id="fechasFactura" class="btn btn-primary">Consultar</a>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -54,19 +69,18 @@ include_once "assets/views/nav.php";
                                     <div class="card-body">
                                         <div class="table-responsive">
                                             <table id="reporte_facturas" class="table table-bordered table-striped">
-                                                <thead>
+                                                <thead id="facturas_lista_head">
                                                     <tr>
                                                         <th>N°</th>
-                                                        <th>NOMBRE</th>
-                                                        <th>MARCA</th>
-                                                        <th>DESCRIPCION</th>
-                                                        <th>CANTIDAD</th>
-                                                        <th>PRECIO</th>
-                                                        <th>IMAGEN PRODUCTO</th>
-                                                        <th>ACCIONES</th>
+                                                        <th>TIPO DE PAGO</th>
+                                                        <th>CLIENTE</th>
+                                                        <th>TIPO DE VENTA</th>
+                                                        <th>MONTO TOTAL</th>
+                                                        <th>FECHA</th>
+                                                        <th>VER</th>
                                                     </tr>
                                                 </thead>
-                                                <tbody id="facturas_lista">
+                                                <tbody id="reporte_facturas_lista">
                                                 </tbody>
                                             </table>
                                         </div>
@@ -99,5 +113,6 @@ include_once "assets/views/nav.php";
 
 <script src="../vista/assets/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="../vista/assets/js/buscar.js   "></script>
+<script src="js/reporteFacturas.js"></script>
+<script src="../vista/assets/js/buscar.js"></script>
 </div>

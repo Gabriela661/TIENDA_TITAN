@@ -25,7 +25,7 @@ include_once "assets/views/nav.php";
                   <input type="text" class="form-control" id="nombre_usuario" name="nombre_usuario" placeholder="Nombres" required>
                 </div>
                 <div class="form-group">
-                  <label for="apellidos_usuario">Apellidos</label>
+                  <label for="apellido_usuario">Apellidos</label>
                   <input type="text" class="form-control" id="apellido_usuario" name="apellido_usuario" placeholder="Apellidos" required>
                 </div>
 
@@ -62,6 +62,91 @@ include_once "assets/views/nav.php";
     </form>
     <!--final  Modal  crear usuario-->
 
+    <!-- inicio Modal  crear cliente-->
+    <div class="modal fade" id="crearCliente" tabindex="-1" role="dialog" aria-labelledby="#crearCliente" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="#crearCliente">Registrar Nuevo Usuario</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form id="form_cliente" method="POST">
+              <div class="card-body">
+                <div class="form-group">
+                  <label for="nombre_usuario">Nombres</label>
+                  <input type="text" class="form-control" id="nombre_cliente" name="nombre_cliente" placeholder="Nombres" required>
+                </div>
+                <div class="form-group">
+                  <label for="apellido_cliente">Apellidos</label>
+                  <input type="text" class="form-control" id="apellido_cliente" name="apellido_cliente" placeholder="Apellidos" required>
+                </div>
+                
+                <div class="form-group">
+                  <label for="correo_electronico_cliente">Correo Electrónico</label>
+                  <input type="email" class="form-control" id="correo_electronico_cliente" name="correo_electronico_cliente" placeholder="Correo Electrónico">
+                </div>
+
+                <div class="form-group">
+                  <label for="contacto_cliente">Contacto</label>
+                  <input type="text" class="form-control" id="contacto_cliente" name="contacto_cliente" placeholder="contacto_cliente">
+                </div>
+              </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fas fa-times-circle"></i> Cancelar</button>
+            <button type="submit" class="btn btn-success"><i class="fas fa-save"></i> Guardar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    </form>
+    <!--final  Modal  crear cliente-->
+    
+    <!-- inicio Modal  editar cliente-->
+    <div class="modal fade" id="editar_cliente" tabindex="-1" role="dialog" aria-labelledby="#editar_cliente" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Editar Cliente</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form id="form_cliente_editar" method="POST">
+              <div class="card-body">
+                <div class=" d-none form-group">
+                  <input type="text" class="form-control" id="id_clientee">
+                </div>
+                <div class="form-group">
+                  <label for="nombre_clientee">Nombres</label>
+                  <input type="text" class="form-control" id="nombre_clientee" name="nombre_clientee" placeholder="Nombres">
+                </div>
+                <div class="form-group">
+                  <label for="apellido_clientee">Apellidos</label>
+                  <input type="text" class="form-control" id="apellido_clientee" name="apellido_clientee" placeholder="Apellidos">
+                </div>
+                <div class="form-group">
+                  <label for="correo_clientee">Correo Electronico</label>
+                  <input type="text" class="form-control" id="correo_clientee" name="correo_clientee" placeholder="Correo Electronico">
+                </div>
+              </div>
+              <!-- /.card-body -->
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fas fa-times-circle"></i> Cancelar</button>
+            <button type="submit" class="btn btn-warning"><i class="fas fa-save"></i> Guardar cambios</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    </form>
+    <!--final  Modal  editar cliente-->
+    
     <!-- inicio Modal  editar usuario-->
     <div class="modal fade" id="editar_usuario" tabindex="-1" role="dialog" aria-labelledby="#editar_usuario" aria-hidden="true">
       <div class="modal-dialog" role="document">
@@ -116,6 +201,8 @@ include_once "assets/views/nav.php";
               <h4><i class="fas fa-users"></i> <b>Lista de Usuarios</b></h4>
               <button type="button" class="btn btn-primary ml-3" data-toggle="modal" data-target="#crearUsuario">
                 Nuevo Usuario</button></h1>
+              <button type="button" class="btn btn-primary ml-3" data-toggle="modal" data-target="#crearCliente">
+                Nuevo Cliente</button></h1>
             </div>
           </div>
         </div><!-- /.container-fluid -->
@@ -170,11 +257,10 @@ include_once "assets/views/nav.php";
                         <thead>
                           <tr>
                             <th>N°</th>
-                            <th>Nombres Personal</th>
+                            <th>Nombres</th>
                             <th>Apellidos</th>
                             <th>Correo Electronico</th>
                             <th>Tipo de cliente</th>
-                            <th>Foto</th>
                             <th>Editar</th>
                             <th>Eliminar</th>
                           </tr>

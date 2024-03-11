@@ -56,7 +56,7 @@ class Productos
      */
     public function listarCategoriaIndex()
     {
-        $sql = "SELECT id_categoria, nombre_categoria FROM categoria";
+        $sql = "SELECT id_categoria, nombre_categoria,imagen FROM categoria";
         $query = $this->acceso->prepare($sql);
         $query->execute();
         $this->objetos = $query->fetchAll();

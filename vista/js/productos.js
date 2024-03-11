@@ -1,14 +1,13 @@
 $(document).ready(function () {
-    const idCategoria1 = $("#idCategoria").val();
+  const idCategoria1 = $("#idCategoria").val();
 
-    // Verifica si el valor no está vacío
-    if (idCategoria1.trim() !== "") {
-      // El campo está lleno, realiza la acción que deseas aquí
-      productosTienda(idCategoria1);
-      console.log("El campo #id_producto está lleno. Realiza alguna acción.");
-    } else {
-      productosTienda();
-    }
+  // Verifica si el valor no está vacío
+  if (idCategoria1 != "") {
+    // El campo está lleno, realiza la acción que deseas aquí
+    productosTienda(idCategoria1);
+  } else {
+    productosTienda();
+  }
   /*
    * FUNCION PARA LISTAR LAS CATEGORIAS EN EL INDEX
    */
@@ -33,7 +32,7 @@ $(document).ready(function () {
                         <h4 class="h5 mt-4 text-center" style="color: black; background-color: white;">${categoria.nombre_categoria}</h4>
                     </div>
                     <div style="width: 150px; height: 150px; display: flex; align-items: center; justify-content: center; margin: auto;">
-                        <img src="assets/img/tubos_sinfondo.png" style="width:100px;height:100px;">
+                        <img src="${categoria.imagen_producto}" style="width:100px;height:100px;">
                     </div>
                 </div>
             </div> 
@@ -90,8 +89,6 @@ $(document).ready(function () {
    * FIN FUNCION PARA LISTAR LOS PRODUCTOS MÁS VENDIDOS
    */
 
-
-
   /*
    * FUNCION PARA LISTAR LOS PRODUCTOS DE LA TIENDA
    */
@@ -121,15 +118,7 @@ $(document).ready(function () {
                 <div class="card-body text-center">
                     <a href="#" class="h5 text-decoration-none d-block" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-height: 1.5em;">${productoTienda.nombre_producto}</a>
                     <p class="mb-1 small" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Marca: ${productoTienda.marca_producto}</p>
-                    <ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
-                        <li>
-                            <span class="product-color-dot color-dot-red float-left rounded-circle ml-1"></span>
-                            <span class="product-color-dot color-dot-blue float-left rounded-circle ml-1"></span>
-                            <span class="product-color-dot color-dot-black float-left rounded-circle ml-1"></span>
-                            <span class="product-color-dot color-dot-light float-left rounded-circle ml-1"></span>
-                            <span class="product-color-dot color-dot-green float-left rounded-circle ml-1"></span>
-                        </li>
-                    </ul>
+                   
                     <ul class="list-unstyled d-flex justify-content-center mb-1">
                         <li>
                             <i class="text-warning fa fa-star"></i>
@@ -198,8 +187,8 @@ $(document).ready(function () {
 
   function detalleProducto() {
     funcion = "detalleProducto";
-      const idProducto = $("#id_producto").val();
-      console.log(idProducto);
+    const idProducto = $("#id_producto").val();
+    console.log(idProducto);
     $.post(
       "controlador/productosControlador.php",
       { idProducto, funcion },
@@ -320,4 +309,3 @@ $(".secondary-image").on("click", function () {
   // Cambia la imagen principal con la nueva ruta
   $(".main-image").attr("src", newImageSrc);
 });
-  

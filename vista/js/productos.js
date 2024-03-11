@@ -1,4 +1,14 @@
 $(document).ready(function () {
+    const idCategoria1 = $("#idCategoria").val();
+
+    // Verifica si el valor no está vacío
+    if (idCategoria1.trim() !== "") {
+      // El campo está lleno, realiza la acción que deseas aquí
+      productosTienda(idCategoria1);
+      console.log("El campo #id_producto está lleno. Realiza alguna acción.");
+    } else {
+      productosTienda();
+    }
   /*
    * FUNCION PARA LISTAR LAS CATEGORIAS EN EL INDEX
    */
@@ -80,16 +90,7 @@ $(document).ready(function () {
    * FIN FUNCION PARA LISTAR LOS PRODUCTOS MÁS VENDIDOS
    */
 
-  const idCategoria1 = $("#idCategoria").val();
 
-  // Verifica si el valor no está vacío
-  if (idCategoria1.trim() !== "") {
-    // El campo está lleno, realiza la acción que deseas aquí
-    productosTienda(idCategoria1);
-    console.log("El campo #id_producto está lleno. Realiza alguna acción.");
-  } else {
-    productosTienda();
-  }
 
   /*
    * FUNCION PARA LISTAR LOS PRODUCTOS DE LA TIENDA
@@ -197,7 +198,8 @@ $(document).ready(function () {
 
   function detalleProducto() {
     funcion = "detalleProducto";
-    const idProducto = $("#id_producto").val();
+      const idProducto = $("#id_producto").val();
+      console.log(idProducto);
     $.post(
       "controlador/productosControlador.php",
       { idProducto, funcion },
@@ -310,6 +312,7 @@ $(document).ready(function () {
    * FIN FUNCION PARA DETALLAR UN PRODUCTO
    */
 });
+
 $(".secondary-image").on("click", function () {
   // Obtén la ruta de la imagen clicada
   var newImageSrc = $(this).attr("src");
@@ -317,3 +320,4 @@ $(".secondary-image").on("click", function () {
   // Cambia la imagen principal con la nueva ruta
   $(".main-image").attr("src", newImageSrc);
 });
+  

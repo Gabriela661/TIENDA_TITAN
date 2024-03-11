@@ -9,8 +9,7 @@ if (isset($_GET['id_categoria'])) {
 }
 ?>
 <!-- Incluye jQuery desde CDN -->
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ZeidV6fP3dL3mE7vBwmoW27jGxm21U9Pz5l3S5DN/z4ZxyNo5WH2x5cP9viXnLE" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <body>
     <div id="modal2" class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
@@ -103,6 +102,7 @@ if (isset($_GET['id_categoria'])) {
             </div>
         </div>
     </div>
+
     <!-- -------------------fin de tubos----------------------------- -->
     <!-- Open Content -->
 
@@ -129,12 +129,10 @@ if (isset($_GET['id_categoria'])) {
 
     <!-- End Script -->
 
-    <!-- Start Slider Script -->
-    <script src="assets/js/slick.min.js"></script>
 
     <script src="vista/js/productos.js"></script>
     <!-- End Slider Script -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-lxkD1a4lFNEzUWx5ePACnXHvZ2is9vRyGCEAawuH3PaYsKcDS+au8lW8Ekb4l7xj" crossorigin="anonymous"></script>
+
 </body>
 
 </html>

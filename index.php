@@ -8,8 +8,9 @@
     <meta name="author" content="Devcrud">
     <link rel="stylesheet" href="assets/css/templatemo.css">
     <title>TITAN_TIENDA</title>
-    <!-- Bootstrap + FoodHut main styles -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="assets/css/foodhut.css">
+
 </head>
 <!-- Preloader -->
 

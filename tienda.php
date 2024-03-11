@@ -1,5 +1,7 @@
 <?php include './assets/views/navbar.php' ?>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
 <?php
 if (isset($_GET['id_categoria'])) {
     $idCategoria = $_GET['id_categoria'];
@@ -67,7 +69,6 @@ if (isset($_GET['id_categoria'])) {
     <!-- End Footer -->
 
     <!-- Start Script -->
-    <script src="assets/js/jquery-1.11.0.min.js"></script>
     <script src="assets/js/jquery-migrate-1.2.1.min.js"></script>
     <script src="assets/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/templatemo.js"></script>

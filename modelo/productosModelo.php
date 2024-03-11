@@ -175,4 +175,45 @@ class Productos
         $this->objetos = $query->fetchAll();
         return $this->objetos;
     }
+
+
+    /**
+     * Obtiene y devuelve la lista de productos de la tienda, filtrados por categoría si se proporciona una.
+     *
+     * @return array Lista de productos de la tienda.
+     */
+    public function busquedaProductos()
+    {
+        if (!empty($_POST['consulta'])) {
+            $consulta = '%' . $_POST['consulta'] . '%'; // Agregar comodines para buscar parcialmente
+
+            $sql = "SELECT 
+                p.id_producto,
+                p.nombre_producto,
+                p.marca_producto,
+                p.precio_producto,
+                c.nombre_categoria AS categoria_producto,
+                (
+                    SELECT url_imagen
+                    FROM imagen i
+                    WHERE i.id_producto = p.id_producto
+                    ORDER BY i.id_imagen ASC
+                    LIMIT 1
+                ) AS imagen_producto
+            FROM
+                producto p
+            JOIN
+                categoria c ON p.id_categoria = c.id_categoria
+            WHERE
+                p.nombre_producto LIKE :consulta
+                OR p.marca_producto LIKE :consulta
+                OR p.descripcion_producto LIKE :consulta LIMIT 5;";
+
+            $query = $this->acceso->prepare($sql);
+            $query->bindParam(':consulta', $consulta, PDO::PARAM_STR);
+            $query->execute();
+            $this->objetos = $query->fetchAll();
+            return $this->objetos;
+        }
+    }
 }

@@ -5,7 +5,7 @@ include_once "./assets/views/header.php";
 <nav class="navbar navbar-expand-lg navbar-light shadow" style="padding: 0.1px">
     <div class="container d-flex justify-content-between align-items-center">
 
-        <a class="navbar-brand text-success logo h1 align-self-center" href="index.php">
+        <a class="navbar-brand text-success logo h1 align-self-center ml-3" href="index.php">
             <img class="tiltle" src="assets/img/logo_titan1.png" alt="">
         </a>
 
@@ -14,7 +14,7 @@ include_once "./assets/views/header.php";
         </button>
 
         <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex justify-content-lg-between" id="templatemo_main_nav">
-            <div class="flex-fill">
+            <div class="flex-fill ml-3">
                 <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto" style="font-size: 100px;">
                     <li class="nav-item">
                         <a class="nav-link" href="index.php">INICIO</a>
@@ -31,27 +31,21 @@ include_once "./assets/views/header.php";
                 </ul>
             </div>
             <div class="navbar align-self-center d-flex">
-                <div class="d-lg-none flex-sm-fill mt-3 mb-4 col-7 col-sm-auto pr-3">
-                    <div class="input-group">
-                        <input type="text" class="form-control " id="inputMobileSearch" placeholder="Search ...">
-                        <div class="input-group-text">
-                            <i class="fa fa-fw fa-search"></i>
-                        </div>
-                    </div>
-                </div>
-                <a class="nav-icon position-relative text-decoration-none" href="#" data-bs-toggle="modal" data-bs-target="#templatemo_search">
+
+                <div class="nav-icon position-relative text-decoration-none" href="#" data-bs-toggle="modal" data-bs-target="#templatemo_search">
                     <div class="dropdown mt-2">
                         <div class="input-group-text bg-white" style="border-radius: 150px;">
-                            <input type="text" name="bsucar" class="form-control border-0" id="dropdownInput" placeholder="Buscar" aria-label="Buscar" aria-describedby="button-addon3" onclick="toggleDropdown()" oninput="toggleDropdown()">
+                            <input type="text" name="bsucar" class="form-control border-0" id="dropdownInput" placeholder="Buscar" aria-label="Buscar" aria-describedby="button-addon3" oninput="toggleDropdown()">
                             <i class="fa fa-fw fa-search text-decoration-none"></i>
                         </div>
                         <ul class="dropdown-menu w-100 z-index-1000 dropdown-menu-end bg-blue" id="dropdownMenu">
-                            <li><a class="dropdown-item" href="#">taladro</a></li>
-                            <li><a class="dropdown-item" href="#">tromp</a></li>
-                            <li><a class="dropdown-item" href="#">trompo</a></li>
+                            <!-- Contenido del menú desplegable -->
                         </ul>
                     </div>
-                </a>
+                </div>
+
+
+
                 &nbsp;&nbsp;
                 <a class="nav-icon position-relative text-decoration-none" href="#">
                     <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>

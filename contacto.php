@@ -118,6 +118,7 @@
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"></script>
     <script src="assets/js/map.js"></script> -->
   <!-- End Script -->
+  <script src="vista/js/busquedaProductos.js"></script>
 </body>
 
 </html>

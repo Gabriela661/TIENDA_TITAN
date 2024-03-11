@@ -19,7 +19,6 @@ $(document).ready(function () {
       "controlador/productosControlador.php",
       { consulta, funcion },
       (response) => {
-        console.log(response);
         const categorias = JSON.parse(response);
         let template = "";
         categorias.forEach((categoria) => {
@@ -112,7 +111,7 @@ $(document).ready(function () {
                     <div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
                         <ul class="list-unstyled">
                             <li><a class="btn btn-success text-white" href="#"><i class="far fa-heart"></i></a></li>
-                            <li><a class="btn btn-success text-white mt-2" href="detalle.php?id_categoria=${productoTienda.id_producto}"><i class="far fa-eye"></i></a></li>
+                            <li><a class="btn btn-success text-white mt-2" href="detalle.php?id_producto=${productoTienda.id_producto}"><i class="far fa-eye"></i></a></li>
                         </ul>
                     </div>
                 </div>
@@ -189,12 +188,11 @@ $(document).ready(function () {
   function detalleProducto() {
     funcion = "detalleProducto";
     const idProducto = $("#id_producto").val();
-    console.log(idProducto);
+
     $.post(
       "controlador/productosControlador.php",
       { idProducto, funcion },
       (response) => {
-        console.log(response);
         const detalles = JSON.parse(response);
         let template = "";
         detalles.forEach((detalle) => {
@@ -303,24 +301,5 @@ $(document).ready(function () {
    */
 });
 
-$(".secondary-image").on("click", function () {
-  // Obtén la ruta de la imagen clicada
-  var newImageSrc = $(this).attr("src");
 
-  // Cambia la imagen principal con la nueva ruta
-  $(".main-image").attr("src", newImageSrc);
-});
-  function handleMouseMove(event, card) {
-    const rect = card.getBoundingClientRect();
-    const x = event.clientX - rect.left;
-    const y = event.clientY - rect.top;
-
-    const offsetX = (x / card.clientWidth - 0.5) * 20; // Ajusta el valor según tu preferencia
-    const offsetY = (y / card.clientHeight - 0.5) * 20; // Ajusta el valor según tu preferencia
-
-    card.style.transform = `scale(1.1) translate(${offsetX}px, ${offsetY}px)`;
-  }
-
-  function handleMouseLeave(card) {
-    card.style.transform = "scale(1) translate(0, 0)";
-  }
+ 

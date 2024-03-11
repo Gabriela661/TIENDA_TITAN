@@ -2,10 +2,10 @@
 
 ?>
 <?php
-if (isset($_GET['id_categoria'])) {
-    $idCategoria = $_GET['id_categoria'];
+if (isset($_GET['id_producto'])) {
+    $id_producto = $_GET['id_producto'];
 } else {
-    $idCategoria = ""; // Puedes establecer un valor predeterminado si el parámetro no está presente
+    $id_producto = ""; // Puedes establecer un valor predeterminado si el parámetro no está presente
 }
 ?>
 <!-- Incluye jQuery desde CDN -->
@@ -108,7 +108,7 @@ if (isset($_GET['id_categoria'])) {
 
     <section class="bg-light">
         <div class="container pb-5">
-            <input id="id_producto" class="d-none" type="text" value="<?php echo $idCategoria ?>">
+            <input id="id_producto" class="d-none" type="text" value="<?php echo $id_producto ?>">
             <div class="row" id="detalle_producto">
 
             </div>

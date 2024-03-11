@@ -121,3 +121,25 @@ if ($_POST['funcion'] == 'detalleProducto') {
 /* 
  * FIN FUNCION PARA DETALLAR UN PRODUCTO
  */
+
+/* 
+ * FUNCION PARA MOSTRAR LOS PRODUCTOS BUSCADOS
+ */
+if ($_POST['funcion'] == 'busquedaProductos') {
+    $json = array();
+    $productos->busquedaProductos();
+    foreach ($productos->objetos as $objeto) {
+        $json[] = array(
+            'id_producto' => $objeto->id_producto,
+            'nombre_producto' => $objeto->nombre_producto,
+            'precio_producto' => $objeto->precio_producto,
+            'imagen_producto' => 'vista/assets/img/' .  strtolower($objeto->categoria_producto) . '/' . $objeto->imagen_producto,
+            'marca_producto' => $objeto->marca_producto,
+        );
+    }
+    $jsonstring = json_encode($json);
+    echo $jsonstring;
+}
+/* 
+ * FIN FUNCION  PARA MOSTRAR LOS PRODUCTOS BUSCADOS
+ */

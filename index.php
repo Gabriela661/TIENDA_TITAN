@@ -86,10 +86,10 @@
             <a href="#" class="btn btn-lg btn-primary" id="rounded-btn">FIND TABLE</a>
         </div>
     </div>
-    <!-- About Section 
-    <div id="gallary" class="text-center bg-secondary text-light has-height-md middle-items wow fadeIn" style="height: 100px;">
+    <!-- Categorias -->
+    <div id="gallary" class="text-center bg-secondary text-light has-height-sm middle-items wow fadeIn">
         <h2 class="section-title">Categorias</h2>
-    </div> -->
+    </div>
 
     <div id="about" class="container-fluid has-bg-overlay fadeIn" id="about" data-wow-duration="1.5s">
         <div class="row justify-content-center" id="categoriaIndex">
@@ -97,9 +97,10 @@
     </div>
 
     <!--  gallary Section  -->
-    <div id="gallary" class="text-center bg-secondary text-light has-height-md middle-items wow fadeIn">
-        <h2 class="section-title">Productos</h2>
+    <div id="gallary" class="text-center bg-secondary text-light has-height-sm middle-items wow fadeIn">
+        <h2 class="section-title">Productos más vendidos</h2>
     </div>
+
 
     <div class="gallary row" id="masVendidos">
 

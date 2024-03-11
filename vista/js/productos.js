@@ -23,12 +23,12 @@ $(document).ready(function () {
         const categorias = JSON.parse(response);
         let template = "";
         categorias.forEach((categoria) => {
-          template += `<a style="background-color: white; padding: 15px; border-radius: 8px; margin: 20px;" href="tienda.php?id_categoria=${categoria.id_categoria}">
+          template += `<a style="background-color: white; padding: 15px; border-radius: 8px; margin: 20px; overflow: hidden; transition: transform 0.3s ease-in-out;" href="tienda.php?id_categoria=${categoria.id_categoria}" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
     <div class="col-md-4 col-lg-3 pb-5">
         <div>
             <div>
                 <div class="text-center">
-                <div style="width: 150px; display: flex; align-items: center; justify-content: center; margin: auto;">
+                    <div style="width: 150px; display: flex; align-items: center; justify-content: center; margin: auto;">
                         <h4 class="h5 mt-4 text-center" style="color: black; background-color: white;">${categoria.nombre_categoria}</h4>
                     </div>
                     <div style="width: 150px; height: 150px; display: flex; align-items: center; justify-content: center; margin: auto;">
@@ -38,7 +38,8 @@ $(document).ready(function () {
             </div> 
         </div>
     </div>
-</a>`;
+</a>
+`;
         });
         $("#categoriaIndex").html(template);
       }
@@ -65,10 +66,10 @@ $(document).ready(function () {
         productosMV.forEach((productoMV) => {
           let imagenStyle = `width: 150px; height: 180px;`;
           template += `
-    <div class="col-md-4 col-lg-3 mb-3 mt-3">
-        <div class="card shadow position-relative" style="margin:30px;">
+   <div class="col-md-4 col-lg-3 mb-3 mt-3" style="overflow: hidden; transition: transform 0.3s ease-in-out;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+    <div class="card shadow position-relative" style="transform-origin: center center; margin: 30px; overflow: hidden; transition: transform 0.3s ease-in-out;">
             <div class="ribbon ribbon-danger">
-                <span class="ribbon-text">Más Vendido</span>
+                <span class="ribbon-text"></span>
             </div>
             <div class="text-center">
                 <img src="${productoMV.imagen_producto}" alt="Producto" class="card-img-top" style="${imagenStyle}">
@@ -220,7 +221,7 @@ $(document).ready(function () {
                         </div>
                         <div class="col-4">
                             <a href="#">
-                                <img class="card-img img-fluid secondary-image" src="assets/img/tubos_sinfondo.png" alt="Product Image 2" style="width: 80px; height: 100px;">
+                                <img class="card-img img-fluid secondary-image" src="${detalle.imagen_producto}" alt="Product Image 2" style="width: 80px; height: 100px;">
                             </a>
                         </div>
                         <div class="col-4">
@@ -309,3 +310,17 @@ $(".secondary-image").on("click", function () {
   // Cambia la imagen principal con la nueva ruta
   $(".main-image").attr("src", newImageSrc);
 });
+  function handleMouseMove(event, card) {
+    const rect = card.getBoundingClientRect();
+    const x = event.clientX - rect.left;
+    const y = event.clientY - rect.top;
+
+    const offsetX = (x / card.clientWidth - 0.5) * 20; // Ajusta el valor según tu preferencia
+    const offsetY = (y / card.clientHeight - 0.5) * 20; // Ajusta el valor según tu preferencia
+
+    card.style.transform = `scale(1.1) translate(${offsetX}px, ${offsetY}px)`;
+  }
+
+  function handleMouseLeave(card) {
+    card.style.transform = "scale(1) translate(0, 0)";
+  }

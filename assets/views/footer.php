@@ -4,16 +4,16 @@
    <div class="container-fluid bg-dark text-light has-height-md middle-items border-top text-center ">
         <div class="row">
             <div class="col-sm-4">
-                <h3>EMAIL US</h3>
-                <P class="text-muted">info@website.com</P>
+                <h3>CORREO ELECTRONICO</h3>
+                <P class="text-muted">Titan@gmail.com.com</P>
             </div>
             <div class="col-sm-4">
-                <h3>CALL US</h3>
-                <P class="text-muted">(123) 456-7890</P>
+                <h3>TELEFONO</h3>
+                <P class="text-muted">934890639</P>
             </div>
             <div class="col-sm-4">
-                <h3>FIND US</h3>
-                <P class="text-muted">12345 Fake ST NoWhere AB Country</P>
+                <h3>DIRECCIÓN</h3>
+                <P class="text-muted">Jr. Bolivar # 515</P>
             </div>
         </div>
     </div>

@@ -94,7 +94,10 @@ if ($_POST['funcion'] == 'listarCategoriaTienda') {
 /* 
  * FUNCION PARA DETALLAR UN PRODUCTO
  */
+
 if ($_POST['funcion'] == 'detalleProducto') {
+
+
     $id_producto = $_POST['idProducto'];
 
     $json = array();
@@ -118,4 +121,3 @@ if ($_POST['funcion'] == 'detalleProducto') {
 /* 
  * FIN FUNCION PARA DETALLAR UN PRODUCTO
  */
-

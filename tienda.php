@@ -41,13 +41,13 @@ if (isset($_GET['id_categoria'])) {
                 </div>
                 <!-- Pie del modal -->
                 <div class="modal-footer d-flex justify-content-center ">
-                    <div class="col-12 col-md-6 col-lg-5">
+                    <div class="col-12 col-md-6 col-lg-6">
                         <a id="comprar" href="datos_usuario.php" type="button" class="btn  btn-warning btn-block">
                             <i class="fa-solid fa-cart-shopping"></i>
                             Finalizar Compra
                         </a>
                     </div>
-                    <div class="col-12 col-md-6 col-lg-5">
+                    <div class="col-12 col-md-6 col-lg-6">
                         <button id="btnLimpiarCarrito" data-id_usuario="1" class="btn  btn-danger btn-block">Limpiar Carrito</button>
                     </div>
                 </div>

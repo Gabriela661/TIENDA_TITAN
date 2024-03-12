@@ -68,7 +68,9 @@ $(document).ready(function () {
                 Swal.fire({
                   icon: "success",
                   title: "Producto añadido ",
-                  text: "El producto se ha agregado al carrito",
+                  text: "El producto seleccionado existe en el carrito, se le sumo la cantidad",
+                  timer: 2000, // tiempo en milisegundos (2 segundos)
+                  showConfirmButton: false, // oculta el botón de confirmación
                 }).then(() => {
                   inputCantidad.val(1);
                   cargarCarrito(id_usuario);
@@ -109,6 +111,8 @@ $(document).ready(function () {
                   icon: "success",
                   title: "Producto añadido ",
                   text: "El producto se ha agregado al carrito",
+                  timer: 2000, // tiempo en milisegundos (3 segundos)
+                  showConfirmButton: false, // oculta el botón de confirmación
                 }).then(() => {
                   inputCantidad.val(1);
                   cargarCarrito(id_usuario);
@@ -167,7 +171,7 @@ $(document).ready(function () {
                             </div>
                         </div>
                     </div>`;
-          subtotal = producto.totalProducto;
+          subtotal += producto.total_valor_carrito;
         });
         $("#carrito_contenedor").html(template);
         document.getElementById("subtotal").innerText =

@@ -63,9 +63,9 @@ $(document).ready(function () {
         let template = "";
         let contador = 0;
         productosMV.forEach((productoMV) => {
-          let imagenStyle = `width: 150px; height: 180px;`;
+          let imagenStyle = `width: 60px; height: 80px;`;
           template += `
-                    <div class="col-md-4 col-lg-3 mb-3 mt-3" style="overflow: hidden; transition: transform 0.3s ease-in-out;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                    <div class="col-md-2 col-lg-2 mb-3 mt-3" style="overflow: hidden; transition: transform 0.3s ease-in-out;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
                         <div class="card shadow position-relative" style="transform-origin: center center; margin: 30px; overflow: hidden; transition: transform 0.3s ease-in-out;">
                                 <div class="ribbon ribbon-danger">
                                     <span class="ribbon-text"></span>

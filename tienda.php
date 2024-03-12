@@ -2,7 +2,7 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-
+<link rel="stylesheet" href="assets/css/stilos.css">
 <?php
 if (isset($_GET['id_categoria'])) {
     $idCategoria = $_GET['id_categoria'];
@@ -41,16 +41,14 @@ if (isset($_GET['id_categoria'])) {
                 </div>
                 <!-- Pie del modal -->
                 <div class="modal-footer d-flex justify-content-center ">
-                    <div class="col-12 col-md-4 col-lg-5">
+                    <div class="col-12 col-md-6 col-lg-6">
                         <a id="comprar" href="datos_usuario.php" type="button" class="btn  btn-warning btn-block">
+                            <i class="fa-solid fa-cart-shopping"></i>
                             Finalizar Compra
                         </a>
                     </div>
-                    <div class="col-12 col-md-4 col-lg-5">
-                        <a href="pagoProforma.php" class="btn  btn-info btn-block">Generar Proforma</a>
-                    </div>
-                    <div class="col-12 col-md-4 col-lg-5">
-                        <button id="btnResetearCarrito" class="btn  btn-danger btn-block">Limpiar Carrito</button>
+                    <div class="col-12 col-md-6 col-lg-6">
+                        <button id="btnLimpiarCarrito" data-id_usuario="1" class="btn  btn-danger btn-block">Limpiar Carrito</button>
                     </div>
                 </div>
             </div>

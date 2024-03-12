@@ -39,7 +39,7 @@ include_once "./assets/views/header.php";
                             <i class="fa fa-fw fa-search text-decoration-none"></i>
                         </div>
                         <ul class="dropdown-menu w-100 z-index-1000 dropdown-menu-end bg-blue" id="dropdownMenu">
-                            <!-- Contenido del menú desplegable -->
+                            <!-- SE MUESTRAN LOS ARCHIVOS QUE SE BUSCAN -->
                         </ul>
                     </div>
                 </div>
@@ -47,6 +47,8 @@ include_once "./assets/views/header.php";
 
 
                 &nbsp;&nbsp;
+
+
                 <a class="nav-icon position-relative text-decoration-none" href="#">
                     <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
                     <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">7</span>

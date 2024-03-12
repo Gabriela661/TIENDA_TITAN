@@ -41,7 +41,7 @@ class Productos
             producto p
         JOIN
             categoria c ON p.id_categoria = c.id_categoria
-        LIMIT 4;";
+        LIMIT 6;";
 
         $query = $this->acceso->prepare($sql);
         $query->execute();

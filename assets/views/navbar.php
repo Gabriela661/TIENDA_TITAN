@@ -38,7 +38,7 @@ include_once "./assets/views/header.php";
                             <input type="text" name="bsucar" class="form-control border-0" id="dropdownInput" placeholder="Buscar" aria-label="Buscar" aria-describedby="button-addon3" oninput="toggleDropdown()">
                             <i class="fa fa-fw fa-search text-decoration-none"></i>
                         </div>
-                        <ul class="dropdown-menu w-100 z-index-1000 dropdown-menu-end bg-blue" id="dropdownMenu">
+                        <ul class="dropdown-menu w-100 z-index-1000 dropdown-menu-end " id="dropdownMenu">
                             <!-- SE MUESTRAN LOS ARCHIVOS QUE SE BUSCAN -->
                         </ul>
                     </div>

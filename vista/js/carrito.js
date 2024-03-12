@@ -30,7 +30,7 @@ $(document).ready(function () {
   $(document).on("click", ".sumarBtn", function () {
     var inputCantidad = $(this).siblings(".cantidadInput");
     var cantidad = parseInt(inputCantidad.val());
-
+    console.log(cantidad);
     cantidad += 1;
     inputCantidad.val(cantidad);
   });
@@ -41,7 +41,7 @@ $(document).ready(function () {
     var id_usuario = $(this).data("id_usuario");
     var inputCantidad = $(this).siblings(".cantidadInput");
     var cantidad_carrito = parseInt(inputCantidad.val());
-
+    console.log(cantidad_carrito);
     funcion = "verificar_existencia_carrito";
     $.post(
       "controlador/carritoControlador.php",
@@ -159,7 +159,7 @@ $(document).ready(function () {
                                     <label id="nombreProducto" name="nombreProducto" class="h4">${producto.nombre_producto}</label>
                                 </div>
                                 <div class="col-auto">
-                                    <button data-id_carrito="${producto.id_carrito}" data-id_usuario="1" id="eliminarProducto"type="button" class="close" >
+                                    <button data-id_carrito="${producto.id_carrito}" data-id_usuario="1" id="eliminarProducto"type="button" class="btn-close" >
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
@@ -212,6 +212,8 @@ $(document).ready(function () {
             icon: "success",
             title: "Limpieza exitosa",
             text: "Se limpiaron todos los productos del carrito",
+            timer: 2000, // tiempo en milisegundos (3 segundos)
+            showConfirmButton: false, // oculta el botón de confirmación
           }).then(() => {
             cargarCarrito(id_usuario);
           });

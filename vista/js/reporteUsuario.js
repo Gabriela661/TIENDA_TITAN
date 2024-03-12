@@ -26,81 +26,143 @@ $(document).ready(function () {
           }
           contador++; // Incrementamos el contador en cada iteración
           template += `
-          <tr data-id="${reporte.id_cliente}">
+          <tr>
           <th scope="row">${contador}</th>
           <th scope="row">${reporte.nombre_cliente}</th>
           <th scope="row">${reporte.apellido_cliente}</th>          
           <th scope="row">${tipo_cliente}</th>
           <th scope="row">${reporte.cantidad_compra}</th>
-          <th scope="row">${reporte.total_compra}</th>`;
+          <th scope="row">${reporte.total_compra}</th>
+          </tr>`;
         });
         $('#reporte_usuario_lista').html(template);
+
+        // Inicializar DataTables después de cargar los datos en la tabla
+        $('#reporte_usuario').DataTable({
+          paging: true,
+          searching: true,
+          ordering: true,
+          info: true,
+          language: {
+            url: '//cdn.datatables.net/plug-ins/1.10.21/i18n/Spanish.json',
+          },
+        });
       }
     );
   }
 
-  $(document).on('click', '#generatePDF', function () {
+  /*  $(document).on('click', '#generatePDF', function () {
     const { jsPDF } = window.jspdf;
-
-    /*     const pdfContainerHTML = `
-    <div class="header">
-      <img src="logo.png" alt="Logo" class="logo">
-      <h1 class="title">TIENDA TITAN</h1>
-      <p class="subtitle">Materiales de construcción de calidad</p>
-    </div>
-    <h2 class="table-title">Reporte de Usuarios</h2>
-  `;
-
-    // Crear un nuevo elemento div temporal
-    const tempDiv = $('<div>').append(pdfContainerHTML);
-
-    // Agregar la tabla al elemento temporal
-    tempDiv.append($('#reporte_usuario').clone());
-
-    // Configurar evento para generar el PDF
-    const pdfContainer = tempDiv;
-    const opt = {
-      margin: 10,
-      filename: 'reporte_usuarios.pdf',
-      image: { type: 'jpeg', quality: 0.98 },
-      html2canvas: { scale: 2 },
-      jsPDF: { unit: 'mm', format: 'letter', orientation: 'portrait' },
-    };
-    console.log(html2pdf());
-    html2pdf().set(opt).from(pdfContainer).save(); */
-
-    // Crear el PDF a partir de la tabla HTML
     const doc = new jsPDF();
 
+    // Agregar la imagen de marca de agua
+    const watermarkImg = 'assets/img/watermark.png'; // Ruta de tu imagen de marca de agua
+    const imgWidth = 100; // Ancho de la imagen
+    const imgHeight = 50; // Altura de la imagen
+    const pdfWidth = doc.internal.pageSize.getWidth();
+    const pdfHeight = doc.internal.pageSize.getHeight();
+    const xPos = (pdfWidth - imgWidth) / 2; // Centrar horizontalmente
+    const yPos = (pdfHeight - imgHeight) / 2; // Centrar verticalmente
+    doc.addImage(watermarkImg, 'PNG', xPos, yPos, imgWidth, imgHeight);
+
     // Agregar el logo en la parte superior izquierda
-    const imgData = 'assets/img/logo_titan1.png'; // Reemplaza con la cadena base64 de tu logo
-    doc.addImage(imgData, 'PNG', 10, 10, 30, 10);
+    const imgData = 'assets/img/logo_titan.png'; // Ruta de tu logo
+    doc.addImage(imgData, 'PNG', 10, 10, 30, 15);
 
-    // Agregar el título centrado
+    // Agregar los números de contacto (WhatsApp) en la parte superior derecha
+    doc.setFontSize(8);
+    doc.setTextColor(150, 150, 150);
+    doc.text('943212297 - 932566922', pdfWidth - 60, 15);
+
+    // Agregar la dirección debajo de los números de contacto
+    doc.setFontSize(8);
+    doc.text('Carretera Central Km 412', pdfWidth - 60, 25);
+    // Agregar la dirección debajo de los números de contacto
+    doc.setFontSize(8);
+    doc.text('CPM Llicua - Amarilis - Huánuco', pdfWidth - 60, 30);
+
+    // Agregar texto adicional
     doc.setFontSize(18);
-    doc.setTextColor(0, 0, 0);
-    const titleWidth =
-      (doc.getStringUnitWidth('TIENDA TITAN') * doc.internal.getFontSize()) /
-      doc.internal.scaleFactor;
-    const titleX = (doc.internal.pageSize.getWidth() - titleWidth) / 2;
-    doc.text('TIENDA TITAN', titleX, 30);
-
-    // Agregar el lema debajo del título
-    doc.setFontSize(12);
-    const lemaText = 'Materiales de construcción de calidad';
-    const lemaWidth =
-      (doc.getStringUnitWidth(lemaText) * doc.internal.getFontSize()) /
-      doc.internal.scaleFactor;
-    const lemaX = (doc.internal.pageSize.getWidth() - lemaWidth) / 2;
-    doc.text(lemaText, lemaX, 40);
-
-    // Agregar el título de la tabla
-    doc.setFontSize(16);
     doc.setTextColor(100, 100, 100);
-    doc.text('Reporte de usuarios', 14, 60);
+    doc.text('Reporte de Usuarios', pdfWidth - 140, 42);
 
     // Generar la tabla
-    doc.autoTable({ html: '#reporte_usuario', startY: 70, theme: 'striped' });
+    doc.autoTable({ html: '#reporte_usuario', startY: 50, theme: 'striped' });
+
+    // Abrir el PDF en una nueva ventana
+    var pdfWindow = window.open('', '_blank');
+    pdfWindow.document.open();
+    pdfWindow.document.write(
+      '<html><head><title>PDF Reporte de Usuarios</title></head><body>'
+    );
+    pdfWindow.document.write(
+      '<embed width="100%" height="100%" src="' +
+        doc.output('datauristring') +
+        '" type="application/pdf">'
+    );
+    pdfWindow.document.write('</body></html>');
+    pdfWindow.document.close();
+  }); */
+
+  $(document).on('click', '#generatePDF', function () {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+
+    const imgWidth = 100; // Ancho de la imagen
+    const imgHeight = 50; // Altura de la imagen
+    const pdfWidth = doc.internal.pageSize.getWidth();
+    const pdfHeight = doc.internal.pageSize.getHeight();
+    const xPos = (pdfWidth - imgWidth) / 2; // Centrar horizontalmente
+    const yPos = (pdfHeight - imgHeight) / 2; // Centrar verticalmente
+
+    // Variables para el diseño del encabezado y la tabla
+    const imgData = 'assets/img/logo_titan.png'; // Ruta de tu logo
+    const watermarkImg = 'assets/img/watermark.png';
+    const contactNumbers = '943212297 - 932566922';
+    const address1 = 'Carretera Central Km 412';
+    const address2 = 'CPM Llicua - Amarilis - Huánuco';
+    const reportTitle = 'Reporte de Usuarios';
+
+    // Función para dibujar el encabezado en cada página
+    const drawHeader = () => {
+      doc.addImage(imgData, 'PNG', 10, 10, 30, 15);
+      doc.addImage(watermarkImg, 'PNG', xPos, yPos, imgWidth, imgHeight);
+      doc.setFontSize(10);
+      doc.setTextColor(150, 150, 150);
+      doc.text(contactNumbers, doc.internal.pageSize.getWidth() - 60, 15);
+      doc.text(address1, doc.internal.pageSize.getWidth() - 60, 25);
+      doc.text(address2, doc.internal.pageSize.getWidth() - 60, 30);
+      doc.setFontSize(20);
+      doc.setTextColor(19, 19, 19);
+      doc.text(reportTitle, doc.internal.pageSize.getWidth() - 140, 42);
+    };
+
+    // Función para generar la tabla
+    const generateTable = () => {
+      doc.autoTable({
+        html: '#reporte_usuario',
+        startY: 50,
+        theme: 'striped',
+        headStyles: {
+          fillColor: [228, 85, 18], // Cambiar a color naranja
+          textColor: [255, 255, 255], // Cambiar el color del texto del encabezado
+        },
+      });
+    };
+
+    // Evento para dibujar el encabezado en cada página
+    doc.autoTable({
+      html: '#reporte_usuario',
+      startY: 50,
+      theme: 'striped',
+      headStyles: {
+        fillColor: [228, 85, 18], // Cambiar a color naranja
+        textColor: [255, 255, 255], // Cambiar el color del texto del encabezado
+      },
+      didDrawPage: () => {
+        drawHeader();
+      },
+    });
 
     // Abrir el PDF en una nueva ventana
     var pdfWindow = window.open('', '_blank');
@@ -118,7 +180,7 @@ $(document).ready(function () {
   });
 });
 
-$(document).ready(function () {
+/* $(document).ready(function () {
   // Función para filtrar los resultados de la tabla según el texto de búsqueda
   $('#buscar').on('input', function () {
     var searchText = $(this).val().toLowerCase(); // Obtener el texto de búsqueda y convertirlo a minúsculas
@@ -127,4 +189,4 @@ $(document).ready(function () {
       $(this).toggle($(this).text().toLowerCase().indexOf(searchText) > -1); // Mostrar u ocultar la fila según si contiene el texto de búsqueda
     });
   });
-});
+}); */

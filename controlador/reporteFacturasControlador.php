@@ -29,9 +29,13 @@ if ($_POST['funcion'] == 'dia_facturas') {
     $reporte_facturas->dia_facturas();
     foreach ($reporte_facturas->objetos as $objeto) {
         $json[] = array(
+            'id_usuario' => $objeto->id_usuario,
+            'id_cliente' => $objeto->id_cliente,
+            'nombre_tipo_pago' => $objeto->nombre_tipo_pago,
+            'nombre_cliente' => $objeto->nombre_cliente,
+            'total_venta' => $objeto->total_venta,
             'fecha' => $objeto->fecha,
-            'monto_total' => $objeto->monto_total,
-            'productos_cantidades' => $objeto->productos_cantidades
+            'total_venta' => $objeto->total_venta,
         );
     }
     $jsonstring = json_encode($json);
@@ -45,9 +49,13 @@ if ($_POST['funcion'] == 'mes_facturas') {
     $reporte_facturas->mes_facturas();
     foreach ($reporte_facturas->objetos as $objeto) {
         $json[] = array(
-            'mes' => $objeto->mes,
-            'monto_total' => $objeto->monto_total,
-            'productos_cantidades' => $objeto->productos_cantidades
+            'id_usuario' => $objeto->id_usuario,
+            'id_cliente' => $objeto->id_cliente,
+            'nombre_tipo_pago' => $objeto->nombre_tipo_pago,
+            'nombre_cliente' => $objeto->nombre_cliente,
+            'total_venta' => $objeto->total_venta,
+            'fecha' => $objeto->fecha,
+            'total_venta' => $objeto->total_venta,
         );
     }
     $jsonstring = json_encode($json);
@@ -62,9 +70,13 @@ if ($_POST['funcion'] == 'fechas_facturas') {
     $reporte_facturas->fechas_facturas($fechaInicio, $fechaFin);
     foreach ($reporte_facturas->objetos as $objeto) {
         $json[] = array(
+            'id_usuario' => $objeto->id_usuario,
+            'id_cliente' => $objeto->id_cliente,
+            'nombre_tipo_pago' => $objeto->nombre_tipo_pago,
+            'nombre_cliente' => $objeto->nombre_cliente,
+            'total_venta' => $objeto->total_venta,
             'fecha' => $objeto->fecha,
-            'monto_total' => $objeto->monto_total,
-            'productos_cantidades' => $objeto->productos_cantidades
+            'total_venta' => $objeto->total_venta,
         );
     }
     $jsonstring = json_encode($json);

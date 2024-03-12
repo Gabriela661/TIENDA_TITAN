@@ -14,7 +14,6 @@ $(document).ready(function () {
       return;
     }
 
-    // Realiza la búsqueda y muestra los resultados
     $.post(
       "controlador/productosControlador.php",
       {
@@ -58,3 +57,6 @@ $(document).ready(function () {
     .getElementById("dropdownInput")
     .addEventListener("input", busquedaProductos);
 });
+/*
+ * FIN FUNCION DE BUSQUEDA
+ */

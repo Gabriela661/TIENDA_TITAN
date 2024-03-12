@@ -2,16 +2,7 @@
 <?php
 include_once "assets/views/nav.php";
 ?>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<link href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css" rel="stylesheet">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-<!-- Google Font: Source Sans Pro -->
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
 
-<!-- Theme style -->
-<!-- <link rel="stylesheet" href="../../dist/css/adminlte.min.css">-->
-<link rel="stylesheet" href="../vista/assets/css/adminlte.min.css">
-<!-- <link rel="stylesheet" href="assets/css/stilos.css">-->
 <link rel="stylesheet" href="../vista/assets/css/stilos.css">
 
 <body>
@@ -72,12 +63,11 @@ include_once "assets/views/nav.php";
                                                 <thead id="facturas_lista_head">
                                                     <tr>
                                                         <th>N°</th>
-                                                        <th>TIPO DE PAGO</th>
+                                                        <th>FECHA</th>
                                                         <th>CLIENTE</th>
+                                                        <th>TIPO DE PAGO</th>
                                                         <th>TIPO DE VENTA</th>
                                                         <th>MONTO TOTAL</th>
-                                                        <th>FECHA</th>
-                                                        <th>VER</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody id="reporte_facturas_lista">
@@ -106,13 +96,6 @@ include_once "assets/views/nav.php";
     </div>
 
 </body>
-<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap4.min.js"></script>
-<script src="../vista/assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- AdminLTE App -->
 
-<script src="../vista/assets/js/adminlte.min.js"></script>
-<!-- AdminLTE for demo purposes -->
 <script src="js/reporteFacturas.js"></script>
-<script src="../vista/assets/js/buscar.js"></script>
 </div>

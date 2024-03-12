@@ -81,12 +81,9 @@ include_once "assets/views/nav.php";
     </div>
 
 </body>
-<script src="assets/js/jquery.dataTables.min.js"></script>
-<script src="assets/js/dataTables.bootstrap4.min.js"></script>
-<script src="../vista/assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- AdminLTE App -->
-<script src="../vista/assets/js/adminlte.min.js"></script>
+
 
 <!-- AdminLTE for demo purposes -->
 <script src="js/reporteUsuario.js"></script>
-<script src="../vista/assets/js/buscar.js"></script>
+<!-- <script src="../vista/assets/js/buscar.js"></script> -->
+

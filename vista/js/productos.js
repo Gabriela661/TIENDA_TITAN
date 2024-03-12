@@ -132,8 +132,9 @@ $(document).ready(function () {
                     <!-- Icono de carrito con botones de suma, resta y campo de número -->
                     <div class="input-group mt-3">
                     <button class="btn btn-outline-secondary" type="button" id="restarBtn">-</button>
-                    <input type="text" class="form-control text-center" value="1" id="cantidadProducto">
-                    <button class="btn btn-outline-secondary" type="button" id="sumarBtn">+</button>
+<input type="text" class="form-control text-center cantidadInput" value="1" id="cantidadProducto">
+<button class="btn btn-outline-secondary" type="button" id="sumarBtn">+</button>
+
                     <button data-id_producto="${productoTienda.id_producto}" data-id_usuario="1" class="btn btn-primary" id="agregarCarritoBtn">Agregar al carrito</button>
                    
                 </div>
@@ -308,4 +309,6 @@ $(document).ready(function () {
   /*
    * FIN FUNCION PARA DETALLAR UN PRODUCTO
    */
+
+  
 });

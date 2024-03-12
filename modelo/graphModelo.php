@@ -12,58 +12,16 @@ class graph
         $this->acceso = $db->pdo;
     }
 
-    // listar facturas
-    function reporte_facturas()
+
+    function venta_producto_categorias()
     {
-        $sql = "SELECT tp.nombre_tipo_pago, c.nombre_cliente, v.id_cliente, v.id_usuario, v.total_venta, v.fecha, v.url_factura
-        FROM venta v
-        JOIN cliente c ON v.id_cliente = c.id_cliente
-        JOIN tipo_pago tp ON v.id_tipo_pago = tp.id_tipo_pago;
-        ;";
-        $query = $this->acceso->prepare($sql);
-        $query->execute();
-        $this->objetos = $query->fetchAll();
-        return $this->objetos;
-    }
-
-    // listar facturas día
-    /* function dia_facturas($dia) */
-    function dia_facturas()
-    { //CURDATE()
-        $sql = "SELECT
-        DATE_FORMAT(v.fecha, '%d-%m-%Y') AS fecha,
-        SUM(dv.cantidad * p.precio_producto) AS monto_total,
-        GROUP_CONCAT(CONCAT(p.nombre_producto, ':', dv.cantidad) SEPARATOR '; ') AS productos_cantidades
-        FROM
-        venta v
-        JOIN detalle_venta dv ON v.id_venta = dv.id_venta
-        JOIN producto p ON dv.id_producto = p.id_producto
-        WHERE
-        DATE(v.fecha) ='2024-03-09'
-        GROUP BY
-        DATE_FORMAT(v.fecha, '%d-%m-%Y');";
-        $query = $this->acceso->prepare($sql);
-        $query->execute();
-        $this->objetos = $query->fetchAll();
-        return $this->objetos;
-    }
-
-    // listar facturas MES
-    /* function dia_facturas($dia) */
-    function mes_facturas()
-    { //CURDATE()
-        $sql = "SELECT
-        DATE_FORMAT(v.fecha, '%m-%Y') AS mes,
-        SUM(dv.cantidad * p.precio_producto) AS monto_total,
-        GROUP_CONCAT(CONCAT(p.nombre_producto, ':', dv.cantidad) SEPARATOR '; ') AS productos_cantidades
-        FROM
-        venta v
-        JOIN detalle_venta dv ON v.id_venta = dv.id_venta
-        JOIN producto p ON dv.id_producto = p.id_producto
-        WHERE
-        YEAR(v.fecha) = YEAR(CURDATE()) AND MONTH(v.fecha) = MONTH(CURDATE())
-        GROUP BY
-        DATE_FORMAT(v.fecha, '%m-%Y');";
+        $sql = "SELECT c.nombre_categoria AS categoria,
+            COUNT(v.id_venta) AS cantidad_ventas
+            FROM venta v
+            INNER JOIN detalle_venta dv ON v.id_venta = dv.id_venta
+            INNER JOIN producto p ON dv.id_producto = p.id_producto
+            INNER JOIN categoria c ON p.id_categoria = c.id_categoria
+            GROUP BY c.nombre_categoria;";
         $query = $this->acceso->prepare($sql);
         $query->execute();
         $this->objetos = $query->fetchAll();
@@ -77,25 +35,27 @@ class graph
         $year_actual = date('Y');
         $dia_actual = date('d');
         $dia_siguiente = date('d', strtotime('+1 day'));
-        $mes_siguiente = date('m', strtotime('+1 month'));
+
         $year_siguiente = date('Y', strtotime('+1 year'));
 
+        // Fecha inicial
         if ($fechai == '') {
             $fechai = "{$year_actual}-{$mes_actual}-01";
         }
-        // Verificar si es el último día del mes
-        if ($dia_actual == date('t')) {
-            $fechaf = "{$year_actual}-{$mes_siguiente}-{$dia_siguiente}";
-        } else {
-            $fechaf = "{$year_actual}-{$mes_actual}-{$dia_siguiente}";
-        }
 
-        // Verificar si es el último día del año
-        if ($mes_actual == '12' && $dia_actual == '31') {
+        // Fecha final
+        if ($dia_actual == date('t')) { // Último día del mes
+            $fechaf = date('Y-m-d', strtotime('first day of +1 month'));
+        } else if ($mes_actual == '12' && $dia_actual == '31') { // Último día del año
             $fechaf = "{$year_siguiente}-01-01";
+        } else if ($fechaf == '') {
+            $fechaf = "{$year_actual}-{$mes_actual}-{$dia_siguiente}";
+        } else {
+            // Incrementar la fecha final en un día
+            $fechaf = date('Y-m-d', strtotime($fechaf . ' +1 day'));
         }
 
-        
+
 
         $sql = "SELECT
             DATE_FORMAT(v.fecha, '%d-%m-%Y') AS fecha,

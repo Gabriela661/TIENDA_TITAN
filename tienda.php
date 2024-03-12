@@ -1,5 +1,6 @@
 <?php include './assets/views/navbar.php' ?>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
 <?php
@@ -12,6 +13,50 @@ if (isset($_GET['id_categoria'])) {
 
 <body>
 
+    <!-- Modal del carrito de compras -->
+
+    <div id="modalCarrito" class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-right modal-dialog-centered modal-dialog-scrollable ">
+            <div class="modal-content h-100">
+                <!-- Cabecera del modal -->
+                <div class="modal-header">
+                    <h5 class="modal-title font-weight-bold">Carrito de compras</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <!-- Cuerpo del modal -->
+                <div class="modal-body">
+                    <div class="modal-body">
+                        <div id="carrito_contenedor">
+
+                        </div>
+                    </div>
+                </div>
+                <!-- sub total -->
+                <div class="row mb-3">
+                    <div class="col">
+                        <label class=" ml-3 h3" id="subtotal" name="subtotal"></label>
+                    </div>
+                </div>
+                <!-- Pie del modal -->
+                <div class="modal-footer d-flex justify-content-center ">
+                    <div class="col-12 col-md-4 col-lg-5">
+                        <a id="comprar" href="datos_usuario.php" type="button" class="btn  btn-warning btn-block">
+                            Finalizar Compra
+                        </a>
+                    </div>
+                    <div class="col-12 col-md-4 col-lg-5">
+                        <a href="pagoProforma.php" class="btn  btn-info btn-block">Generar Proforma</a>
+                    </div>
+                    <div class="col-12 col-md-4 col-lg-5">
+                        <button id="btnResetearCarrito" class="btn  btn-danger btn-block">Limpiar Carrito</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ./Modal del carrito de compras -->
     <!-- Menu de tienda -->
     <div class="encuadre py-4">
         <div class="row">
@@ -69,7 +114,6 @@ if (isset($_GET['id_categoria'])) {
     <!-- End Footer -->
 
     <!-- Start Script -->
-    <script src="assets/js/jquery-migrate-1.2.1.min.js"></script>
     <script src="assets/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/templatemo.js"></script>
     <script src="assets/js/custom.js"></script>

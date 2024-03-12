@@ -1,8 +1,8 @@
-<?php include './assets/views/navbar.php' ?>
+<?php include 'assets/views/navbar.php' ?>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 <link rel="stylesheet" href="assets/css/stilos.css">
+<link rel="stylesheet" href="assets/css/adminlte.min.css">
 <?php
 if (isset($_GET['id_categoria'])) {
     $idCategoria = $_GET['id_categoria'];
@@ -21,7 +21,7 @@ if (isset($_GET['id_categoria'])) {
                 <!-- Cabecera del modal -->
                 <div class="modal-header">
                     <h5 class="modal-title font-weight-bold">Carrito de compras</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
@@ -41,14 +41,18 @@ if (isset($_GET['id_categoria'])) {
                 </div>
                 <!-- Pie del modal -->
                 <div class="modal-footer d-flex justify-content-center ">
-                    <div class="col-12 col-md-6 col-lg-6">
-                        <a id="comprar" href="datos_usuario.php" type="button" class="btn  btn-warning btn-block">
-                            <i class="fa-solid fa-cart-shopping"></i>
-                            Finalizar Compra
-                        </a>
-                    </div>
-                    <div class="col-12 col-md-6 col-lg-6">
-                        <button id="btnLimpiarCarrito" data-id_usuario="1" class="btn  btn-danger btn-block">Limpiar Carrito</button>
+                    <div class="row col-12">
+                        <div class="col-6 col-md-6 col-lg-6">
+                            <a id="comprar" href="datos_usuario.php" type="button" class="btn btn-warning btn-block">
+                                <i class="fa-solid fa-cart-shopping"></i>
+                                Finalizar la Compra
+                            </a>
+                        </div>
+                        <div class="col-6 col-md-6 col-lg-6">
+                            <button id="btnLimpiarCarrito" data-id_usuario="1" class="btn btn-danger btn-block">
+                                <i class="fa-solid fa-trash-can"></i> Limpiar el Carrito
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -58,7 +62,7 @@ if (isset($_GET['id_categoria'])) {
     <!-- Menu de tienda -->
     <div class="encuadre py-4">
         <div class="row">
-            <div class="col-lg-2">
+            <div class="col-lg-1">
                 <img src="assets/img/CATEGORIAS (1) (1).png">
                 <br><br>
                 <ul id="categoriaMenu" class="list-unstyled templatemo-accordion">
@@ -66,7 +70,7 @@ if (isset($_GET['id_categoria'])) {
             </div>
             <!-- Fin menu tienda -->
             <!-- Productos -->
-            <div class="col-lg-10">
+            <div class="col-lg-11">
                 <div class="row">
                     <div class="col-md-6">
                         <ul class="list-inline shop-top-menu pb-3 pt-1">
@@ -74,9 +78,7 @@ if (isset($_GET['id_categoria'])) {
                         </ul>
                     </div>
                 </div>
-                <div class="row">
 
-                </div>
                 <div class="row" id="productos_tienda">
 
                 </div>

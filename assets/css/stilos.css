@@ -1,0 +1,6 @@
+/* Estilo personalizado para alinear el modal a la derecha */
+.modal-dialog-right {
+  position: fixed;
+  right: 0; /* Ajusta este valor según tus necesidades */
+  width: auto;
+}

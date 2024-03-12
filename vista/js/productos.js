@@ -23,22 +23,22 @@ $(document).ready(function () {
         let template = "";
         categorias.forEach((categoria) => {
           template += `<a style="background-color: white; padding: 15px; border-radius: 8px; margin: 20px; overflow: hidden; transition: transform 0.3s ease-in-out;" href="tienda.php?id_categoria=${categoria.id_categoria}" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-    <div class="col-md-4 col-lg-3 pb-5">
-        <div>
-            <div>
-                <div class="text-center">
-                    <div style="width: 150px; display: flex; align-items: center; justify-content: center; margin: auto;">
-                        <h4 class="h5 mt-4 text-center" style="color: black; background-color: white;">${categoria.nombre_categoria}</h4>
-                    </div>
-                    <div style="width: 150px; height: 150px; display: flex; align-items: center; justify-content: center; margin: auto;">
-                        <img src="${categoria.imagen_producto}" style="width:100px;height:100px;">
-                    </div>
+            <div class="col-md-4 col-lg-3 pb-5">
+                <div>
+                    <div>
+                        <div class="text-center">
+                            <div style="width: 150px; display: flex; align-items: center; justify-content: center; margin: auto;">
+                                <h4 class="h5 mt-4 text-center" style="color: black; background-color: white;">${categoria.nombre_categoria}</h4>
+                            </div>
+                            <div style="width: 150px; height: 150px; display: flex; align-items: center; justify-content: center; margin: auto;">
+                                <img src="${categoria.imagen_producto}" style="width:100px;height:100px;">
+                            </div>
+                        </div>
+                    </div> 
                 </div>
-            </div> 
-        </div>
-    </div>
-</a>
-`;
+            </div>
+        </a>
+        `;
         });
         $("#categoriaIndex").html(template);
       }
@@ -65,21 +65,21 @@ $(document).ready(function () {
         productosMV.forEach((productoMV) => {
           let imagenStyle = `width: 150px; height: 180px;`;
           template += `
-   <div class="col-md-4 col-lg-3 mb-3 mt-3" style="overflow: hidden; transition: transform 0.3s ease-in-out;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-    <div class="card shadow position-relative" style="transform-origin: center center; margin: 30px; overflow: hidden; transition: transform 0.3s ease-in-out;">
-            <div class="ribbon ribbon-danger">
-                <span class="ribbon-text"></span>
-            </div>
-            <div class="text-center">
-                <img src="${productoMV.imagen_producto}" alt="Producto" class="card-img-top" style="${imagenStyle}">
-            </div>
-            <div class="card-body text-dark">
-                <h5 class="card-title" style="font-size: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-height: 3em; line-height: 1.5em;"> ${productoMV.nombre_producto}</h5>
-                <p class="card-text" style="font-size: 12px;">Precio: S/. ${productoMV.precio_producto}</p>
-                <a href="detalle.php?id_categoria=${productoMV.id_producto}" class="btn btn-primary d-block mx-auto mt-3">Ver Detalles</a>
-            </div>
-        </div>
-    </div>`;
+                    <div class="col-md-4 col-lg-3 mb-3 mt-3" style="overflow: hidden; transition: transform 0.3s ease-in-out;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                        <div class="card shadow position-relative" style="transform-origin: center center; margin: 30px; overflow: hidden; transition: transform 0.3s ease-in-out;">
+                                <div class="ribbon ribbon-danger">
+                                    <span class="ribbon-text"></span>
+                                </div>
+                                <div class="text-center">
+                                    <img src="${productoMV.imagen_producto}" alt="Producto" class="card-img-top" style="${imagenStyle}">
+                                </div>
+                                <div class="card-body text-dark">
+                                    <h5 class="card-title" style="font-size: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-height: 3em; line-height: 1.5em;"> ${productoMV.nombre_producto}</h5>
+                                    <p class="card-text" style="font-size: 12px;">Precio: S/. ${productoMV.precio_producto}</p>
+                                    <a href="detalle.php?id_producto=${productoMV.id_producto}" class="btn btn-primary d-block mx-auto mt-3">Ver Detalles</a>
+                                </div>
+                            </div>
+                        </div>`;
         });
         $("#masVendidos").html(template);
       }
@@ -130,12 +130,13 @@ $(document).ready(function () {
                     </ul>
                     <p class="text-center mb-0">S/. ${productoTienda.precio_producto}</p>
                     <!-- Icono de carrito con botones de suma, resta y campo de número -->
+                    
                     <div class="input-group mt-3">
-                    <button class="btn btn-outline-secondary" type="button" id="restarBtn">-</button>
-<input type="text" class="form-control text-center cantidadInput" value="1" id="cantidadProducto">
-<button class="btn btn-outline-secondary" type="button" id="sumarBtn">+</button>
+                    <button class="btn border-0 restarBtn" type="button"><i class="fas fa-minus"></i></button>
+                    <input type="text" class="form-control  border-0 text-center cantidadInput" value="1" class="cantidadProducto">
+                    <button class="btn border-0 sumarBtn" type="button"><i class="fas fa-plus"></i></button>
 
-                    <button data-id_producto="${productoTienda.id_producto}" data-id_usuario="1" class="btn btn-primary" id="agregarCarritoBtn">Agregar al carrito</button>
+                    <button data-id_producto="${productoTienda.id_producto}" data-id_usuario="1" class="col-12 pt-1 btn btn-primary" id="agregarCarritoBtn"><i class="fa-solid fa-cart-plus"></i> Agregar al carrito</button>
                    
                 </div>
 
@@ -309,6 +310,4 @@ $(document).ready(function () {
   /*
    * FIN FUNCION PARA DETALLAR UN PRODUCTO
    */
-
-  
 });

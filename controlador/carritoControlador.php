@@ -27,6 +27,7 @@ if ($_POST['funcion'] == 'cargarCarrito') {
 
         $json[] = array(
             'id_producto' => $objeto->id_producto,
+            'id_carrito' => $objeto->id_carrito,
             'cantidad_carrito' => $objeto->cantidad_carrito,
             'total_valor_carrito' => $objeto->total_valor_carrito,
             'nombre_producto' => $objeto->nombre_producto,
@@ -61,6 +62,7 @@ if ($_POST['funcion'] == 'verificar_existencia_carrito') {
 /* 
  * FIN FUNCION VERIFICAR SI EL PRODUCTO EXISTE EN EL CARRITO
  */
+
 /* 
  * FUNCION PARA ACTUALIZAR EL CARRITO
  */
@@ -71,4 +73,26 @@ if ($_POST['funcion'] == 'actualizar_carrito') {
 }
 /* 
  * FIN FUNCION PARA ACTUALIZAR EL CARRITO
+ */
+
+/* 
+ * FUNCION PARA LIMPIAR EL  CARRITO
+ */
+if ($_POST['funcion'] == 'limpiarCarrito') {
+    $id_usuario = $_POST['id_usuario'];
+    $carrito->limpiarCarrito($id_usuario);
+}
+/* 
+ * FIN FUNCION PARA LIMPIAR EL  CARRITO
+ */
+
+/* 
+ * FUNCION PARA LIMPIAR UN PRODUCTO DEL CARRITO
+ */
+if ($_POST['funcion'] == 'limpiarProductoCarrito') {
+    $id_carrito = $_POST['id_carrito'];
+    $carrito->limpiarProductoCarrito($id_carrito);
+}
+/* 
+ * FIN FUNCION PARA LIMPIAR UN PRODUCTO DEL CARRITO
  */

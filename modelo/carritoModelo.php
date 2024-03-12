@@ -73,7 +73,7 @@ class carrito
                     return $this->objetos;
                 } 
     }
-      /* FUNCION PARA CARGAR LOS PRODUCTOS EN EL CARRITO  */
+      /* FIN FUNCION PARA CARGAR LOS PRODUCTOS EN EL CARRITO  */
 
       /* FUNCION PARA VERIFICAR EXISTENCIA DEL PRODUCTO EN EL CARRITO */  
     public function verificar_existencia_carrito()
@@ -124,5 +124,36 @@ GROUP BY id_carrito;";
         }
     }
 
-    /* FIN DE LA FUNCION PARA AGREGAR UNA NUEVA CATEGORIA  */
+    /* FIN DE LA FUNCION PARA AGREGAR UN NUEVO PRODUCTO AL CARRITO  */
+
+    /* FUNCION PARA LIMPIAR EL CARRITO */
+    function limpiarCarrito($id_usuario)
+    {
+        $sql = "DELETE FROM carrito WHERE id_usuario =:id_usuario;
+        ";
+        $query = $this->acceso->prepare($sql);
+        $query->execute(array(':id_usuario' => $id_usuario));
+        if ($query->rowCount() >= 0) {
+            echo 'limpiado';
+        } else {
+            echo 'error';
+        }
+    }
+    /* FIN DE LA FUNCION PARA LIMPIAR EL CARRITO */
+
+    /* FUNCION PARA LIMPIAR EL CARRITO */
+    function limpiarProductoCarrito($id_carrito)
+    {
+        $sql = "DELETE FROM carrito WHERE id_carrito =:id_carrito;
+        ";
+        $query = $this->acceso->prepare($sql);
+        $query->execute(array(':id_carrito' => $id_carrito));
+        if ($query->rowCount() >= 0) {
+            echo 'producto_limpiado';
+        } else {
+            echo 'error';
+        }
+    }
+    /* FIN DE LA FUNCION PARA LIMPIAR EL CARRITO */
+
 }

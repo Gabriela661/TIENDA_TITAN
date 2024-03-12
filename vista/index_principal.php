@@ -106,64 +106,88 @@
                  </div>
              </div>
 
+             <hr>
              <!-- Gráficos -->
              <!-- Contenedor principal de gráficas -->
              <div class="row">
-                 <section class="col-lg-7 connectedSortable">
-                     <!-- graph 1 -->
-                     <div class="card">
-                         <div class="card-header">
-                             <h3 class="card-title">
-                                 <i class="fas fa-chart-pie mr-1"></i>
-                                 Sales
-                             </h3>
-                             <div class="card-tools">
-                                 <ul class="nav nav-pills ml-auto">
-                                     <li class="nav-item">
-                                         <a class="nav-link active" href="#revenue-chart" data-toggle="tab">Area</a>
-                                     </li>
-                                     <li class="nav-item">
-                                         <a class="nav-link" href="#sales-chart" data-toggle="tab">Donut</a>
-                                     </li>
-                                 </ul>
-                             </div>
-                         </div>
-                         <div class="card-body">
-                             <div class="tab-content p-0">
 
-                                 <div class="chart tab-pane active" id="revenue-chart" style="position: relative; height: 300px;">
-                                     <canvas id="revenue-chart-canvas" height="300" style="height: 300px;"></canvas>
+                 <section class="col-lg-7 connectedSortable">
+                     <h3 class="mb-2">Venta entre fechas</h3>
+                     <div class="row">
+                         <div class="col-md-12 mt-2">
+                             <div class="row">
+                                 <div class="card col-md-10">
+                                     <div class="row card-header">
+                                         <div class="col-md-4">
+                                             <label for="fechaInicioG3">Fecha Inicial:</label>
+                                             <input type="date" id="fechaInicioG3" class="form-control">
+                                         </div>
+                                         <div class="col-md-4">
+                                             <label for="fechaFinG3">Fecha Final:</label>
+                                             <input type="date" id="fechaFinG3" class="form-control">
+                                         </div>
+                                         <div class="col-md-2">
+                                             <button id="btnCargarGrap3" class="btn btn-primary">Cargar</button>
+                                         </div>
+                                     </div>
+                                     <div class="card-body">
+                                         <div class="tab-content p-0">
+                                             <div class="chart tab-pane active" style="position: relative; height: 300px;">
+                                                 <canvas id="graph3" height="300" style="height: 300px;"></canvas>
+                                             </div>
+                                         </div>
+                                     </div>
                                  </div>
-                                 <div class="chart tab-pane" id="sales-chart" style="position: relative; height: 300px;">
-                                     <canvas id="sales-chart-canvas" height="300" style="height: 300px;"></canvas>
+                             </div>
+
+
+                             <div class="row">
+                                 <div class="card col-md-10">
+                                     <div class="card-header">
+                                         <h3 class="card-title">
+                                             <i class="fas fa-chart-pie mr-1"></i>
+                                             Ventas
+                                         </h3>
+                                         <div class="card-tools">
+                                             <ul class="nav nav-pills ml-auto">
+                                                 <li class="nav-item">
+                                                     <a class="nav-link active" href="#revenue-chart" data-toggle="tab">Area</a>
+                                                 </li>
+                                                 <li class="nav-item">
+                                                     <a class="nav-link" href="#sales-chart" data-toggle="tab">Circular</a>
+                                                 </li>
+                                             </ul>
+                                         </div>
+                                     </div>
+                                     <div class="card-body">
+                                         <div class="tab-content p-0">
+
+                                             <div class="chart tab-pane active" id="revenue-chart" style="position: relative; height: 300px;">
+                                                 <canvas id="revenue-chart-canvas" height="300" style="height: 300px;"></canvas>
+                                             </div>
+                                             <div class="chart tab-pane" id="sales-chart" style="position: relative; height: 400px;">
+                                                 <canvas id="sales-chart-canvas" height="400" style="height: 300px;"></canvas>
+                                             </div>
+                                         </div>
+                                     </div>
                                  </div>
                              </div>
                          </div>
                      </div>
+                 </section>
+
+                 <section class="col-lg-5 connectedSortable">
+                     <!-- graph 1 -->
 
                      <div class="card">
                          <div class="card-header border-0">
                              <div class="d-flex justify-content-between">
-                                 <h3 class="card-title">Ventas semanales</h3>
+                                 <h2 class="card-title">Ventas semanales</h3>
                              </div>
                          </div>
-                         <div class="card-body">
-                             <div class="d-flex">
-                                 <p class="d-flex flex-column">
-                                    <!--  <span class="text-bold text-lg">820</span>
-                                     <span>Visitors Over Time</span> -->
-                                 </p>
-                                 <p class="ml-auto d-flex flex-column text-right">
-                                     <!-- <span class="text-success">
-                                         <i class="fas fa-arrow-up"></i> 12.5%
-                                     </span>
-                                     <span class="text-muted">Since last week</span> -->
-                                 </p>
-                             </div>
-
-                             <div class="position-relative mb-4">
+                         <div class="card-body">                             
                                  <canvas id="graph5" height="200"></canvas>
-                             </div>
+                             
                              <div class="d-flex flex-row justify-content-end">
                                  <span class="mr-2">
                                      <i class="fas fa-square text-primary"></i> Esta semana
@@ -175,37 +199,24 @@
                          </div>
                      </div>
 
+                     <div class="card">
+                         <div class="card-header border-0">
+                             <div class="d-flex justify-content-between">
+                                 <h3 class="card-title">Ventas categoría</h3>
+                             </div>
+                         </div>
+                         <div class="card-body">
+                             <div class="position-relative mb-4">
+                                 <canvas id="barChart" height="100"></canvas>
+                             </div>
+                         </div>
+                     </div>
+
+
+
                      <!-- graph 2, 3, 4 -->
                      <div class="row">
-                         <div class="col-md-6">
-                             <h2>Gráfico 1</h2>
-                             <canvas id="barChart" width="100" height="100"></canvas>
-                         </div>
-                       <!--   <div class="col-md-4">
-                             <h2>Gráfico 2</h2>
-                             <canvas id="" width="100" height="100"></canvas>
-                         </div> -->
-                         <div class="col-md-6">
-                             <h2>Gráfico 2</h2>
-                             <div class="row">
-                                 <div class="col-md-6">
-                                     <label for="fechaInicioG3">Fecha Inicial:</label>
-                                     <input type="date" id="fechaInicioG3" class="form-control">
-                                 </div>
-                                 <div class="col-md-6">
-                                     <label for="fechaFinG3">Fecha Final:</label>
-                                     <input type="date" id="fechaFinG3" class="form-control">
-                                 </div>
-                             </div>
-                             <div class="row mt-2">
-                                 <div class="col-md-12">
-                                     <button id="btnCargarGrap3" class="btn btn-primary">Cargar Datos</button>
-                                 </div>
-                             </div>
-                             <div class="col-md-12">
-                                 <canvas id="graph3" width="100" height="100"></canvas>
-                             </div>
-                         </div>
+
                      </div>
 
                      <!-- graph 5 y 6 -->
@@ -218,9 +229,6 @@
                          </div>
                      </div> -->
                  </section>
-
-                 <section class="col-lg-5 connectedSortable"></section>
-
              </div>
 
          </div>
@@ -229,45 +237,16 @@
      </div>
  </div>
 
- <footer class="main-footer">
+ <!--  <footer class="main-footer">
      <strong>Copyright &copy; 2024-2025 <a href="#">Tienda TITAN</a>.</strong>
      Derechos reservados.
      <div class="float-right d-none d-sm-inline-block">
          <b>Version</b> 1.0.0
      </div>
- </footer>
+ </footer> -->
 
- </div>
  <script src="js/graph/graph.js"></script>
-
- <!--  <script src="plugins/jquery/jquery.min.js"></script>
-
- <script src="plugins/jquery-ui/jquery-ui.min.js"></script>
-
-
- <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-
- <script src="plugins/chart.js/Chart.min.js"></script>
-
- <script src="plugins/sparklines/sparkline.js"></script>
-
- <script src="plugins/jqvmap/jquery.vmap.min.js"></script>
- <script src="plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
-
- <script src="plugins/jquery-knob/jquery.knob.min.js"></script>
-
- <script src="plugins/moment/moment.min.js"></script>
- <script src="plugins/daterangepicker/daterangepicker.js"></script>
-
- <script src="plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
-
- <script src="plugins/summernote/summernote-bs4.min.js"></script>
-
- <script src="plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
-
- <script src="dist/js/adminlte.js?v=3.2.0"></script>
-
- <script src="dist/js/demo.js"></script>
-
- <script src="dist/js/pages/dashboard.js"></script> -->
+ </div>
  </body>
+
+ </html>

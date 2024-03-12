@@ -178,9 +178,9 @@ class Productos
 
 
     /**
-     * Obtiene y devuelve la lista de productos de la tienda, filtrados por categoría si se proporciona una.
+     * Obtiene y devuelve la lista de productos de la tienda parecidos a lo que se esta buscando
      *
-     * @return array Lista de productos de la tienda.
+     * @return array Lista de resultado de la busqueda
      */
     public function busquedaProductos()
     {
@@ -216,4 +216,5 @@ class Productos
             return $this->objetos;
         }
     }
+  
 }

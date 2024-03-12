@@ -65,9 +65,9 @@ if ($_POST['funcion'] == 'verificar_existencia_carrito') {
  * FUNCION PARA ACTUALIZAR EL CARRITO
  */
 if ($_POST['funcion'] == 'actualizar_carrito') {
-    $id_producto = $_POST['id_producto'];
+    $id_carrito = $_POST['id_carrito'];
     $cantidad_carrito = $_POST['cantidad_carrito'];
-    $carrito->actualizar_carrito($id_producto, $cantidad_carrito);
+    $carrito->actualizar_carrito($id_carrito, $cantidad_carrito);
 }
 /* 
  * FIN FUNCION PARA ACTUALIZAR EL CARRITO

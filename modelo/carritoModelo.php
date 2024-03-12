@@ -96,16 +96,28 @@ GROUP BY id_carrito;";
 
 
     /* FUNCION PARA AGREGAR UN NUEVO PRODUCTO AL CARRITO */
-    function actualizar_carrito($id_producto, $cantidad_carrito)
+    function actualizar_carrito($id_carrito, $cantidad_carrito)
     {
-        $sql = "INSERT INTO carrito ( cantidad_carrito,id_producto, id_usuario) VALUES ( :cantidad,:id_producto, :id_usuario)";
-        $query = $this->acceso->prepare($sql);
+        $id_carrito = $_POST['id_carrito'];
+        $nuevaCantidad = $_POST['cantidad_carrito'];
 
-        // Asegúrate de que $id_producto, $cantidad_carrito y $id_usuario sean variables seguras
-        $query->bindParam(':cantidad', $cantidad_carrito, PDO::PARAM_INT);
-        $query->bindParam(':id_producto', $id_producto, PDO::PARAM_INT);
+        // Obtener la cantidad actual
+        $consultaCantidad = "SELECT cantidad_carrito FROM carrito WHERE id_carrito = :id_carrito";
+        $queryCantidad = $this->acceso->prepare($consultaCantidad);
+        $queryCantidad->bindParam(':id_carrito', $id_carrito, PDO::PARAM_INT);
+        $queryCantidad->execute();
+        $cantidadActual = $queryCantidad->fetchColumn();
 
-        if ($query->execute()) {
+        // Calcular la nueva cantidad
+        $nuevaCantidadTotal = $cantidadActual + $nuevaCantidad;
+
+        // Actualizar la cantidad en la base de datos
+        $consultaActualizar = "UPDATE carrito SET cantidad_carrito = :nueva_cantidad WHERE id_carrito = :id_carrito";
+        $queryActualizar = $this->acceso->prepare($consultaActualizar);
+        $queryActualizar->bindParam(':id_carrito', $id_carrito, PDO::PARAM_INT);
+        $queryActualizar->bindParam(':nueva_cantidad', $nuevaCantidadTotal, PDO::PARAM_INT);
+        
+        if ($queryActualizar->execute()) {
             echo 'Update_carrito';
         } else {
             echo 'error_Update_carrito';

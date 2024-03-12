@@ -31,9 +31,10 @@ $(document).ready(function () {
               // Verificar si existencia es un array y tiene al menos un elemento
               if (Array.isArray(existencia) && existencia.length > 0) {
                   const cantidadEnCarrito = existencia[0].cantidad;
+                  const id_carrito = existencia[0].id_carrito;
                   const formDataActualizar = new FormData();
                   formDataActualizar.append("funcion", "actualizar_carrito");
-                  formDataActualizar.append("id_producto", id_producto);
+                  formDataActualizar.append("id_carrito", id_carrito);
                   formDataActualizar.append("cantidad_carrito", cantidad_carrito);
 
                   // Envía los datos al controlador utilizando la función enviarDatos

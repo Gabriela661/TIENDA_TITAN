@@ -2,13 +2,21 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-<link rel="stylesheet" href="assets/css/adminlte.min.css">
+<link rel="stylesheet" href="./assets/css/style-prefix.css">
 <link rel="stylesheet" href="assets/css/stilos.css">
+<!--
+    - google font link
+  -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<!-- SE OBTIENE EL ID DE LA CATEGORIA SI ES QUE ELEGIO ALGUNA CATEGORIA -->
 <?php
 if (isset($_GET['id_categoria'])) {
     $idCategoria = $_GET['id_categoria'];
 } else {
-    $idCategoria = ""; // Puedes establecer un valor predeterminado si el parámetro no está presente
+    $idCategoria = "";
 }
 ?>
 
@@ -60,47 +68,204 @@ if (isset($_GET['id_categoria'])) {
         </div>
     </div>
     <!-- ./Modal del carrito de compras -->
+
     <!-- Menu de tienda -->
-    <div class=" pl-2 py-4">
-        <div class="row">
-            <div class="col-1">
-                <img src="assets/img/CATEGORIAS (1) (1).png">
-                <br><br>
-                <ul id="categoriaMenu" class="list-unstyled templatemo-accordion">
-                </ul>
-            </div>
-            <div class="col-1">
+    <div>
+        <div class="category">
+
+            <div class="container">
+
+                <div class="category-item-container has-scrollbar" id="categoriaMenuHeader">
+
+
+
+
+
+
+                </div>
 
             </div>
-            <!-- Fin menu tienda -->
-            <!-- Productos -->
-            <div class="col-10">
-                <div class="row">
-                    <div class="col-md-6">
-                        <ul class="list-inline shop-top-menu pb-3 pt-1">
 
+        </div>
+
+
+
+
+
+        <!--
+      - PRODUCT
+    -->
+
+        <div class="product-container">
+
+            <div class="container">
+
+
+                <!--
+          - SIDEBAR
+        -->
+
+                <div class="sidebar  has-scrollbar" data-mobile-menu>
+
+                    <div class="sidebar-category">
+
+                        <div class="sidebar-top">
+                            <h2 class="sidebar-title">Categorias</h2>
+
+                            <button class="sidebar-close-btn" data-mobile-menu-close-btn>
+                                <ion-icon name="close-outline"></ion-icon>
+                            </button>
+                        </div>
+                        <!--Listado de categorias  -->
+                        <ul id="categoriaMenu" class="sidebar-menu-category-list">
                         </ul>
+
                     </div>
+
+                    <div class="product-showcase">
+
+                        <h3 class="showcase-heading">best sellers</h3>
+
+                        <div class="showcase-wrapper">
+
+                            <div class="showcase-container">
+
+                                <div class="showcase">
+
+                                    <a href="#" class="showcase-img-box">
+                                        <img src="./assets/images/products/1.jpg" alt="baby fabric shoes" width="75" height="75" class="showcase-img">
+                                    </a>
+
+                                    <div class="showcase-content">
+
+                                        <a href="#">
+                                            <h4 class="showcase-title">baby fabric shoes</h4>
+                                        </a>
+
+                                        <div class="showcase-rating">
+                                            <ion-icon name="star"></ion-icon>
+                                            <ion-icon name="star"></ion-icon>
+                                            <ion-icon name="star"></ion-icon>
+                                            <ion-icon name="star"></ion-icon>
+                                            <ion-icon name="star"></ion-icon>
+                                        </div>
+
+                                        <div class="price-box">
+                                            <del>$5.00</del>
+                                            <p class="price">$4.00</p>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="showcase">
+
+                                    <a href="#" class="showcase-img-box">
+                                        <img src="./assets/images/products/2.jpg" alt="men's hoodies t-shirt" class="showcase-img" width="75" height="75">
+                                    </a>
+
+                                    <div class="showcase-content">
+
+                                        <a href="#">
+                                            <h4 class="showcase-title">men's hoodies t-shirt</h4>
+                                        </a>
+                                        <div class="showcase-rating">
+                                            <ion-icon name="star"></ion-icon>
+                                            <ion-icon name="star"></ion-icon>
+                                            <ion-icon name="star"></ion-icon>
+                                            <ion-icon name="star"></ion-icon>
+                                            <ion-icon name="star-half-outline"></ion-icon>
+                                        </div>
+
+                                        <div class="price-box">
+                                            <del>$17.00</del>
+                                            <p class="price">$7.00</p>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="showcase">
+
+                                    <a href="#" class="showcase-img-box">
+                                        <img src="./assets/images/products/3.jpg" alt="girls t-shirt" class="showcase-img" width="75" height="75">
+                                    </a>
+
+                                    <div class="showcase-content">
+
+                                        <a href="#">
+                                            <h4 class="showcase-title">girls t-shirt</h4>
+                                        </a>
+                                        <div class="showcase-rating">
+                                            <ion-icon name="star"></ion-icon>
+                                            <ion-icon name="star"></ion-icon>
+                                            <ion-icon name="star"></ion-icon>
+                                            <ion-icon name="star"></ion-icon>
+                                            <ion-icon name="star-half-outline"></ion-icon>
+                                        </div>
+
+                                        <div class="price-box">
+                                            <del>$5.00</del>
+                                            <p class="price">$3.00</p>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="showcase">
+
+                                    <a href="#" class="showcase-img-box">
+                                        <img src="./assets/images/products/4.jpg" alt="woolen hat for men" class="showcase-img" width="75" height="75">
+                                    </a>
+
+                                    <div class="showcase-content">
+
+                                        <a href="#">
+                                            <h4 class="showcase-title">woolen hat for men</h4>
+                                        </a>
+                                        <div class="showcase-rating">
+                                            <ion-icon name="star"></ion-icon>
+                                            <ion-icon name="star"></ion-icon>
+                                            <ion-icon name="star"></ion-icon>
+                                            <ion-icon name="star"></ion-icon>
+                                            <ion-icon name="star"></ion-icon>
+                                        </div>
+
+                                        <div class="price-box">
+                                            <del>$15.00</del>
+                                            <p class="price">$12.00</p>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
                 </div>
 
-                <div class="row" id="productos_tienda">
+                <div class="product-box">
+                    <div class="product-main">
+
+                        <h2 class="title">Nuestros Productos</h2>
+
+                        <div class="product-grid" id="productos_tienda">
+
+
+
+                        </div>
+
+                    </div>
 
                 </div>
-                <div div="row">
-                    <nav aria-label="Page navigation example">
-                        <ul class="pagination justify-content-center">
-                            <li class="page-item disabled">
-                                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-                            </li>
-                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item">
-                                <a class="page-link" href="#">Next</a>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
+
             </div>
 
         </div>
@@ -118,8 +283,7 @@ if (isset($_GET['id_categoria'])) {
     <?php include 'assets/views/footer.php' ?>
     <!-- End Footer -->
 
-    <!-- Start Script -->
-    <script src="assets/js/bootstrap.bundle.min.js"></script>
+
     <script src="assets/js/templatemo.js"></script>
     <script src="assets/js/custom.js"></script>
     <!-- End Script -->
@@ -128,7 +292,15 @@ if (isset($_GET['id_categoria'])) {
     <script src="vista/js/busquedaProductos.js"></script>
     <script src="vista/js/carrito.js"></script>
 
-
+    <!--
+        - custom js link
+    -->
+    <script src="./assets/js/script.js"></script>
+    <!--
+    - ionicon link
+  -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
 
 </html>

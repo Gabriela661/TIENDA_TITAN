@@ -82,6 +82,29 @@ if ($_POST['funcion'] == 'listarCategoriaTienda') {
         $json[] = array(
             'id_categoria' => $objeto->id_categoria,
             'nombre_categoria' => $objeto->nombre_categoria,
+            'imagen_producto' => 'vista/assets/img/' .  strtolower($objeto->nombre_categoria) . '/' . $objeto->imagen,
+        );
+    }
+    $jsonstring = json_encode($json); // Se convierte el array de categorías a formato JSON
+    echo $jsonstring; // Se devuelve el JSON como respuesta al cliente
+}
+/* 
+ * FIN FUNCION PARA LISTAR LA CATEGORIA EN LA TIENDA
+ */
+
+/* 
+ * FUNCION PARA LISTAR LA CATEGORIA EN LA TIENDA EN EL HEADER
+ */
+if ($_POST['funcion'] == 'listarCategoriaTiendaheader') {
+    $json = array();
+    $productos->listarCategoriaTiendaheader(); // Se llama al método 'listarCategoria()' del objeto '$categoria' para obtener las categorías desde la base de datos
+    foreach ($productos->objetos as $objeto) {
+        // Se recorre el array de objetos de categorías y se crea un nuevo array asociativo para cada categoría
+        $json[] = array(
+            'id_categoria' => $objeto->id_categoria,
+            'nombre_categoria' => $objeto->nombre_categoria,
+            'imagen_producto' => 'vista/assets/img/' .  strtolower($objeto->nombre_categoria) . '/' . $objeto->imagen,
+            'cantidad_productos' =>  $objeto->cantidad_productos,
         );
     }
     $jsonstring = json_encode($json); // Se convierte el array de categorías a formato JSON

@@ -86,7 +86,7 @@ $(document).ready(function () {
           let imagenStyle = `width: 150px; height: 180px;`;
           template += `
       <div class="d-flex" style="transition: transform 0.3s ease-in-out;">
-    <div style="background-color: white; padding: 25px; border-radius: 8px; margin: 20px; overflow: hidden; color: black;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+    <div style="background-color: white; border-radius: 8px; margin: 30px; overflow: hidden; color: black;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
         <div class="col-md-4 col-lg-3 pb-5">
             <div>
                 <div>
@@ -109,10 +109,6 @@ $(document).ready(function () {
         </div>
     </div>
 </div>
-
-
-
-
                     `;
         });
         $("#masVendidos").html(template);
@@ -136,44 +132,66 @@ $(document).ready(function () {
         const productosTienda = JSON.parse(response);
         let template = "";
         productosTienda.forEach((productoTienda) => {
-          let imagenStyle = `width: 90%; height: 150px; object-fit: cover; margin: auto`;
           template += `
-        <div class="col-lg-2 col-md-3 col-sm-4 col-12">
-    <div class="card shadow product-card">
-        <!-- Imagen del producto -->
-        <img class="card-img-top img-fluid" src="${productoTienda.imagen_producto}" alt="Producto" style="${imagenStyle}">
-        
-        <!-- Cinta de precio -->
-        <div class="ribbon-wrapper ribbon-lg">
-            <div class="ribbon bg-orange">
-                <p class="text-center mb-0">S/. ${productoTienda.precio_producto}</p>
-            </div>
-        </div>
-        
-        <div class="card-body pl-1">
-                        <!-- Nombre del producto -->
-            <h6 class="h6 text-decoration-none d-block" style="font-size: 13px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-height: 1.5em;">${productoTienda.nombre_producto}</h6>
+  <div class="showcase">
 
-            <!-- Marca del producto -->
-            <h5>
-                <span class="h6 badge badge-warning" style="font-size: 11px;">Marca: ${productoTienda.marca_producto}</span>
-            </h5>
-             <h5>
-                <span class="h6 badge badge-success" style="font-size: 11px;">Stock: ${productoTienda.stock_producto}</span>
-            </h5>
+                                <div class="showcase-banner">
 
-            
-            <!-- Botones de agregar al carrito -->
-            <div class="input-group">
-                <button class="btn border-0 restarBtn" type="button"><i class="fas fa-minus"></i></button>
-                <input type="text" class="form-control border-0 text-center cantidadInput" value="1" class="cantidadProducto">
-                <button class="btn border-0 sumarBtn" type="button"><i class="fas fa-plus"></i></button>
-          
-            <button data-id_producto="${productoTienda.id_producto}" data-id_usuario="1" class="col-12 btn btn-primary " id="agregarCarritoBtn"><i class="fa-solid fa-cart-plus"></i> Agregar al carrito</button>
-              </div>
-        </div>
-    </div>
-</div>    
+                                    <img src="${productoTienda.imagen_producto}" alt="imagen producto" width="300"   height="150" class="product-img default">
+                                    <img src="./assets/images/products/jacket-4.jpg" alt="Mens Winter Leathers Jackets" width="300" class="product-img hover">
+
+                                    <p class="showcase-badge">Stock: ${productoTienda.stock_producto}</p>
+
+                                    <div class="showcase-actions">
+      
+                                        <button class="btn-action">
+                                            <ion-icon name="heart-outline"></ion-icon>
+                                        </button>
+
+                                        <a href="detalle.php?id_producto=${productoTienda.id_producto}"  class="btn-action">
+                                            <ion-icon name="eye-outline"></ion-icon>
+                                        </a>
+                                        <button class="btn-action restarBtn">
+                                             <ion-icon name="remove"></ion-icon>
+                                        </button>
+                                        <button >
+                                            <input class="cantidadInput" type="text" value="1" min="0" style="border:0; width: 25px;">
+                                        </button>
+                                        <button class="btn-action sumarBtn">
+                                        <ion-icon name="add"></ion-icon>                                 
+                                        </button>
+                                        <button data-id_producto="${productoTienda.id_producto}" data-id_usuario="1" id="agregarCarritoBtn" class="btn-action">
+                                            <ion-icon name="bag-add-outline"></ion-icon>
+                                        </button>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="showcase-content">
+
+                                    <a href="#" class="showcase-category accent-orange">Marca: ${productoTienda.marca_producto}</a>
+
+                                    <a href="#">
+                                        <h3 class="showcase-title">${productoTienda.nombre_producto}</h3>
+                                    </a>
+
+                                    <div class="showcase-rating">
+                                        <ion-icon name="star"></ion-icon>
+                                        <ion-icon name="star"></ion-icon>
+                                        <ion-icon name="star"></ion-icon>
+                                        <ion-icon name="star-outline"></ion-icon>
+                                        <ion-icon name="star-outline"></ion-icon>
+                                    </div>
+
+                                    <div class="price-box">
+                                        <p class="price">S/. ${productoTienda.precio_producto}</p>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
 
 `;
         });
@@ -200,18 +218,58 @@ $(document).ready(function () {
         let template = "";
         let contador = 0;
         categorias.forEach((categoria) => {
-          template += `<li class="pb-1">
-            <a id="categoria" data-id_categoria="${categoria.id_categoria}" class="collapsed d-flex justify-content-between h4 text-decoration-none" href="#">
-                ${categoria.nombre_categoria}
-                <i class="fa fa-fw fa-chevron-circle-down mt-1"></i>
-            </a>
-            <ul class="collapse show list-unstyled pl-3">
-                <li><a class="text-decoration-none" href="#">Liso</a></li>
-                <li><a class="text-decoration-none" href="#">Corrugado</a></li>
-            </ul>
-           </li>`;
+          template += `
+           <li class="sidebar-menu-category">
+                                <a id="categoria" data-id_categoria="${categoria.id_categoria}"  class="sidebar-accordion-menu" data-accordion-btn>
+                                    <div class="menu-title-flex">
+                                        <img src="${categoria.imagen_producto}" alt="clothes" width="20" height="20" class="menu-title-img">
+                                        <p class="menu-title">
+                                     ${categoria.nombre_categoria}</p>
+                                    </div>
+                                   
+                                </a>
+                            </li>
+         `;
         });
         $("#categoriaMenu").html(template);
+      }
+    );
+  }
+  /*
+   * FIN FUNCION PARA LISTAR LAS CATEGORIAS EN LA TIENDA
+   */
+  /*
+   * FUNCION PARA LISTAR LAS CATEGORIAS EN LA TIENDA
+   */
+  listarCategoriaTiendaheader();
+
+  function listarCategoriaTiendaheader(consulta) {
+    funcion = "listarCategoriaTiendaheader";
+    $.post(
+      "controlador/productosControlador.php",
+      { consulta, funcion },
+      (response) => {
+        console.log(response);
+        const categorias = JSON.parse(response);
+        let template = "";
+        let contador = 0;
+        categorias.forEach((categoria) => {
+          template += `     <div class="category-item">
+                        <div class="category-img-box">
+                            <img src="${categoria.imagen_producto}" alt="dress & frock" width="30">
+                        </div>
+                        <div class="category-content-box">
+                            <div class="category-content-flex">
+                                <h3 class="category-item-title">${categoria.nombre_categoria}</h3>
+
+                                <p class="category-item-amount">(${categoria.cantidad_productos}</h3>)</p>
+                            </div>
+                            <a id="categoria" data-id_categoria="${categoria.id_categoria}" class="category-btn">Ver todos</a>
+                        </div>
+                    </div>
+         `;
+        });
+        $("#categoriaMenuHeader").html(template);
       }
     );
   }

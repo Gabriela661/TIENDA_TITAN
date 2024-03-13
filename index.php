@@ -166,13 +166,25 @@
     </div>
     <div class="gallary row justify-content-center" id="masVendidos">
     </div>
-    <!-- Seccion de calcular  -->
-    <div class="container-fluid has-bg-overlay text-center text-light pb-4 middle-items" id="book-table">
-        <div class="">
-            <h2 class="section-title mb-3">CONTACTENOS</h2>
+    </div>
+    <!-- CONTACTANOS Section  -->
+    <div class="container-fluid has-bg-overlay text-center text-light has-height-sm middle-items" id="calcular" style="background-image:url(assets/img/calcular.jpg)">
+        <div class="container-fluid">
+            <h2 class="section-title">Contactanos</h2>
+            <div class="row mb-6">
+                <div class="col-sm-3 col-md-3 col-xs-12 my-1">
+                    <input type="text" class="form-control" id="nombres" placeholder="Nombres">
+                </div>
+                <div class="col-sm-3 col-md-3 col-xs-12 my-1">
+                    <input type="email" class="form-control" id="email" placeholder="Email">
+                </div>
+                <div class="col-sm-3 col-md-3 col-xs-12 my-1">
+                    <input type="text" class="form-control" id="telefono" placeholder="Telefono">
+                </div>
+                <input id="contactanos" type="submit" value="Contactarse" class="col-sm-3 btn btn-success">
+            </div>
         </div>
     </div>
-
     <!-- page whatsapp  -->
     <?php include 'whatsapp.php' ?>
     <!-- end of page footer -->

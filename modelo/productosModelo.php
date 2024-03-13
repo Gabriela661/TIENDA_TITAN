@@ -133,7 +133,24 @@ class Productos
      */
     public function listarCategoriaTienda()
     {
-        $sql = "SELECT id_categoria, nombre_categoria FROM categoria";
+        $sql = "SELECT id_categoria, nombre_categoria,imagen FROM categoria";
+        $query = $this->acceso->prepare($sql);
+        $query->execute();
+        $this->objetos = $query->fetchAll();
+        return $this->objetos;
+    }
+
+    /**
+     * Obtiene y devuelve la lista de categorías para ser mostradas en la página de la tienda.
+     *
+     * @return array Lista de categorías.
+     */
+    public function listarCategoriaTiendaheader()
+    {
+        $sql = "SELECT c.id_categoria, c.nombre_categoria, c.imagen, COUNT(p.id_producto) AS cantidad_productos
+FROM categoria c
+INNER JOIN producto p ON c.id_categoria = p.id_categoria
+GROUP BY c.id_categoria, c.nombre_categoria, c.imagen;";
         $query = $this->acceso->prepare($sql);
         $query->execute();
         $this->objetos = $query->fetchAll();

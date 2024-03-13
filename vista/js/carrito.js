@@ -111,8 +111,7 @@ $(document).ready(function () {
                   icon: "success",
                   title: "Producto añadido ",
                   text: "El producto se ha agregado al carrito",
-                  timer: 2000, // tiempo en milisegundos (3 segundos)
-                  showConfirmButton: false, // oculta el botón de confirmación
+                 
                 }).then(() => {
                   inputCantidad.val(1);
                   cargarCarrito(id_usuario);

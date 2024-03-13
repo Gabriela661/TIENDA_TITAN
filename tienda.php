@@ -1,4 +1,4 @@
-<?php include 'assets/views/navbar.php' ?>
+<?php include './assets/views/navbar.php' ?>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <link rel="stylesheet" href="assets/css/stilos.css">
@@ -60,7 +60,7 @@ if (isset($_GET['id_categoria'])) {
     </div>
     <!-- ./Modal del carrito de compras -->
     <!-- Menu de tienda -->
-    <div class="encuadre py-4">
+    <div class=" pl-2 py-4">
         <div class="row">
             <div class="col-lg-1">
                 <img src="assets/img/CATEGORIAS (1) (1).png">

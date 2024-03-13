@@ -104,7 +104,7 @@ $(document).ready(function () {
         productosTienda.forEach((productoTienda) => {
           let imagenStyle = `width: 80%; height: 150px; object-fit: cover; margin: auto`;
           template += `
-        <div class="col-lg-2 col-md-4 col-sm-4 col-12 mb-4 pl-5">
+        <div class="col-lg-2 col-md-4 col-sm-4 col-12 mb-4 pl-lg-5 pl-md-0">
     <div class="card shadow product-card">
         <!-- Imagen del producto -->
         <img class="card-img-top img-fluid" src="${productoTienda.imagen_producto}" alt="Producto" style="${imagenStyle}">
@@ -116,12 +116,15 @@ $(document).ready(function () {
             </div>
         </div>
         
-        <div class="card-body">
-            <!-- Nombre del producto -->
-            <h5 class="h5 text-decoration-none d-block" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-height: 1.5em;">${productoTienda.nombre_producto}</h5>
-            
+        <div class="card-body pl-1">
+                        <!-- Nombre del producto -->
+            <h6 class="h6 text-decoration-none d-block" style="font-size: 13px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-height: 1.5em;">${productoTienda.nombre_producto}</h6>
+
             <!-- Marca del producto -->
-            <h5><span class="badge badge-warning">Marca: ${productoTienda.marca_producto}</span></h5>
+            <h5>
+                <span class="h6 badge badge-warning" style="font-size: 11px;">Marca: ${productoTienda.marca_producto}</span>
+            </h5>
+
             
             <!-- Botones de agregar al carrito -->
             <div class="input-group">

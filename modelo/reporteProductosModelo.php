@@ -20,17 +20,14 @@ class reporte_productos
         p.id_producto,
         SUM(dv.cantidad) AS cantidad_total,
         p.precio_producto AS precio_unitario,
-        SUM(dv.cantidad * p.precio_producto) AS monto_total,
-        dv.id_venta,
-        c.nombre_cliente,
-        v.fecha
+        SUM(dv.cantidad * p.precio_producto) AS monto_total
     FROM
         detalle_venta dv
         JOIN producto p ON dv.id_producto = p.id_producto
         JOIN venta v ON dv.id_venta = v.id_venta
         JOIN cliente c ON v.id_cliente = c.id_cliente
     GROUP BY
-        p.nombre_producto, p.id_producto, dv.id_venta, c.nombre_cliente, v.fecha, p.precio_producto;";
+        p.nombre_producto, p.id_producto, p.precio_producto;";
         $query = $this->acceso->prepare($sql);
         $query->execute();
         $this->objetos = $query->fetchAll();

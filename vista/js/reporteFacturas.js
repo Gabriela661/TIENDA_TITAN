@@ -1,6 +1,8 @@
 $(document).ready(function () {
   var funcion;
   var funcion = '';
+  var datetime = new Date();
+  console.log(datetime);
 
   //mostrar reporte de usuarios
   reporte_facturas();
@@ -12,6 +14,7 @@ $(document).ready(function () {
       { consulta, funcion },
       (response) => {
         const reportes = JSON.parse(response);
+        console.log(reportes)
         let template = '';
         let contador = 0; // Inicializamos el contador
         reportes.forEach((reporte) => {
@@ -25,18 +28,30 @@ $(document).ready(function () {
           }
           contador++; // Incrementamos el contador en cada iteración
           template += `
-          <tr data-id="${reporte.id_cliente}">
+          <tr>
           <th scope="row">${contador}</th>
-          <th scope="row">${reporte.nombre_tipo_pago}</th>          
-          <th scope="row">${reporte.nombre_cliente}</th>
-          <th scope="row">${tipo_cliente}</th>
-          <th scope="row">${reporte.total_venta}</th>
-          <th scope="row">${reporte.fecha}</th>
-          <th scope="row"><a href="${reporte.url_factura}" data-id_factura="${reporte.id_venta}" type="button" class="btn btn-info">
-                        Ver
-                     </a></th>`;
+            <th scope="row">${reporte.fecha}</th>          
+            <th scope="row">${reporte.nombre_cliente}</th>          
+            <th scope="row">${reporte.nombre_tipo_pago}</th>
+            <th scope="row">${tipo_cliente}</th>
+            <th scope="row">${reporte.total_venta}</th>
+          </tr>`;
         });
         $('#reporte_facturas_lista').html(template);
+
+        // Destruir la instancia anterior de DataTables
+        $('#reporte_facturas').DataTable().destroy();
+
+        // Inicializar DataTables después de cargar los datos en la tabla
+        $('#reporte_facturas').DataTable({
+          paging: true,
+          searching: true,
+          ordering: true,
+          info: true,
+          language: {
+            url: '//cdn.datatables.net/plug-ins/1.10.21/i18n/Spanish.json',
+          },
+        });
       }
     );
   }
@@ -53,24 +68,52 @@ $(document).ready(function () {
         (response) => {
           const reportes = JSON.parse(response);
           let template = '';
-          let template2 = `<tr>
+          let template2 = `
+          <tr>
             <th>N°</th>
             <th>FECHA</th>
+            <th>CLIENTE</th>
+            <th>TIPO DE PAGO</th>
+            <th>TIPO DE VENTA</th>
             <th>MONTO TOTAL</th>
-            <th>PRODUCTO CANTIDAD</th>
-            </tr>`;
+          </tr>`;
           let contador = 0; // Inicializamos el contador
           reportes.forEach((reporte) => {
+            if (reporte.id_usuario == reporte.id_cliente) {
+              tipo_cliente = 'Online';
+            } else {
+              tipo_cliente = 'Presencial';
+            }
             contador++; // Incrementamos el contador en cada iteración
             template += `
-          <tr data-id="${reporte.fecha}">
+          <tr>
           <th scope="row">${contador}</th>
           <th scope="row">${reporte.fecha}</th>          
-          <th scope="row">${reporte.monto_total}</th>
-          <th scope="row">${reporte.productos_cantidades}</th></tr>`;
+          <th scope="row">${reporte.nombre_cliente}</th>          
+          <th scope="row">${reporte.nombre_tipo_pago}</th>
+          <th scope="row">${tipo_cliente}</th>
+          <th scope="row">${reporte.total_venta}</th>
+          </tr>`;
           });
+          // Destruir la instancia anterior de DataTables
+          $('#reporte_facturas').DataTable().destroy();
+
+          $('#reporte_facturas_lista').html('');
+          $('#facturas_lista_head').html('');
+
           $('#reporte_facturas_lista').html(template);
           $('#facturas_lista_head').html(template2);
+
+          // Inicializar DataTables después de cargar los datos en la tabla
+          $('#reporte_facturas').DataTable({
+            paging: true,
+            searching: true,
+            ordering: true,
+            info: true,
+            language: {
+              url: '//cdn.datatables.net/plug-ins/1.10.21/i18n/Spanish.json',
+            },
+          });
         }
       );
     }
@@ -88,27 +131,56 @@ $(document).ready(function () {
         (response) => {
           const reportes = JSON.parse(response);
           let template = '';
-          let template2 = `<tr>
-            <th>N°</th>
-            <th>MES</th>
-            <th>MONTO TOTAL</th>
-            <th>PRODUCTO CANTIDAD</th>
-            </tr>`;
+          let template2 = `
+          <tr>
+          <th>N°</th>
+          <th>FECHA</th>
+          <th>CLIENTE</th>
+          <th>TIPO DE PAGO</th>
+          <th>TIPO DE VENTA</th>
+          <th>MONTO TOTAL</th>
+        </tr`;
           let contador = 0; // Inicializamos el contador
           reportes.forEach((reporte) => {
-            // Asignar tipo_cliente en comparación de usuario
-            // Usuarios = (cliente online)
-            // Usuarios != (cliente presencial), porque el id_usuario
-            contador++; // Incrementamos el contador en cada iteración
+            if (reporte.id_usuario == reporte.id_cliente) {
+              tipo_cliente = 'Online';
+            } else {
+              tipo_cliente = 'Presencial';
+            }
             template += `
-          <tr data-id="${reporte.mes}">
-          <th scope="row">${contador}</th>
-          <th scope="row">${reporte.mes}</th>          
-          <th scope="row">${reporte.monto_total}</th>
-          <th scope="row">${reporte.productos_cantidades}</th></tr>`;
+            <tr>
+            <th scope="row">${contador}</th>
+            <th scope="row">${reporte.fecha}</th>          
+            <th scope="row">${reporte.nombre_cliente}</th>          
+            <th scope="row">${reporte.nombre_tipo_pago}</th>
+            <th scope="row">${tipo_cliente}</th>
+            <th scope="row">${reporte.total_venta}</th>
+            </tr>`;
           });
+          // Destruir la instancia anterior de DataTables
+          $('#reporte_facturas').DataTable().destroy();
+
+          $('#reporte_facturas_lista').html('');
+          $('#facturas_lista_head').html('');
+
           $('#reporte_facturas_lista').html(template);
           $('#facturas_lista_head').html(template2);
+
+          // Verificar si la instancia de DataTables existe
+          if ($.fn.DataTable.isDataTable('#reporte_facturas')) {
+            // Destruir la instancia anterior de DataTables
+            $('#reporte_facturas').DataTable().destroy();
+          }
+          // Inicializar DataTables después de cargar los datos en la tabla
+          $('#reporte_facturas').DataTable({
+            paging: true,
+            searching: true,
+            ordering: true,
+            info: true,
+            language: {
+              url: '//cdn.datatables.net/plug-ins/1.10.21/i18n/Spanish.json',
+            },
+          });
         }
       );
     }
@@ -120,6 +192,7 @@ $(document).ready(function () {
     function fechas_facturas(consulta) {
       const fechaInicio = $('#fecha_inicio').val();
       const fechaFin = $('#fecha_fin').val();
+      console.log(fechaFin, fechaInicio)
       // Se define la función a ejecutar en el controlador
       funcion = 'fechas_facturas';
       $.post(
@@ -127,67 +200,117 @@ $(document).ready(function () {
         { consulta, fechaInicio, fechaFin, funcion },
         (response) => {
           const reportes = JSON.parse(response);
+          console.log(reportes)
           let template = '';
           let template2 = `<tr>
-            <th>N°</th>
-            <th>FECHA</th>
-            <th>MONTO TOTAL</th>
-            <th>PRODUCTO CANTIDAD</th>
-            </tr>`;
+          <th>N°</th>
+          <th>FECHA</th>
+          <th>CLIENTE</th>
+          <th>TIPO DE PAGO</th>
+          <th>TIPO DE VENTA</th>
+          <th>MONTO TOTAL</th>
+        </tr`;
           let contador = 0; // Inicializamos el contador
           reportes.forEach((reporte) => {
-            // Asignar tipo_cliente en comparación de usuario
-            // Usuarios = (cliente online)
-            // Usuarios != (cliente presencial), porque el id_usuario
+            if (reporte.id_usuario == reporte.id_cliente) {
+              tipo_cliente = 'Online';
+            } else {
+              tipo_cliente = 'Presencial';
+            }
             contador++; // Incrementamos el contador en cada iteración
             template += `
-          <tr data-id="${reporte.fecha}">
-          <th scope="row">${contador}</th>
-          <th scope="row">${reporte.fecha}</th>          
-          <th scope="row">${reporte.monto_total}</th>
-          <th scope="row">${reporte.productos_cantidades}</th></tr>`;
+            <tr>
+            <th scope="row">${contador}</th>
+            <th scope="row">${reporte.fecha}</th>          
+            <th scope="row">${reporte.nombre_cliente}</th>          
+            <th scope="row">${reporte.nombre_tipo_pago}</th>
+            <th scope="row">${tipo_cliente}</th>
+            <th scope="row">${reporte.total_venta}</th>
+            </tr>`;
           });
+          // Destruir la instancia anterior de DataTables
+          $('#reporte_facturas').DataTable().destroy();
+
+          $('#reporte_facturas_lista').html('');
+          $('#facturas_lista_head').html('');
+
           $('#reporte_facturas_lista').html(template);
           $('#facturas_lista_head').html(template2);
+
+          // Inicializar DataTables después de cargar los datos en la tabla
+          $('#reporte_facturas').DataTable({
+            paging: true,
+            searching: true,
+            ordering: true,
+            info: true,
+            language: {
+              url: '//cdn.datatables.net/plug-ins/1.10.21/i18n/Spanish.json',
+            },
+          });
         }
       );
     }
   });
 
-  // Generar PDF
   $(document).on('click', '#generatePDFF', function () {
     const { jsPDF } = window.jspdf;
     const doc = new jsPDF();
 
-    // Agregar el logo en la parte superior izquierda
-    const imgData = 'assets/img/logo_titan1.png'; // Reemplaza con la cadena base64 de tu logo
-    doc.addImage(imgData, 'PNG', 10, 10, 30, 10);
+    const imgWidth = 100; // Ancho de la imagen
+    const imgHeight = 50; // Altura de la imagen
+    const pdfWidth = doc.internal.pageSize.getWidth();
+    const pdfHeight = doc.internal.pageSize.getHeight();
+    const xPos = (pdfWidth - imgWidth) / 2; // Centrar horizontalmente
+    const yPos = (pdfHeight - imgHeight) / 2; // Centrar verticalmente
 
-    // Agregar el título centrado
-    doc.setFontSize(18);
-    doc.setTextColor(0, 0, 0);
-    const titleWidth =
-      (doc.getStringUnitWidth('TIENDA TITAN') * doc.internal.getFontSize()) /
-      doc.internal.scaleFactor;
-    const titleX = (doc.internal.pageSize.getWidth() - titleWidth) / 2;
-    doc.text('TIENDA TITAN', titleX, 30);
+    // Variables para el diseño del encabezado y la tabla
+    const imgData = 'assets/img/logo_titan.png'; // Ruta de tu logo
+    const watermarkImg = 'assets/img/watermark.png';
+    const contactNumbers = '943212297 - 932566922';
+    const address1 = 'Carretera Central Km 412';
+    const address2 = 'CPM Llicua - Amarilis - Huánuco';
+    const reportTitle = 'Reporte de Facturas';
 
-    // Agregar el lema debajo del título
-    doc.setFontSize(12);
-    const lemaText = 'Materiales de construcción de calidad';
-    const lemaWidth =
-      (doc.getStringUnitWidth(lemaText) * doc.internal.getFontSize()) /
-      doc.internal.scaleFactor;
-    const lemaX = (doc.internal.pageSize.getWidth() - lemaWidth) / 2;
-    doc.text(lemaText, lemaX, 40);
+    // Función para dibujar el encabezado en cada página
+    const drawHeader = () => {
+      doc.addImage(imgData, 'PNG', 10, 10, 30, 15);
+      doc.addImage(watermarkImg, 'PNG', xPos, yPos, imgWidth, imgHeight);
+      doc.setFontSize(10);
+      doc.setTextColor(150, 150, 150);
+      doc.text(contactNumbers, doc.internal.pageSize.getWidth() - 60, 15);
+      doc.text(address1, doc.internal.pageSize.getWidth() - 60, 25);
+      doc.text(address2, doc.internal.pageSize.getWidth() - 60, 30);
+      doc.setFontSize(22);
+      doc.setTextColor(19, 19, 19);
+      doc.text(reportTitle, doc.internal.pageSize.getWidth() - 140, 42);
+    };
 
-    // Agregar el título de la tabla
-    doc.setFontSize(16);
-    doc.setTextColor(100, 100, 100);
-    doc.text('Reporte de Ventas', 14, 60);
+    // Función para generar la tabla
+    const generateTable = () => {
+      doc.autoTable({
+        html: '#reporte_facturas',
+        startY: 50,
+        theme: 'striped',
+        headStyles: {
+          fillColor: [228, 85, 18], // Cambiar a color naranja
+          textColor: [255, 255, 255], // Cambiar el color del texto del encabezado
+        },
+      });
+    };
 
-    // Generar la tabla
-    doc.autoTable({ html: '#reporte_facturas', startY: 70, theme: 'striped' });
+    // Evento para dibujar el encabezado en cada página
+    doc.autoTable({
+      html: '#reporte_facturas',
+      startY: 50,
+      theme: 'striped',
+      headStyles: {
+        fillColor: [228, 85, 18], // Cambiar a color naranja
+        textColor: [255, 255, 255], // Cambiar el color del texto del encabezado
+      },
+      didDrawPage: () => {
+        drawHeader();
+      },
+    });
 
     // Abrir el PDF en una nueva ventana
     var pdfWindow = window.open('', '_blank');

@@ -306,4 +306,6 @@ $(document).ready(function () {
   /*
    * FIN FUNCION PARA DETALLAR UN PRODUCTO
    */
+
+  
 });

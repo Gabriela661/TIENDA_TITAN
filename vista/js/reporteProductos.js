@@ -20,15 +20,25 @@ $(document).ready(function () {
           <tr data-id="${reporte.id_producto}">
           <th scope="row">${contador}</th>
           <th scope="row">${reporte.nombre_producto}</th>          
-          <th scope="row">${reporte.fecha}</th>
-          <th scope="row">${reporte.id_venta}</th>
-          <th scope="row">${reporte.nombre_cliente}</th>
           <th scope="row">${reporte.cantidad_total}</th>
           <th scope="row">${reporte.precio_producto}</th>
           <th scope="row">${reporte.monto_total}</th>
           </tr>`;
         });
         $('#productos_lista').html(template);
+        // Destruir la instancia anterior de DataTables
+        $('#reporte_productos').DataTable().destroy();
+
+        // Inicializar DataTables después de cargar los datos en la tabla
+        $('#reporte_productos').DataTable({
+          paging: true,
+          searching: true,
+          ordering: true,
+          info: true,
+          language: {
+            url: '//cdn.datatables.net/plug-ins/1.10.21/i18n/Spanish.json',
+          },
+        });
       }
     );
   }
@@ -65,10 +75,25 @@ $(document).ready(function () {
           <th scope="row">${reporte.monto_total}</th>
           </tr>`;
           });
+          // Destruir la instancia anterior de DataTables
+          $('#reporte_productos').DataTable().destroy();
+
           $('#productos_lista').html('');
-          $('#productos_lista').html(template);
           $('#productos_lista_head').html('');
+
+          $('#productos_lista').html(template);
           $('#productos_lista_head').html(template2);
+
+          // Inicializar DataTables después de cargar los datos en la tabla
+          $('#reporte_productos').DataTable({
+            paging: true,
+            searching: true,
+            ordering: true,
+            info: true,
+            language: {
+              url: '//cdn.datatables.net/plug-ins/1.10.21/i18n/Spanish.json',
+            },
+          });
         }
       );
     }
@@ -108,10 +133,25 @@ $(document).ready(function () {
             <th scope="row">${reporte.monto_total}</th>
             </tr>`;
           });
+          // Destruir la instancia anterior de DataTables
+          $('#reporte_productos').DataTable().destroy();
+
           $('#productos_lista').html('');
-          $('#productos_lista').html(template);
           $('#productos_lista_head').html('');
+
+          $('#productos_lista').html(template);
           $('#productos_lista_head').html(template2);
+
+          // Inicializar DataTables después de cargar los datos en la tabla
+          $('#reporte_productos').DataTable({
+            paging: true,
+            searching: true,
+            ordering: true,
+            info: true,
+            language: {
+              url: '//cdn.datatables.net/plug-ins/1.10.21/i18n/Spanish.json',
+            },
+          });
         }
       );
     }
@@ -167,35 +207,61 @@ $(document).ready(function () {
     const { jsPDF } = window.jspdf;
     const doc = new jsPDF();
 
-    // Agregar el logo en la parte superior izquierda
-    const imgData = 'assets/img/logo_titan1.png'; // Reemplaza con la cadena base64 de tu logo
-    doc.addImage(imgData, 'PNG', 10, 10, 30, 10);
+    const imgWidth = 100; // Ancho de la imagen
+    const imgHeight = 50; // Altura de la imagen
+    const pdfWidth = doc.internal.pageSize.getWidth();
+    const pdfHeight = doc.internal.pageSize.getHeight();
+    const xPos = (pdfWidth - imgWidth) / 2; // Centrar horizontalmente
+    const yPos = (pdfHeight - imgHeight) / 2; // Centrar verticalmente
 
-    // Agregar el título centrado
-    doc.setFontSize(18);
-    doc.setTextColor(0, 0, 0);
-    const titleWidth =
-      (doc.getStringUnitWidth('TIENDA TITAN') * doc.internal.getFontSize()) /
-      doc.internal.scaleFactor;
-    const titleX = (doc.internal.pageSize.getWidth() - titleWidth) / 2;
-    doc.text('TIENDA TITAN', titleX, 30);
+    // Variables para el diseño del encabezado y la tabla
+    const imgData = 'assets/img/logo_titan.png'; // Ruta de tu logo
+    const watermarkImg = 'assets/img/watermark.png';
+    const contactNumbers = '943212297 - 932566922';
+    const address1 = 'Carretera Central Km 412';
+    const address2 = 'CPM Llicua - Amarilis - Huánuco';
+    const reportTitle = 'Reporte de Productos';
 
-    // Agregar el lema debajo del título
-    doc.setFontSize(12);
-    const lemaText = 'Materiales de construcción de calidad';
-    const lemaWidth =
-      (doc.getStringUnitWidth(lemaText) * doc.internal.getFontSize()) /
-      doc.internal.scaleFactor;
-    const lemaX = (doc.internal.pageSize.getWidth() - lemaWidth) / 2;
-    doc.text(lemaText, lemaX, 40);
+    // Función para dibujar el encabezado en cada página
+    const drawHeader = () => {
+      doc.addImage(imgData, 'PNG', 10, 10, 30, 15);
+      doc.addImage(watermarkImg, 'PNG', xPos, yPos, imgWidth, imgHeight);
+      doc.setFontSize(10);
+      doc.setTextColor(150, 150, 150);
+      doc.text(contactNumbers, doc.internal.pageSize.getWidth() - 60, 15);
+      doc.text(address1, doc.internal.pageSize.getWidth() - 60, 25);
+      doc.text(address2, doc.internal.pageSize.getWidth() - 60, 30);
+      doc.setFontSize(22);
+      doc.setTextColor(19, 19, 19);
+      doc.text(reportTitle, doc.internal.pageSize.getWidth() - 140, 42);
+    };
 
-    // Agregar el título de la tabla
-    doc.setFontSize(16);
-    doc.setTextColor(100, 100, 100);
-    doc.text('Reporte de Productos', 14, 60);
+    // Función para generar la tabla
+    const generateTable = () => {
+      doc.autoTable({
+        html: '#reporte_productos',
+        startY: 50,
+        theme: 'striped',
+        headStyles: {
+          fillColor: [228, 85, 18], // Cambiar a color naranja
+          textColor: [255, 255, 255], // Cambiar el color del texto del encabezado
+        },
+      });
+    };
 
-    // Generar la tabla
-    doc.autoTable({ html: '#reporte_productos', startY: 70, theme: 'striped' });
+    // Evento para dibujar el encabezado en cada página
+    doc.autoTable({
+      html: '#reporte_productos',
+      startY: 50,
+      theme: 'striped',
+      headStyles: {
+        fillColor: [228, 85, 18], // Cambiar a color naranja
+        textColor: [255, 255, 255], // Cambiar el color del texto del encabezado
+      },
+      didDrawPage: () => {
+        drawHeader();
+      },
+    });
 
     // Abrir el PDF en una nueva ventana
     var pdfWindow = window.open('', '_blank');

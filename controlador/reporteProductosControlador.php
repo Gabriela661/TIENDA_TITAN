@@ -11,9 +11,6 @@ if ($_POST['funcion'] == 'reporte_productos') {
         $json[] = array(
             'id_producto' => $objeto->id_producto,
             'nombre_producto' => $objeto->nombre_producto,
-            'fecha' => $objeto->fecha,
-            'id_venta' => $objeto->id_venta,
-            'nombre_cliente' => $objeto->nombre_cliente,
             'cantidad_total' => $objeto->cantidad_total,
             'precio_producto' => $objeto->precio_unitario,
             'monto_total' => $objeto->monto_total,

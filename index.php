@@ -10,7 +10,7 @@
     <title>TITAN_TIENDA</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="assets/css/foodhut.css">
-    <link rel="stylesheet" href="assets/css/adminlte.min.css">
+
 </head>
 <!-- Preloader -->
 

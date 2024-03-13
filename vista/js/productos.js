@@ -90,15 +90,11 @@ $(document).ready(function () {
         <div class="col-md-4 col-lg-3 pb-5">
             <div>
                 <div>
+                
                     <div class="text-center">
                         <div style="width: 150px; height: 150px; display: flex; align-items: center; justify-content: center; margin: auto;">
                             <img src="${productoMV.imagen_producto}" style="width:100px;height:100px;">
-                            <!-- Cinta de precio -->
-        <div class="ribbon-wrapper ribbon-lg">
-            <div class="ribbon bg-orange">
-                <p class="text-center mb-0">ULTIMOS PRODUCTOS</p>
-            </div>
-        </div>
+                           
                         </div>
                         <div style="width: 150px;">
                             <h6 class="h6 mt-4 text-center" style="color: black; background-color: white; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${productoMV.nombre_producto}</h6>

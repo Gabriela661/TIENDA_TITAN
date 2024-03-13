@@ -102,7 +102,7 @@ $(document).ready(function () {
         const productosTienda = JSON.parse(response);
         let template = "";
         productosTienda.forEach((productoTienda) => {
-          let imagenStyle = `width: 80%; height: 150px; object-fit: cover; margin: auto`;
+          let imagenStyle = `width: 90%; height: 150px; object-fit: cover; margin: auto`;
           template += `
         <div class="col-lg-2 col-md-4 col-sm-4 col-12 mb-4 pl-lg-5 pl-md-0">
     <div class="card shadow product-card">

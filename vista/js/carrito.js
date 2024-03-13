@@ -111,7 +111,6 @@ $(document).ready(function () {
                   icon: "success",
                   title: "Producto añadido ",
                   text: "El producto se ha agregado al carrito",
-                 
                 }).then(() => {
                   inputCantidad.val(1);
                   cargarCarrito(id_usuario);
@@ -251,4 +250,19 @@ $(document).ready(function () {
     );
   });
   /*FIN FUNCION PARA MOSTRAR UN MENSAJE DE ADVERTENCIA AL QUERER LIMPIAR EL CARRITO*/
+
+  // Obtener el botón de cierre del modal por su ID
+  const closeButton = document.querySelector("#modalCarrito .btn-close");
+
+  // Agregar un event listener para escuchar el clic en el botón de cierre
+  closeButton.addEventListener("click", function () {
+    // Cerrar el modal utilizando Bootstrap API
+    const modal = document.getElementById("modalCarrito");
+    if (modal) {
+      const modalInstance = bootstrap.Modal.getInstance(modal);
+      if (modalInstance) {
+        modalInstance.hide();
+      }
+    }
+  });
 });

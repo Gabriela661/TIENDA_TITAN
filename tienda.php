@@ -1,8 +1,9 @@
 <?php include './assets/views/navbar.php' ?>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<link rel="stylesheet" href="assets/css/stilos.css">
+
 <link rel="stylesheet" href="assets/css/adminlte.min.css">
+<link rel="stylesheet" href="assets/css/stilos.css">
 <?php
 if (isset($_GET['id_categoria'])) {
     $idCategoria = $_GET['id_categoria'];

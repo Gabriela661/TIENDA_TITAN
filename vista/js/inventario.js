@@ -76,6 +76,29 @@ $(document).ready(function () {
     );
   }
 
+/*   Dropzone.autoDiscover = false; */
+
+  const dropzone = new Dropzone('#dropzoneContainer', {
+    maxFiles: 4, // Límite de 4 imágenes
+    acceptedFiles: 'image/*', // Aceptar solo archivos de imagen
+    addRemoveLinks: true, // Mostrar enlaces para eliminar imágenes
+    dictRemoveFile: 'Eliminar', // Texto del enlace para eliminar
+    dictDefaultMessage: 'Arrastra tus imágenes aquí o haz clic para seleccionarlas', // Mensaje predeterminado
+    dictFallbackMessage: 'Tu navegador no soporta arrastrar y soltar archivos', // Mensaje si el navegador no soporta la funcionalidad
+    dictFallbackText: 'Por favor, utiliza el formulario de respaldo a continuación para cargar tus archivos', // Texto si el navegador no soporta la funcionalidad
+    dictFileTooBig: 'El archivo es demasiado grande ({{filesize}}MiB). Tamaño máximo permitido: {{maxFilesize}}MiB.', // Mensaje si el archivo es demasiado grande
+    dictInvalidFileType: 'No puedes cargar archivos de este tipo', // Mensaje si el tipo de archivo no es válido
+    dictMaxFilesExceeded: 'No puedes cargar más archivos', // Mensaje si se excede el límite de archivos
+    dictResponseError: 'El servidor respondió con el código {{statusCode}}', // Mensaje si hay un error en la respuesta del servidor
+    form: document.getElementById('myForm') // Pasar el elemento form como opción
+  });
+
+
+  // Manejar el evento de clic en el botón "Enviar"
+  document.getElementById('enviarBtn').addEventListener('click', function () {
+    myDropzone.processQueue(); // Procesar la cola de archivos para cargarlos
+  });
+
   //enviar datos
   function enviarDatos(url, formData, successCallback, errorCallback) {
     $.ajax({
@@ -102,15 +125,19 @@ $(document).ready(function () {
     const categoria_producto = $('#categoria_producto').val();
     const categoria_text = $('#categoria_producto option:selected').text();
     // Cambiado de file[0] a files[0]
-    const imagen_producto_principal = $('#imagen_principal_producto')[0]
+    const imagenes = dropzone.getQueuedFiles();
+    console.log(imagenes)
+    /* const imagen_producto_principal = $('#imagen_principal_producto')[0]
       .files[0];
     const imagen_producto_s1 = $('#imagen_secundaria_1_producto')[0].files[0];
     const imagen_producto_s2 = $('#imagen_secundaria_2_producto')[0].files[0];
     const imagen_productos_s3 = $('#imagen_secundaria_3_producto')[0].files[0];
-    console.log(imagen_producto_principal);
+    console.log(imagen_producto_principal); */
 
     const formData = new FormData($('#form_inventario')[0]);
-
+    $.each(imagenes, function(index, imagen) {
+      formData.append('imagenes[]', imagen);
+    });
     formData.append('funcion', 'crear_producto');
     formData.append('nombre_producto', nombre_producto);
     formData.append('codigo_producto', codigo_producto);
@@ -189,7 +216,6 @@ $(document).ready(function () {
     e.preventDefault();
     funcion = 'cargar_inventario';
     const id_producto = $(e.currentTarget).data('id_inventario');
-    console.log(id_producto);
     console.log($(e.currentTarget));
     $.post(
       '../controlador/inventarioControlador.php',

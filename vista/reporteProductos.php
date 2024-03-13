@@ -14,14 +14,14 @@ include_once "assets/views/nav.php";
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h4><i class="fa fa-archive" aria-hidden="true"></i><b>Reporte de Productos</b></h4>
+                            <h4><i class="fa fa-archive mr-3 mb-3" aria-hidden="true"></i><b>Reporte de Productos</b></h4>
                             <div class="container">
                                 <div class="row">
                                     <div class="col-lg-12">
-                                        <div class="row mb-5"><a id="diaProducto" type="button" href="#" class="btn btn-primary"><i class="fa fa-plus-square"></i> Día</a>
+                                        <div class="row mb-5"><a id="diaProducto" type="button" href="#" class="btn btn-success"><i class="fa fa-plus-square"></i> Día</a> &nbsp; &nbsp;
                                             <a id="mesProducto" type="button" href="#" class="btn btn-primary"><i class="fa fa-plus-square"></i> Mes</a>
-                                            &nbsp; <a type="button" class="btn btn-warning" id="openPdfModal"><i class="fas fa-print"></i></a>
-                                            &nbsp; <a type="button" class="btn btn-success" href="#"><i class="far fa-file-excel"></i></a>
+                                            <!-- &nbsp; <a type="button" class="btn btn-warning" id="openPdfModal"><i class="fas fa-print"></i></a>
+                                            &nbsp; <a type="button" class="btn btn-success" href="#"><i class="far fa-file-excel"></i></a> -->
                                             &nbsp; <a type="button" class="btn btn-danger" href="#" id="generatePDFFF"><i class="far fa-file-pdf"></i></a>
                                             &nbsp;&nbsp;&nbsp;
                                             <button class="btn btn-primary">
@@ -60,7 +60,7 @@ include_once "assets/views/nav.php";
                                     <div class="card-body">
                                         <div class="table-responsive">
                                             <table id="reporte_productos" class="table table-bordered table-striped">
-                                                <thead id="productos_lista_head">
+                                                <thead id="productos_lista_head" style="background-color: #e85813; color: #e5ecf7;">
                                                     <tr>
                                                         <th>N°</th>
                                                         <th>NOMBRE</th>

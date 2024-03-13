@@ -19,7 +19,7 @@
     <!-- iCheck -->
     <link rel="stylesheet" href="assets/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
     <!-- bootstrap min -->
-    <link rel="stylesheet" href="assets/js/bootstrap.bundle.min.js">
+    <link href="assets/css/bootstrap.min.css">
     <!-- JQVMap -->
     <link rel="stylesheet" href="assets/plugins/jqvmap/jqvmap.min.css">
     <!-- Theme style -->
@@ -50,6 +50,11 @@
     <!-- AdminLTE3 -->
     <script src="https://cdn.jsdelivr.net/npm/admin-lte@3.1/dist/js/adminlte.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.1/dist/css/adminlte.min.css">
+
+    <!-- drag and drop images -->
+    <link href="https://cdn.jsdelivr.net/npm/dropzone@6.0.0-beta.2/dist/dropzone.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
+
 
 </head>
 

@@ -3,10 +3,14 @@ session_start();
 /* if ($_SESSION['rol_usuario'] == 1 || $_SESSION['rol_usuario'] == 2) { */
 ?>
 <title>Inventario</title>
-
 <?php include_once "assets/views/nav.php"; ?>
-<div class="wrapper">
-
+<!-- <div class="wrapper"> -->
+<!-- 
+  <style>
+    .dropzone {
+      z-index: 1000;
+    }
+  </style> -->
   <!-- Modal para agregar inventario-->
   <div class="modal fade" id="crearInventario" tabindex="-1" role="dialog" aria-labelledby="#crearInventario" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -18,7 +22,8 @@ session_start();
           </button>
         </div>
         <div class="modal-body">
-          <form id="form_inventario" method="POST">
+          <form action="/submit" id="form_inventario" method="POST" enctype="multipart/form-data">
+            <input type="hidden" name="_token" value="{{ csrf_token() }}">
             <div class="card-body">
               <div class="form-group">
                 <label for="nombre">Código</label>
@@ -48,7 +53,8 @@ session_start();
                 <label for="categoria">Categoria Producto</label>
                 <select type="number" class="form-control" id="categoria_producto" name="categoria_producto" placeholder="Categoria del producto"></select>
               </div>
-              <div class="form-group">
+              <div class="dropzone" id="dropzoneContainer"></div>
+              <!--  <div class="form-group">
                 <label for="imagen_principal_producto">Imagen principal de Producto</label>
                 <br>
                 <input type="file" name="imagen_principal_producto" id="imagen_principal_producto" accept="image/jpg, image/jpeg, image/png">
@@ -79,7 +85,7 @@ session_start();
                 <center>
                   <div id="imagen_preview4" style="margin-top: 10px;" class="img-thumbnail"></div>
                 </center>
-              </div>
+              </div> -->
             </div>
         </div>
         <div class="modal-footer">
@@ -227,18 +233,16 @@ session_start();
     <aside class="control-sidebar control-sidebar-dark">
     </aside>
   </div>
+</div>
+<!-- ./wrapper -->
+<!-- Bootstrap 4 -->
+<!--  <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script> -->
 
-  <!-- ./wrapper -->
-  <!-- jQuery -->
-  <script src="assets/plugins/jquery/jquery.min.js"></script>
-  <!-- Bootstrap 4 -->
-  <script src="assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-  <script src="js/inventario.js"></script>
-  <?php
-  include_once "assets/views/footer.php";
-  /* } else {
+<script src="js/inventario.js"></script>
+<?php
+include_once "assets/views/footer.php";
+/* } else {
   header('Location: ../login.php');
 } */
-  ?>
-  <!-- <script src="js/producto.js"></script> -->
+?>
+<!-- <script src="js/producto.js"></script> -->

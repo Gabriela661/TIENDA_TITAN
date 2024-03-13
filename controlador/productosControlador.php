@@ -143,3 +143,14 @@ if ($_POST['funcion'] == 'busquedaProductos') {
 /* 
  * FIN FUNCION  PARA MOSTRAR LOS PRODUCTOS BUSCADOS
  */
+
+/* 
+ * FUNCION PARA OBTENER LA CANTIDAD DE PAGINAS
+ */
+if ($_POST['funcion'] == 'CantidadPaginas') {
+
+    $productos->CantidadPaginas();
+}
+/* 
+ * FIN FUNCION PARA OBTENER LA CANTIDAD DE PAGINAS
+ */

@@ -37,6 +37,10 @@ $(document).ready(function () {
 
   /*FUNCION PARA AÑADIR UN PRODUCTO A CARRITO A LA BASE DE DATOS */
   $(document).on("click", "#agregarCarritoBtn", function () {
+   var stock = verificarStock(10);
+   console.log("sto".stock);
+   if (cantidadEnCarrito > stock) {
+   }
     var id_producto = $(this).data("id_producto");
     var id_usuario = $(this).data("id_usuario");
     var inputCantidad = $(this).siblings(".cantidadInput");
@@ -52,6 +56,7 @@ $(document).ready(function () {
         // Verificar si existencia es un array y tiene al menos un elemento
         if (Array.isArray(existencia) && existencia.length > 0) {
           const cantidadEnCarrito = existencia[0].cantidad;
+          
           const id_carrito = existencia[0].id_carrito;
           const formDataActualizar = new FormData();
           formDataActualizar.append("funcion", "actualizar_carrito");
@@ -265,4 +270,19 @@ $(document).ready(function () {
       }
     }
   });
+
+   function verificarStock(id_producto) {
+     const funcion = "verificarStock";
+     const cantidad = 0;
+     $.post(
+       "controlador/carritoControlador.php",
+       { id_producto, funcion },
+       function (response) {
+         console.log(response);
+         cantidad = parseInt(response.trim()); // Convierte el texto a un número entero
+         return cantidad;
+       }
+     );
+   }
+
 });

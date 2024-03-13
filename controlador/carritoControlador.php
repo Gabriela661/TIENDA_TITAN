@@ -96,3 +96,14 @@ if ($_POST['funcion'] == 'limpiarProductoCarrito') {
 /* 
  * FIN FUNCION PARA LIMPIAR UN PRODUCTO DEL CARRITO
  */
+
+/* 
+ * FUNCION PARA VERIFICAR STOCK
+ */
+if ($_POST['funcion'] == 'verificarStock') {
+
+    $carrito->verificarStock();
+}
+/* 
+ * FIN FUNCION PARA OBTENER LA CANTIDAD DE PAGINAS
+ */

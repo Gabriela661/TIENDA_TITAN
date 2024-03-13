@@ -65,39 +65,35 @@
 
   <!-- Start Contact -->
 
-  <div class="container py-1">
-    <div class="row py-5">
-      <div class="col-md-6">
-        <form method="post" role="form">
-          <div class="row">
-            <div class="form-group col-md-6 mb-3">
-              <label for="inputname">Nombre y Apellido<samp></samp></label>
-              <input type="text" class="form-control mt-1" id="name" name="name" placeholder="Name">
-            </div>
-            <div class="form-group col-md-6 mb-3">
-              <label for="inputemail">Email</label>
-              <input type="email" class="form-control mt-1" id="email" name="email" placeholder="Email">
-            </div>
-          </div>
-          <div class="mb-3">
-            <label for="inputsubject">Subject</label>
-            <input type="text" class="form-control mt-1" id="subject" name="subject" placeholder="Subject">
-          </div>
-          <div class="mb-3">
-            <label for="inputmessage">Message</label>
-            <textarea class="form-control mt-1" id="message" name="message" placeholder="Message" rows="8"></textarea>
-          </div>
-          <div class="row">
-            <div class="col text-end mt-2">
-              <button type="submit" class="btn btn-success btn-lg px-3">Enviar</button>
-            </div>
-          </div>
-        </form>
+  <div id="contact" class="container-fluid bg-dark text-light border-top wow fadeIn">
+    <div class="row">
+      <div class="col-md-6 px-0">
+        <div id="map" style="width: 100%; height: 100%; min-height: 400px"></div>
       </div>
-      <div class="col-md-6">
-        <div>
-          <h3>Ubicación</h3>
-          <div id="map" style="height: 400px;"></div>
+      <div class="col-md-6 px-5 has-height-lg middle-items">
+        <br>
+        <h3>CONTACTANOS </h3>
+        <div class="row mt-2">
+          <div class="col-md-12">
+
+            <div class="form-group">
+              <input type="text" class="form-control" id="nombres" placeholder="Nombres">
+            </div>
+
+            <div class="form-group">
+              <input type="text" class="form-control" id="apellidos" placeholder="Apellidos">
+            </div>
+
+            <div class="form-group">
+              <input type="email" class="form-control" id="email" placeholder="Email">
+            </div>
+            <div class="form-group">
+              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Consulta"></textarea>
+            </div>
+            <div class="form-group">
+              <buttom class="btn btn-primary">Enviar</buttom>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -114,10 +110,10 @@
   <script src="assets/js/jquery-migrate-1.2.1.min.js"></script>
   <script src="assets/js/bootstrap.bundle.min.js"></script>
   <script src="assets/js/templatemo.js"></script>
-  <!-- <script src="assets/js/custom.js"></script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"></script>
-    <script src="assets/js/map.js"></script> -->
-  <!-- End Script -->
+  <script src="assets/js/custom.js"></script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCtme10pzgKSPeJVJrG1O3tjR6lk98o4w8&callback=initMap"></script>
+  <script src="assets/js/foodhut.js"></script>
+  <!-- End Script
   <script src="vista/js/busquedaProductos.js"></script>
 </body>
 

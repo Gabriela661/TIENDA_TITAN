@@ -156,4 +156,26 @@ GROUP BY id_carrito;";
     }
     /* FIN DE LA FUNCION PARA LIMPIAR EL CARRITO */
 
+    /* FUNCION PARA VERIFICAR STOCK */
+    function verificarStock()
+    {
+        $id_producto = $_POST['id_producto'];
+        $sql = "SELECT stock_producto FROM producto where id_producto=:id_producto";
+        $query = $this->acceso->prepare($sql);
+        $query->execute(array(':id_producto' => $id_producto));
+
+        // Obtener el resultado de la consulta
+        $resultado = $query->fetch(PDO::FETCH_ASSOC);
+
+        if ($resultado) {
+            // Acceder al valor de cantidad_productos
+            $stock_producto = $resultado['stock_producto'];
+            echo $stock_producto;
+        } else {
+            echo 'Error al obtener la cantidad de productos';
+        }
+    }
+    /* FIN DE LA FUNCION PARA LIMPIAR EL CARRITO */
+
+
 }

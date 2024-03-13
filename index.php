@@ -10,13 +10,12 @@
     <title>TITAN_TIENDA</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="assets/css/foodhut.css">
-
+    <link rel="stylesheet" href="assets/css/adminlte.min.css">
 </head>
 <!-- Preloader -->
 
 <body data-spy="scroll" data-target=".navbar" data-offset="40" id="home">
     <!-- Navbar -->
-
     <nav class="custom-navbar navbar navbar-expand-lg navbar-dark fixed-top" data-spy="affix" data-offset-top="10">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -61,67 +60,116 @@
         <div class="overlay text-white text-center">
             <h1 class="display-2 font-weight-bold my-3">TITAN TIENDA</h1>
             <h2 class="display-4 mb-5">Mejores productos a mejores precios</h2>
-            <a class="btn btn-lg btn-primary" href="#gallary">Iniciar</a>
+            <a class="btn btn-lg btn-primary" href="tienda.php">Ver productos</a>
         </div>
     </header>
     <br>
-    <!-- book a table Section  -->
-    <div class="container-fluid has-bg-secondary text-center text-light has-height-lg middle-items" id="book-table">
+    <!-- CARRUSEL DE PRODUCTOS -->
+
+    <div class="container-fluid wow fadeIn bg-light text-dark has-height-md middle-items ">
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+            <!-- Indicadores -->
+            <ol class="carousel-indicators">
+                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#myCarousel" data-slide-to="1"></li>
+                <li data-target="#myCarousel" data-slide-to="2"></li>
+            </ol>
+
+            <!-- Contenido del carrusel -->
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <a href="vermasproductos.php?id=1">
+                        <img src="assets/img/publicidad/publicidad1.png" alt="Slide 1" class="d-block w-100">
+                    </a>
+                </div>
+                <div class="carousel-item">
+                    <a href="vermasproductos.php?id=2">
+                        <img src="assets/img/publicidad/publicidad2.png" alt="Slide 2" class="d-block w-100">
+                    </a>
+                </div>
+                <div class="carousel-item">
+                    <a href="vermasproductos.php?id=3">
+                        <img src="assets/img/publicidad/publicidad3.png" alt="Slide 3" class="d-block w-100">
+                    </a>
+                </div>
+                <!-- Agregar más imágenes según sea necesario -->
+            </div>
+
+            <!-- Controles del carrusel -->
+            <a class="carousel-control-prev " href="#myCarousel" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Seccion de calcular  -->
+    <div class="container-fluid has-bg-secondary text-center text-light pb-4 middle-items" id="book-table">
         <div class="">
-            <h2 class="section-title mb-5">Calcular</h2>
-            <div class="row mb-5">
-                <div class="col-sm-6 col-md-3 col-xs-12 my-2">
+            <h2 class="section-title mb-3">Calcular</h2>
+            <div class="row mb-3">
+                <div class="col-sm-6 col-md-3 col-xs-12">
                     <input type="email" id="booktable" class="form-control form-control-lg custom-form-control" placeholder="EMAIL">
                 </div>
-                <div class="col-sm-6 col-md-3 col-xs-12 my-2">
+                <div class="col-sm-6 col-md-3 col-xs-12">
                     <input type="number" id="booktable" class="form-control form-control-lg custom-form-control" placeholder="NUMBER OF GUESTS" max="20" min="0">
                 </div>
-                <div class="col-sm-6 col-md-3 col-xs-12 my-2">
-                    <input type="time" id="booktable" class="form-control form-control-lg custom-form-control" placeholder="EMAIL">
+                <div class="col-sm-6 col-md-3 col-xs-12">
+                    <input type="time" id="booktable" class="form-control form-control-lg custom-form-control" placeholder="TIME">
                 </div>
-                <div class="col-sm-6 col-md-3 col-xs-12 my-2">
-                    <input type="date" id="booktable" class="form-control form-control-lg custom-form-control" placeholder="12/12/12">
+                <div class="col-sm-6 col-md-3 col-xs-12">
+                    <input type="date" id="booktable" class="form-control form-control-lg custom-form-control" placeholder="DATE">
                 </div>
             </div>
-            <a href="#" class="btn btn-lg btn-primary" id="rounded-btn">FIND TABLE</a>
+            <a href="#" class="btn btn-lg btn-primary" id="rounded-btn">VER PDF DE RESULTADOS</a>
         </div>
     </div>
+
     <!-- Categorias -->
-    <div id="gallary" class="text-center bg-secondary text-light has-height-sm middle-items wow fadeIn">
-        <h2 class="section-title">Categorias</h2>
+    <div id="gallary" class="text-center has-bg-overlay text-light  middle-items wow fadeIn">
+        <h2 class="section-title">Nuestras Categorias</h2>
     </div>
 
-    <div id="about" class="container-fluid has-bg-overlay fadeIn" id="about" data-wow-duration="1.5s">
-        <div class="row justify-content-center" id="categoriaIndex">
+    <!-- HTML del carrusel -->
+    <div class="container-fluid wow fadeIn has-bg-overlay text-dark has-height-md middle-items">
+        <div id="carouselProductos" class="carousel slide justify-content-center" data-ride="carousel">
+            <!-- Indicadores -->
+            <ol class="carousel-indicators">
+                <!-- Los indicadores se generan dinámicamente con JavaScript -->
+            </ol>
+
+            <!-- Contenido del carrusel -->
+            <div class="carousel-inner row ">
+                <!-- Los productos se agregan dinámicamente aquí -->
+            </div>
+
+            <!-- Flecha izquierda -->
+            <a class="carousel-control-prev" href="#carouselProductos" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+
+            <!-- Flecha derecha -->
+            <a class="carousel-control-next" href="#carouselProductos" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
         </div>
     </div>
-
-    <!--  gallary Section  -->
-    <div id="gallary" class="text-center bg-secondary text-light has-height-sm middle-items wow fadeIn">
+    <!--  Productos mas vendidos  -->
+    <div id="gallary" class="text-center text-light has-height-sm middle-items wow fadeIn">
         <h2 class="section-title">Productos más vendidos</h2>
     </div>
-
-
-    <div class="gallary row" id="masVendidos">
-
+    <div class="gallary row justify-content-center" id="masVendidos">
     </div>
-
-
-    <!-- CONTACT Section  -->
-    <div id="contact" class="container-fluid bg-dark text-light border-top wow fadeIn">
-        <div class="row">
-            <div class="col-md-6 px-0">
-                <div id="map" style="width: 100%; height: 100%; min-height: 400px"></div>
-            </div>
-            <div class="col-md-6 px-5 has-height-lg middle-items">
-                <h3>FIND US</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit, laboriosam doloremque odio delectus, sunt magnam laborum impedit molestiae, magni quae ipsum, ullam eos! Alias suscipit impedit et, adipisci illo quam.</p>
-                <div class="text-muted">
-                    <p><span class="ti-location-pin pr-3"></span> 12345 Fake ST NoWhere, AB Country</p>
-                    <p><span class="ti-support pr-3"></span> (123) 456-7890</p>
-                    <p><span class="ti-email pr-3"></span>info@website.com</p>
-                </div>
-            </div>
+    <!-- Seccion de calcular  -->
+    <div class="container-fluid has-bg-overlay text-center text-light pb-4 middle-items" id="book-table">
+        <div class="">
+            <h2 class="section-title mb-3">CONTACTENOS</h2>
         </div>
     </div>
 
@@ -144,7 +192,9 @@
     <script src="assets/js/foodhut.js"></script>
     <script src="vista/js/productos.js"></script>
 
-
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCtme10pzgKSPeJVJrG1O3tjR6lk98o4w8&callback=initMap"></script>
+    <!-- FoodHut js -->
+    <script src="assets/js/foodhut.js"></script>
 </body>
 
 </html>

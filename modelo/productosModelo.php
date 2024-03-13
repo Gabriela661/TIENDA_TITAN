@@ -216,5 +216,24 @@ class Productos
             return $this->objetos;
         }
     }
-  
+    
+    /* FUNCION PARA LIMPIAR EL CARRITO */
+    function CantidadPaginas()
+    {
+        $sql = "SELECT COUNT(*) AS cantidad_productos FROM producto";
+        $query = $this->acceso->prepare($sql);
+        $query->execute();
+
+        // Obtener el resultado de la consulta
+        $resultado = $query->fetch(PDO::FETCH_ASSOC);
+
+        if ($resultado) {
+            // Acceder al valor de cantidad_productos
+            $cantidad_productos = $resultado['cantidad_productos'];
+            echo $cantidad_productos;
+        } else {
+            echo 'Error al obtener la cantidad de productos';
+        }
+    }
+    /* FIN DE LA FUNCION PARA LIMPIAR EL CARRITO */
 }

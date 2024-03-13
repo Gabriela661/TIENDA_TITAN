@@ -20,30 +20,50 @@ $(document).ready(function () {
       { consulta, funcion },
       (response) => {
         const categorias = JSON.parse(response);
-        let template = "";
-        categorias.forEach((categoria) => {
-          template += `<a style="background-color: white; padding: 15px; border-radius: 8px; margin: 20px; overflow: hidden; transition: transform 0.3s ease-in-out;" href="tienda.php?id_categoria=${categoria.id_categoria}" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-            <div class="col-md-4 col-lg-3 pb-5">
+        let productosHtml = "";
+        let itemsPerSlide = 4; // Número de productos por slide
+        categorias.forEach((categoria, index) => {
+          if (index % itemsPerSlide === 0) {
+            productosHtml += `<div class="carousel-item ${
+              index === 0 ? "active" : ""
+            }"><div class="row justify-content-center">`;
+          }
+          productosHtml += `
+          <div class="d-flex">
+    <a style="background-color: white; padding: 15px; border-radius: 8px; margin: 20px; overflow: hidden; transition: transform 0.3s ease-in-out; color: black;" href="tienda.php?id_categoria=${categoria.id_categoria}" onmouseover="this.style.backgroundColor='orange'; this.querySelector('.h5').style.backgroundColor='orange'; this.style.transform='scale(1.05)'" onmouseout="this.style.backgroundColor='white'; this.querySelector('.h5').style.backgroundColor='white'; this.style.transform='scale(1)'">
+        <div class="col-md-4 col-lg-3 pb-5">
+            <div>
                 <div>
-                    <div>
-                        <div class="text-center">
-                            <div style="width: 150px; display: flex; align-items: center; justify-content: center; margin: auto;">
-                                <h4 class="h5 mt-4 text-center" style="color: black; background-color: white;">${categoria.nombre_categoria}</h4>
-                            </div>
-                            <div style="width: 150px; height: 150px; display: flex; align-items: center; justify-content: center; margin: auto;">
-                                <img src="${categoria.imagen_producto}" style="width:100px;height:100px;">
-                            </div>
+                    <div class="text-center">
+                        <div style="width: 150px; display: flex; align-items: center; justify-content: center; margin: auto;">
+                            <h4 class="h5 mt-4 text-center" style="color: black; background-color: white;">${categoria.nombre_categoria}</h4>
                         </div>
-                    </div> 
+                        <div style="width: 150px; height: 150px; display: flex; align-items: center; justify-content: center; margin: auto;">
+                            <img src="${categoria.imagen_producto}" style="width:100px;height:100px;"></img>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </a>
+        </div>
+    </a>
+</div>
+
+
         `;
+          if (
+            (index + 1) % itemsPerSlide === 0 ||
+            index === categorias.length - 1
+          ) {
+            productosHtml += `</div></div>`;
+          }
         });
-        $("#categoriaIndex").html(template);
+
+        $("#carouselProductos .carousel-inner").html(productosHtml);
+        $("#carouselProductos").carousel(0); // Mueve el carrusel al primer producto al terminar de cargar
       }
     );
   }
+
   /*
    * FIN FUNCION PARA LISTAR LAS CATEGORIAS EN EL INDEX
    */
@@ -65,21 +85,39 @@ $(document).ready(function () {
         productosMV.forEach((productoMV) => {
           let imagenStyle = `width: 150px; height: 180px;`;
           template += `
-                    <div class="col-md-4 col-lg-2 mb-3 mt-3" style="overflow: hidden; transition: transform 0.3s ease-in-out;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-                        <div class="card shadow position-relative" style="transform-origin: center center; overflow: hidden; transition: transform 0.3s ease-in-out;">
-                                <div class="ribbon ribbon-danger">
-                                    <span class="ribbon-text"></span>
-                                </div>
-                                <div class="text-center">
-                                    <img src="${productoMV.imagen_producto}" alt="Producto" class="card-img-top" style="${imagenStyle}">
-                                </div>
-                                <div class="card-body text-dark">
-                                    <h5 class="card-title" style="font-size: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-height: 3em; line-height: 1.5em;"> ${productoMV.nombre_producto}</h5>
-                                    <p class="card-text" style="font-size: 12px;">Precio: S/. ${productoMV.precio_producto}</p>
-                                    <a href="detalle.php?id_producto=${productoMV.id_producto}" class="btn btn-primary d-block mx-auto mt-3">Ver Detalles</a>
-                                </div>
-                            </div>
-                        </div>`;
+      <div class="d-flex" style="transition: transform 0.3s ease-in-out;">
+    <div style="background-color: white; padding: 25px; border-radius: 8px; margin: 20px; overflow: hidden; color: black;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+        <div class="col-md-4 col-lg-3 pb-5">
+            <div>
+                <div>
+                    <div class="text-center">
+                        <div style="width: 150px; height: 150px; display: flex; align-items: center; justify-content: center; margin: auto;">
+                            <img src="${productoMV.imagen_producto}" style="width:100px;height:100px;">
+                            <!-- Cinta de precio -->
+        <div class="ribbon-wrapper ribbon-lg">
+            <div class="ribbon bg-orange">
+                <p class="text-center mb-0">ULTIMOS PRODUCTOS</p>
+            </div>
+        </div>
+                        </div>
+                        <div style="width: 150px;">
+                            <h6 class="h6 mt-4 text-center" style="color: black; background-color: white; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${productoMV.nombre_producto}</h6>
+                            <p class="card-text" style="font-size: 12px; text-align: center;">Precio: S/. ${productoMV.precio_producto}</p>
+                        </div>
+                        <div style="width: 150px; display: flex;">
+                            <a href="detalle.php?id_producto=${productoMV.id_producto}" class="btn btn-primary d-block mx-auto mt-3" style="background-color: orange; border-color: orange; transition: background-color 0.3s, border-color 0.3s;" onmouseover="this.style.backgroundColor='#6c757d'; this.style.borderColor='#6c757d'" onmouseout="this.style.backgroundColor='orange'; this.style.borderColor='orange'">Ver Detalles</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+                    `;
         });
         $("#masVendidos").html(template);
       }
@@ -104,7 +142,7 @@ $(document).ready(function () {
         productosTienda.forEach((productoTienda) => {
           let imagenStyle = `width: 90%; height: 150px; object-fit: cover; margin: auto`;
           template += `
-        <div class="col-lg-2 col-md-4 col-sm-4 col-12 mb-4 pl-lg-5 pl-md-0">
+        <div class="col-lg-2 col-md-3 col-sm-4 col-12">
     <div class="card shadow product-card">
         <!-- Imagen del producto -->
         <img class="card-img-top img-fluid" src="${productoTienda.imagen_producto}" alt="Producto" style="${imagenStyle}">
@@ -123,6 +161,9 @@ $(document).ready(function () {
             <!-- Marca del producto -->
             <h5>
                 <span class="h6 badge badge-warning" style="font-size: 11px;">Marca: ${productoTienda.marca_producto}</span>
+            </h5>
+             <h5>
+                <span class="h6 badge badge-success" style="font-size: 11px;">Stock: ${productoTienda.stock_producto}</span>
             </h5>
 
             
@@ -306,6 +347,55 @@ $(document).ready(function () {
   /*
    * FIN FUNCION PARA DETALLAR UN PRODUCTO
    */
+  /*FUNCION OBTENER LA CANTIDAD DE PAGINAS*/
+  function CantidadPaginas() {
+    const funcion = "CantidadPaginas";
+    $.post(
+      "controlador/productosControlador.php",
+      { funcion },
+      function (response) {
+        console.log(response);
+        const cantidad = parseInt(response.trim()); // Convierte el texto a un número entero
 
-  
+        if (!isNaN(cantidad)) {
+          console.log("Cantidad de productos:", cantidad);
+
+          // Calcular el número de páginas
+          const paginas = Math.ceil(cantidad / 12); // Suponiendo que deseas mostrar 12 productos por página
+          console.log(paginas);
+          // Modificar la paginación en el HTML
+          const paginationContainer = $(".pagination");
+          paginationContainer.empty(); // Limpiar la paginación actual
+
+          // Agregar el botón "Previous"
+          paginationContainer.append(`
+          <li class="page-item disabled">
+            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+          </li>
+        `);
+
+          // Agregar las páginas numeradas
+          for (let i = 1; i <= paginas; i++) {
+            paginationContainer.append(`
+            <li class="page-item"><a class="page-link" href="#">${i}</a></li>
+          `);
+          }
+
+          // Agregar el botón "Next"
+          paginationContainer.append(`
+          <li class="page-item">
+            <a class="page-link" href="#">Next</a>
+          </li>
+        `);
+        } else {
+          console.error("La respuesta no contiene una cantidad válida.");
+        }
+      }
+    );
+  }
+
+  // Llamar a la función para obtener y asignar la cantidad de páginas
+  CantidadPaginas();
+
+  /*FUNCION OBTENER LA CANTIDAD DE PAGINAS*/
 });

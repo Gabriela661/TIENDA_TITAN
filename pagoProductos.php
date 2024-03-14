@@ -123,7 +123,7 @@ if (isset($_GET['id_categoria'])) {
                                             <th>Subtotal S/</th>
                                         </tr>
                                     </thead>
-                                    <tbody id="generar_compra">
+                                    <tbody id="productos_carrito">
                                     </tbody>
                                     <tfoot>
                                         <tr>
@@ -222,9 +222,8 @@ if (isset($_GET['id_categoria'])) {
     <script src="assets/js/custom.js"></script>
     <!-- End Script -->
 
-    <script src="vista/js/productos.js"></script>
     <script src="vista/js/busquedaProductos.js"></script>
-    <script src="vista/js/carrito.js"></script>
+    <script src="vista/js/pagoProductos.js"></script>
 
 </body>
 

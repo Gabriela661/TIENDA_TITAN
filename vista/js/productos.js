@@ -252,7 +252,7 @@ $(document).ready(function () {
 
                                 <p class="category-item-amount">(${categoria.cantidad_productos}</h3>)</p>
                             </div>
-                            <a id="categoria" data-id_categoria="${categoria.id_categoria}" class="category-btn">Ver todos</a>
+                            <a id="categoria_header" href="tienda.php?id_categoria=${categoria.id_categoria}" data-id_categoria="${categoria.id_categoria}" class="category-btn">Ver todos</a>
                         </div>
                     </div>
          `;

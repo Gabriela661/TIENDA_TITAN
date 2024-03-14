@@ -21,7 +21,8 @@ if (isset($_GET['id_categoria'])) {
 ?>
 
 <body>
-
+    <!-- Input oculto para asignar el id de la categoria para el filtrado -->
+    <input id="idCategoria" class="d-none" type="text" value="<?php echo $idCategoria ?>">
     <!-- Modal del carrito de compras -->
 
     <div id="modalCarrito" class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
@@ -52,7 +53,7 @@ if (isset($_GET['id_categoria'])) {
                 <div class="modal-footer d-flex justify-content-center ">
                     <div class="row col-12">
                         <div class="col-6 col-md-6 col-lg-6">
-                            <a id="comprar" href="pago.php" type="button" class="btn btn-warning btn-block">
+                            <a id="comprar" href="pagoProductos.php" type="button" class="btn btn-warning btn-block">
                                 <i class="fa-solid fa-cart-shopping"></i>
                                 Finalizar la Compra
                             </a>
@@ -76,22 +77,11 @@ if (isset($_GET['id_categoria'])) {
             <div class="container">
 
                 <div class="category-item-container has-scrollbar" id="categoriaMenuHeader">
-
-
-
-
-
-
                 </div>
 
             </div>
 
         </div>
-
-
-
-
-
         <!--
       - PRODUCT
     -->

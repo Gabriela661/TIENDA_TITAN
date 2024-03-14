@@ -49,7 +49,7 @@ class reporte_productos
         JOIN producto p ON dv.id_producto = p.id_producto
         JOIN venta v ON dv.id_venta = v.id_venta
     WHERE
-        DATE(v.fecha) = '2024-03-09'
+        DATE(v.fecha) = CURDATE();
     GROUP BY
         p.nombre_producto, p.precio_producto, p.id_producto;";
         $query = $this->acceso->prepare($sql);
@@ -84,6 +84,29 @@ class reporte_productos
 
     function fechas_Productos($fechai, $fechaf)
     { //CURDATE()
+        $mes_actual = date('m');
+        $year_actual = date('Y');
+        $dia_actual = date('d');
+        $dia_siguiente = date('d', strtotime('+1 day'));
+
+        $year_siguiente = date('Y', strtotime('+1 year'));
+
+        // Fecha inicial
+        if ($fechai == '') {
+            $fechai = "{$year_actual}-{$mes_actual}-01";
+        }
+
+        // Fecha final
+        if ($dia_actual == date('t')) { // Último día del mes
+            $fechaf = date('Y-m-d', strtotime('first day of +1 month'));
+        } else if ($mes_actual == '12' && $dia_actual == '31') { // Último día del año
+            $fechaf = "{$year_siguiente}-01-01";
+        } else if ($fechaf == '') {
+            $fechaf = "{$year_actual}-{$mes_actual}-{$dia_siguiente}";
+        } else {
+            // Incrementar la fecha final en un día
+            $fechaf = date('Y-m-d', strtotime($fechaf . ' +1 day'));
+        }
         $sql = "SELECT
         p.nombre_producto,
         p.precio_producto,
@@ -95,7 +118,7 @@ class reporte_productos
         JOIN producto p ON dv.id_producto = p.id_producto
         JOIN venta v ON dv.id_venta = v.id_venta
     WHERE
-        v.fecha BETWEEN '2024-03-09' AND '2024-03-10'
+        v.fecha BETWEEN '$fechai' AND '$fechaf'
     GROUP BY
         p.nombre_producto, p.precio_producto, p.id_producto;";
         $query = $this->acceso->prepare($sql);

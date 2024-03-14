@@ -72,14 +72,16 @@ if ($_POST['funcion'] == 'crear_producto') {
         $imagen_producto3 = $nombre_inventario;
     }
     //imagen 4 varchar guardar
-    if (isset($_FILES['imagen_productos_s3']) && $_FILES['imagen_productos_s3']['error'] == UPLOAD_ERR_OK) {
+    if (isset($_FILES['
+    ']) && $_FILES['imagen_producto_s3']['error'] == UPLOAD_ERR_OK) {
 
-        $nombre_inventario =  $marca_producto . uniqid() . '-' . $_FILES['imagen_productos_s3']['name'];
+        $nombre_inventario =  $marca_producto . uniqid() . '-' . $_FILES['imagen_producto_s3']['name'];
 
         $ruta = '../vista/assets/img/' . $categoria_text . '/' . $nombre_inventario;
-        move_uploaded_file($_FILES['imagen_productos_s3']['tmp_name'], $ruta);
+        move_uploaded_file($_FILES['imagen_producto_s3']['tmp_name'], $ruta);
         $imagen_producto4 = $nombre_inventario;
     }
+    
     $inventario->crear_producto(
         $codigo_producto,
         $nombre_producto,

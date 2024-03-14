@@ -163,6 +163,13 @@ include "header.php"
                 </li>
 
                 <li class="nav-item">
+                    <a href="roles.php" class="nav-link">
+                        <i class="fas fa-users"></i>
+                        <p>Gestionar Roles</p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
                     <a href="categoria.php" class="nav-link">
                         <i class="fas fa-briefcase"></i>
                         <p>Gestionar Categoria</p>

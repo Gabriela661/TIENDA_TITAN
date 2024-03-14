@@ -14,7 +14,7 @@ $(document).ready(function () {
       { consulta, funcion },
       (response) => {
         const reportes = JSON.parse(response);
-        console.log(reportes)
+        console.log(reportes);
         let template = '';
         let contador = 0; // Inicializamos el contador
         reportes.forEach((reporte) => {
@@ -192,7 +192,7 @@ $(document).ready(function () {
     function fechas_facturas(consulta) {
       const fechaInicio = $('#fecha_inicio').val();
       const fechaFin = $('#fecha_fin').val();
-      console.log(fechaFin, fechaInicio)
+      console.log(fechaFin, fechaInicio);
       // Se define la función a ejecutar en el controlador
       funcion = 'fechas_facturas';
       $.post(
@@ -200,7 +200,7 @@ $(document).ready(function () {
         { consulta, fechaInicio, fechaFin, funcion },
         (response) => {
           const reportes = JSON.parse(response);
-          console.log(reportes)
+          console.log(reportes);
           let template = '';
           let template2 = `<tr>
           <th>N°</th>
@@ -271,6 +271,10 @@ $(document).ready(function () {
     const address2 = 'CPM Llicua - Amarilis - Huánuco';
     const reportTitle = 'Reporte de Facturas';
 
+    /* footer */
+    const reportFooter = 'TITAN';
+    const currentDate = new Date().toLocaleDateString();
+
     // Función para dibujar el encabezado en cada página
     const drawHeader = () => {
       doc.addImage(imgData, 'PNG', 10, 10, 30, 15);
@@ -298,6 +302,33 @@ $(document).ready(function () {
       });
     };
 
+    // Función para dibujar el pie de página en cada página
+    const drawFooter = () => {
+      const totalPages = doc.internal.getNumberOfPages();
+      for (let i = 1; i <= totalPages; i++) {
+        doc.setPage(i);
+        doc.setFontSize(12);
+
+        // Fondo verde al pie de página
+        doc.setFillColor(228, 85, 18);
+        doc.rect(0, pdfHeight - 20, pdfWidth, 20, 'F');
+
+        // Texto centrado
+        doc.setTextColor(255, 255, 255);
+        doc.text(reportFooter + ' (' + currentDate + ')', 10, pdfHeight - 10, {
+          align: 'left',
+        });
+
+        // Fecha y paginación a la derecha
+        doc.text(
+          ' Página ' + i + ' de ' + totalPages,
+          pdfWidth - 12,
+          pdfHeight - 10,
+          { align: 'right' }
+        );
+      }
+    };
+
     // Evento para dibujar el encabezado en cada página
     doc.autoTable({
       html: '#reporte_facturas',
@@ -309,6 +340,7 @@ $(document).ready(function () {
       },
       didDrawPage: () => {
         drawHeader();
+        drawFooter();
       },
     });
 

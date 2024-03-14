@@ -202,3 +202,13 @@ if ($_POST['funcion'] == 'borrar_usuario') {
         echo 'error controler';
     }
 }
+
+//eliminar usuario
+if ($_POST['funcion'] == 'borrar_cliente') {
+    try {
+        $id_cliente = $_POST['id_cliente'];
+        $usuario->borrar_cliente($id_cliente);
+    } catch (Exception $e) {
+        echo 'error controler';
+    }
+}

@@ -16,18 +16,28 @@ $(document).ready(function () {
         let contador = 0; // Inicializamos el contador
         inventarios.forEach((inventario) => {
           let imagenStyle = `width: 50px; height: 50px;`;
-
+          var carpetaContenedora = inventario.nombre_categoria;
           // Definir url parcial de la carpeta contenedora
-          var url_parcial = `../vista/assets/img/${inventario.nombre_categoria}`;
+          var url_parcial = `../vista/assets/img/${carpetaContenedora.toLowerCase()}`;
 
           // Separar y guardar urls_imagenes en un array
           var urls_img = inventario['url_imagenes'].split(',');
+          console.log(urls_img, inventario.id_producto);
+          var ImgName = 'default_producto.png';
+          urls_img.map((img) => {
+            if (img != 'default_producto.png') {
+              ImgName = img;
+              return;
+            }
+          });
+
+          var imagenSrc = url_parcial + '/' + ImgName;
 
           //Crear componentes img con sus urls imágenes
-          var componente_imagenes = '';
-          urls_img.map((i) => {
+          /*           urls_img.map((i) => {
+            console.log(first)
             componente_imagenes = `<img src="${url_parcial}/${i}" style="${imagenStyle}"  class="img-circle" alt="...">`;
-          });
+          }); */
           contador++; // Incrementamos el contador en cada iteración
           template += `
                     <tr data-id="${inventario.id_producto}">
@@ -37,9 +47,8 @@ $(document).ready(function () {
                         <th scope="row">${inventario.stock_producto}</th>
                         <th scope="row">${inventario.precio_producto}</th>                        
                         <th scope="row"><div class="text-center">
-                        <img src="${inventario.imagen_producto}" style="${imagenStyle}"  class="img-circle" alt="...">
-                      </div></th>
-                        ${componente_imagenes}
+                        <img src="${imagenSrc}" style="${imagenStyle}"  class="img-circle" alt="...">
+                      </div></th>                        
                         <th scope="row"><button id="btn_editar" data-id_inventario="${inventario.id_producto}" type="button" class="btn btn-info">
                         Editar
                      </button></th>
@@ -76,29 +85,6 @@ $(document).ready(function () {
     );
   }
 
-/*   Dropzone.autoDiscover = false; */
-
-  const dropzone = new Dropzone('#dropzoneContainer', {
-    maxFiles: 4, // Límite de 4 imágenes
-    acceptedFiles: 'image/*', // Aceptar solo archivos de imagen
-    addRemoveLinks: true, // Mostrar enlaces para eliminar imágenes
-    dictRemoveFile: 'Eliminar', // Texto del enlace para eliminar
-    dictDefaultMessage: 'Arrastra tus imágenes aquí o haz clic para seleccionarlas', // Mensaje predeterminado
-    dictFallbackMessage: 'Tu navegador no soporta arrastrar y soltar archivos', // Mensaje si el navegador no soporta la funcionalidad
-    dictFallbackText: 'Por favor, utiliza el formulario de respaldo a continuación para cargar tus archivos', // Texto si el navegador no soporta la funcionalidad
-    dictFileTooBig: 'El archivo es demasiado grande ({{filesize}}MiB). Tamaño máximo permitido: {{maxFilesize}}MiB.', // Mensaje si el archivo es demasiado grande
-    dictInvalidFileType: 'No puedes cargar archivos de este tipo', // Mensaje si el tipo de archivo no es válido
-    dictMaxFilesExceeded: 'No puedes cargar más archivos', // Mensaje si se excede el límite de archivos
-    dictResponseError: 'El servidor respondió con el código {{statusCode}}', // Mensaje si hay un error en la respuesta del servidor
-    form: document.getElementById('myForm') // Pasar el elemento form como opción
-  });
-
-
-  // Manejar el evento de clic en el botón "Enviar"
-  document.getElementById('enviarBtn').addEventListener('click', function () {
-    myDropzone.processQueue(); // Procesar la cola de archivos para cargarlos
-  });
-
   //enviar datos
   function enviarDatos(url, formData, successCallback, errorCallback) {
     $.ajax({
@@ -125,19 +111,17 @@ $(document).ready(function () {
     const categoria_producto = $('#categoria_producto').val();
     const categoria_text = $('#categoria_producto option:selected').text();
     // Cambiado de file[0] a files[0]
-    const imagenes = dropzone.getQueuedFiles();
-    console.log(imagenes)
-    /* const imagen_producto_principal = $('#imagen_principal_producto')[0]
+    const imagen_producto_principal = $('#imagen_principal_producto')[0]
       .files[0];
     const imagen_producto_s1 = $('#imagen_secundaria_1_producto')[0].files[0];
     const imagen_producto_s2 = $('#imagen_secundaria_2_producto')[0].files[0];
-    const imagen_productos_s3 = $('#imagen_secundaria_3_producto')[0].files[0];
-    console.log(imagen_producto_principal); */
+    const imagen_producto_s3 = $('#imagen_secundaria_3_producto')[0].files[0];
+    console.log(imagen_producto_principal);
+    console.log(imagen_producto_s1);
+    console.log(imagen_producto_s2);
+    console.log(imagen_producto_s3);
 
     const formData = new FormData($('#form_inventario')[0]);
-    $.each(imagenes, function(index, imagen) {
-      formData.append('imagenes[]', imagen);
-    });
     formData.append('funcion', 'crear_producto');
     formData.append('nombre_producto', nombre_producto);
     formData.append('codigo_producto', codigo_producto);
@@ -150,7 +134,7 @@ $(document).ready(function () {
     formData.append('imagen_producto_principal', imagen_producto_principal);
     formData.append('imagen_producto_s1', imagen_producto_s1);
     formData.append('imagen_producto_s2', imagen_producto_s2);
-    formData.append('imagen_productos_s3', imagen_productos_s3);
+    formData.append('imagen_producto_s3', imagen_producto_s3);
 
     enviarDatos(
       '../controlador/inventarioControlador.php',
@@ -174,7 +158,7 @@ $(document).ready(function () {
           Swal.fire({
             icon: 'error',
             title: 'Error',
-            text: 'ssss.',
+            text: 'Error .',
           });
         }
       },

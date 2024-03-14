@@ -173,6 +173,20 @@ class usuario
     }
 
     //eliminar usuario
+    function borrar_cliente($id_cliente)
+    {
+        $sql = "DELETE FROM cliente WHERE id_cliente = :id_cliente;
+        ";
+        $query = $this->acceso->prepare($sql);
+        $query->execute(array(':id_cliente' => $id_cliente));
+        if ($query->rowCount() >= 0) {
+            echo 'delete';
+        } else {
+            echo 'dontdelete';
+        }
+    }
+
+    //eliminar usuario
     function borrar_usuario($id_usuario)
     {
         $sql = "DELETE FROM usuario WHERE id_usuario = :id_usuario;

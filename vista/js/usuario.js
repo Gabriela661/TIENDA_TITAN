@@ -35,6 +35,17 @@ $(document).ready(function () {
                         `;
         });
         $('#listar_personal').html(template);
+
+        // Inicializar DataTables después de cargar los datos en la tabla
+        $('#personalTable').DataTable({
+          paging: true,
+          searching: true,
+          ordering: true,
+          info: true,
+          language: {
+            url: '//cdn.datatables.net/plug-ins/1.10.21/i18n/Spanish.json',
+          },
+        });
       }
     );
   }
@@ -64,21 +75,31 @@ $(document).ready(function () {
             tipo_cliente = 'Presencial';
           }
           contador++; // Incrementamos el contador en cada iteración
-          template += `
-                        <tr data-id="${cliente.id_cliente}">
-                        <th scope="row">${contador}</th>
-                            <th scope="row">${cliente.nombre_cliente}</th>
-                            <th scope="row">${cliente.apellido_cliente}</th>
-                            <th scope="row">${cliente.correo_cliente}</th>
-                            <th scope="row">${tipo_cliente}</th>
-                            <th scope="row">  <button id="btn_editarc" class="btn btn-warning btn-editarAdm" type="button"
-                                  data-toggle="modal" data-target="#editar_cliente" data-id_cliente="${cliente.id_cliente}">
-                                Editar
-                            </button></th>
-                            <th scope="row"><button class="btn btn-danger borrar_cliente" data-id="${cliente.id_cliente}">Eliminar</button></th>
-                            `;
+          template += `<tr data-id="${cliente.id_cliente}">
+          <th scope="row">${contador}</th>
+          <th scope="row">${cliente.nombre_cliente}</th>
+          <th scope="row">${cliente.apellido_cliente}</th>
+          <th scope="row">${cliente.correo_cliente}</th>
+          <th scope="row">${tipo_cliente}</th>
+          <th scope="row">  <button id="btn_editarc" class="btn btn-warning btn-editarAdm" type="button"
+          data-toggle="modal" data-target="#editar_cliente" data-id_cliente="${cliente.id_cliente}">
+          Editar
+          </button></th>
+          <th scope="row"><button class="btn btn-danger borrar_cliente" data-id="${cliente.id_cliente}">Eliminar</button></th>
+          </tr>`;
         });
         $('#listar_clientes').html(template);
+
+        // Inicializar DataTables después de cargar los datos en la tabla
+        $('#clienteTable').DataTable({
+          paging: true,
+          searching: true,
+          ordering: true,
+          info: true,
+          language: {
+            url: '//cdn.datatables.net/plug-ins/1.10.21/i18n/Spanish.json',
+          },
+        });
       }
     );
   }
@@ -343,7 +364,6 @@ $(document).ready(function () {
     );
   });
 
-
   /*FUNCION PARA CARGAR DATOS DEL USUARIO PARA EDITAR EN LA BASE DE DATOS*/
   $(document).on('click', '#btn_editar', (e) => {
     e.preventDefault();
@@ -369,55 +389,55 @@ $(document).ready(function () {
   });
   /*FIN FUNCION PARA CARGAR DATOS DEL USUARIO PARA EDITAR EN LA BASE DE DATOS*/
 
-    //Editar usuario
-    $('#form_usuario_editar').submit((e) => {
-      e.preventDefault();
-      const id_usuarioe = $('#id_usuarioe').val();
-  
-      const nombrese = $('#nombre_usuarioe').val();
-      const apellidose = $('#apellido_usuarioe').val();
-      const correo_usuarioe = $('#correo_usuarioe').val();
-      const formData = new FormData($('#form_usuario_editar')[0]);
-  
-      formData.append('funcion', 'editar_usuario');
-      formData.append('id_usuarioe', id_usuarioe);
-  
-      formData.append('nombrese', nombrese);
-      formData.append('apellidose', apellidose);
-      formData.append('correo_electronicoe', correo_usuarioe);
-  
-      enviarDatos(
-        '../controlador/usuarioControlador.php',
-        formData,
-        function (response) {
-          console.log(response);
-          if (response.trim() === 'edits') {
-            Swal.fire({
-              icon: 'success',
-              title: 'Edición exitosa',
-              text: 'Se edito con exito el usuario.',
-            }).then(() => {
-              $('#form_usuario_editar').trigger('reset');
-              window.location.href = 'usuarios.php';
-              $('#form_usuario_editar').modal('hide');
-              $('body').removeClass('modal-open');
-              $('.modal-backdrop').remove();
-              // Actualizar la página después de cerrar la alerta
-              location.reload();
-            });
-          } else {
-            Swal.fire({
-              icon: 'error',
-              title: 'Error',
-              text: 'Edición Incorrecta de Usuario.',
-            });
-          }
-        },
-        function (error) {
-          mostrarMensaje('noadd', 'Error en la solicitud AJAX');
+  //Editar usuario
+  $('#form_usuario_editar').submit((e) => {
+    e.preventDefault();
+    const id_usuarioe = $('#id_usuarioe').val();
+
+    const nombrese = $('#nombre_usuarioe').val();
+    const apellidose = $('#apellido_usuarioe').val();
+    const correo_usuarioe = $('#correo_usuarioe').val();
+    const formData = new FormData($('#form_usuario_editar')[0]);
+
+    formData.append('funcion', 'editar_usuario');
+    formData.append('id_usuarioe', id_usuarioe);
+
+    formData.append('nombrese', nombrese);
+    formData.append('apellidose', apellidose);
+    formData.append('correo_electronicoe', correo_usuarioe);
+
+    enviarDatos(
+      '../controlador/usuarioControlador.php',
+      formData,
+      function (response) {
+        console.log(response);
+        if (response.trim() === 'edits') {
+          Swal.fire({
+            icon: 'success',
+            title: 'Edición exitosa',
+            text: 'Se edito con exito el usuario.',
+          }).then(() => {
+            $('#form_usuario_editar').trigger('reset');
+            window.location.href = 'usuarios.php';
+            $('#form_usuario_editar').modal('hide');
+            $('body').removeClass('modal-open');
+            $('.modal-backdrop').remove();
+            // Actualizar la página después de cerrar la alerta
+            location.reload();
+          });
+        } else {
+          Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Edición Incorrecta de Usuario.',
+          });
         }
-      );
-    });
+      },
+      function (error) {
+        mostrarMensaje('noadd', 'Error en la solicitud AJAX');
+      }
+    );
+  });
 
   //funcion advertencia de borrar datos
   $(document).on('click', '.borrar_usuario', function () {
@@ -438,11 +458,11 @@ $(document).ready(function () {
   });
 
   //funcion borrar
-  $(document).on('click', '.borrar_usuario', function () {
-    const id_usuario = $(this).data('id');
+  $(document).on('click', '.borrar_cliente', function () {
+    const id_cliente = $(this).data('id');
     Swal.fire({
       title: '¿Estás seguro?',
-      text: '¡No podrás revertir esto!',
+      text: '¡Se borrarán todos los datos relacionados al cliente, incluido facturad!',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
@@ -450,7 +470,7 @@ $(document).ready(function () {
       confirmButtonText: 'Sí, eliminarlo',
     }).then((result) => {
       if (result.isConfirmed) {
-        eliminarUsuario(id_usuario);
+        eliminarCliente(id_cliente);
       }
     });
   });
@@ -481,4 +501,139 @@ $(document).ready(function () {
       }
     );
   }
+  
+  // ELiminar datos del cliente
+  function eliminarCliente(id_cliente) {
+    const funcion = 'borrar_cliente';
+    $.post(
+      '../controlador/usuarioControlador.php',
+      { id_cliente, funcion },
+      function (response) {
+        console.log(response);
+        if (response.trim() === 'delete') {
+          Swal.fire({
+            icon: 'success',
+            title: 'Eliminación exitosa',
+            text: 'El cliente ha sido eliminada con éxito.',
+          }).then(() => {
+            location.reload();
+          });
+        } else {
+          Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'No se pudo eliminar al cliente.',
+          });
+        }
+      }
+    );
+  }
+
+  $(document).on('click', '#generatePDFUsuarios', function () {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+
+    const imgWidth = 100; // Ancho de la imagen
+    const imgHeight = 50; // Altura de la imagen
+    const pdfWidth = doc.internal.pageSize.getWidth();
+    const pdfHeight = doc.internal.pageSize.getHeight();
+    const xPos = (pdfWidth - imgWidth) / 2; // Centrar horizontalmente
+    const yPos = (pdfHeight - imgHeight) / 2; // Centrar verticalmente
+
+    // Variables para el diseño del encabezado y la tabla
+    const imgData = 'assets/img/logo_titan.png'; // Ruta de tu logo
+    const watermarkImg = 'assets/img/watermark.png';
+    const contactNumbers = '943212297 - 932566922';
+    const address1 = 'Carretera Central Km 412';
+    const address2 = 'CPM Llicua - Amarilis - Huánuco';
+    const reportTitle = 'Reporte de Facturas';
+
+    /* footer */
+    const reportFooter = 'TITAN';
+    const currentDate = new Date().toLocaleDateString();
+
+    // Función para dibujar el encabezado en cada página
+    const drawHeader = () => {
+      doc.addImage(imgData, 'PNG', 10, 10, 30, 15);
+      doc.addImage(watermarkImg, 'PNG', xPos, yPos, imgWidth, imgHeight);
+      doc.setFontSize(10);
+      doc.setTextColor(150, 150, 150);
+      doc.text(contactNumbers, doc.internal.pageSize.getWidth() - 60, 15);
+      doc.text(address1, doc.internal.pageSize.getWidth() - 60, 25);
+      doc.text(address2, doc.internal.pageSize.getWidth() - 60, 30);
+      doc.setFontSize(22);
+      doc.setTextColor(19, 19, 19);
+      doc.text(reportTitle, doc.internal.pageSize.getWidth() - 140, 42);
+    };
+
+    // Función para generar la tabla
+    const generateTable = () => {
+      doc.autoTable({
+        html: '#personalTable',
+        startY: 50,
+        theme: 'striped',
+        headStyles: {
+          fillColor: [228, 85, 18], // Cambiar a color naranja
+          textColor: [255, 255, 255], // Cambiar el color del texto del encabezado
+        },
+      });
+    };
+
+    // Función para dibujar el pie de página en cada página
+    const drawFooter = () => {
+      const totalPages = doc.internal.getNumberOfPages();
+      for (let i = 1; i <= totalPages; i++) {
+        doc.setPage(i);
+        doc.setFontSize(12);
+
+        // Fondo verde al pie de página
+        doc.setFillColor(228, 85, 18);
+        doc.rect(0, pdfHeight - 20, pdfWidth, 20, 'F');
+
+        // Texto centrado
+        doc.setTextColor(255, 255, 255);
+        doc.text(reportFooter + ' (' + currentDate + ')', 10, pdfHeight - 10, {
+          align: 'left',
+        });
+
+        // Fecha y paginación a la derecha
+        doc.text(
+          ' Página ' + i + ' de ' + totalPages,
+          pdfWidth - 12,
+          pdfHeight - 10,
+          { align: 'right' }
+        );
+      }
+    };
+
+    // Evento para dibujar el encabezado en cada página
+    doc.autoTable({
+      html: '#personalTable',
+      startY: 50,
+      theme: 'striped',
+      headStyles: {
+        fillColor: [228, 85, 18], // Cambiar a color naranja
+        textColor: [255, 255, 255], // Cambiar el color del texto del encabezado
+      },
+      didDrawPage: () => {
+        drawHeader();
+        drawFooter();
+      },
+    });
+
+    // Abrir el PDF en una nueva ventana
+    var pdfWindow = window.open('', '_blank');
+    pdfWindow.document.open();
+    pdfWindow.document.write(
+      '<html><head><title>PDF Reporte de Ventas</title></head><body>'
+    );
+    pdfWindow.document.write(
+      '<embed width="100%" height="100%" src="' +
+        doc.output('datauristring') +
+        '" type="application/pdf">'
+    );
+    pdfWindow.document.write('</body></html>');
+    pdfWindow.document.close();
+  });
+  
 });

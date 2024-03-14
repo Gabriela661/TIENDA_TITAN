@@ -2,7 +2,6 @@
 <?php
 include_once "assets/views/nav.php";
 ?>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <body>
   <div class="wrapper">
@@ -83,7 +82,7 @@ include_once "assets/views/nav.php";
                   <label for="apellido_cliente">Apellidos</label>
                   <input type="text" class="form-control" id="apellido_cliente" name="apellido_cliente" placeholder="Apellidos" required>
                 </div>
-                
+
                 <div class="form-group">
                   <label for="correo_electronico_cliente">Correo Electrónico</label>
                   <input type="email" class="form-control" id="correo_electronico_cliente" name="correo_electronico_cliente" placeholder="Correo Electrónico">
@@ -104,7 +103,7 @@ include_once "assets/views/nav.php";
     </div>
     </form>
     <!--final  Modal  crear cliente-->
-    
+
     <!-- inicio Modal  editar cliente-->
     <div class="modal fade" id="editar_cliente" tabindex="-1" role="dialog" aria-labelledby="#editar_cliente" aria-hidden="true">
       <div class="modal-dialog" role="document">
@@ -146,7 +145,7 @@ include_once "assets/views/nav.php";
     </div>
     </form>
     <!--final  Modal  editar cliente-->
-    
+
     <!-- inicio Modal  editar usuario-->
     <div class="modal fade" id="editar_usuario" tabindex="-1" role="dialog" aria-labelledby="#editar_usuario" aria-hidden="true">
       <div class="modal-dialog" role="document">
@@ -225,10 +224,12 @@ include_once "assets/views/nav.php";
                 <div class="active tab-pane btn-personal" id="personal">
                   <div class="timeline timeline-inverse">
                     <div class="card">
-                      <div class="card-header">Personal</div>
+                      <div class="card-header d-flex justify-content-start align-items-center">
+                        <h3>Personal</h3><a type="button" class="btn btn-danger ml-4" href="#" id="generatePDFUsuarios"><i class="far fa-file-pdf"></i></a>
+                      </div>
                       <!-- Tabla del personal -->
                       <div class="card-body table-responsive">
-                        <table id="example1" class="table table-bordered table-striped">
+                        <table id="personalTable" class="table table-bordered table-striped">
                           <thead>
                             <tr>
                               <th>N°</th>
@@ -251,9 +252,11 @@ include_once "assets/views/nav.php";
                 </div>
                 <div class="tab-pane btn-cliente" id="cliente">
                   <div class="card">
-                    <div class="card-header">Clientes</div>
+                  <div class="card-header d-flex justify-content-start align-items-center">
+                        <h3>Cliente</h3><a type="button" class="btn btn-danger ml-4" href="#" id="generatePDFClientes"><i class="far fa-file-pdf"></i></a>
+                      </div>
                     <div class="card-body table-responsive">
-                      <table id="example1" class="table table-bordered table-striped">
+                      <table id="clienteTable" class="table table-bordered table-striped">
                         <thead>
                           <tr>
                             <th>N°</th>
@@ -292,8 +295,7 @@ include_once "assets/views/nav.php";
 <!-- AdminLTE App -->
 <script src="../vista/assets/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<!-- J query -->
+
 
 <script src="js/usuario.js"></script>
 </div>

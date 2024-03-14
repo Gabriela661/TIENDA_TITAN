@@ -23,7 +23,7 @@ class inventario
         p.stock_producto, 
         p.precio_producto, 
         c.nombre_categoria, 
-        GROUP_CONCAT(i.url_imagen SEPARATOR ', ') AS url_imagenes 
+        GROUP_CONCAT(i.url_imagen SEPARATOR ',') AS url_imagenes 
         FROM producto p 
         INNER JOIN imagen i ON i.id_producto = p.id_producto 
         INNER JOIN categoria c ON c.id_categoria = p.id_categoria 
@@ -45,7 +45,7 @@ class inventario
     }
 
     //crear producto
-    function crear_producto($codigo_producto, $nombre_producto, $precio_producto, $descripcion_producto, $cantidad_producto, $marca_producto, $categoria_producto, $imagen_producto_principal, $imagen_producto_s1, $imagen_producto_s2, $imagen_producto_s3)
+    function crear_producto($codigo_producto, $nombre_producto, $precio_producto, $descripcion_producto, $cantidad_producto, $marca_producto, $categoria_producto, $imagen_producto1, $imagen_producto2, $imagen_producto3, $imagen_producto4)
     {
         $sql = "INSERT INTO producto (codigo_producto, nombre_producto, precio_producto, descripcion_producto, stock_producto, marca_producto, id_categoria) VALUES (:codigo_producto, :nombre_producto, :precio_producto, :descripcion_producto, :cantidad_producto, :marca_producto, :categoria_producto)";
         $query = $this->acceso->prepare($sql);
@@ -62,7 +62,7 @@ class inventario
         // Obtiene el ID del último producto insertado
         $producto_id = $this->acceso->lastInsertId();
 
-        if ($imagen_producto_principal=='') {
+        if ($imagen_producto1 == '') {
             $sql_imagen = "INSERT INTO imagen (id_producto) VALUES (:producto_id)";
             $query_imagen = $this->acceso->prepare(($sql_imagen));
             $query_imagen->execute(array(':producto_id' => $producto_id));
@@ -70,33 +70,45 @@ class inventario
             $sql_imagen = "INSERT INTO imagen (url_imagen, id_producto) VALUES (:url_imagen, :producto_id)";
             $query_imagen = $this->acceso->prepare(($sql_imagen));
             $query_imagen->execute(array(
-                ':url_imagen' => $imagen_producto_principal,
+                ':url_imagen' => $imagen_producto1,
                 ':producto_id' => $producto_id
             ));
-            if ($imagen_producto_s1=!'') {
-                $sql_imagen = "INSERT INTO imagen (url_imagen, id_producto) VALUES (:url_imagen, :producto_id)";
-                $query_imagen = $this->acceso->prepare(($sql_imagen));
-                $query_imagen->execute(array(
-                    ':url_imagen' => $imagen_producto_s1,
-                    ':producto_id' => $producto_id
-                ));
-            }
-            if ($imagen_producto_s2=!'') {
-                $sql_imagen = "INSERT INTO imagen (url_imagen, id_producto) VALUES (:url_imagen, :producto_id)";
-                $query_imagen = $this->acceso->prepare(($sql_imagen));
-                $query_imagen->execute(array(
-                    ':url_imagen' => $imagen_producto_s2,
-                    ':producto_id' => $producto_id
-                ));
-            }
-            if ($imagen_producto_s3=!'') {
-                $sql_imagen = "INSERT INTO imagen (url_imagen, id_producto) VALUES (:url_imagen, :producto_id)";
-                $query_imagen = $this->acceso->prepare(($sql_imagen));
-                $query_imagen->execute(array(
-                    ':url_imagen' => $imagen_producto_s3,
-                    ':producto_id' => $producto_id
-                ));
-            }
+        }
+        if ($imagen_producto2 != '') {
+            $sql_imagen = "INSERT INTO imagen (url_imagen, id_producto) VALUES (:url_imagen, :producto_id)";
+            $query_imagen = $this->acceso->prepare(($sql_imagen));
+            $query_imagen->execute(array(
+                ':url_imagen' => $imagen_producto2,
+                ':producto_id' => $producto_id
+            ));
+        } else {
+            $sql_imagen = "INSERT INTO imagen (id_producto) VALUES (:producto_id)";
+            $query_imagen = $this->acceso->prepare(($sql_imagen));
+            $query_imagen->execute(array(':producto_id' => $producto_id));
+        }
+        if ($imagen_producto3 != '') {
+            $sql_imagen = "INSERT INTO imagen (url_imagen, id_producto) VALUES (:url_imagen, :producto_id)";
+            $query_imagen = $this->acceso->prepare(($sql_imagen));
+            $query_imagen->execute(array(
+                ':url_imagen' => $imagen_producto3,
+                ':producto_id' => $producto_id
+            ));
+        } else {
+            $sql_imagen = "INSERT INTO imagen (id_producto) VALUES (:producto_id)";
+            $query_imagen = $this->acceso->prepare(($sql_imagen));
+            $query_imagen->execute(array(':producto_id' => $producto_id));
+        }
+        if ($imagen_producto4 != '') {
+            $sql_imagen = "INSERT INTO imagen (url_imagen, id_producto) VALUES (:url_imagen, :producto_id)";
+            $query_imagen = $this->acceso->prepare(($sql_imagen));
+            $query_imagen->execute(array(
+                ':url_imagen' => $imagen_producto4,
+                ':producto_id' => $producto_id
+            ));
+        } else {
+            $sql_imagen = "INSERT INTO imagen (id_producto) VALUES (:producto_id)";
+            $query_imagen = $this->acceso->prepare(($sql_imagen));
+            $query_imagen->execute(array(':producto_id' => $producto_id));
         }
 
         echo 'Producto Agregado';

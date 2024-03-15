@@ -79,7 +79,7 @@
             <div class="carousel-inner">
                 <div class="carousel-item active">
                     <a href="vermasproductos.php?id=1">
-                        <img src="assets/img/publicidad/publicidad1.png" alt="Slide 1" class="d-block w-100">
+                        <img src="assets/img/publicidad/publicidad2.png" alt="Slide 1" class="d-block w-100">
                     </a>
                 </div>
                 <div class="carousel-item">
@@ -89,10 +89,9 @@
                 </div>
                 <div class="carousel-item">
                     <a href="vermasproductos.php?id=3">
-                        <img src="assets/img/publicidad/publicidad3.png" alt="Slide 3" class="d-block w-100">
+                        <img src="assets/img/publicidad/publicidad2.png" alt="Slide 3" class="d-block w-100">
                     </a>
                 </div>
-                <!-- Agregar más imágenes según sea necesario -->
             </div>
 
             <!-- Controles del carrusel -->

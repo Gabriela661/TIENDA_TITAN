@@ -124,7 +124,6 @@ $(document).ready(function () {
    */
 
   function productosTienda(consulta) {
-    
     funcion = "productosTienda";
     $.post(
       "controlador/productosControlador.php",
@@ -352,21 +351,21 @@ $(document).ready(function () {
                             <p>${detalle.descripcion_producto}</p>
                             <ul class="list-inline">
                                 <li class="list-inline-item">
-                                    <h6>Marca:</h6>
+                                    <h6>Marca:${detalle.marca_producto}</h6>
                                 </li>
+
+                            </ul>
+                             <ul class="list-inline">
                                 <li class="list-inline-item">
-                                    <p class="text-muted"><strong>${detalle.marca_producto}</strong></p>
+                                    <h6>Stock disponible:${detalle.stock_producto}</h6>
                                 </li>
+
                             </ul>
                             <form action="" method="GET">
                                 <input type="hidden" name="product-title" value="Activewear">
                                 <div class="row">
                                     <div class="col-auto">
                                         <ul class="list-inline pb-3">
-                                            <li class="list-inline-item text-right">
-                                                ${detalle.stock_producto}
-                                                <input type="hidden" name="product-quanity" id="product-quanity" value="1">
-                                            </li>
                                             <li class="list-inline-item"><span class="btn btn-success" id="btn-minus">-</span></li>
                                             <li class="list-inline-item"><span class="badge bg-secondary" id="var-value">1</span></li>
                                             <li class="list-inline-item"><span class="btn btn-success" id="btn-plus">+</span></li>

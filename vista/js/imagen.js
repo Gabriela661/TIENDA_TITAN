@@ -1,36 +1,44 @@
-let imagenVisible = false;
-
+let imagenVisibleYape = false;
+let imagenVisiblePlin = false;
+//Funcion para mostrar la imagen del QR de yape
 function image() {
-  if (imagenVisible) {
-    document.getElementById('imagencargando').innerHTML = '';
-    imagenVisible = false;
+  if (!imagenVisibleYape) {
+    document.getElementById("imagencargando").innerHTML = "";
+    imagenVisibleYape = true;
+
+    // Deseleccionar la opción Plin si estaba seleccionada
+    if (imagenVisiblePlin) {
+      document.getElementById("imagen1").checked = false;
+      imagenVisiblePlin = false;
+      document.getElementById("imagencargandoplin").innerHTML = "";
+    }
+
+    imagen =
+      '<img src="assets/img/tienda/Yape.jpeg" class="img-fluid" alt="cargando..." />';
+    document.getElementById("imagencargando").innerHTML = imagen;
   } else {
-    imagen = '<img src="assets/img/Captura.JPG" alt="cargando..." />';
-    document.getElementById('imagencargando').innerHTML = imagen;
-    imagenVisible = true;
+    document.getElementById("imagencargando").innerHTML = "";
+    imagenVisibleYape = false;
   }
 }
-
+//Funcion para mostrar la imagen del QR de PLin
 function image1() {
-  if (imagenVisible) {
-    document.getElementById('imagencargandoplin').innerHTML = '';
-    imagenVisible = false;
+  if (!imagenVisiblePlin) {
+    document.getElementById("imagencargandoplin").innerHTML = "";
+    imagenVisiblePlin = true;
+
+    // Deseleccionar la opción Yape si estaba seleccionada
+    if (imagenVisibleYape) {
+      document.getElementById("imagen").checked = false;
+      imagenVisibleYape = false;
+      document.getElementById("imagencargando").innerHTML = "";
+    }
+
+    imagen =
+      '<img src="assets/img/tienda/Plin.jpeg" class="img-fluid" alt="cargando..." />';
+    document.getElementById("imagencargandoplin").innerHTML = imagen;
   } else {
-    imagen = '<img src="assets/img/Plin.JPG" alt="cargando..." />';
-    document.getElementById('imagencargandoplin').innerHTML = imagen;
-    imagenVisible = true;
+    document.getElementById("imagencargandoplin").innerHTML = "";
+    imagenVisiblePlin = false;
   }
 }
-function tarjeta() {
-  console.log("La función tarjeta() se está ejecutando");
-  var formularioTarjeta = document.getElementById('formularioTarjeta');
-  var checkboxImagen = document.getElementById('imagen');
-  console.log("Estado del checkbox: ", checkboxImagen.checked);
-  if (checkboxImagen.checked) {
-    formularioTarjeta.style.display = 'block'; // Mostrar el formulario
-  } else {
-    formularioTarjeta.style.display = 'none'; // Ocultar el formulario
-  }
-}
-
-

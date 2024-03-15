@@ -1656,7 +1656,7 @@ body::-webkit-scrollbar-thumb:hover { background: hsl(0, 0%, 70%); }
 }
 
 .product-grid .showcase-title {
-  color: var(--sonic-silver);
+  color: var(orange);
   font-size: var(--fs-8);
   font-weight: var(--weight-300);
   text-transform: capitalize;

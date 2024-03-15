@@ -71,7 +71,8 @@ $(document).ready(function () {
       }
     );
   }
-        console.log(productosSeleccionados);
+
+  
   $("#venta1").click(function () {
     var fechaEmision = document.getElementById("fecha_emision").value;
     var fechaVencimiento = document.getElementById("fecha_vencimiento").value;
@@ -218,4 +219,182 @@ $(document).ready(function () {
     );
   }
   /*FIN FUNCION PARA LIMPIAR LOS PRODUCTOS DEL CARRITO */
+
+
+
+  // Obtener referencia al botón y al campo de entrada
+  const notificarPagoBtn = document.getElementById("notificar_pago");
+  const codigoConfirmacionDiv = document.getElementById("codigo_confirmacion");
+
+  // Escuchar clic en el botón "Notificar pago"
+  notificarPagoBtn.addEventListener("click", function () {
+    // Mostrar el campo de entrada del código de confirmación
+    codigoConfirmacionDiv.style.display = "block";
+  });
+
+  // Función para cuando se seleccione Yape
+  function image() {
+    // Si el checkbox de Yape está seleccionado
+    if ($("#imagen").prop("checked")) {
+      // Agregar el método Yape al atributo data-metodo del botón notificar_pago
+      $("#notificar_pago").data("metodo", "Yape");
+    } else {
+      // Si no está seleccionado, eliminar el atributo data-metodo
+      $("#notificar_pago").removeData("metodo");
+    }
+  }
+
+  // Utilizar eventos jQuery para detectar cambios en los checkboxes
+  $(document).ready(function () {
+    // Evento change en el checkbox de Yape
+    $("#imagen").change(function () {
+      if ($(this).prop("checked")) {
+        console.log("Yape seleccionado");
+        // Al seleccionar Yape, configurar el atributo data-metodo en el botón
+        $("#notificar_pago").data("metodo", "Yape");
+        $("#metodo_pago").val("Yape");
+      } else {
+        console.log("Yape no seleccionado");
+        // Si se deselecciona Yape, eliminar el atributo data-metodo del botón
+        $("#notificar_pago").removeData("metodo");
+        $("#metodo_pago").val("");
+      }
+    });
+
+    // Evento change en el checkbox de Plin
+    $("#imagen1").change(function () {
+      if ($(this).prop("checked")) {
+        // Al seleccionar Plin, configurar el atributo data-metodo en el botón
+        $("#notificar_pago").data("metodo", "Plin");
+        $("#metodo_pago").val("Plin");
+      } else {
+        // Si se deselecciona Plin, eliminar el atributo data-metodo del botón
+        $("#notificar_pago").removeData("metodo");
+        $("#metodo_pago").val("");
+      }
+    });
+
+    // Evento click en el botón notificar_pago
+    $("#notificar_pago").click(function () {
+
+    var fechaEmision = document.getElementById("fecha_emision").value;
+    var fechaVencimiento = document.getElementById("fecha_vencimiento").value;
+    var razonSocial = document.getElementById("razon_social").value;
+    var ruc = document.getElementById("ruc").value;
+    var direccion = document.getElementById("direccion").value;
+    var tipoMoneda = document.getElementById("tipo_moneda").value;
+    var observaciones = document.getElementById("observaciones").value;
+
+      var metodo = $(this).data("metodo"); // Obtener el método almacenado en el atributo data-metodo
+
+      var telefono = $("#telefono").val();
+
+      // Verificar si los campos están llenos
+      if (razonSocial === "" || ruc === "" || direccion === "" || telefono === "") {
+        // Mostrar un mensaje de error con SweetAlert2
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Por favor complete todos los campos de detalle de la proforma",
+        });
+      } else {
+        // Comprobar si se ha seleccionado un método de pago
+        if (metodo) {
+          // Realizar la solicitud al controlador con el método y el teléfono
+          $.post(
+            "controlador/pagoFacturaControlador.php",
+            { telefono: telefono, metodo: metodo },
+            function (data, status) {
+              console.log(data);
+              if (status === "success" && data === "Mensaje enviado") {
+                // Mostrar SweetAlert2 como notificación
+                Swal.fire({
+                  title: "Notificado",
+                  text: "El pago ha sido notificado correctamente, espere el código de confirmación de 6 dígitos.",
+                  icon: "success",
+                  showConfirmButton: false,
+                  timer: 4000,
+                });
+              }
+            }
+          );
+        } else {
+          // Mostrar mensaje de error con SweetAlert2 si no se ha seleccionado ningún método de pago
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "No se ha seleccionado ningún método de pago.",
+          });
+        }
+      }
+    });
+  });
+  $("#confirmar_pago").click(function () {
+    var codigoConfirmacion = parseInt($("#codigo_input").val());
+    $.post(
+      "controlador/pagoFacturaControlador.php",
+      { codigo: codigoConfirmacion },
+      function (data, status) {
+        if (status === "success") {
+          if (data === "correcto") {
+            // Mostrar SweetAlert2 indicando que el código es correcto
+            Swal.fire({
+              title: "Código correcto",
+              text: "El código de confirmación es válido, a continuación se mostrara la proforma",
+              icon: "success",
+              showConfirmButton: false, // No mostrar botón
+              timer: 3000, // Cerrar automáticamente después de 3 segundos
+            });
+            var fechaEmision = document.getElementById("fecha_emision").value;
+            var fechaVencimiento =
+              document.getElementById("fecha_vencimiento").value;
+            var razonSocial = document.getElementById("razon_social").value;
+            var ruc = document.getElementById("ruc").value;
+            var direccion = document.getElementById("direccion").value;
+            var tipoMoneda = document.getElementById("tipo_moneda").value;
+            var observaciones = document.getElementById("observaciones").value;
+            // Convertir el carrito a JSON
+            var productos = JSON.stringify(productosSeleccionados);
+            // Enviar la solicitud POST para generar el PDF
+            fetch("controlador/facturaControlador.php", {
+              method: "POST",
+              body: JSON.stringify({
+                productos: productos,
+                fechaEmision: fechaEmision,
+                fechaVencimiento: fechaVencimiento,
+                razonSocial: razonSocial,
+                ruc: ruc,
+                direccion: direccion,
+                tipoMoneda: tipoMoneda,
+                observaciones: observaciones,
+              }),
+            })
+              .then((response) => response.blob())
+              .then((blob) => {
+                const url = window.URL.createObjectURL(blob);
+
+                // Abrir el PDF en otra pestaña
+                window.open(url, "_blank");
+
+                // Limpiar la URL creada
+                window.URL.revokeObjectURL(url);
+              })
+              .catch((error) => {
+                console.error("Error en la solicitud POST:", error);
+              });
+          } else {
+            // Mostrar SweetAlert2 indicando que el código es incorrecto
+            Swal.fire({
+              title: "Código incorrecto",
+              text: "El código de confirmación es inválido, verifique y vuelva a ingresar.",
+              icon: "error",
+              showConfirmButton: false, // No mostrar botón
+              timer: 3000, // Cerrar automáticamente después de 3 segundos
+            });
+          }
+        }
+      }
+    );
+  });
 });
+

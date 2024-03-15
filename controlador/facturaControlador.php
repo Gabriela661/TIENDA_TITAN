@@ -35,7 +35,7 @@ class MYPDF extends TCPDF
         $this->SetXY(10, 30);
         $this->Cell(30, 10, 'TIENDA TITAN', 0, false);
         $this->SetXY(10, 35);
-        $this->SetFont('helvetica', '', 10);
+        $this->SetFont('helvetica', '', 9);
         $this->Cell(30, 10, 'CARRETERA CENTRAL KM. 412 REF. FRENTE AL', 0, false);
         $this->SetXY(10, 40);
         $this->Cell(30, 10, 'GRIFO RACING AMARILIS - HUÁNUCO - HUÁNUCO', 0, false);
@@ -60,7 +60,7 @@ class MYPDF extends TCPDF
         $this->SetXY(10, 50);
         $this->Cell(30, 10, 'Fecha de Emisión: '. $fecha_formateada_emsion, 0, false);
         $this->SetXY(10, 55);
-        $this->Cell(30, 10, 'Señor(es) '.$razonSocial, 0, false);
+        $this->Cell(30, 10, 'Señor(es): '.$razonSocial, 0, false);
         $this->SetXY(10, 60);
         $this->Cell(30, 10, 'RUC: ' . $ruc, 0, false);
         $this->SetXY(10, 65);

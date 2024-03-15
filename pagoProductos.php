@@ -84,14 +84,18 @@ if (isset($_GET['id_categoria'])) {
                                     <input class="form-control" id="direccion" name="direccion" placeholder="Dirección de la Empresa" required>
                                 </div>
                                 <div class="col-md-12">
+                                    <label for="telefono">Teléfono:</label>
+                                    <input class="form-control" id="telefono" name="telefono" placeholder="Telefono" required>
+                                </div>
+                                <div class="d-none col-md-12">
                                     <label for="tipo_moneda">Tipo de Moneda:</label>
                                     <select class="form-control" id="tipo_moneda" name="tipo_moneda" required>
-                                        <option value="PEN">Soles peruanos (PEN)</option>
+                                        <option value="SOL">Soles peruanos (PEN)</option>
                                         <option value="USD">Dólares estadounidenses (USD)</option>
                                         <option value="EUR">Euros (EUR)</option>
                                     </select>
                                 </div>
-                                <div class="col-md-12">
+                                <div class="d-none col-md-12">
                                     <label for="obs">Observaciones:</label>
                                     <input class="form-control" id="observaciones" name="observaciones" placeholder="observaciones" required>
                                 </div>
@@ -102,8 +106,6 @@ if (isset($_GET['id_categoria'])) {
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-6">
                     <div class="card">
                         <div class="card-header">
                             <h3>Tu pedido</h3>
@@ -129,9 +131,10 @@ if (isset($_GET['id_categoria'])) {
                             </table>
                         </div>
                     </div>
-                    <!-- Boton pedido -->
-                    <div class="row">
-                        <div class="col-md-12">
+                </div>
+                <div class="col-md-6 ">
+
+
                             <div class="card">
                                 <div class="card">
                                     <div class="card-header">
@@ -147,7 +150,7 @@ if (isset($_GET['id_categoria'])) {
                                             <div class="col-md-12 d-flex justify-content-center align-items-center">
                                                 <div id='imagencargando' class="w-50">
                                                     <a class="brand-link">
-                                                        <img src="assets/img/Yape.jpeg" class="brand-image img-elevation-3 img-fluid">
+                                                        <img src="assets/img/tienda/Yape.jpeg" class="brand-image img-elevation-3 img-fluid">
                                                     </a>
                                                 </div>
                                             </div>
@@ -161,19 +164,26 @@ if (isset($_GET['id_categoria'])) {
                                             <div class="col-md-12 d-flex justify-content-center align-items-center">
                                                 <div id='imagencargandoplin' class="w-50">
                                                     <a class="brand-link">
-                                                        <img src="assets/img/Plin.jpeg" class="brand-image img-elevation-3 img-fluid">
+                                                        <img src="assets/img/tienda/Plin.jpeg" class="brand-image img-elevation-3 img-fluid">
                                                     </a>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="card-body">
-                                    <button type="submit" id="venta1" class="btn btn-warning btn-lg btn-block">Generar Factura</button>
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h3>Proceso de verificación del pago</h3>
+                                    </div>
+                                    <div class="card-body">
+                                        <button id="notificar_pago" type="button" class="btn btn-warning btn-lg btn-block">Notificar el pago realizado</button>
+                                    </div>
+                                    <div class="card-body" id="codigo_confirmacion" style="display: none;">
+                                        <input type="text" maxlength="6" id="codigo_input" class="form-control" placeholder="Ingrese el código de 6 digitos">
+                                        <button id="confirmar_pago" type="button" class="btn btn-primary btn-lg  mt-3 btn-block">Verificar Codigo</button>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
+
                     <!-- FIN Boton pedido -->
                 </div>
             </div>
@@ -204,6 +214,7 @@ if (isset($_GET['id_categoria'])) {
 
     <script src="vista/js/busquedaProductos.js"></script>
     <script src="vista/js/pagoProductos.js"></script>
+    <script src="vista/js/imagen.js"></script>
 
 </body>
 

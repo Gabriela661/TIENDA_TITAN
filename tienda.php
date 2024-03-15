@@ -1,4 +1,24 @@
-<?php include './assets/views/navbar.php' ?>
+<?php
+// Inicia la sesión
+session_start();
+// Verifica si ya existe un ID de usuario en la sesión
+if (!isset($_SESSION['user_id'])) {
+    // Si no hay un ID de usuario en la sesión, genera uno nuevo
+    $_SESSION['user_id'] = rand(1, 100000);
+}
+
+// Obtiene el ID de usuario de la sesión (ya convertido a número)
+//$user_id = 2;
+
+
+
+// Muestra el ID de usuario
+//echo "ID de usuario: " . $user_id;
+
+
+include './assets/views/navbar.php';
+
+?>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
@@ -23,6 +43,8 @@ if (isset($_GET['id_categoria'])) {
 <body>
     <!-- Input oculto para asignar el id de la categoria para el filtrado -->
     <input id="idCategoria" class="d-none" type="text" value="<?php echo $idCategoria ?>">
+    <!-- Input oculto para asignar el id del usuario-->
+    <input id_="id_usuario" class="d-none" type="text" value="<?php echo $user_id ?>">
     <!-- Modal del carrito de compras -->
 
     <div id="modalCarrito" class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
@@ -59,7 +81,7 @@ if (isset($_GET['id_categoria'])) {
                             </a>
                         </div>
                         <div class="col-6 col-md-6 col-lg-6">
-                            <button id="btnLimpiarCarrito" data-id_usuario="1" class="btn btn-danger btn-block">
+                            <button id="btnLimpiarCarrito" data-id_usuario="<?php echo $user_id ?>" class="btn btn-danger btn-block">
                                 <i class="fa-solid fa-trash-can"></i> Limpiar el Carrito
                             </button>
                         </div>
@@ -85,12 +107,8 @@ if (isset($_GET['id_categoria'])) {
         <!--
       - PRODUCT
     -->
-
         <div class="product-container">
-
             <div class="container">
-
-
                 <!--
           - SIDEBAR
         -->

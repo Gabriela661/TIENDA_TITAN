@@ -124,6 +124,7 @@ $(document).ready(function () {
    */
 
   function productosTienda(consulta) {
+    
     funcion = "productosTienda";
     $.post(
       "controlador/productosControlador.php",

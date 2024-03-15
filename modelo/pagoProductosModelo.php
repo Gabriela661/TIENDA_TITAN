@@ -6,10 +6,10 @@ class productosPago
 {
     var $objetos; // Propiedad para almacenar los resultados de las consultas
     var $acceso; // Propiedad para acceder a la conexión PDO
-
-    public function __construct()
+ public function __construct()
     {
         $db = new conexion(); // Se instancia la clase de conexión a la base de datos
+        $this->acceso = $db->pdo; // Se obtiene el objeto PDO para acceder a la base de datos
     }
     /* FUNCION PARA CARGAR LOS PRODUCTOS EN EL CARRITO  */
     public function cargarProductosPago()
@@ -20,10 +20,9 @@ class productosPago
                 c.id_usuario,
                 c.id_carrito,
                 c.cantidad_carrito,
-                p.id_producto,
+                c.id_producto,
                 p.nombre_producto,
                 p.precio_producto,
-                p.stock_producto,
                 ROUND((c.cantidad_carrito * p.precio_producto), 2) AS subtotal     
             FROM
                 carrito c
@@ -40,5 +39,5 @@ class productosPago
             return $this->objetos;
         }
     }
-      /* FIN FUNCION PARA CARGAR LOS PRODUCTOS EN EL CARRITO  */
+    /* FIN FUNCION PARA CARGAR LOS PRODUCTOS EN EL CARRITO  */
 }

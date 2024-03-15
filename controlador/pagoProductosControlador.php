@@ -13,13 +13,13 @@ $json = array();
 foreach ($productosPago->objetos as $objeto) {
 
 $json[] = array(
-'id_producto' => $objeto->id_producto,
+
 'id_carrito' => $objeto->id_carrito,
 'cantidad_carrito' => $objeto->cantidad_carrito,
-'subtotal' => $objeto->subtotal,
+'id_producto' => $objeto->id_producto,
 'nombre_producto' => $objeto->nombre_producto,
 'precio_producto' => $objeto->precio_producto,
-'stock_producto' => $objeto->stock_producto,
+'subtotal' => $objeto->subtotal,
 );
 }
 $jsonstring = json_encode($json);

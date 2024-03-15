@@ -13,32 +13,31 @@ include_once "assets/views/nav.php";
             <section class="content-header">
                 <div class="container-fluid">
                     <div class="row mb-2">
-                        <div class="col-sm-6">
+                        <div class="col-sm-12">
                             <h4><i class="fa fa-file mr-2" aria-hidden="true"></i><b>Reporte de Ventas</b></h4>
                             <div class="container">
                                 <div class="row">
-                                    <div class="col-lg-12">
-                                        <div class="row mb-5"><a id="diaFactura" type="button" href="#" class="btn btn-primary"><i class="fa fa-plus-square"></i> Día</a>&nbsp;&nbsp;
-                                            <a id="mesFactura" type="button" href="#" class="btn btn-success"><i class="fa fa-plus-square"></i> Mes</a>&nbsp;                                        
-                                            &nbsp; <a type="button" class="btn btn-danger" href="#" id="generatePDFF"><i class="far fa-file-pdf"></i></a>
-                                            &nbsp;&nbsp;&nbsp;
-                                            <button class="btn btn-primary">
-                                                <i class="fa fa-user"></i> Total de ventas
-                                                <span class="badge bg-color6 text-c2">1</span>
-                                            </button>
+                                    <div class="col-lg-6 row d-flex align-items-center">
+                                        <a id="diaFactura" type="button" href="#" class="btn btn-primary d-flex align-items-center"><i class="fa fa-plus-square"></i> Día</a>&nbsp;&nbsp;
+                                        <a id="mesFactura" type="button" href="#" class="btn btn-success d-flex align-items-center"><i class="fa fa-plus-square"></i> Mes</a>&nbsp;
+                                        &nbsp; <a type="button" class="btn btn-danger d-flex align-items-center" href="#" id="generatePDFF"><i class="far fa-file-pdf"></i></a>
+                                        &nbsp;&nbsp;&nbsp;
+                                        <button class="btn btn-primary">
+                                            <i class="fa fa-user"></i> Total de ventas
+                                            <span class="badge bg-color6 text-c2">1</span>
+                                        </button>
+                                    </div>
+                                    <div class="col-lg-6 row d-flex align-items-center">
+                                        <div class="col-md-3 align-self-start">
+                                            <label for="fecha_inicio" class="form-label">Fecha de inicio:</label>
+                                            <input type="date" class="form-control" id="fecha_inicio">
                                         </div>
-                                        <div class="row mb-6">
-                                            <div class="col-md-3">
-                                                <label for="fecha_inicio" class="form-label">Fecha de inicio:</label>
-                                                <input type="date" class="form-control" id="fecha_inicio">
-                                            </div>
-                                            <div class="col-md-3">
-                                                <label for="fecha_fin" class="form-label">Fecha de fin:</label>
-                                                <input type="date" class="form-control" id="fecha_fin">
-                                            </div>
-                                            <div class="col-md-2 align-self-end">
-                                                <a href="#" id="fechasFactura" class="btn btn-primary">Consultar</a>
-                                            </div>
+                                        <div class="col-md-3 align-self-start">
+                                            <label for="fecha_fin" class="form-label">Fecha de fin:</label>
+                                            <input type="date" class="form-control" id="fecha_fin">
+                                        </div>
+                                        <div class="col-md-2 align-self-center">
+                                            <a href="#" id="fechasFactura" class="btn btn-primary">Consultar</a>
                                         </div>
                                     </div>
                                 </div>

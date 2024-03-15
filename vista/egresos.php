@@ -1,7 +1,7 @@
 <title>Ingresos</title>
- <?php
-    include_once "assets/views/nav.php";
-    ?>
+<?php
+include_once "assets/views/nav.php";
+?>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css" rel="stylesheet">
@@ -52,8 +52,8 @@
                                     </div>
                                     <div class="card-body">
                                         <div class="table-responsive">
-                                            <table id="ingresos" class="table table-bordered table-striped">
-                                                <thead>
+                                            <table id="egresos" class="table table-bordered table-striped">
+                                                <thead style="background-color: #e85813; color: white;">
                                                     <tr>
                                                         <th>CODIGO </th>
                                                         <th>NOMBRE PRODUCTO</th>

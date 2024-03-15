@@ -133,7 +133,7 @@ if ($_POST['funcion'] == 'detalleProducto') {
             'descripcion_producto' => $objeto->descripcion_producto,
             'stock_producto' => $objeto->stock_producto,
             'categoria_producto' => $objeto->categoria_producto,
-            'imagen_producto' => 'vista/assets/img/' .  strtolower($objeto->categoria_producto) . '/' . $objeto->imagen_producto,
+            'url_imagenes' => $objeto->url_imagenes,
             'marca_producto' => $objeto->marca_producto,
 
         );

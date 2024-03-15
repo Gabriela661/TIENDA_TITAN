@@ -166,26 +166,19 @@ GROUP BY c.id_categoria, c.nombre_categoria, c.imagen;";
     public function detalleProducto($id_producto)
     {
         $sql = "SELECT 
-                p.id_producto,
-                p.nombre_producto,
-                p.marca_producto,
-                p.descripcion_producto,
-                p.stock_producto,
-                p.precio_producto,
-                c.nombre_categoria AS categoria_producto,
-                (
-                    SELECT url_imagen
-                    FROM imagen i
-                    WHERE i.id_producto = p.id_producto
-                    ORDER BY i.id_imagen ASC
-                    LIMIT 1
-                ) AS imagen_producto
-            FROM
-                producto p
-            JOIN
-                categoria c ON p.id_categoria = c.id_categoria
-            WHERE
-                p.id_producto = :id_producto;";
+        p.id_producto, 
+        p.nombre_producto, 
+        p.marca_producto, 
+        p.descripcion_producto, 
+        p.stock_producto, 
+        p.precio_producto, 
+        c.nombre_categoria AS categoria_producto, 
+        GROUP_CONCAT(i.url_imagen SEPARATOR ',') AS url_imagenes 
+    FROM producto p 
+    INNER JOIN imagen i ON i.id_producto = p.id_producto 
+    INNER JOIN categoria c ON c.id_categoria = p.id_categoria 
+    WHERE p.id_producto = :id_producto 
+    GROUP BY p.id_producto";
 
         $query = $this->acceso->prepare($sql);
         $query->execute(array(':id_producto' => $id_producto));

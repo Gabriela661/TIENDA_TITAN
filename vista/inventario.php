@@ -261,7 +261,7 @@ session_start();
             <div class="card">
               <!-- /.card-header -->
               <div class="card-body table-responsive"> <!-- Agrega la clase table-responsive al contenedor de la tabla -->
-                <div class="d-flex justify-content-between mb-2">
+                <div class="d-flex justify-content-between align-items-center mb-3">
                   <div>
                     <h5>Mostrar/ocultar columnas:</h5>
                     <a class="toggle-visIn btn btn-success" data-column="0">N°</a>

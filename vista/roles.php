@@ -70,7 +70,7 @@
               <div class="card">
                 <div class="card-body table-responsive">
                   <table id="rolesTable" class="table table-bordered table-striped">
-                    <thead>
+                    <thead style="background-color: #e85813; color: white;">
                       <tr>
                         <th>N°</th>
                         <th>USUARIO</th>

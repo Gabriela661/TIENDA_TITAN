@@ -1,8 +1,8 @@
 $(document).ready(function () {
-  const idCategoria1 = $("#idCategoria").val();
+  const idCategoria1 = $('#idCategoria').val();
 
   // Verifica si el valor no está vacío
-  if (idCategoria1 != "") {
+  if (idCategoria1 != '') {
     // El campo está lleno, realiza la acción que deseas aquí
     productosTienda(idCategoria1);
   } else {
@@ -14,18 +14,18 @@ $(document).ready(function () {
   listarCategoriaIndex();
 
   function listarCategoriaIndex(consulta) {
-    funcion = "listarCategoriaIndex";
+    funcion = 'listarCategoriaIndex';
     $.post(
-      "controlador/productosControlador.php",
+      'controlador/productosControlador.php',
       { consulta, funcion },
       (response) => {
         const categorias = JSON.parse(response);
-        let productosHtml = "";
+        let productosHtml = '';
         let itemsPerSlide = 4; // Número de productos por slide
         categorias.forEach((categoria, index) => {
           if (index % itemsPerSlide === 0) {
             productosHtml += `<div class="carousel-item ${
-              index === 0 ? "active" : ""
+              index === 0 ? 'active' : ''
             }"><div class="row justify-content-center">`;
           }
           productosHtml += `
@@ -58,8 +58,8 @@ $(document).ready(function () {
           }
         });
 
-        $("#carouselProductos .carousel-inner").html(productosHtml);
-        $("#carouselProductos").carousel(0); // Mueve el carrusel al primer producto al terminar de cargar
+        $('#carouselProductos .carousel-inner').html(productosHtml);
+        $('#carouselProductos').carousel(0); // Mueve el carrusel al primer producto al terminar de cargar
       }
     );
   }
@@ -74,13 +74,13 @@ $(document).ready(function () {
   ListarMasVendidos();
 
   function ListarMasVendidos(consulta) {
-    funcion = "ListarMasVendidos";
+    funcion = 'ListarMasVendidos';
     $.post(
-      "controlador/productosControlador.php",
+      'controlador/productosControlador.php',
       { consulta, funcion },
       (response) => {
         const productosMV = JSON.parse(response);
-        let template = "";
+        let template = '';
         let contador = 0;
         productosMV.forEach((productoMV) => {
           let imagenStyle = `width: 150px; height: 180px;`;
@@ -111,7 +111,7 @@ $(document).ready(function () {
 </div>
                     `;
         });
-        $("#masVendidos").html(template);
+        $('#masVendidos').html(template);
       }
     );
   }
@@ -124,13 +124,13 @@ $(document).ready(function () {
    */
 
   function productosTienda(consulta) {
-    funcion = "productosTienda";
+    funcion = 'productosTienda';
     $.post(
-      "controlador/productosControlador.php",
+      'controlador/productosControlador.php',
       { consulta, funcion },
       (response) => {
         const productosTienda = JSON.parse(response);
-        let template = "";
+        let template = '';
         productosTienda.forEach((productoTienda) => {
           template += `
   <div class="showcase">
@@ -183,7 +183,7 @@ $(document).ready(function () {
                             </div>
 `;
         });
-        $("#productos_tienda").html(template);
+        $('#productos_tienda').html(template);
       }
     );
   }
@@ -197,13 +197,13 @@ $(document).ready(function () {
   listarCategoriaTienda();
 
   function listarCategoriaTienda(consulta) {
-    funcion = "listarCategoriaTienda";
+    funcion = 'listarCategoriaTienda';
     $.post(
-      "controlador/productosControlador.php",
+      'controlador/productosControlador.php',
       { consulta, funcion },
       (response) => {
         const categorias = JSON.parse(response);
-        let template = "";
+        let template = '';
         let contador = 0;
         categorias.forEach((categoria) => {
           template += `
@@ -219,7 +219,7 @@ $(document).ready(function () {
                             </li>
          `;
         });
-        $("#categoriaMenu").html(template);
+        $('#categoriaMenu').html(template);
       }
     );
   }
@@ -232,14 +232,14 @@ $(document).ready(function () {
   listarCategoriaTiendaheader();
 
   function listarCategoriaTiendaheader(consulta) {
-    funcion = "listarCategoriaTiendaheader";
+    funcion = 'listarCategoriaTiendaheader';
     $.post(
-      "controlador/productosControlador.php",
+      'controlador/productosControlador.php',
       { consulta, funcion },
       (response) => {
         console.log(response);
         const categorias = JSON.parse(response);
-        let template = "";
+        let template = '';
         let contador = 0;
         categorias.forEach((categoria) => {
           template += `     <div class="category-item">
@@ -257,7 +257,7 @@ $(document).ready(function () {
                     </div>
          `;
         });
-        $("#categoriaMenuHeader").html(template);
+        $('#categoriaMenuHeader').html(template);
       }
     );
   }
@@ -265,8 +265,8 @@ $(document).ready(function () {
    * FIN FUNCION PARA LISTAR LAS CATEGORIAS EN LA TIENDA
    */
 
-  $("#categoriaMenu").on("click", "a", function () {
-    var idCategoria = $(this).data("id_categoria");
+  $('#categoriaMenu').on('click', 'a', function () {
+    var idCategoria = $(this).data('id_categoria');
     productosTienda(idCategoria);
   });
 
@@ -276,20 +276,29 @@ $(document).ready(function () {
   detalleProducto();
 
   function detalleProducto() {
-    funcion = "detalleProducto";
-    const idProducto = $("#id_producto").val();
+    funcion = 'detalleProducto';
+    const idProducto = $('#id_producto').val();
 
     $.post(
-      "controlador/productosControlador.php",
+      'controlador/productosControlador.php',
       { idProducto, funcion },
       (response) => {
+        console.log("errorrrrr")
+        console.log(response)
         const detalles = JSON.parse(response);
-        let template = "";
+        let template = '';
         detalles.forEach((detalle) => {
+          var urls_img = detalle.url_imagenes.split(',');
+          var baseUrl =
+            'vista/assets/img/' + detalle.categoria_producto.toLowerCase();
+          var imgArray = [];
+          urls_img.map((url) => {
+            imgArray.push(baseUrl + '/' + url);
+          });
           template += ` 
-                <div class="col-lg-5 mt-5">
+                <div class="col-lg-5 mt-4">
                     <div class="card mb-3">
-                        <img class="card-img img-fluid main-image" src="${detalle.imagen_producto}" alt="Card image cap" id="product-detail" style="width: 100%; height: 500px;">
+                        <img class="card-img img-fluid main-image" src="${imgArray[0]}" alt="Card image cap" id="product-detail" style="width: 100%; height: 400px;">
                     </div>
                     <div class="row">
                         <div class="col-1 align-self-center">
@@ -304,17 +313,17 @@ $(document).ready(function () {
                                     <div class="row">
                                         <div class="col-4">
                                             <a href="#">
-                                                <img class="card-img img-fluid secondary-image" src="${detalle.imagen_producto}" alt="Product Image 1" style="width: 80px; height: 100px;">
+                                                <img class="card-img img-fluid secondary-image" src="${imgArray[1]}" alt="Product Image 1" style="width: 80px; height: 100px;">
                                             </a>
                                         </div>
                                         <div class="col-4">
                                             <a href="#">
-                                                <img class="card-img img-fluid secondary-image" src="${detalle.imagen_producto}" alt="Product Image 2" style="width: 80px; height: 100px;">
+                                                <img class="card-img img-fluid secondary-image" src="${imgArray[2]}" alt="Product Image 2" style="width: 80px; height: 100px;">
                                             </a>
                                         </div>
                                         <div class="col-4">
                                             <a href="#">
-                                                <img class="card-img img-fluid secondary-image" src="${detalle.imagen_producto}" alt="Product Image 3" style="width: 80px; height: 100px;">
+                                                <img class="card-img img-fluid secondary-image" src="${imgArray[3]}" alt="Product Image 3" style="width: 80px; height: 100px;">
                                             </a>
                                         </div>
                                     </div>
@@ -329,7 +338,7 @@ $(document).ready(function () {
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-7 mt-5">
+                <div class="col-lg-7 mt-4">
                     <div class="card">
                         <div class="card-body">
                             <h1 class="h2">${detalle.nombre_producto}</h1>
@@ -382,7 +391,7 @@ $(document).ready(function () {
                     </div>
                 </div>`;
         });
-        $("#detalle_producto").html(template);
+        $('#detalle_producto').html(template);
       }
     );
   }
@@ -391,22 +400,22 @@ $(document).ready(function () {
    */
   /*FUNCION OBTENER LA CANTIDAD DE PAGINAS*/
   function CantidadPaginas() {
-    const funcion = "CantidadPaginas";
+    const funcion = 'CantidadPaginas';
     $.post(
-      "controlador/productosControlador.php",
+      'controlador/productosControlador.php',
       { funcion },
       function (response) {
         console.log(response);
         const cantidad = parseInt(response.trim()); // Convierte el texto a un número entero
 
         if (!isNaN(cantidad)) {
-          console.log("Cantidad de productos:", cantidad);
+          console.log('Cantidad de productos:', cantidad);
 
           // Calcular el número de páginas
           const paginas = Math.ceil(cantidad / 12); // Suponiendo que deseas mostrar 12 productos por página
           console.log(paginas);
           // Modificar la paginación en el HTML
-          const paginationContainer = $(".pagination");
+          const paginationContainer = $('.pagination');
           paginationContainer.empty(); // Limpiar la paginación actual
 
           // Agregar el botón "Previous"
@@ -430,7 +439,7 @@ $(document).ready(function () {
           </li>
         `);
         } else {
-          console.error("La respuesta no contiene una cantidad válida.");
+          console.error('La respuesta no contiene una cantidad válida.');
         }
       }
     );

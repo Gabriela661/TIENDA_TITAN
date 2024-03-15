@@ -259,12 +259,24 @@ session_start();
         <div class="col-12">
           <div class="card">
             <div class="card">
-              <div class="card-header">
-                <h3 class="card-title">Listado de Productos</h3>
-              </div>
               <!-- /.card-header -->
               <div class="card-body table-responsive"> <!-- Agrega la clase table-responsive al contenedor de la tabla -->
-                <table id="example1" class="table table-bordered table-striped">
+                <div class="d-flex justify-content-between mb-2">
+                  <div>
+                    <h5>Mostrar/ocultar columnas:</h5>
+                    <a class="toggle-visIn btn btn-success" data-column="0">N°</a>
+                    <a class="toggle-visIn btn btn-success" data-column="1">Nombre</a>
+                    <a class="toggle-visIn btn btn-success" data-column="2">Marca</a>
+                    <!-- <a class="toggle-visIn btn btn-success" data-column="2">Descripción</a> -->
+                    <a class="toggle-visIn btn btn-success" data-column="3">Cantidad</a>
+                    <a class="toggle-visIn btn btn-success" data-column="4">Precio</a>
+                    <a class="toggle-visIn btn btn-success" data-column="5">Imagen</a>
+                    <a class="toggle-visIn btn btn-success" data-column="6">Editar</a>
+                    <a class="toggle-visIn btn btn-success" data-column="7">Eliminar</a>
+                  </div>
+                  <div><a type="button" class="btn btn-danger ml-4" href="#" id="generatePDFInventario"><i class="far fa-file-pdf"></i></a></div>
+                </div>
+                <table id="inventarioTable" class="table table-bordered table-striped">
                   <thead>
                     <tr>
                       <th>N°</th>

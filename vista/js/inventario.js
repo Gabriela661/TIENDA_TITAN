@@ -57,6 +57,27 @@ $(document).ready(function () {
                         `;
         });
         $('#inventario').html(template);
+        // Inicializar DataTables después de cargar los datos en la tabla
+        var inventarioTable = $('#inventarioTable').DataTable({
+          paging: true,
+          searching: false,
+          ordering: true,
+          info: true,
+          language: {
+            url: '//cdn.datatables.net/plug-ins/1.10.21/i18n/Spanish.json',
+          },
+        });
+        $('a.toggle-visIn').on('click', function (e) {
+          e.preventDefault();
+
+          // Traemos datos de la columna relaciona al botón clicked
+          var column = inventarioTable.column($(this).attr('data-column'));
+
+          column.visible(!column.visible());
+
+          // change color
+          $(this).toggleClass('btn-success btn-secondary');
+        });
       }
     );
   }
@@ -314,6 +335,144 @@ $(document).ready(function () {
       }
     );
   }
+});
+
+$(document).on('click', '#generatePDFInventario', function () {
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF();
+
+  const imgWidth = 100; // Ancho de la imagen
+  const imgHeight = 50; // Altura de la imagen
+  const pdfWidth = doc.internal.pageSize.getWidth();
+  const pdfHeight = doc.internal.pageSize.getHeight();
+  const xPos = (pdfWidth - imgWidth) / 2; // Centrar horizontalmente
+  const yPos = (pdfHeight - imgHeight) / 2; // Centrar verticalmente
+
+  // Variables para el diseño del encabezado y la tabla
+  const imgData = 'assets/img/logo_titan.png'; // Ruta de tu logo
+  const watermarkImg = 'assets/img/watermark.png';
+  const contactNumbers = '943212297 - 932566922';
+  const address1 = 'Carretera Central Km 412';
+  const address2 = 'CPM Llicua - Amarilis - Huánuco';
+  const reportTitle = 'Reporte de Inventario';
+
+  /* footer */
+  const reportFooter = 'TITAN';
+  const currentDate = new Date().toLocaleDateString();
+
+  // Función para dibujar el encabezado en cada página
+  const drawHeader = () => {
+    doc.addImage(imgData, 'PNG', 10, 10, 30, 15);
+    doc.addImage(watermarkImg, 'PNG', xPos, yPos, imgWidth, imgHeight);
+    doc.setFontSize(10);
+    doc.setTextColor(150, 150, 150);
+    doc.text(contactNumbers, doc.internal.pageSize.getWidth() - 60, 15);
+    doc.text(address1, doc.internal.pageSize.getWidth() - 60, 25);
+    doc.text(address2, doc.internal.pageSize.getWidth() - 60, 30);
+    doc.setFontSize(22);
+    doc.setTextColor(19, 19, 19);
+    doc.text(reportTitle, doc.internal.pageSize.getWidth() - 140, 42);
+  };
+
+  // Obtener la tabla DataTable original
+  var table = $('#inventarioTable').DataTable();
+
+  // Clonar la tabla
+  var $clonedTable = $('#inventarioTable').clone();
+
+  // Obtener los índices de las columnas visibles
+  var visibleColumns = table
+    .columns()
+    .indexes()
+    .filter(function (index) {
+      return table.column(index).visible();
+    })
+    .toArray();
+
+  console.log(visibleColumns);
+
+  // Eliminar las columnas no visibles de la tabla clonada
+  $clonedTable.find('thead th').each(function (index, th) {
+    if (visibleColumns.indexOf(index) === -1) {
+      $(th[index]).remove();
+    }
+  });
+
+  // Eliminar las celdas correspondientes en cada fila del cuerpo de la tabla clonada
+  $clonedTable.find('tbody tr').each(function (rowIndex, tr) {
+    $(tr)
+      .find('td')
+      .each(function (cellIndex, td) {
+        if (!table.column(cellIndex).visible()) {
+          $(td[cellIndex]).remove();
+        }
+      });
+  });
+
+  // Convertir la tabla clonada a una cadena HTML
+  var tableHtml = $clonedTable.html();
+
+  // Crear un elemento temporal
+  var tempDiv = document.createElement('table');
+
+  // Asignar la cadena HTML a la propiedad innerHTML del elemento temporal
+  tempDiv.innerHTML = tableHtml;
+
+  // Función para dibujar el pie de página en cada página
+  const drawFooter = () => {
+    const totalPages = doc.internal.getNumberOfPages();
+    for (let i = 1; i <= totalPages; i++) {
+      doc.setPage(i);
+      doc.setFontSize(12);
+
+      // Fondo verde al pie de página
+      doc.setFillColor(228, 85, 18);
+      doc.rect(0, pdfHeight - 20, pdfWidth, 20, 'F');
+
+      // Texto centrado
+      doc.setTextColor(255, 255, 255);
+      doc.text(reportFooter + ' (' + currentDate + ')', 10, pdfHeight - 10, {
+        align: 'left',
+      });
+
+      // Fecha y paginación a la derecha
+      doc.text(
+        ' Página ' + i + ' de ' + totalPages,
+        pdfWidth - 12,
+        pdfHeight - 10,
+        { align: 'right' }
+      );
+    }
+  };
+
+  // Evento para dibujar el encabezado en cada página
+  doc.autoTable({
+    html: tempDiv,
+    startY: 50,
+    theme: 'striped',
+    headStyles: {
+      fillColor: [228, 85, 18], // Cambiar a color naranja
+      textColor: [255, 255, 255], // Cambiar el color del texto del encabezado
+    },
+    didDrawPage: () => {
+      drawHeader();
+      drawFooter();
+    },
+  });
+
+  // Abrir el PDF en una nueva ventana
+  var pdfWindow = window.open('', '_blank');
+  pdfWindow.document.open();
+  pdfWindow.document.write(
+    '<html><head><title>PDF Reporte de Ventas</title></head><body>'
+  );
+  pdfWindow.document.write(
+    '<embed width="100%" height="100%" src="' +
+      doc.output('datauristring') +
+      '" type="application/pdf">'
+  );
+  pdfWindow.document.write('</body></html>');
+  pdfWindow.document.close();
 });
 
 $(document).ready(function () {

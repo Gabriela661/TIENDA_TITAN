@@ -22,11 +22,11 @@ $(document).ready(function () {
                     <th scope="row">${contador}</th>
                         <th scope="row">${personal.nombre_usuario}</th>
                         <th scope="row">${personal.apellido_usuario}</th>
-                        <th scope="row">${personal.correo_usuario}</th>                       
+                        <th scope="row">${personal.correo_usuario}</th>
+                        <th scope="row">${personal.nombre_rol}</th>
                         <th scope="row"><div class="text-center">
                             <img src="${personal.foto_usuario}" style="${imagenStyle}"  class="img-circle" alt="...">
-                          </div></th>
-                         <th scope="row">${personal.nombre_rol}</th>     
+                          </div></th>       
                         <th scope="row"> <button id="btn_editar" class="btn btn-warning btn-editarAdm" type="button"
                                   data-toggle="modal" data-target="#editar_usuario" data-id_usuario="${personal.id_usuario}">
                                 Editar
@@ -37,7 +37,7 @@ $(document).ready(function () {
         $('#listar_personal').html(template);
 
         // Inicializar DataTables después de cargar los datos en la tabla
-        $('#personalTable').DataTable({
+        var personalTable = $('#personalTable').DataTable({
           paging: true,
           searching: true,
           ordering: true,
@@ -45,6 +45,18 @@ $(document).ready(function () {
           language: {
             url: '//cdn.datatables.net/plug-ins/1.10.21/i18n/Spanish.json',
           },
+        });
+
+        $('a.toggle-visU').on('click', function (e) {
+          e.preventDefault();
+
+          // Get the column API object
+          var column = personalTable.column($(this).attr('data-column'));
+
+          // Toggle the visibility
+          column.visible(!column.visible());
+          // Cambiar el color del botón según su estado
+          $(this).toggleClass('btn-success btn-secondary');
         });
       }
     );
@@ -501,7 +513,7 @@ $(document).ready(function () {
       }
     );
   }
-  
+
   // ELiminar datos del cliente
   function eliminarCliente(id_cliente) {
     const funcion = 'borrar_cliente';
@@ -546,7 +558,7 @@ $(document).ready(function () {
     const contactNumbers = '943212297 - 932566922';
     const address1 = 'Carretera Central Km 412';
     const address2 = 'CPM Llicua - Amarilis - Huánuco';
-    const reportTitle = 'Reporte de Facturas';
+    const reportTitle = 'Reporte de Usuarios';
 
     /* footer */
     const reportFooter = 'TITAN';
@@ -566,18 +578,49 @@ $(document).ready(function () {
       doc.text(reportTitle, doc.internal.pageSize.getWidth() - 140, 42);
     };
 
-    // Función para generar la tabla
-    const generateTable = () => {
-      doc.autoTable({
-        html: '#personalTable',
-        startY: 50,
-        theme: 'striped',
-        headStyles: {
-          fillColor: [228, 85, 18], // Cambiar a color naranja
-          textColor: [255, 255, 255], // Cambiar el color del texto del encabezado
-        },
-      });
-    };
+    // Obtener la tabla DataTable original
+    var table = $('#personalTable').DataTable();
+
+    // Clonar la tabla
+    var $clonedTable = $('#personalTable').clone();
+
+    // Obtener los índices de las columnas visibles
+    var visibleColumns = table
+      .columns()
+      .indexes()
+      .filter(function (index) {
+        return table.column(index).visible();
+      })
+      .toArray();
+
+    console.log(visibleColumns);
+
+    // Eliminar las columnas no visibles de la tabla clonada
+    $clonedTable.find('thead th').each(function (index, th) {
+      if (visibleColumns.indexOf(index) === -1) {
+        $(th[index]).remove();
+      }
+    });
+
+    // Eliminar las celdas correspondientes en cada fila del cuerpo de la tabla clonada
+    $clonedTable.find('tbody tr').each(function (rowIndex, tr) {
+      $(tr)
+        .find('td')
+        .each(function (cellIndex, td) {
+          if (!table.column(cellIndex).visible()) {
+            $(td[cellIndex]).remove();
+          }
+        });
+    });
+
+    // Convertir la tabla clonada a una cadena HTML
+    var tableHtml = $clonedTable.html();
+
+    // Crear un elemento temporal
+    var tempDiv = document.createElement('table');
+
+    // Asignar la cadena HTML a la propiedad innerHTML del elemento temporal
+    tempDiv.innerHTML = tableHtml;
 
     // Función para dibujar el pie de página en cada página
     const drawFooter = () => {
@@ -608,7 +651,7 @@ $(document).ready(function () {
 
     // Evento para dibujar el encabezado en cada página
     doc.autoTable({
-      html: '#personalTable',
+      html: tempDiv,
       startY: 50,
       theme: 'striped',
       headStyles: {
@@ -635,5 +678,4 @@ $(document).ready(function () {
     pdfWindow.document.write('</body></html>');
     pdfWindow.document.close();
   });
-  
 });

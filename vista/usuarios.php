@@ -224,20 +224,31 @@ include_once "assets/views/nav.php";
                 <div class="active tab-pane btn-personal" id="personal">
                   <div class="timeline timeline-inverse">
                     <div class="card">
-                      <div class="card-header d-flex justify-content-start align-items-center">
-                        <h3>Personal</h3><a type="button" class="btn btn-danger ml-4" href="#" id="generatePDFUsuarios"><i class="far fa-file-pdf"></i></a>
-                      </div>
                       <!-- Tabla del personal -->
                       <div class="card-body table-responsive">
+                        <div class="d-flex justify-content-between mb-2 align-items-center">
+                          <div>
+                            <h5>Mostrar/ocultar columnas:</h5>
+                            <a class="toggle-visU btn btn-success" data-column="0">N°</a>
+                            <a class="toggle-visU btn btn-success" data-column="1">Nombres</a>
+                            <a class="toggle-visU btn btn-success" data-column="2">Apellidos</a>
+                            <a class="toggle-visU btn btn-success" data-column="3">Correo</a>                            
+                            <a class="toggle-vis btn btn-success" data-column="4">Rol</a>
+                            <a class="toggle-visU btn btn-success" data-column="5">Foto</a>
+                            <a class="toggle-visU btn btn-success" data-column="6">Editar</a>
+                            <a class="toggle-visU btn btn-success" data-column="7">Eliminar</a>
+                          </div>
+                          <div><a type="button" class="btn btn-danger ml-4" href="#" id="generatePDFUsuarios"><i class="far fa-file-pdf"></i></a></div>
+                        </div>
                         <table id="personalTable" class="table table-bordered table-striped">
                           <thead>
                             <tr>
                               <th>N°</th>
-                              <th>Nombres Personal</th>
+                              <th>Nombres</th>
                               <th>Apellidos</th>
-                              <th>Correo Electronico</th>
-                              <th>Foto</th>
+                              <th>Correo</th>
                               <th>Rol</th>
+                              <th>Foto</th>
                               <th>Editar</th>
                               <th>Eliminar</th>
                             </tr>
@@ -252,9 +263,9 @@ include_once "assets/views/nav.php";
                 </div>
                 <div class="tab-pane btn-cliente" id="cliente">
                   <div class="card">
-                  <div class="card-header d-flex justify-content-start align-items-center">
-                        <h3>Cliente</h3><a type="button" class="btn btn-danger ml-4" href="#" id="generatePDFClientes"><i class="far fa-file-pdf"></i></a>
-                      </div>
+                    <div class="card-header d-flex justify-content-start align-items-center">
+                      <h3>Cliente</h3><a type="button" class="btn btn-danger ml-4" href="#" id="generatePDFClientes"><i class="far fa-file-pdf"></i></a>
+                    </div>
                     <div class="card-body table-responsive">
                       <table id="clienteTable" class="table table-bordered table-striped">
                         <thead>

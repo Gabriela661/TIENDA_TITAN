@@ -99,7 +99,7 @@ if (isset($_GET['id_categoria'])) {
                                     <label for="obs">Observaciones:</label>
                                     <input class="form-control" id="observaciones" name="observaciones" placeholder="observaciones" required>
                                 </div>
-                                <div class="d-none col-md-12">
+                                <div class=" col-md-12">
                                     <label for="producto_json">Producto JSON:</label>
                                     <textarea id="producto_json" name="producto_json" rows="4" cols="50"></textarea>
                                 </div>

@@ -277,13 +277,9 @@ $(document).ready(function () {
     // Evento click en el botón notificar_pago
     $("#notificar_pago").click(function () {
 
-    var fechaEmision = document.getElementById("fecha_emision").value;
-    var fechaVencimiento = document.getElementById("fecha_vencimiento").value;
     var razonSocial = document.getElementById("razon_social").value;
     var ruc = document.getElementById("ruc").value;
     var direccion = document.getElementById("direccion").value;
-    var tipoMoneda = document.getElementById("tipo_moneda").value;
-    var observaciones = document.getElementById("observaciones").value;
 
       var metodo = $(this).data("metodo"); // Obtener el método almacenado en el atributo data-metodo
 
@@ -354,7 +350,7 @@ $(document).ready(function () {
             var tipoMoneda = document.getElementById("tipo_moneda").value;
             var observaciones = document.getElementById("observaciones").value;
             // Convertir el carrito a JSON
-            var productos = JSON.stringify(productosSeleccionados);
+            var productos = document.getElementById("producto_json").value;
             // Enviar la solicitud POST para generar el PDF
             fetch("controlador/facturaControlador.php", {
               method: "POST",

@@ -40,10 +40,7 @@ $(document).ready(function () {
 
   /*FUNCION PARA AÑADIR UN PRODUCTO A CARRITO A LA BASE DE DATOS */
   $(document).on("click", "#agregarCarritoBtn", function () {
-    // var stock = verificarStock(10);
-    // console.log("sto".stock);
-    // if (cantidadEnCarrito > stock) {
-    // }
+
     var id_producto = $(this).data("id_producto");
     // var id_usuario = $(this).data("id_usuario");
     const id_usuario = document.getElementById("id_usuario").value;

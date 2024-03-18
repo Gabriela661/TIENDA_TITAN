@@ -101,8 +101,10 @@ if ($_POST['funcion'] == 'limpiarProductoCarrito') {
  * FUNCION PARA VERIFICAR STOCK
  */
 if ($_POST['funcion'] == 'verificarStock') {
-
-    $carrito->verificarStock();
+    $id_producto = $_POST['id_producto'];
+    $cantidad_carrito = $_POST['cantidad_carrito'];
+    $id_usuario = $_POST['id_usuario'];
+    $carrito->verificarStock($id_producto, $cantidad_carrito, $id_usuario);
 }
 /* 
  * FIN FUNCION PARA OBTENER LA CANTIDAD DE PAGINAS

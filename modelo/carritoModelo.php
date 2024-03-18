@@ -157,25 +157,52 @@ GROUP BY id_carrito;";
     /* FIN DE LA FUNCION PARA LIMPIAR EL CARRITO */
 
     /* FUNCION PARA VERIFICAR STOCK */
-    function verificarStock()
+    function verificarStock($id_producto, $cantidad_carrito,$id_usuario)
     {
-        $id_producto = $_POST['id_producto'];
         $sql = "SELECT stock_producto FROM producto where id_producto=:id_producto";
         $query = $this->acceso->prepare($sql);
         $query->execute(array(':id_producto' => $id_producto));
+        $resultado = $query->fetch(PDO::FETCH_ASSOC);
+
+        if ($resultado) {
+            $stock_disponible = $resultado['stock_producto'];
+            
+      
+        } 
+
+        // Consulta SQL para obtener la cantidad del carrito
+        $sql = "SELECT id_carrito, cantidad_carrito
+        FROM carrito
+        WHERE id_producto = :id_producto AND id_usuario = :id_usuario";
+
+        // Preparar la consulta
+        $query = $this->acceso->prepare($sql);
+
+        // Asignar valores a los parámetros de la consulta
+        $query->bindValue(':id_producto', $id_producto, PDO::PARAM_INT); // Id del producto
+        $query->bindValue(':id_usuario', $id_usuario, PDO::PARAM_INT);   // Id del usuario
+
+        // Ejecutar la consulta
+        $query->execute();
 
         // Obtener el resultado de la consulta
         $resultado = $query->fetch(PDO::FETCH_ASSOC);
 
+        // Verificar si se obtuvo un resultado
         if ($resultado) {
-            // Acceder al valor de cantidad_productos
-            $stock_producto = $resultado['stock_producto'];
-            echo $stock_producto;
-        } else {
-            echo 'Error al obtener la cantidad de productos';
-        }
+            // Se encontró la cantidad en el carrito para el producto y usuario especificados
+            $cantidad_carrito = $resultado['cantidad_carrito'];
+
+            // Realizar operaciones adicionales si es necesario
+            // Por ejemplo, restar esta cantidad del stock del producto
+            $stock_disponible = $stock_disponible - $cantidad_carrito;
+        } 
+
+        echo $stock_disponible;
+
     }
-    /* FIN DE LA FUNCION PARA LIMPIAR EL CARRITO */
+/* FIN FUNCION PARA VERIFICAR STOCK */
+
 
 
 }

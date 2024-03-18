@@ -15,6 +15,10 @@
 <!-- Preloader -->
 
 <body data-spy="scroll" data-target=".navbar" data-offset="40" id="home">
+    <!-- Carga del logo en la pantalla principal -->
+    <div class="preloader flex-column justify-content-center align-items-center">
+        <img src="assets/img/logo_titan1.png" class="brand-image img-elevation-3" style="opacity: .8">
+    </div>
     <!-- Navbar -->
     <nav class="custom-navbar navbar navbar-expand-lg navbar-dark fixed-top" data-spy="affix" data-offset-top="10">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -37,7 +41,9 @@
             </ul>
             <a class="navbar-brand m-auto" href="#">
                 <img src="assets/img/logo_titan1.png" class="brand-img" alt="">
-                <span class="brand-txt">TIENDA TITAN</span>
+                <span class="brand-txt">
+                    <img src="assets/img/logo_titan1.png" alt="" style="width: 100px; height: 40px;">
+                </span>
             </a>
             <ul class="navbar-nav">
                 <li class="nav-item">
@@ -180,7 +186,7 @@
                 <div class="col-sm-3 col-md-3 col-xs-12 my-1">
                     <input type="text" class="form-control" id="telefono" placeholder="Telefono">
                 </div>
-                <input id="contactanos" type="submit" value="Contactarse" class="col-sm-3 btn btn-success">
+                <input id="contactanos" type="submit" value="Contactarse" class="col-sm-3 btn btn-success my-1">
             </div>
         </div>
     </div>
@@ -209,3 +215,16 @@
 </body>
 
 </html>
+<script>
+    // Una vez que todos los recursos de la página hayan terminado de cargar
+    window.addEventListener('load', function() {
+        // Agregar un retraso de 3 segundos
+        setTimeout(function() {
+            // Ocultar el preloader
+            $(".preloader").fadeOut("slow", function() {
+                // Una vez que el preloader se ha ocultado completamente, mostrar el contenido de la página
+                $("#main-content").fadeIn("slow");
+            });
+        }, 3000); // Tiempo en milisegundos (3 segundos)
+    });
+</script>

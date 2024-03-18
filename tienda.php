@@ -44,10 +44,6 @@ if (isset($_GET['id_categoria'])) {
     <input id="idCategoria" class="d-none" type="text" value="<?php echo $idCategoria ?>">
     <!-- Input oculto para asignar el id del usuario-->
     <input id="id_usuario" type="hidden" value="<?php echo $user_id ?>">
-    <!-- Modal del carrito de compras -->
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalCarrito">
-        Mostrar Carrito
-    </button>
 
     <div id="modalCarrito" class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-right modal-dialog-centered modal-dialog-scrollable ">

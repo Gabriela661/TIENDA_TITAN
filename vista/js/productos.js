@@ -249,7 +249,7 @@ $(document).ready(function () {
       "controlador/productosControlador.php",
       { consulta, funcion },
       (response) => {
-        console.log(response);
+
         const categorias = JSON.parse(response);
         let template = "";
         let contador = 0;
@@ -295,8 +295,6 @@ $(document).ready(function () {
       "controlador/productosControlador.php",
       { idProducto, funcion },
       (response) => {
-        console.log("errorrrrr");
-        console.log(response);
         const detalles = JSON.parse(response);
         let template = "";
         detalles.forEach((detalle) => {
@@ -426,7 +424,7 @@ $(document).ready(function () {
       "controlador/productosControlador.php",
       { funcion },
       function (response) {
-        console.log(response);
+
         const cantidad = parseInt(response.trim()); // Convierte el texto a un número entero
 
         if (!isNaN(cantidad)) {
@@ -434,7 +432,6 @@ $(document).ready(function () {
 
           // Calcular el número de páginas
           const paginas = Math.ceil(cantidad / 12); // Suponiendo que deseas mostrar 12 productos por página
-          console.log(paginas);
           // Modificar la paginación en el HTML
           const paginationContainer = $(".pagination");
           paginationContainer.empty(); // Limpiar la paginación actual

@@ -159,7 +159,7 @@ $(document).ready(function () {
                                         <button class="btn-action sumarBtn">
                                         <ion-icon name="add"></ion-icon>                                 
                                         </button>
-                                        <button data-id_producto="${productoTienda.id_producto}" data-id_usuario="1" id="agregarCarritoBtn" class="btn-action">
+                                        <button data-id_producto="${productoTienda.id_producto}"  id="agregarCarritoBtn" class="btn-action">
                                             <ion-icon name="bag-add-outline"></ion-icon>
                                         </button>
                                     </div>

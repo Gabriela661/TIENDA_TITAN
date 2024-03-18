@@ -1,14 +1,11 @@
 <?php
 // Inicia la sesión
 session_start();
-// Verifica si ya existe un ID de usuario en la sesión
-if (!isset($_SESSION['user_id'])) {
-    // Si no hay un ID de usuario en la sesión, genera uno nuevo
-    $_SESSION['user_id'] = rand(1, 100000);
-}
 
-// Obtiene el ID de usuario de la sesión (ya convertido a número)
-//$user_id = 2;
+// Si no hay un ID de usuario en la sesión, genera uno nuevo
+$_SESSION['user_id'] = 1;
+$user_id =
+    $_SESSION['user_id'];
 
 
 
@@ -20,11 +17,12 @@ include './assets/views/navbar.php';
 
 ?>
 <br>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <link rel="stylesheet" href="./assets/css/style-prefix.css">
 <link rel="stylesheet" href="assets/css/stilos.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <!--
     - google font link
   -->
@@ -45,8 +43,11 @@ if (isset($_GET['id_categoria'])) {
     <!-- Input oculto para asignar el id de la categoria para el filtrado -->
     <input id="idCategoria" class="d-none" type="text" value="<?php echo $idCategoria ?>">
     <!-- Input oculto para asignar el id del usuario-->
-    <input id_="id_usuario" class="d-none" type="text" value="<?php echo $user_id ?>">
+    <input id="id_usuario" type="hidden" value="<?php echo $user_id ?>">
     <!-- Modal del carrito de compras -->
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalCarrito">
+        Mostrar Carrito
+    </button>
 
     <div id="modalCarrito" class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-right modal-dialog-centered modal-dialog-scrollable ">
@@ -82,7 +83,7 @@ if (isset($_GET['id_categoria'])) {
                             </a>
                         </div>
                         <div class="col-6 col-md-6 col-lg-6">
-                            <button id="btnLimpiarCarrito" data-id_usuario="<?php echo $user_id ?>" class="btn btn-danger btn-block">
+                            <button id="btnLimpiarCarrito" class="btn btn-danger btn-block">
                                 <i class="fa-solid fa-trash-can"></i> Limpiar el Carrito
                             </button>
                         </div>
@@ -164,30 +165,7 @@ if (isset($_GET['id_categoria'])) {
     <?php include 'whatsapp.php' ?>
     <!-- Start Footer -->
 
-    <!-- End Footer -->
-    <footer class="bg-footer" id="tempaltemo_footer">
 
-        <div class="container-fluid bg-dark p-5 text-light has-height-md middle-items border-top text-center ">
-            <div class="row">
-                <div class="col-sm-4">
-                    <h3>CORREO ELECTRONICO</h3>
-                    <P class="text-muted">Titan@gmail.com.com</P>
-                </div>
-                <div class="col-sm-4">
-                    <h3>TELEFONO</h3>
-                    <P class="text-muted">934890639</P>
-                </div>
-                <div class="col-sm-4">
-                    <h3>DIRECCIÓN</h3>
-                    <P class="text-muted">Jr. Bolivar # 515</P>
-                </div>
-            </div>
-        </div>
-        <div class="bg-dark text-light text-center border-top ">
-            <p class="mb-0 py-3 text-muted small">&copy; Copyright <script>
-                </script> <i class="ti-heart text-danger"></i> <a href="#">HYPERIUM</a></p>
-        </div>
-    </footer>
 
     <script src="assets/js/templatemo.js"></script>
     <script src="assets/js/custom.js"></script>
@@ -209,3 +187,6 @@ if (isset($_GET['id_categoria'])) {
 </body>
 
 </html>
+<!-- Start Footer -->
+<?php include 'assets/views/footer.php' ?>
+<!-- End Footer -->

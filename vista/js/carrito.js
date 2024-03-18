@@ -45,7 +45,10 @@ $(document).ready(function () {
     // if (cantidadEnCarrito > stock) {
     // }
     var id_producto = $(this).data("id_producto");
-    var id_usuario = $(this).data("id_usuario");
+    // var id_usuario = $(this).data("id_usuario");
+    const id_usuario = document.getElementById("id_usuario").value;
+    console.log("efes" + id_usuario);
+
     var inputCantidad = $(this).parent().find(".cantidadInput");
     var cantidad_carrito = parseInt(inputCantidad.val());
     console.log(cantidad_carrito);
@@ -81,6 +84,9 @@ $(document).ready(function () {
                   showConfirmButton: false, // oculta el botón de confirmación
                 }).then(() => {
                   inputCantidad.val(1);
+                  console.log("hola");
+                  const id_usuario =
+                    document.getElementById("id_usuario").value;
                   cargarCarrito(id_usuario);
                   $("#modalCarrito").modal("show");
                 });
@@ -101,6 +107,7 @@ $(document).ready(function () {
         } else {
           // Si no se encuentra nada, asignar cero a la cantidad
           const cantidadEnCarrito = 0;
+          const id_usuario = document.getElementById("id_usuario").value;
           // Crea un objeto FormData
           const formData = new FormData();
           formData.append("funcion", "añadir_carrito");
@@ -121,8 +128,11 @@ $(document).ready(function () {
                   text: "El producto se ha agregado al carrito",
                 }).then(() => {
                   inputCantidad.val(1);
+                  document.getElementById("id_usuario").value;
+                  cargarCarrito(id_usuario);
                   cargarCarrito(id_usuario);
                   $("#modalCarrito").modal("show");
+                  
                 });
               } else {
                 // Muestra un mensaje de error utilizando SweetAlert si la respuesta indica un problema
@@ -189,7 +199,8 @@ $(document).ready(function () {
 
   /*FUNCION PARA MOSTRAR UN MENSAJE DE ADVERTENCIA AL QUERER LIMPIAR EL CARRITO*/
   $(document).on("click", "#btnLimpiarCarrito", function () {
-    const id_usuario = $(this).data("id_usuario");
+    // const id_usuario = $(this).data("id_usuario");
+    const id_usuario = document.getElementById("id_usuario").value;
     Swal.fire({
       title: "¿Estás seguro?",
       text: "¡Se eliminaran todos los productos del carrito",
@@ -238,7 +249,8 @@ $(document).ready(function () {
   /*FUNCION PARA ELIMINAR UN PRODUCTO ESPECIFICO DEL CARRITO*/
   $(document).on("click", "#eliminarProducto", function () {
     const id_carrito = $(this).data("id_carrito");
-    const id_usuario = $(this).data("id_usuario");
+    // const id_usuario = $(this).data("id_usuario");
+    const id_usuario = document.getElementById("id_usuario").value;
     const funcion = "limpiarProductoCarrito";
     $.post(
       "controlador/carritoControlador.php",
@@ -282,7 +294,7 @@ $(document).ready(function () {
       { id_producto, funcion },
       function (response) {
         console.log(response);
-        cantidad = parseInt(response.trim());// Convierte el texto a un número entero
+        cantidad = parseInt(response.trim()); // Convierte el texto a un número entero
       }
     );
   }

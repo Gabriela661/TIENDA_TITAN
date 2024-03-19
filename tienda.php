@@ -23,6 +23,7 @@ include './assets/views/navbar.php';
 <link rel="stylesheet" href="./assets/css/style-prefix.css">
 <link rel="stylesheet" href="assets/css/stilos.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 <!--
     - google font link
   -->
@@ -37,6 +38,12 @@ if (isset($_GET['id_categoria'])) {
 } else {
     $idCategoria = "";
 }
+//PAGINACION
+// Obtener el valor de la página desde el parámetro "pagina" en la URL
+$pagina = isset($_GET['pagina']) ? $_GET['pagina'] : '';
+// Asignar el valor predeterminado de 1 si $pagina está vacío
+$pagina = !empty($pagina) ? $pagina : 1;
+
 ?>
 
 <body>
@@ -44,6 +51,7 @@ if (isset($_GET['id_categoria'])) {
     <input id="idCategoria" class="d-none" type="text" value="<?php echo $idCategoria ?>">
     <!-- Input oculto para asignar el id del usuario-->
     <input id="id_usuario" type="hidden" value="<?php echo $user_id ?>">
+    <input id="paginaSeleccionada" class="d-none" name="pagina" value="<?php echo $pagina; ?>">
 
     <div id="modalCarrito" class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-right modal-dialog-centered modal-dialog-scrollable ">
@@ -152,25 +160,22 @@ if (isset($_GET['id_categoria'])) {
     </div>
     <!-- Fin productos -->
 
-    <a href="https://api.whatsapp.com/send?phone=51916232342&text=Hola!%20Estoy%20interesado%20en%20comprar%20productos%20de%20la%20categor%C3%ADa%20Perfiles%20met%C3%A1licos%20%C2%BFPodr%C3%ADas%20asistirme?" class="btnchat" target="_blank">
+    <nav aria-label="Page navigation example" id="paginacion">
+
+    </nav>
+
+    <!-- <a href="https://api.whatsapp.com/send?phone=51916232342&text=Hola!%20Estoy%20interesado%20en%20comprar%20productos%20de%20la%20categor%C3%ADa%20Perfiles%20met%C3%A1licos%20%C2%BFPodr%C3%ADas%20asistirme?" class="btnchat" target="_blank">
         <i class="fab fa-whatsapp my-btnchat "></i>
-    </a>
-
-
+    </a> -->
     <!-- page whatsapp  -->
     <?php include 'whatsapp.php' ?>
-    <!-- Start Footer -->
-
-
 
     <script src="assets/js/templatemo.js"></script>
     <script src="assets/js/custom.js"></script>
-    <!-- End Script -->
-
+    <!-- Link js -->
     <script src="vista/js/productos.js"></script>
     <script src="vista/js/busquedaProductos.js"></script>
     <script src="vista/js/carrito.js"></script>
-
     <!--
         - custom js link
     -->
@@ -186,3 +191,4 @@ if (isset($_GET['id_categoria'])) {
 <!-- Start Footer -->
 <?php include 'assets/views/footer.php' ?>
 <!-- End Footer -->
+<!-- AdminLTE App -->

@@ -8,17 +8,6 @@ $(document).ready(function () {
   } else {
     productosTienda();
   }
-   $(document).on("click", "#btn-plus", function () {
-     var cantidad = parseInt($("#cantidad").val());
-     $("#cantidad").val(cantidad + 1);
-   });
-   $(document).on("click", "#btn-minus", function () {
-     var cantidad = parseInt($("#cantidad").val());
-     if (cantidad > 1) {
-       $("#cantidad").val(cantidad - 1);
-     }
-   });
-
 
   /*
    * FUNCION PARA LISTAR LAS CATEGORIAS EN EL INDEX
@@ -137,9 +126,18 @@ $(document).ready(function () {
 
   function productosTienda(consulta) {
     funcion = "productosTienda";
+    // Obtener el valor del input
+    let paginaSeleccionada = $("#paginaSeleccionada").val();
+
+    // Verificar si el valor está vacío o no se proporciona
+    if (!paginaSeleccionada) {
+      // Establecer el valor en 1 por defecto
+      paginaSeleccionada = 1;
+    }
+    console.log(paginaSeleccionada);
     $.post(
       "controlador/productosControlador.php",
-      { consulta, funcion },
+      { consulta, funcion,pagina:paginaSeleccionada },
       (response) => {
         const productosTienda = JSON.parse(response);
         let template = "";
@@ -249,7 +247,6 @@ $(document).ready(function () {
       "controlador/productosControlador.php",
       { consulta, funcion },
       (response) => {
-
         const categorias = JSON.parse(response);
         let template = "";
         let contador = 0;
@@ -282,189 +279,77 @@ $(document).ready(function () {
     productosTienda(idCategoria);
   });
 
-  /*
-   * FUNCION PARA DETALLAR UN PRODUCTO
-   */
-  detalleProducto();
-
-  function detalleProducto() {
-    funcion = "detalleProducto";
-    const idProducto = $("#id_producto").val();
-
-    $.post(
-      "controlador/productosControlador.php",
-      { idProducto, funcion },
-      (response) => {
-        const detalles = JSON.parse(response);
-        let template = "";
-        detalles.forEach((detalle) => {
-          var urls_img = detalle.url_imagenes.split(",");
-          var baseUrl =
-            "vista/assets/img/" + detalle.categoria_producto.toLowerCase();
-          var imgArray = [];
-          urls_img.map((url) => {
-            imgArray.push(baseUrl + "/" + url);
-          });
-          template += ` 
-                <div class="col-lg-5 mt-4">
-                    <div class="card mb-3">
-                        <img class="card-img img-fluid main-image" src="${imgArray[0]}" alt="Card image cap" id="product-detail" style="width: 100%; height: 400px;">
-                    </div>
-                    <div class="row">
-                        <div class="col-1 align-self-center">
-                            <a href="#multi-item-example" role="button" data-bs-slide="prev">
-                                <i class="text-dark fas fa-chevron-left"></i>
-                                <span class="sr-only">Previous</span>
-                            </a>
-                        </div>
-                        <div id="multi-item-example" class="col-10 carousel slide carousel-multi-item" data-bs-ride="carousel">
-                            <div class="carousel-inner product-links-wap" role="listbox">
-                                <div class="carousel-item active">
-                                    <div class="row">
-                                        <div class="col-4">
-                                            <a href="#">
-                                                <img class="card-img img-fluid secondary-image" src="${imgArray[1]}" alt="Product Image 1" style="width: 80px; height: 100px;">
-                                            </a>
-                                        </div>
-                                        <div class="col-4">
-                                            <a href="#">
-                                                <img class="card-img img-fluid secondary-image" src="${imgArray[2]}" alt="Product Image 2" style="width: 80px; height: 100px;">
-                                            </a>
-                                        </div>
-                                        <div class="col-4">
-                                            <a href="#">
-                                                <img class="card-img img-fluid secondary-image" src="${imgArray[3]}" alt="Product Image 3" style="width: 80px; height: 100px;">
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-1 align-self-center">
-                            <a href="#multi-item-example" role="button" data-bs-slide="next">
-                                <i class="text-dark fas fa-chevron-right"></i>
-                                <span class="sr-only">Next</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-7 mt-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <h1 class="h2">${detalle.nombre_producto}</h1>
-                            <p class="h3 py-2">S/. ${detalle.precio_producto}</p>
-                            <p class="py-2">
-                                <i class="fa fa-star text-warning"></i>
-                                <i class="fa fa-star text-warning"></i>
-                                <i class="fa fa-star text-warning"></i>
-                                <i class="fa fa-star text-warning"></i>
-                                <i class="fa fa-star text-secondary"></i>
-                                <span class="list-inline-item text-dark">Puntuación 4.8 | 36 Comentarios</span>
-                            </p>
-                            <ul class="list-inline">
-                                <li class="list-inline-item">
-                                    <h6>Categoría:${detalle.categoria_producto}</h6>
-                                </li>
-                            </ul>
-                            <h6>Descripción:</h6>
-                            <p>${detalle.descripcion_producto}</p>
-                            <ul class="list-inline">
-                                <li class="list-inline-item">
-                                    <h6>Marca:${detalle.marca_producto}</h6>
-                                </li>
-
-                            </ul>
-                             <ul class="list-inline">
-                                <li class="list-inline-item">
-                                    <h6>Stock disponible:${detalle.stock_producto}</h6>
-                                </li>
-
-                            </ul>
-
-                                <input type="hidden" name="product-title" value="Activewear">
-                               <div class="row">
-                                    
-                                    <div class="col-auto">
-                                        <button class="btn btn-success" id="btn-minus">-</button>
-                                    </div>
-                                    <div class="col-auto">
-                                        <input  class="form-control" id="cantidad" value="1" style="border:0; width: 40px;" readonly>
-                                    </div>
-                                    <div class="col-auto">
-                                        <button class="btn btn-success" id="btn-plus">+</button>
-                                    </div>
-                                </div>
-
-                                <div class="row pb-3">
-                                    <div class="col d-grid">
-                                         <button data-id_producto="${detalle.id_producto}"  id="agregarCarritoBtn" class="btn-action">
-                                            <ion-icon name="bag-add-outline"></ion-icon>
-                                        </button>
-                                        <a class="btn btn-success text-white mt-2" href="#" data-bs-toggle="modal" data-bs-target="#modalCarrito"><i class="fas fa-cart-plus"></i></a>
-                                    </div>
-                                </div>
-                        </div>
-                    </div>
-                </div>`;
-        });
-        $("#detalle_producto").html(template);
-      }
-    );
-  }
-  /*
-   * FIN FUNCION PARA DETALLAR UN PRODUCTO
-   */
-
- 
-
-  /*FUNCION OBTENER LA CANTIDAD DE PAGINAS*/
-  function CantidadPaginas() {
-    const funcion = "CantidadPaginas";
-    $.post(
-      "controlador/productosControlador.php",
-      { funcion },
-      function (response) {
-
-        const cantidad = parseInt(response.trim()); // Convierte el texto a un número entero
-
-        if (!isNaN(cantidad)) {
-          console.log("Cantidad de productos:", cantidad);
-
-          // Calcular el número de páginas
-          const paginas = Math.ceil(cantidad / 12); // Suponiendo que deseas mostrar 12 productos por página
-          // Modificar la paginación en el HTML
-          const paginationContainer = $(".pagination");
-          paginationContainer.empty(); // Limpiar la paginación actual
-
-          // Agregar el botón "Previous"
-          paginationContainer.append(`
-          <li class="page-item disabled">
-            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-          </li>
-        `);
-
-          // Agregar las páginas numeradas
-          for (let i = 1; i <= paginas; i++) {
-            paginationContainer.append(`
-            <li class="page-item"><a class="page-link" href="#">${i}</a></li>
-          `);
-          }
-
-          // Agregar el botón "Next"
-          paginationContainer.append(`
-          <li class="page-item">
-            <a class="page-link" href="#">Next</a>
-          </li>
-        `);
-        } else {
-          console.error("La respuesta no contiene una cantidad válida.");
-        }
-      }
-    );
-  }
-
-  // Llamar a la función para obtener y asignar la cantidad de páginas
   CantidadPaginas();
-
   /*FUNCION OBTENER LA CANTIDAD DE PAGINAS*/
+function CantidadPaginas() {
+  const idCategoria = $("#idCategoria").val();
+  const funcion = "CantidadPaginas";
+  $.post(
+    "controlador/productosControlador.php",
+    { funcion },
+    function (response) {
+      const cantidad = parseInt(response.trim()); // Convierte el texto a un número entero
+
+      if (!isNaN(cantidad)) {
+        console.log("Cantidad de productos:", cantidad);
+
+        // Calcular el número de páginas
+        const paginas = Math.ceil(cantidad / 1); // Suponiendo que deseas mostrar 12 productos por página
+
+        let paginaActual = parseInt($("#paginaSeleccionada").val());
+        let paginacionHTML = `
+                <ul class="pagination justify-content-center">
+                    <li class="page-item${
+                      paginaActual === 1 ? " disabled" : ""
+                    }">
+                        <a class="page-link" href="${
+                          paginaActual !== 1
+                            ? `tienda.php?pagina=${paginaActual - 1}${
+                                idCategoria
+                                  ? `&id_categoria=${idCategoria}`
+                                  : ""
+                              }`
+                            : "#"
+                        }" tabindex="-1">Anterior</a>
+                    </li>`;
+
+        // Calcular el rango de páginas a mostrar
+        const rango = 2; // Número de páginas a mostrar antes y después de la página actual
+
+        for (
+          let i = Math.max(1, paginaActual - rango);
+          i <= Math.min(paginas, paginaActual + rango);
+          i++
+        ) {
+          paginacionHTML += `<li class="page-item${
+            i === paginaActual ? " active" : ""
+          }"><a class="page-link" href="tienda.php?pagina=${i}${
+            idCategoria ? `&id_categoria=${idCategoria}` : ""
+          }">${i}</a></li>`;
+        }
+
+        paginacionHTML += `
+                    <li class="page-item${
+                      paginaActual === paginas ? " disabled" : ""
+                    }">
+                        <a class="page-link" href="${
+                          paginaActual !== paginas
+                            ? `tienda.php?pagina=${paginaActual + 1}${
+                                idCategoria
+                                  ? `&id_categoria=${idCategoria}`
+                                  : ""
+                              }`
+                            : "#"
+                        }">Siguiente</a>
+                    </li>
+                </ul>`;
+        $("#paginacion").html(paginacionHTML);
+      } else {
+        console.error("La respuesta no contiene una cantidad válida.");
+      }
+    }
+  );
+}
+
+  /*FIN FUNCION OBTENER LA CANTIDAD DE PAGINAS*/
 });

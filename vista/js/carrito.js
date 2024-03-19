@@ -38,6 +38,147 @@ $(document).ready(function () {
     }
   });
 
+  //FUNCION PARA AÑADIR AL CARRITO DESDE DETALLE PRODUCTO
+  $(document).on("click", "#agregarCarritoBtndetalle", function () {
+    //se obtienen los datos para agregar al carrito
+    var id_producto = $(this).data("id_producto");
+    const id_usuario = document.getElementById("id_usuario").value;
+    var cantidad_carrito = parseInt($("#cantidad").val());
+    console.log(id_producto);
+    console.log(id_usuario);
+    console.log(cantidad_carrito);
+
+    //primero verificamos el stock disponible antes de agregar al carrito
+    verificarStock(id_producto, cantidad_carrito, id_usuario);
+
+    function verificarStock(id_producto, cantidad_carrito, id_usuario) {
+      funcion = "verificarStock";
+      $.post(
+        "controlador/carritoControlador.php",
+        { id_producto, cantidad_carrito, id_usuario, funcion },
+        (response) => {
+          var stock_disponible = parseInt(response);
+          //obtenemos la cantidad disponble del producto y comparamos con la cantidad que quieren comprar, si hay stock se procede a verificar si ya existencia o no
+          if (cantidad_carrito <= stock_disponible) {
+            // console.log("si hay stock");
+            funcion = "verificar_existencia_carrito";
+            $.post(
+              "controlador/carritoControlador.php",
+              { id_usuario, id_producto, funcion },
+              (response) => {
+                const existencia = JSON.parse(response);
+
+                // Verificar si existencia es un array y tiene al menos un elemento
+                if (Array.isArray(existencia) && existencia.length > 0) {
+                  const cantidadEnCarrito = existencia[0].cantidad;
+
+                  const id_carrito = existencia[0].id_carrito;
+                  const formDataActualizar = new FormData();
+                  formDataActualizar.append("funcion", "actualizar_carrito");
+                  formDataActualizar.append("id_carrito", id_carrito);
+                  formDataActualizar.append(
+                    "cantidad_carrito",
+                    cantidad_carrito
+                  );
+
+                  // Envía los datos al controlador utilizando la función enviarDatos
+                  enviarDatos(
+                    "controlador/carritoControlador.php",
+                    formDataActualizar,
+                    function (response) {
+                      // Condicional de acuerdo a la respuesta del servidor
+                      if (response.trim() === "Update_carrito") {
+                        Swal.fire({
+                          icon: "success",
+                          title: "Producto añadido ",
+                          text: "El producto seleccionado existe en el carrito, se le sumo la cantidad",
+                          timer: 2000, // tiempo en milisegundos (2 segundos)
+                          showConfirmButton: false, // oculta el botón de confirmación
+                        }).then(() => {
+                           $("#cantidad").val(1);
+                          const id_usuario =
+                            document.getElementById("id_usuario").value;
+                          cargarCarrito(id_usuario);
+                          $("#modalCarrito").modal("show");
+                        });
+                      } else {
+                        // Muestra un mensaje de error utilizando SweetAlert si la respuesta indica un problema
+                        Swal.fire({
+                          icon: "error",
+                          title: "Error",
+                          text: "Error no se pudo agregar el producto al carrito de compras",
+                        });
+                      }
+                    },
+                    function (error) {
+                      // Función de error: se ejecuta si hay un problema en la solicitud AJAX
+                      mostrarMensaje("noadd", "Error en la solicitud AJAX");
+                    }
+                  );
+                } else {
+                  // Si no se encuentra nada, asignar cero a la cantidad
+                  const cantidadEnCarrito = 0;
+                  const id_usuario =
+                    document.getElementById("id_usuario").value;
+                  // Crea un objeto FormData
+                  const formData = new FormData();
+                  formData.append("funcion", "añadir_carrito");
+                  formData.append("id_producto", id_producto);
+                  formData.append("cantidad_carrito", cantidad_carrito);
+                  formData.append("id_usuario", id_usuario);
+
+                  // Envía los datos al controlador utilizando la función enviarDatos
+                  enviarDatos(
+                    "controlador/carritoControlador.php",
+                    formData,
+                    function (response) {
+                      // Condicional de acuerdo a la respuesta del servidor
+                      if (response.trim() === "add_carrito") {
+                        Swal.fire({
+                          icon: "success",
+                          title: "Producto añadido ",
+                          text: "El producto se ha agregado al carrito",
+                        }).then(() => {
+                           $("#cantidad").val(1);
+                          document.getElementById("id_usuario").value;
+                          cargarCarrito(id_usuario);
+
+                          $("#modalCarrito").modal("show");
+                        });
+                      } else {
+                        // Muestra un mensaje de error utilizando SweetAlert si la respuesta indica un problema
+                        Swal.fire({
+                          icon: "error",
+                          title: "Error",
+                          text: "Error no se pudo agregar el producto al carrito de compras",
+                        });
+                      }
+                    },
+                    function (error) {
+                      // Función de error: se ejecuta si hay un problema en la solicitud AJAX
+                      mostrarMensaje("noadd", "Error en la solicitud AJAX");
+                    }
+                  );
+                }
+              }
+            );
+          } else {
+            // Mensaje de advertencia si no hay stock
+            Swal.fire({
+              icon: "error",
+              title: "Error",
+              text:
+                stock_disponible +
+                " unidades en stock del producto seleccionado",
+            });
+          }
+        }
+      );
+    }
+  });
+  //FIN FUNCION PARA AÑADIR AL CARRITO DESDE DETALLE PRODUCTO
+
+  /*FIN FUNCION PARA AÑADIR UN PRODUCTO A CARRITO A LA BASE DE DATOS */
   /*FUNCION PARA AÑADIR UN PRODUCTO A CARRITO A LA BASE DE DATOS */
   $(document).on("click", "#agregarCarritoBtn", function () {
     //se obtienen los datos para agregar al carrito
@@ -59,122 +200,120 @@ $(document).ready(function () {
           //obtenemos la cantidad disponble del producto y comparamos con la cantidad que quieren comprar, si hay stock se procede a verificar si ya existencia o no
           if (cantidad_carrito <= stock_disponible) {
             // console.log("si hay stock");
-              funcion = "verificar_existencia_carrito";
-              $.post(
-                "controlador/carritoControlador.php",
-                { id_usuario, id_producto, funcion },
-                (response) => {
-                  const existencia = JSON.parse(response);
+            funcion = "verificar_existencia_carrito";
+            $.post(
+              "controlador/carritoControlador.php",
+              { id_usuario, id_producto, funcion },
+              (response) => {
+                const existencia = JSON.parse(response);
 
-                  // Verificar si existencia es un array y tiene al menos un elemento
-                  if (Array.isArray(existencia) && existencia.length > 0) {
-                    const cantidadEnCarrito = existencia[0].cantidad;
+                // Verificar si existencia es un array y tiene al menos un elemento
+                if (Array.isArray(existencia) && existencia.length > 0) {
+                  const cantidadEnCarrito = existencia[0].cantidad;
 
-                    const id_carrito = existencia[0].id_carrito;
-                    const formDataActualizar = new FormData();
-                    formDataActualizar.append("funcion", "actualizar_carrito");
-                    formDataActualizar.append("id_carrito", id_carrito);
-                    formDataActualizar.append(
-                      "cantidad_carrito",
-                      cantidad_carrito
-                    );
+                  const id_carrito = existencia[0].id_carrito;
+                  const formDataActualizar = new FormData();
+                  formDataActualizar.append("funcion", "actualizar_carrito");
+                  formDataActualizar.append("id_carrito", id_carrito);
+                  formDataActualizar.append(
+                    "cantidad_carrito",
+                    cantidad_carrito
+                  );
 
-                    // Envía los datos al controlador utilizando la función enviarDatos
-                    enviarDatos(
-                      "controlador/carritoControlador.php",
-                      formDataActualizar,
-                      function (response) {
-                        // Condicional de acuerdo a la respuesta del servidor
-                        if (response.trim() === "Update_carrito") {
-                          Swal.fire({
-                            icon: "success",
-                            title: "Producto añadido ",
-                            text: "El producto seleccionado existe en el carrito, se le sumo la cantidad",
-                            timer: 2000, // tiempo en milisegundos (2 segundos)
-                            showConfirmButton: false, // oculta el botón de confirmación
-                          }).then(() => {
-                            inputCantidad.val(1);
-                            const id_usuario =
-                              document.getElementById("id_usuario").value;
-                            cargarCarrito(id_usuario);
-                            $("#modalCarrito").modal("show");
-                          });
-                        } else {
-                          // Muestra un mensaje de error utilizando SweetAlert si la respuesta indica un problema
-                          Swal.fire({
-                            icon: "error",
-                            title: "Error",
-                            text: "Error no se pudo agregar el producto al carrito de compras",
-                          });
-                        }
-                      },
-                      function (error) {
-                        // Función de error: se ejecuta si hay un problema en la solicitud AJAX
-                        mostrarMensaje("noadd", "Error en la solicitud AJAX");
-                      }
-                    );
-                  } else {
-                    // Si no se encuentra nada, asignar cero a la cantidad
-                    const cantidadEnCarrito = 0;
-                    const id_usuario =
-                      document.getElementById("id_usuario").value;
-                    // Crea un objeto FormData
-                    const formData = new FormData();
-                    formData.append("funcion", "añadir_carrito");
-                    formData.append("id_producto", id_producto);
-                    formData.append("cantidad_carrito", cantidad_carrito);
-                    formData.append("id_usuario", id_usuario);
-
-                    // Envía los datos al controlador utilizando la función enviarDatos
-                    enviarDatos(
-                      "controlador/carritoControlador.php",
-                      formData,
-                      function (response) {
-                        // Condicional de acuerdo a la respuesta del servidor
-                        if (response.trim() === "add_carrito") {
-                          Swal.fire({
-                            icon: "success",
-                            title: "Producto añadido ",
-                            text: "El producto se ha agregado al carrito",
-                          }).then(() => {
-                            inputCantidad.val(1);
+                  // Envía los datos al controlador utilizando la función enviarDatos
+                  enviarDatos(
+                    "controlador/carritoControlador.php",
+                    formDataActualizar,
+                    function (response) {
+                      // Condicional de acuerdo a la respuesta del servidor
+                      if (response.trim() === "Update_carrito") {
+                        Swal.fire({
+                          icon: "success",
+                          title: "Producto añadido ",
+                          text: "El producto seleccionado existe en el carrito, se le sumo la cantidad",
+                          timer: 2000, // tiempo en milisegundos (2 segundos)
+                          showConfirmButton: false, // oculta el botón de confirmación
+                        }).then(() => {
+                          inputCantidad.val(1);
+                          const id_usuario =
                             document.getElementById("id_usuario").value;
-                            cargarCarrito(id_usuario);
-                            cargarCarrito(id_usuario);
-                            $("#modalCarrito").modal("show");
-                          });
-                        } else {
-                          // Muestra un mensaje de error utilizando SweetAlert si la respuesta indica un problema
-                          Swal.fire({
-                            icon: "error",
-                            title: "Error",
-                            text: "Error no se pudo agregar el producto al carrito de compras",
-                          });
-                        }
-                      },
-                      function (error) {
-                        // Función de error: se ejecuta si hay un problema en la solicitud AJAX
-                        mostrarMensaje("noadd", "Error en la solicitud AJAX");
+                          cargarCarrito(id_usuario);
+                          $("#modalCarrito").modal("show");
+                        });
+                      } else {
+                        // Muestra un mensaje de error utilizando SweetAlert si la respuesta indica un problema
+                        Swal.fire({
+                          icon: "error",
+                          title: "Error",
+                          text: "Error no se pudo agregar el producto al carrito de compras",
+                        });
                       }
-                    );
-                  }
+                    },
+                    function (error) {
+                      // Función de error: se ejecuta si hay un problema en la solicitud AJAX
+                      mostrarMensaje("noadd", "Error en la solicitud AJAX");
+                    }
+                  );
+                } else {
+                  // Si no se encuentra nada, asignar cero a la cantidad
+                  const cantidadEnCarrito = 0;
+                  const id_usuario =
+                    document.getElementById("id_usuario").value;
+                  // Crea un objeto FormData
+                  const formData = new FormData();
+                  formData.append("funcion", "añadir_carrito");
+                  formData.append("id_producto", id_producto);
+                  formData.append("cantidad_carrito", cantidad_carrito);
+                  formData.append("id_usuario", id_usuario);
+
+                  // Envía los datos al controlador utilizando la función enviarDatos
+                  enviarDatos(
+                    "controlador/carritoControlador.php",
+                    formData,
+                    function (response) {
+                      // Condicional de acuerdo a la respuesta del servidor
+                      if (response.trim() === "add_carrito") {
+                        Swal.fire({
+                          icon: "success",
+                          title: "Producto añadido ",
+                          text: "El producto se ha agregado al carrito",
+                        }).then(() => {
+                          inputCantidad.val(1);
+                          document.getElementById("id_usuario").value;
+                          cargarCarrito(id_usuario);
+                          cargarCarrito(id_usuario);
+                          $("#modalCarrito").modal("show");
+                        });
+                      } else {
+                        // Muestra un mensaje de error utilizando SweetAlert si la respuesta indica un problema
+                        Swal.fire({
+                          icon: "error",
+                          title: "Error",
+                          text: "Error no se pudo agregar el producto al carrito de compras",
+                        });
+                      }
+                    },
+                    function (error) {
+                      // Función de error: se ejecuta si hay un problema en la solicitud AJAX
+                      mostrarMensaje("noadd", "Error en la solicitud AJAX");
+                    }
+                  );
                 }
-              );
-          } else {   
+              }
+            );
+          } else {
             // Mensaje de advertencia si no hay stock
             Swal.fire({
               icon: "error",
               title: "Error",
-              text: stock_disponible +" unidades en stock del producto seleccionado",
+              text:
+                stock_disponible +
+                " unidades en stock del producto seleccionado",
             });
           }
         }
       );
     }
-    
-
-
-  
   });
   /*FIN FUNCION PARA AÑADIR UN PRODUCTO A CARRITO A LA BASE DE DATOS */
 
@@ -310,16 +449,5 @@ $(document).ready(function () {
     }
   });
 
-  // function verificarStock(id_producto) {
-  //   const funcion = "verificarStock";
-  //   const cantidad = 0;
-  //   $.post(
-  //     "controlador/carritoControlador.php",
-  //     { id_producto, funcion },
-  //     function (response) {
-  //       console.log(response);
-  //       cantidad = parseInt(response.trim()); // Convierte el texto a un número entero
-  //     }
-  //   );
-  // }
+
 });

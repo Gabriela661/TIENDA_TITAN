@@ -1,4 +1,15 @@
-<?php include './assets/views/navbar.php';
+<?php
+// Inicia la sesión
+session_start();
+
+// Si no hay un ID de usuario en la sesión, genera uno nuevo
+$_SESSION['user_id'] = 1;
+$user_id =
+    $_SESSION['user_id'];
+
+
+
+include './assets/views/navbar.php';
 
 ?>
 <?php
@@ -8,10 +19,12 @@ if (isset($_GET['id_producto'])) {
     $id_producto = ""; // Puedes establecer un valor predeterminado si el parámetro no está presente
 }
 ?>
-<!-- Incluye jQuery desde CDN -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<link rel="stylesheet" href="assets/css/adminlte.min.css">
 
 <body>
+    <!-- Input oculto para asignar el id del usuario-->
+    <input id="id_usuario" type="hidden" value="<?php echo $user_id ?>">
     <div id="modalCarrito" class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-right modal-dialog-centered modal-dialog-scrollable ">
             <div class="modal-content h-100">
@@ -84,12 +97,13 @@ if (isset($_GET['id_producto'])) {
 
 
     <script src="vista/js/productos.js"></script>
-    
+    <script src="vista/js/detalleProducto.js"></script>
+    <script src="vista/js/carrito.js"></script>
     <!-- End Slider Script -->
-
-    <script>
+    <!-- Incluye jQuery desde CDN -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="assets/js/adminlte.min.js"></script>
     
-    </script>
 </body>
 
 </html>

@@ -10,7 +10,7 @@
     <title>TITAN_TIENDA</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="assets/css/foodhut.css">
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <!-- Preloader -->
 
@@ -176,18 +176,20 @@
     <div class="container-fluid has-bg-overlay text-center text-light has-height-sm middle-items" id="calcular" style="background-image:url(assets/img/calcular.jpg)">
         <div class="container-fluid">
             <h2 class="section-title">Contactanos</h2>
-            <div class="row mb-6">
-                <div class="col-sm-3 col-md-3 col-xs-12 my-1">
-                    <input type="text" class="form-control" id="nombres" placeholder="Nombres">
+            <form>
+                <div class="row mb-6">
+                    <div class="col-sm-3 col-md-3 col-xs-12 my-1">
+                        <input type="text" class="form-control" id="nombres" placeholder="Nombres">
+                    </div>
+                    <div class="col-sm-3 col-md-3 col-xs-12 my-1">
+                        <input type="email" class="form-control" id="email" placeholder="Email">
+                    </div>
+                    <div class="col-sm-3 col-md-3 col-xs-12 my-1">
+                        <input type="text" class="form-control" id="telefono" placeholder="Telefono">
+                    </div>
+                    <input id="contactanos" type="submit" value="Contactarse" class="col-sm-3 btn btn-success my-1">
                 </div>
-                <div class="col-sm-3 col-md-3 col-xs-12 my-1">
-                    <input type="email" class="form-control" id="email" placeholder="Email">
-                </div>
-                <div class="col-sm-3 col-md-3 col-xs-12 my-1">
-                    <input type="text" class="form-control" id="telefono" placeholder="Telefono">
-                </div>
-                <input id="contactanos" type="submit" value="Contactarse" class="col-sm-3 btn btn-success my-1">
-            </div>
+            </form>
         </div>
     </div>
     <!-- page whatsapp  -->
@@ -208,6 +210,7 @@
     <!-- FoodHut js -->
     <script src="assets/js/foodhut.js"></script>
     <script src="vista/js/productos.js"></script>
+    <script src="vista/js/contactanos.js"></script>
 
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCtme10pzgKSPeJVJrG1O3tjR6lk98o4w8&callback=initMap"></script>
     <!-- FoodHut js -->

@@ -70,61 +70,105 @@ class Productos
      */
     public function productosTienda()
     {
-        if (!empty($_POST['consulta'])) {
+        // Definir el número de productos por página
+        $productosPorPagina = 1;
+
+        // Verificar si se proporcionó la consulta y la página seleccionada
+        if (!empty($_POST['consulta']) && !empty($_POST['pagina'])) {
             $idCategoria = $_POST['consulta'];
+            $pagina = $_POST['pagina'];
+            // Calcular el índice de inicio para la consulta
+            $inicio = ($pagina - 1) * $productosPorPagina;
+
+            // Consulta SQL para seleccionar los productos según la página y la categoría
             $sql = "SELECT 
-                p.id_producto,
-                p.nombre_producto,
-                p.marca_producto,
-                p.descripcion_producto,
-                p.stock_producto,
-                p.precio_producto,
-                c.nombre_categoria AS categoria_producto,
-                (
-                    SELECT url_imagen
-                    FROM imagen i
-                    WHERE i.id_producto = p.id_producto
-                    ORDER BY i.id_imagen ASC
-                    LIMIT 1
-                ) AS imagen_producto
-            FROM
-                producto p
-            JOIN
-                categoria c ON p.id_categoria = c.id_categoria
-            WHERE
-                p.id_categoria = :idCategoria;";
+            p.id_producto,
+            p.nombre_producto,
+            p.marca_producto,
+            p.descripcion_producto,
+            p.stock_producto,
+            p.precio_producto,
+            c.nombre_categoria AS categoria_producto,
+            (
+                SELECT url_imagen
+                FROM imagen i
+                WHERE i.id_producto = p.id_producto
+                ORDER BY i.id_imagen ASC
+                LIMIT 1
+            ) AS imagen_producto
+        FROM
+            producto p
+        JOIN
+            categoria c ON p.id_categoria = c.id_categoria
+        WHERE
+            p.id_categoria = :idCategoria
+        LIMIT :inicio, :productosPorPagina;";
 
             $query = $this->acceso->prepare($sql);
             $query->bindParam(':idCategoria', $idCategoria, PDO::PARAM_INT);
-            $query->execute();
-            $this->objetos = $query->fetchAll();
-            return $this->objetos;
-        } else {
+            $query->bindParam(':inicio', $inicio, PDO::PARAM_INT);
+            $query->bindParam(':productosPorPagina', $productosPorPagina, PDO::PARAM_INT);
+        } elseif (!empty($_POST['pagina'])) {
+            // Si solo se proporciona la página
+            $pagina = $_POST['pagina'];
+            // Calcular el índice de inicio para la consulta
+            $inicio = ($pagina - 1) * $productosPorPagina;
+
+            // Consulta SQL para seleccionar los productos solo según la página
             $sql = "SELECT 
-                    p.id_producto,
-                    p.nombre_producto,
-                    p.marca_producto,
-                    p.descripcion_producto,
-                    p.stock_producto,
-                    p.precio_producto,
-                    c.nombre_categoria AS categoria_producto,
-                    (
-                        SELECT url_imagen
-                        FROM imagen i
-                        WHERE i.id_producto = p.id_producto
-                        ORDER BY i.id_imagen ASC
-                        LIMIT 1
-                    ) AS imagen_producto
-                FROM
-                    producto p
-                JOIN
-                    categoria c ON p.id_categoria = c.id_categoria;";
+            p.id_producto,
+            p.nombre_producto,
+            p.marca_producto,
+            p.descripcion_producto,
+            p.stock_producto,
+            p.precio_producto,
+            c.nombre_categoria AS categoria_producto,
+            (
+                SELECT url_imagen
+                FROM imagen i
+                WHERE i.id_producto = p.id_producto
+                ORDER BY i.id_imagen ASC
+                LIMIT 1
+            ) AS imagen_producto
+        FROM
+            producto p
+        JOIN
+            categoria c ON p.id_categoria = c.id_categoria
+        LIMIT :inicio, :productosPorPagina;";
+
             $query = $this->acceso->prepare($sql);
-            $query->execute();
-            $this->objetos = $query->fetchAll();
-            return $this->objetos;
+            $query->bindParam(':inicio', $inicio, PDO::PARAM_INT);
+            $query->bindParam(':productosPorPagina', $productosPorPagina, PDO::PARAM_INT);
+        } else {
+            // Si no se proporciona ni la consulta ni la página, devolver todos los productos sin límite
+            $sql = "SELECT 
+            p.id_producto,
+            p.nombre_producto,
+            p.marca_producto,
+            p.descripcion_producto,
+            p.stock_producto,
+            p.precio_producto,
+            c.nombre_categoria AS categoria_producto,
+            (
+                SELECT url_imagen
+                FROM imagen i
+                WHERE i.id_producto = p.id_producto
+                ORDER BY i.id_imagen ASC
+                LIMIT 1
+            ) AS imagen_producto
+        FROM
+            producto p
+        JOIN
+            categoria c ON p.id_categoria = c.id_categoria;";
+
+            $query = $this->acceso->prepare($sql);
         }
+
+        $query->execute();
+        $this->objetos = $query->fetchAll();
+        return $this->objetos;
     }
+
 
     /**
      * Obtiene y devuelve la lista de categorías para ser mostradas en la página de la tienda.

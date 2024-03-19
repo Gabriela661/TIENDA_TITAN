@@ -37,7 +37,6 @@ $(document).ready(function () {
         const productos = JSON.parse(response);
         // Define un arreglo para almacenar los productos seleccionados
 
-
         // Itera sobre los productos recibidos
         productos.forEach((producto) => {
           // Extrae los campos de precio, cantidad y nombre y guárdalos en un objeto
@@ -50,6 +49,12 @@ $(document).ready(function () {
           // Agrega el producto seleccionado al arreglo de productos seleccionados
           productosSeleccionados.push(productoSeleccionado);
         });
+
+        // Convierte el arreglo de productos seleccionados a una cadena JSON
+        let productosJSON = JSON.stringify(productosSeleccionados);
+
+        // Asigna la cadena JSON al valor del input
+        $("#producto_json").val(productosJSON);
 
         // Aquí puedes hacer lo que quieras con el arreglo de productos seleccionados
 
@@ -90,29 +95,29 @@ $(document).ready(function () {
     console.log("Tipo de Moneda:", tipoMoneda);
     console.log("Observaciones:", observaciones);
 
-    var carrito = [
-      {
-        id_carrito: 2,
-        nombre: "Archivador",
-        precio: "550.00",
-        cantidad: 1,
-        imagen_producto:
-          "../vista/assets/img/inventario/65e10247d82ef-Archivador.JPG",
-        id_producto: 3,
-        stock: "2.0000",
-      },
-      {
-        id_carrito: 3,
-        nombre: "Armario de melamina",
-        precio: "550.00",
-        cantidad: 1,
-        imagen_producto:
-          "../vista/assets/img/inventario/65e1032382736-armario cedro.jpg",
-        id_producto: 5,
-        stock: "1.0000",
-      },
-    ];
-
+    // var carrito = [
+    //   {
+    //     id_carrito: 2,
+    //     nombre: "Archivador",
+    //     precio: "550.00",
+    //     cantidad: 1,
+    //     imagen_producto:
+    //       "../vista/assets/img/inventario/65e10247d82ef-Archivador.JPG",
+    //     id_producto: 3,
+    //     stock: "2.0000",
+    //   },
+    //   {
+    //     id_carrito: 3,
+    //     nombre: "Armario de melamina",
+    //     precio: "550.00",
+    //     cantidad: 1,
+    //     imagen_producto:
+    //       "../vista/assets/img/inventario/65e1032382736-armario cedro.jpg",
+    //     id_producto: 5,
+    //     stock: "1.0000",
+    //   },
+    // ];
+    console.log("productosSeleccionados")
     // Convertir el carrito a JSON
     var productos = JSON.stringify(productosSeleccionados);
     // Enviar la solicitud POST para generar el PDF
@@ -145,51 +150,6 @@ $(document).ready(function () {
   });
 
   /*FIN FUNCION PARA CARGAR LOS  PRODUCTOS AL PROCESO DE PAGO */
-
-  // $("#venta").click(() => {
-
-  //   const idcliente = document.getElementById("id_usuario").value;
-  //   const totalCompra = parseFloat($("#totalCompra").text();
-  //   const tipo_pago = 1;
-
-  //     const formData = new FormData();
-  //     formData.append("funcion", "crearVenta"); // Añade la función para identificar la acción en el controlador
-  //   formData.append("idcliente", idcliente); // Añade el nombre de la categoría al FormData
-
-  //     formData.append("totalCompra", totalCompra); // Añade el nombre de la categoría al FormData
-  //     // Envía los datos al controlador utilizando la función enviarDatos
-  //     enviarDatos(
-  //       "controlador/pagoProductosControlador.php", // URL del controlador
-  //       formData, // Datos del formulario
-  //       function (response) {
-  //         // Condicional de acuerdo a la respuesta del servidor
-  //         if (response.trim() === "add_categoria") {
-  //           // Muestra un mensaje de éxito utilizando SweetAlert
-  //           Swal.fire({
-  //             icon: "success",
-  //             title: "Creación exitosa",
-  //             text: "La categoría ha sido creada con éxito.",
-  //           }).then(() => {
-  //             // Limpia el formulario, actualiza la lista de categorías
-  //             $("#form_categoria").trigger("reset");
-  //             location.reload();
-  //           });
-  //         } else {
-  //           // Muestra un mensaje de error utilizando SweetAlert si la respuesta indica un problema
-  //           Swal.fire({
-  //             icon: "error",
-  //             title: "Error",
-  //             text: "Error al crear la categoría, vuelva a intentarlo",
-  //           });
-  //         }
-  //       },
-  //       function (error) {
-  //         // Función de error: se ejecuta si hay un problema en la solicitud AJAX
-  //         mostrarMensaje("noadd", "Error en la solicitud AJAX");
-  //       }
-  //     );
-
-  // });
 
   /*FUNCION LIMPIAR LOS PRODUCTOS DEL CARRITO*/
   function actualizarStock(id_usuario) {

@@ -228,6 +228,6 @@
                 // Una vez que el preloader se ha ocultado completamente, mostrar el contenido de la página
                 $("#main-content").fadeIn("slow");
             });
-        }, 3000); // Tiempo en milisegundos (3 segundos)
+        }, 2000); // Tiempo en milisegundos (3 segundos)
     });
 </script>

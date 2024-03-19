@@ -101,9 +101,9 @@ if (isset($_GET['id_categoria'])) {
                                 </div>
                                 <div tupe class=" col-md-12">
                                     <label for="obs">Metodo de pago:</label>
-                                    <input class=" form-control" id="metodo" name="metodo" placeholder="Eliija un metodo de pago se rellenara automaticamente" readonly>
+                                    <input class=" form-control" id="metodo" name="metodo" placeholder="Seleccione un metodo de pago y  se rellenara automaticamente esta casilla" readonly>
                                 </div>
-                                <div class="col-md-12">
+                                <div class="d-none col-md-12">
                                     <label for="factura">Factura:</label>
                                     <input type="number" id="numeroFactura" name="numeroFactura"></input>
                                 </div>

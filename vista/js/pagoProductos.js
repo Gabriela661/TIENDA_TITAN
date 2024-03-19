@@ -118,28 +118,6 @@ $(document).ready(function () {
     console.log("Tipo de Moneda:", tipoMoneda);
     console.log("Observaciones:", observaciones);
 
-    // var carrito = [
-    //   {
-    //     id_carrito: 2,
-    //     nombre: "Archivador",
-    //     precio: "550.00",
-    //     cantidad: 1,
-    //     imagen_producto:
-    //       "../vista/assets/img/inventario/65e10247d82ef-Archivador.JPG",
-    //     id_producto: 3,
-    //     stock: "2.0000",
-    //   },
-    //   {
-    //     id_carrito: 3,
-    //     nombre: "Armario de melamina",
-    //     precio: "550.00",
-    //     cantidad: 1,
-    //     imagen_producto:
-    //       "../vista/assets/img/inventario/65e1032382736-armario cedro.jpg",
-    //     id_producto: 5,
-    //     stock: "1.0000",
-    //   },
-    // ];
     console.log("productosSeleccionados")
     // Convertir el carrito a JSON
     var productos = JSON.stringify(productosSeleccionados);
@@ -328,6 +306,48 @@ $(document).ready(function () {
               showConfirmButton: false, // No mostrar botón
               timer: 3000, // Cerrar automáticamente después de 3 segundos
             });
+
+            //DATOS DE LA COMPRA
+            var cantidad_compra = 0;
+            var total_compra = 0;
+
+            carrito.forEach((producto) => {
+              // Sumar la cantidad de cada producto al total de la compra
+              cantidad_compra += parseInt(producto.cantidad);
+
+              // Calcular el precio total del producto multiplicando el precio por la cantidad
+              var precioTotalProducto =
+                parseFloat(producto.precio) * parseInt(producto.cantidad);
+
+              // Sumar el precio total del producto al total de la compra
+              total_compra += precioTotalProducto;
+            });
+            // limitar a 2 decimales
+            total_compra = total_compra.toFixed(2);
+
+
+            //DATOS DEL CLIENTE
+            var metodop = document.getElementById("metodo").value;
+            var metodo;
+
+            //Metodos de pago
+            // Asignar valor 1 a Yape y 2 a Plin
+            if (metodop === "Yape") {
+              metodo = 1;
+            } else if (metodop === "Plin") {
+              metodo = 2;
+            }
+
+           
+            var nombre_cliente = document.getElementById("razon_social").value;
+            var ruc = document.getElementById("ruc").value;
+            var direccion = document.getElementById("direccion").value;
+            var telefono = document.getElementById("telefono").value;
+
+            
+           
+          //generar la factura
+
             var numeroFactura = document.getElementById("numeroFactura").value;
             var fechaEmision = document.getElementById("fecha_emision").value;
             var fechaVencimiento =
@@ -337,7 +357,7 @@ $(document).ready(function () {
             var direccion = document.getElementById("direccion").value;
             var tipoMoneda = document.getElementById("tipo_moneda").value;
             var observaciones = document.getElementById("observaciones").value;
-             var metodo = document.getElementById("metodo").value;
+            var metodo = document.getElementById("metodo").value;
             // Convertir el carrito a JSON
             var productos = document.getElementById("producto_json").value;
             // Enviar la solicitud POST para generar el PDF

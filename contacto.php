@@ -67,35 +67,10 @@
 
   <div id="contact" class="container-fluid bg-dark text-light border-top wow fadeIn">
     <div class="row">
-      <div class="col-md-6 px-0">
-        <div id="map" style="width: 100%; height: 100%; min-height: 400px"></div>
+      <div class="col-md-12 px-0">
+        <div id="map" style="width: 100%; height: 100%; min-height: 600px"></div>
       </div>
-      <div class="col-md-6 px-5 has-height-lg middle-items">
-        <br>
-        <h3>CONTACTANOS </h3>
-        <div class="row mt-2">
-          <div class="col-md-12">
 
-            <div class="form-group">
-              <input type="text" class="form-control" id="nombres" placeholder="Nombres">
-            </div>
-
-            <div class="form-group">
-              <input type="text" class="form-control" id="apellidos" placeholder="Apellidos">
-            </div>
-
-            <div class="form-group">
-              <input type="email" class="form-control" id="email" placeholder="Email">
-            </div>
-            <div class="form-group">
-              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Consulta"></textarea>
-            </div>
-            <div class="form-group">
-              <buttom class="btn btn-primary">Enviar</buttom>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 
@@ -113,6 +88,7 @@
   <script src="assets/js/custom.js"></script>
   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCtme10pzgKSPeJVJrG1O3tjR6lk98o4w8&callback=initMap"></script>
   <script src="assets/js/foodhut.js"></script>
+  <script src="vista/js/busquedaProductos.js"></script>
   <!-- End Script
   <script src="vista/js/busquedaProductos.js"></script>
 </body>

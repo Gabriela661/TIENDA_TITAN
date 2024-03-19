@@ -94,7 +94,6 @@ if (isset($_GET['id_producto'])) {
     <?php include 'assets/views/footer.php' ?>
     <!-- End Footer -->
 
-    <!-- End Script -->
 
 
     <script src="vista/js/productos.js"></script>

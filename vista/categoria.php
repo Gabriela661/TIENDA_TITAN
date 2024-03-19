@@ -3,67 +3,57 @@
 include_once "assets/views/nav.php";
 ?>
 <!-- J QUERY -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
 
 <!-- Google Font: Source Sans Pro -->
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
 
 <body>
     <div class="wrapper">
         <!-- Modal para agregar la categoria-->
         <div class="modal fade" id="crearCategoria" tabindex="-1" role="dialog" aria-labelledby="#crearCategoria" aria-hidden="true">
             <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="#crearCategoria">Registrar Categoria</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
+                <div class="modal-content" style="background-color: #d1d5dd; color: black;">
                     <div class="modal-body">
-                        <form id="form_categoria" method="POST">
+                        <form id="form_categoria" class="m-0" method="POST">
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label for="nombres">Nombre Categoria:</label>
                                     <input type="text" class="form-control" id="nombre_categoria" name="nombre_categoria" placeholder="Nombre de la categoria">
+                                    <label for="nombre_categoria">Nombre Categoria</label>
+                                </div>
+                                <div class="pt-1 mb-1">
+                                    <button class="btn btn-dark" type="submit"><i class="fas fa-save mr-2"></i>Guardar</button>
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fas fa-times-circle mr-2"></i> Cancelar</button>
                                 </div>
                             </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fas fa-times-circle"></i> Cancelar</button>
-                        <button type="submit" class="btn btn-success"><i class="fas fa-save"></i> Guardar</button>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
-        </form>
         <!-- ./Modal para agregar la categoria-->
 
         <!-- Modal para editar la categoria -->
         <div class="modal fade" id="editarCategoria" tabindex="-1" role="dialog" aria-labelledby="editarCategoriaLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="editarCategoriaLabel">Editar Categoría</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
+                <div class="modal-content" style="background-color: #d1d5dd; color: black;">
                     <div class="modal-body">
                         <form id="form_editar_categoria" method="POST">
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label for="nombre_editar">Nombre Categoría</label>
                                     <input type="hidden" class="form-control" id="id_categoria" name="id_categoria">
                                     <input type="text" class="form-control" id="nombre_editar_categoria" name="nombre_editar_categoria" placeholder="Nombre de la Categoría">
+                                    <label for="nombre_editar_categoria">Nombre Categoría</label>
+                                </div>
+                                <div class="pt-1 mb-1">
+                                    <button class="btn btn-dark" type="submit"><i class="fas fa-save mr-2"></i>Guardar</button>
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fas fa-times-circle mr-2"></i> Cancelar</button>
                                 </div>
                             </div>
+                        </form>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fas fa-times-circle"></i> Cancelar</button>
-                        <button type="submit" class="btn btn-success"><i class="fas fa-save"></i> Guardar Cambios</button>
-                    </div>
-                    </form>
                 </div>
             </div>
         </div>
@@ -92,15 +82,12 @@ include_once "assets/views/nav.php";
                     <div class="row">
                         <div class="col-12">
                             <div class="card">
-                                <div class="card">
-                                    <div class="card-header">
-                                        <h3 class="card-title">Listado de Categorias</h3>
-                                    </div>
+                                <div class="card">                                    
                                     <div class="card-body">
                                         <div class="table-responsive">
                                             <!-- Tabla de categorias -->
-                                            <table id="" class="table table-bordered table-striped ">
-                                                <thead>
+                                            <table id="categoriaTable" class="table table-bordered table-striped text-center mb-1">
+                                                <thead style="background-color: #e85813; color: white;">
                                                     <tr>
                                                         <th>N°</th>
                                                         <th>NOMBRES CATEGORIA</th>

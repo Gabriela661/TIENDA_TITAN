@@ -4,68 +4,65 @@ session_start();
 ?>
 
 
-
 <title>Inventario</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+
 <?php include_once "assets/views/nav.php"; ?>
 
 <!-- Modal crear producto -->
 <div class="modal fade" id="crearInventario" tabindex="-1" role="dialog" aria-labelledby="#crearInventario" aria-hidden="true">
   <div class="modal-dialog sm:modal-sm modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="#crearInventario">Registrar Producto</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
+    <div class="modal-content" style="background-color: #d1d5dd; color: black;">
       <div class="modal-body">
-        <form action="/submit" id="form_inventario" method="POST" enctype="multipart/form-data">
+        <form action="/submit" class="m-0 p-0" id="form_inventario" method="POST" enctype="multipart/form-data">
           <input type="hidden" name="_token" value="{{ csrf_token() }}">
           <div class="card-body">
             <div class="row">
               <div class="col-md-6">
                 <div class="form-group">
-                  <label for="codigo_producto">Código</label>
                   <input type="text" class="form-control" id="codigo_producto" name="codigo_producto" placeholder="Código del Producto">
+                  <label for="codigo_producto">Código</label>
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group">
-                  <label for="nombre_producto">Nombre</label>
                   <input type="text" class="form-control" id="nombre_producto" name="nombre_producto" placeholder="Nombre del Producto">
+                  <label for="nombre_producto">Nombre</label>
                 </div>
               </div>
             </div>
             <div class="row">
               <div class="col-md-6">
                 <div class="form-group">
-                  <label for="precio_producto">Precio</label>
                   <input type="decimal" step="0.01" class="form-control" id="precio_producto" name="precio_producto" placeholder="Precio del Producto">
+                  <label for="precio_producto">Precio</label>
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group">
-                  <label for="cantidad_producto">Cantidad</label>
                   <input type="decimal" step="0.0001" class="form-control" id="cantidad_producto" name="cantidad_producto" placeholder="Cantidad de Producto">
+                  <label for="cantidad_producto">Cantidad</label>
                 </div>
               </div>
             </div>
             <div class="form-group">
-              <label for="descripcion_producto">Descripcion del Producto</label>
               <textarea type="text" class="form-control" id="descripcion_producto" name="descripcion_producto" placeholder="Descripcion del Producto"></textarea>
+              <label for="descripcion_producto">Descripcion del Producto</label>
             </div>
 
             <div class="row">
               <div class="col-md-6">
                 <div class="form-group">
-                  <label for="marca">Marca del Producto</label>
                   <input type="text" class="form-control" id="marca_producto" name="marca_producto" placeholder="Marca del Producto">
+                  <label for="marca_producto">Marca del Producto</label>
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group">
-                  <label for="categoria">Categoria Producto</label>
                   <select type="number" class="form-control" id="categoria_producto" name="categoria_producto" placeholder="Categoria del producto"></select>
+                  <label for="categoria_producto">Categoria Producto</label>
                 </div>
               </div>
             </div>
@@ -73,8 +70,8 @@ session_start();
             <div class="row">
               <div class="col-md-6">
                 <div class="form-group">
-                  <label for="imagen_principal_producto">Imagen principal</label>
                   <input type="file" name="imagen_principal_producto" id="imagen_principal_producto" accept="image/jpg, image/jpeg, image/png" class="form-control-file">
+                  <label for="imagen_principal_producto">Imagen principal</label>
                   <div id="imagen_preview1" style="margin-top: 10px;" class="text-center mt-2">
                     <img src="" alt="Imagen principal" class="img-thumbnail" style="max-height: 150px;">
                   </div>
@@ -82,8 +79,8 @@ session_start();
               </div>
               <div class="col-md-6">
                 <div class="form-group">
-                  <label for="imagen_secundaria_1_producto">Imagen secundaria 1</label>
                   <input type="file" name="imagen_secundaria_1_producto" id="imagen_secundaria_1_producto" accept="image/jpg, image/jpeg, image/png" class="form-control-file">
+                  <label for="imagen_secundaria_1_producto">Imagen secundaria 1</label>
                   <div id="imagen_preview2" style="margin-top: 10px;" class="text-center mt-2">
                     <img src="" alt="Imagen secundaria 1" class="img-thumbnail" style="max-height: 150px;">
                   </div>
@@ -91,8 +88,8 @@ session_start();
               </div>
               <div class="col-md-6">
                 <div class="form-group">
-                  <label for="imagen_secundaria_2_producto">Imagen secundaria 2</label>
                   <input type="file" name="imagen_secundaria_2_producto" id="imagen_secundaria_2_producto" accept="image/jpg, image/jpeg, image/png" class="form-control-file">
+                  <label for="imagen_secundaria_2_producto">Imagen secundaria 2</label>
                   <div id="imagen_preview3" style="margin-top: 10px;" class="text-center mt-2">
                     <img src="" alt="Imagen secundaria 2" class="img-thumbnail" style="max-height: 150px;">
                   </div>
@@ -100,8 +97,8 @@ session_start();
               </div>
               <div class="col-md-6">
                 <div class="form-group">
-                  <label for="imagen_secundaria_3_producto">Imagen secundaria 3</label>
                   <input type="file" name="imagen_secundaria_3_producto" id="imagen_secundaria_3_producto" accept="image/jpg, image/jpeg, image/png" class="form-control-file">
+                  <label for="imagen_secundaria_3_producto">Imagen secundaria 3</label>
                   <div id="imagen_preview4" style="margin-top: 10px;" class="text-center mt-2">
                     <img src="" alt="Imagen secundaria 3" class="img-thumbnail" style="max-height: 150px;">
                   </div>
@@ -109,28 +106,24 @@ session_start();
               </div>
             </div>
 
+            <div class="pt-1 mb-1">
+              <button class="btn btn-dark" type="submit"><i class="fas fa-save mr-2"></i>Guardar</button>
+              <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fas fa-times-circle mr-2"></i> Cancelar</button>
+            </div>
+
           </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-        <button type="submit" class="btn btn-primary">Guardar</button>
+        </form>
       </div>
     </div>
   </div>
 </div>
-</form>
+
 
 
 <!-- Modal para editar el inventario -->
 <div class="modal fade" id="editarInventario" tabindex="-1" role="dialog" aria-labelledby="editarProductoLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="editarProductoLabel">Editar Producto</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
+  <div class="modal-dialog  sm:modal-sm modal-lg" role="document">
+    <div class="modal-content" style="background-color: #d1d5dd; color: black;">
       <div class="modal-body">
         <form id="form_editar_producto" method="POST">
           <div class="card-body">
@@ -138,49 +131,61 @@ session_start();
               <label for="id_editar">Id</label>
               <input type="text" class="form-control" id="id_editar" name="id_editar" placeholder="ID del Producto">
             </div>
-            <div class="form-group">
-              <label for="nombre_editar">Nombre</label>
-              <input type="text" class="form-control" id="nombre_editar" name="nombre_editar" placeholder="Nombre del Producto">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="nombre_editar" name="nombre_editar" placeholder="Nombre del Producto">
+                  <label for="nombre_editar">Nombre</label>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <input type="decimal" step="0.01" class="form-control" id="precio_editar" name="precio_editar" placeholder="Precio del Producto">
+                  <label for="precio_editar">Precio</label>
+                </div>
+              </div>
             </div>
             <div class="form-group">
-              <label for="">Precio</label>
-              <input type="decimal" step="0.01" class="form-control" id="precio_editar" name="precio_editar" placeholder="Precio del Producto">
-            </div>
-            <div class="form-group">
-              <label for="descripcion_producto_editar">Descripción del Producto</label>
               <textarea type="text" class="form-control" id="descripcion_editar" name="descripcion_editar" placeholder="Descripción del Producto"></textarea>
-            </div>
-            <div class="form-group">
-              <label for="cantidad_editar">Cantidad</label>
-              <input type="decimal" step="0.0001" class="form-control" id="cantidad_editar" name="cantidad_editar" placeholder="Cantidad de Producto">
-            </div>
-            <div class="form-group">
-              <label for="marca_editar">Marca del Producto</label>
-              <input type="text" class="form-control" id="marca_editar" name="marca_editar" placeholder="Marca del Producto">
+              <label for="descripcion_editar">Descripción del Producto</label>
             </div>
             <div class="row">
               <div class="col-md-6">
                 <div class="form-group">
-                  <label for="imagen_principal_producto">Imagen principal</label>
-                  <input type="file" name="imagen_principal_producto" id="imagen_principal_producto" accept="image/jpg, image/jpeg, image/png" class="form-control-file">
-                  <div id="imagen_preview1" style="margin-top: 10px;" class="text-center mt-2">
+                  <input type="decimal" step="0.0001" class="form-control" id="cantidad_editar" name="cantidad_editar" placeholder="Cantidad de Producto">
+                  <label for="cantidad_editar">Cantidad</label>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="marca_editar" name="marca_editar" placeholder="Marca del Producto">
+                  <label for="marca_editar">Marca del Producto</label>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <input type="file" name="imagen_principal_productoe" id="imagen_principal_productoe" accept="image/jpg, image/jpeg, image/png" class="form-control-file">
+                  <label for="imagen_principal_productoe">Imagen principal</label>
+                  <div id="imagen_preview1e" style="margin-top: 10px;" class="text-center mt-2">
                     <img src="" alt="Imagen principal" class="img-thumbnail" style="max-height: 150px;">
                   </div>
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group">
-                  <label for="imagen_secundaria_1_producto">Imagen secundaria 1</label>
-                  <input type="file" name="imagen_secundaria_1_producto" id="imagen_secundaria_1_producto" accept="image/jpg, image/jpeg, image/png" class="form-control-file">
-                  <div id="imagen_preview2" style="margin-top: 10px;" class="text-center mt-2">
+                  <input type="file" name="imagen_secundaria_1_productoe" id="imagen_secundaria_1_productoe" accept="image/jpg, image/jpeg, image/png" class="form-control-file">
+                  <label for="imagen_secundaria_1_productoe">Imagen secundaria 1</label>
+                  <div id="imagen_preview2e" style="margin-top: 10px;" class="text-center mt-2">
                     <img src="" alt="Imagen secundaria 1" class="img-thumbnail" style="max-height: 150px;">
                   </div>
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group">
-                  <label for="imagen_secundaria_2_productoe">Imagen secundaria 2</label>
                   <input type="file" name="imagen_secundaria_2_productoe" id="imagen_secundaria_2_productoe" accept="image/jpg, image/jpeg, image/png" class="form-control-file">
+                  <label for="imagen_secundaria_2_productoe">Imagen secundaria 2</label>
                   <div id="imagen_preview3e" style="margin-top: 10px;" class="text-center mt-2">
                     <img src="" alt="Imagen secundaria 2" class="img-thumbnail" style="max-height: 150px;">
                   </div>
@@ -188,36 +193,35 @@ session_start();
               </div>
               <div class="col-md-6">
                 <div class="form-group">
-                  <label for="imagen_secundaria_3_productoe">Imagen secundaria 3</label>
                   <input type="file" name="imagen_secundaria_3_productoe" id="imagen_secundaria_3_productoe" accept="image/jpg, image/jpeg, image/png" class="form-control-file">
+                  <label for="imagen_secundaria_3_productoe">Imagen secundaria 3</label>
                   <div id="imagen_preview4e" style="margin-top: 10px;" class="text-center mt-2">
                     <img src="" alt="Imagen secundaria 3" class="img-thumbnail" style="max-height: 150px;">
                   </div>
                 </div>
               </div>
+              <div class="pt-1 mb-1">
+                <button class="btn btn-dark" type="submit"><i class="fas fa-save mr-2"></i>Guardar</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fas fa-times-circle mr-2"></i> Cancelar</button>
+              </div>
             </div>
           </div>
+        </form>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
-      </div>
-      </form>
     </div>
   </div>
 </div>
 
 <!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper">
+<div class="content-wrapper" style="font-family: 'Open Sans', sans-serif;">
   <!-- Content Header (Page header) -->
   <section class="content-header">
     <div class="container-fluid">
-      <div class="row mb-2">
+      <div class="row">
         <div class="col-sm-6">
-          <h1>INVENTARIO </h1>
           <div>
             <!-- Botón superior izquierdo 'Registrar producto' -->
-            <button type="button" class="btn btn-primary mt-3" data-toggle="modal" data-target="#crearInventario">
+            <button type="button" class="btn btn-primary mt-1" data-toggle="modal" data-target="#crearInventario">
               Registrar Producto</button>
           </div>
         </div>
@@ -276,8 +280,8 @@ session_start();
                   </div>
                   <div><a type="button" class="btn btn-danger ml-4" href="#" id="generatePDFInventario"><i class="far fa-file-pdf"></i></a></div>
                 </div>
-                <table id="inventarioTable" class="table table-bordered table-striped">
-                  <thead>
+                <table id="inventarioTable" class="table table-bordered table-striped text-center">
+                  <thead style="background-color: #e85813; color: white;">
                     <tr>
                       <th>N°</th>
                       <th>NOMBRE</th>

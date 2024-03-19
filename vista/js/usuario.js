@@ -19,19 +19,19 @@ $(document).ready(function () {
           contador++; // Incrementamos el contador en cada iteración
           template += `
                     <tr data-id="${personal.id_usuario}">
-                    <th scope="row">${contador}</th>
-                        <th scope="row">${personal.nombre_usuario}</th>
-                        <th scope="row">${personal.apellido_usuario}</th>
-                        <th scope="row">${personal.correo_usuario}</th>
-                        <th scope="row">${personal.nombre_rol}</th>
-                        <th scope="row"><div class="text-center">
+                    <td scope="row">${contador}</td>
+                        <td scope="row">${personal.nombre_usuario}</td>
+                        <td scope="row">${personal.apellido_usuario}</td>
+                        <td scope="row">${personal.correo_usuario}</td>
+                        <td scope="row">${personal.nombre_rol}</td>
+                        <td scope="row"><div class="text-center">
                             <img src="${personal.foto_usuario}" style="${imagenStyle}"  class="img-circle" alt="...">
-                          </div></th>       
-                        <th scope="row"> <button id="btn_editar" class="btn btn-warning btn-editarAdm" type="button"
+                          </div></td>       
+                        <td scope="row"> <button id="btn_editar" class="btn btn-warning btn-editarAdm" type="button"
                                   data-toggle="modal" data-target="#editar_usuario" data-id_usuario="${personal.id_usuario}">
                                 Editar
-                            </button></th>
-                        <th scope="row"><button class="btn btn-danger borrar_usuario" data-id="${personal.id_usuario}">Eliminar</button></th>
+                            </button></td>
+                        <td scope="row"><button class="btn btn-danger borrar_usuario" data-id="${personal.id_usuario}">Eliminar</button></td>
                         `;
         });
         $('#listar_personal').html(template);
@@ -88,22 +88,22 @@ $(document).ready(function () {
           }
           contador++; // Incrementamos el contador en cada iteración
           template += `<tr data-id="${cliente.id_cliente}">
-          <th scope="row">${contador}</th>
-          <th scope="row">${cliente.nombre_cliente}</th>
-          <th scope="row">${cliente.apellido_cliente}</th>
-          <th scope="row">${cliente.correo_cliente}</th>
-          <th scope="row">${tipo_cliente}</th>
-          <th scope="row">  <button id="btn_editarc" class="btn btn-warning btn-editarAdm" type="button"
+          <td scope="row">${contador}</td>
+          <td scope="row">${cliente.nombre_cliente}</td>
+          <td scope="row">${cliente.apellido_cliente}</td>
+          <td scope="row">${cliente.correo_cliente}</td>
+          <td scope="row">${tipo_cliente}</td>
+          <td scope="row">  <button id="btn_editarc" class="btn btn-warning btn-editarAdm" type="button"
           data-toggle="modal" data-target="#editar_cliente" data-id_cliente="${cliente.id_cliente}">
           Editar
-          </button></th>
-          <th scope="row"><button class="btn btn-danger borrar_cliente" data-id="${cliente.id_cliente}">Eliminar</button></th>
+          </button></td>
+          <td scope="row"><button class="btn btn-danger borrar_cliente" data-id="${cliente.id_cliente}">Eliminar</button></td>
           </tr>`;
         });
         $('#listar_clientes').html(template);
 
         // Inicializar DataTables después de cargar los datos en la tabla
-        $('#clienteTable').DataTable({
+        var clienteTable = $('#clienteTable').DataTable({
           paging: true,
           searching: true,
           ordering: true,
@@ -111,6 +111,17 @@ $(document).ready(function () {
           language: {
             url: '//cdn.datatables.net/plug-ins/1.10.21/i18n/Spanish.json',
           },
+        });
+        $('a.toggle-visC').on('click', function (e) {
+          e.preventDefault();
+
+          // Get the column API object
+          var column = clienteTable.column($(this).attr('data-column'));
+
+          // Toggle the visibility
+          column.visible(!column.visible());
+          // Cambiar el color del botón según su estado
+          $(this).toggleClass('btn-success btn-secondary');
         });
       }
     );
@@ -552,31 +563,35 @@ $(document).ready(function () {
     const xPos = (pdfWidth - imgWidth) / 2; // Centrar horizontalmente
     const yPos = (pdfHeight - imgHeight) / 2; // Centrar verticalmente
 
-    // Variables para el diseño del encabezado y la tabla
-    const imgData = 'assets/img/logo_titan.png'; // Ruta de tu logo
-    const watermarkImg = 'assets/img/watermark.png';
-    const contactNumbers = '943212297 - 932566922';
-    const address1 = 'Carretera Central Km 412';
-    const address2 = 'CPM Llicua - Amarilis - Huánuco';
-    const reportTitle = 'Reporte de Usuarios';
-
-    /* footer */
-    const reportFooter = 'TITAN';
-    const currentDate = new Date().toLocaleDateString();
-
-    // Función para dibujar el encabezado en cada página
-    const drawHeader = () => {
-      doc.addImage(imgData, 'PNG', 10, 10, 30, 15);
-      doc.addImage(watermarkImg, 'PNG', xPos, yPos, imgWidth, imgHeight);
-      doc.setFontSize(10);
-      doc.setTextColor(150, 150, 150);
-      doc.text(contactNumbers, doc.internal.pageSize.getWidth() - 60, 15);
-      doc.text(address1, doc.internal.pageSize.getWidth() - 60, 25);
-      doc.text(address2, doc.internal.pageSize.getWidth() - 60, 30);
-      doc.setFontSize(22);
-      doc.setTextColor(19, 19, 19);
-      doc.text(reportTitle, doc.internal.pageSize.getWidth() - 140, 42);
-    };
+     // Variables para el diseño del encabezado y la tabla
+     const imgData = 'assets/img/logo_titan.png'; // Ruta de tu logo
+     const watermarkImg = 'assets/img/watermark.png';
+     const telefono = 'Teléfono:'
+     const contactNumbers = '943212297 - 932566922';
+     const direccion = 'Ubicación:';
+     const address1 = 'Carretera Central Km 412';
+     const address2 = 'CPM Llicua - Amarilis - Huánuco';
+     const reportTitle = 'Reporte de Usuarios';
+ 
+     /* footer */
+     const reportFooter = 'TITAN';
+     const currentDate = new Date().toLocaleDateString();
+ 
+     // Función para dibujar el encabezado en cada página
+     const drawHeader = () => {
+       doc.addImage(imgData, 'PNG', 10, 10, 30, 15);
+       doc.addImage(watermarkImg, 'PNG', xPos, yPos, imgWidth, imgHeight);
+       doc.setFontSize(10);
+       doc.setTextColor(150, 150, 150);
+       doc.text(telefono, doc.internal.pageSize.getWidth() - 60, 10);
+       doc.text(contactNumbers, doc.internal.pageSize.getWidth() - 60, 15);
+       doc.text(direccion, doc.internal.pageSize.getWidth() - 60, 22);
+       doc.text(address1, doc.internal.pageSize.getWidth() - 60, 27);
+       doc.text(address2, doc.internal.pageSize.getWidth() - 60, 32);
+       doc.setFontSize(22);
+       doc.setTextColor(19, 19, 19);
+       doc.text(reportTitle, doc.internal.pageSize.getWidth() - 140, 42);
+     };
 
     // Obtener la tabla DataTable original
     var table = $('#personalTable').DataTable();
@@ -668,7 +683,149 @@ $(document).ready(function () {
     var pdfWindow = window.open('', '_blank');
     pdfWindow.document.open();
     pdfWindow.document.write(
-      '<html><head><title>PDF Reporte de Ventas</title></head><body>'
+      '<html><head><title>PDF Reporte de Usuarios</title></head><body>'
+    );
+    pdfWindow.document.write(
+      '<embed width="100%" height="100%" src="' +
+        doc.output('datauristring') +
+        '" type="application/pdf">'
+    );
+    pdfWindow.document.write('</body></html>');
+    pdfWindow.document.close();
+  });
+
+  $(document).on('click', '#generatePDFCliente', function () {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+
+    const imgWidth = 100; // Ancho de la imagen
+    const imgHeight = 50; // Altura de la imagen
+    const pdfWidth = doc.internal.pageSize.getWidth();
+    const pdfHeight = doc.internal.pageSize.getHeight();
+    const xPos = (pdfWidth - imgWidth) / 2; // Centrar horizontalmente
+    const yPos = (pdfHeight - imgHeight) / 2; // Centrar verticalmente
+
+     // Variables para el diseño del encabezado y la tabla
+     const imgData = 'assets/img/logo_titan.png'; // Ruta de tu logo
+     const watermarkImg = 'assets/img/watermark.png';
+     const telefono = 'Teléfono:'
+     const contactNumbers = '943212297 - 932566922';
+     const direccion = 'Ubicación:';
+     const address1 = 'Carretera Central Km 412';
+     const address2 = 'CPM Llicua - Amarilis - Huánuco';
+     const reportTitle = 'Reporte de Clientes';
+ 
+     /* footer */
+     const reportFooter = 'TITAN';
+     const currentDate = new Date().toLocaleDateString();
+ 
+     // Función para dibujar el encabezado en cada página
+     const drawHeader = () => {
+       doc.addImage(imgData, 'PNG', 10, 10, 30, 15);
+       doc.addImage(watermarkImg, 'PNG', xPos, yPos, imgWidth, imgHeight);
+       doc.setFontSize(10);
+       doc.setTextColor(150, 150, 150);
+       doc.text(telefono, doc.internal.pageSize.getWidth() - 60, 10);
+       doc.text(contactNumbers, doc.internal.pageSize.getWidth() - 60, 15);
+       doc.text(direccion, doc.internal.pageSize.getWidth() - 60, 22);
+       doc.text(address1, doc.internal.pageSize.getWidth() - 60, 27);
+       doc.text(address2, doc.internal.pageSize.getWidth() - 60, 32);
+       doc.setFontSize(22);
+       doc.setTextColor(19, 19, 19);
+       doc.text(reportTitle, doc.internal.pageSize.getWidth() - 140, 42);
+     };
+
+    // Obtener la tabla DataTable original
+    var table = $('#clienteTable').DataTable();
+
+    // Clonar la tabla
+    var $clonedTable = $('#clienteTable').clone();
+
+    // Obtener los índices de las columnas visibles
+    var visibleColumns = table
+      .columns()
+      .indexes()
+      .filter(function (index) {
+        return table.column(index).visible();
+      })
+      .toArray();
+
+    console.log(visibleColumns);
+
+    // Eliminar las columnas no visibles de la tabla clonada
+    $clonedTable.find('thead th').each(function (index, th) {
+      if (visibleColumns.indexOf(index) === -1) {
+        $(th[index]).remove();
+      }
+    });
+
+    // Eliminar las celdas correspondientes en cada fila del cuerpo de la tabla clonada
+    $clonedTable.find('tbody tr').each(function (rowIndex, tr) {
+      $(tr)
+        .find('td')
+        .each(function (cellIndex, td) {
+          if (!table.column(cellIndex).visible()) {
+            $(td[cellIndex]).remove();
+          }
+        });
+    });
+
+    // Convertir la tabla clonada a una cadena HTML
+    var tableHtml = $clonedTable.html();
+
+    // Crear un elemento temporal
+    var tempDiv = document.createElement('table');
+
+    // Asignar la cadena HTML a la propiedad innerHTML del elemento temporal
+    tempDiv.innerHTML = tableHtml;
+
+    // Función para dibujar el pie de página en cada página
+    const drawFooter = () => {
+      const totalPages = doc.internal.getNumberOfPages();
+      for (let i = 1; i <= totalPages; i++) {
+        doc.setPage(i);
+        doc.setFontSize(12);
+
+        // Fondo verde al pie de página
+        doc.setFillColor(228, 85, 18);
+        doc.rect(0, pdfHeight - 20, pdfWidth, 20, 'F');
+
+        // Texto centrado
+        doc.setTextColor(255, 255, 255);
+        doc.text(reportFooter + ' (' + currentDate + ')', 10, pdfHeight - 10, {
+          align: 'left',
+        });
+
+        // Fecha y paginación a la derecha
+        doc.text(
+          ' Página ' + i + ' de ' + totalPages,
+          pdfWidth - 12,
+          pdfHeight - 10,
+          { align: 'right' }
+        );
+      }
+    };
+
+    // Evento para dibujar el encabezado en cada página
+    doc.autoTable({
+      html: tempDiv,
+      startY: 50,
+      theme: 'striped',
+      headStyles: {
+        fillColor: [228, 85, 18], // Cambiar a color naranja
+        textColor: [255, 255, 255], // Cambiar el color del texto del encabezado
+      },
+      didDrawPage: () => {
+        drawHeader();
+        drawFooter();
+      },
+    });
+
+    // Abrir el PDF en una nueva ventana
+    var pdfWindow = window.open('', '_blank');
+    pdfWindow.document.open();
+    pdfWindow.document.write(
+      '<html><head><title>PDF Reporte de Clientes</title></head><body>'
     );
     pdfWindow.document.write(
       '<embed width="100%" height="100%" src="' +

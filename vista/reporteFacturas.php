@@ -1,4 +1,7 @@
-<title>Reporte Facturas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+<title>Reporte Ventas</title>
 <?php
 include_once "assets/views/nav.php";
 ?>
@@ -8,7 +11,7 @@ include_once "assets/views/nav.php";
 <body>
     <div class="wrapper">
         <!-- Content Wrapper. Contains page content -->
-        <div class="content-wrapper">
+        <div class="content-wrapper" style="font-family: 'Open Sans', sans-serif;">
             <!-- Content Header (Page header) -->
             <section class="content-header">
                 <div class="container-fluid">
@@ -24,19 +27,19 @@ include_once "assets/views/nav.php";
                                         &nbsp;&nbsp;&nbsp;
                                         <button class="btn btn-primary">
                                             <i class="fa fa-user"></i> Total de ventas
-                                            <span class="badge bg-color6 text-c2">1</span>
+                                            <span class="badge bg-color6 text-c2" id="totalVentarep"></span>
                                         </button>
                                     </div>
                                     <div class="col-lg-6 row d-flex align-items-center">
                                         <div class="col-md-3 align-self-start">
-                                            <label for="fecha_inicio" class="form-label">Fecha de inicio:</label>
+                                            <label for="fecha_inicio" class="form-label">Inicio:</label>
                                             <input type="date" class="form-control" id="fecha_inicio">
                                         </div>
                                         <div class="col-md-3 align-self-start">
-                                            <label for="fecha_fin" class="form-label">Fecha de fin:</label>
+                                            <label for="fecha_fin" class="form-label">Fin:</label>
                                             <input type="date" class="form-control" id="fecha_fin">
                                         </div>
-                                        <div class="col-md-2 align-self-center">
+                                        <div class="col-md-2 align-self-end">
                                             <a href="#" id="fechasFactura" class="btn btn-primary">Consultar</a>
                                         </div>
                                     </div>
@@ -56,7 +59,7 @@ include_once "assets/views/nav.php";
                                 <div class="card">
                                     <div class="card-body">
                                         <div class="table-responsive">
-                                            <table id="reporte_facturas" class="table table-bordered table-striped">
+                                            <table id="reporte_facturas" class="table table-bordered table-striped text-center mb-1">
                                                 <thead id="facturas_lista_head" style="background-color: #e85813; color: white;">
                                                     <tr>
                                                         <th>N°</th>

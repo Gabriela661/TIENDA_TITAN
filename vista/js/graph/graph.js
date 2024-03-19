@@ -1,7 +1,4 @@
-
-
 $(document).ready(function () {
-  var funcion;
   var funcion = '';
 
   /* Pide datos de categorías X productos al controlador */
@@ -14,8 +11,89 @@ $(document).ready(function () {
       { consulta, funcion },
       (response) => {
         const reportes = JSON.parse(response);
-        console.log(reportes);
         createGrafph2(reportes, 'pie', 'Categorías X Productos');
+      }
+    );
+  }
+
+  /* Pide datos de categorías X productos al controlador */
+  usuariosTotal();
+  function usuariosTotal(consulta) {
+    // Se define la función a ejecutar en el controlador
+    funcion = 'usuarioTotal';
+    $.post(
+      '../controlador/graphControlador.php',
+      { consulta, funcion },
+      (response) => {
+        const reportes = JSON.parse(response);
+        $('#usuariosTotalP').text(reportes[0].totaluser);
+      }
+    );
+  }
+
+  productoTotal();
+  function productoTotal(consulta) {
+    funcion = 'productoTotal';
+    $.post(
+      '../controlador/graphControlador.php',
+      { consulta, funcion },
+      (response) => {
+        const reportes = JSON.parse(response);
+        $('#productosTotalP').text(reportes[0].productot);
+      }
+    );
+  }
+
+  categoriasTotal();
+  function categoriasTotal(consulta) {
+    funcion = 'categoriasTotal';
+    $.post(
+      '../controlador/graphControlador.php',
+      { consulta, funcion },
+      (response) => {
+        const reportes = JSON.parse(response);
+        $('#categoriaTotalP').text(reportes[0].cateffa);
+      }
+    );
+  }
+
+  ingresosTotal();
+  function ingresosTotal(consulta) {
+    funcion = 'ingresosTotal';
+    $.post(
+      '../controlador/graphControlador.php',
+      { consulta, funcion },
+      (response) => {
+        const reportes = JSON.parse(response);
+        $('#ingresosTotalP').text(reportes[0].ingrestot);
+      }
+    );
+  }
+
+  semanaComparar();
+  function semanaComparar(consulta) {
+    funcion = 'semanaComparar';
+    $.post(
+      '../controlador/graphControlador.php',
+      { consulta, funcion },
+      (response) => {
+        /* console.log(response); */
+        const reportes = JSON.parse(response);
+        //dibujar semana comparar
+      }
+    );
+  }
+
+  usuario_venta();
+  function usuario_venta(consulta) {
+    funcion = 'usuario_venta';
+    $.post(
+      '../controlador/graphControlador.php',
+      { consulta, funcion },
+      (response) => {
+        /* console.log(response) */
+        const reportes = JSON.parse(response);
+        // dibujar con reportes
       }
     );
   }
@@ -45,12 +123,10 @@ $(document).ready(function () {
         createGrafph(resultados, 'bar', 'Monto Final');
         pieChartCategoriaProducto(resultados);
         pieChartCategoriaProducto2(resultados);
-        comparaSemana()
+        comparaSemana();
       }
     );
   }
-
-
 });
 
 // Completa los días que no hay ventas  [{"fecha":"-", "monto_total":0}]
@@ -205,13 +281,12 @@ function createGrafph2(data, typeGraph, label) {
 
 var msyChart3 = null;
 function pieChartCategoriaProducto(data) {
-
   msyChart3 = echarts.init(document.getElementById('revenue-chart-canvas'));
 
   // Extraer categorías y cantidad de ventas del array JSON
   var categories = data.map((item) => item.fecha);
   var ventas = data.map((item) => item.monto_total);
-  console.log(data)
+  console.log(data);
 
   // Configurar opciones del gráfico
   var options = {
@@ -242,13 +317,12 @@ function pieChartCategoriaProducto(data) {
 //circular chart for categories x products
 var msyChart4 = null;
 function pieChartCategoriaProducto2(data) {
-
   msyChart4 = echarts.init(document.getElementById('sales-chart-canvas'));
 
   // Extraer categorías y cantidad de ventas del array JSON
   var categories = data.map((item) => item.fecha);
   var ventas = data.map((item) => item.monto_total);
-  console.log(data)
+  console.log(data);
 
   // Configurar opciones del gráfico
   var options = {
@@ -276,54 +350,60 @@ function pieChartCategoriaProducto2(data) {
   msyChart4.setOption(options);
 }
 
-
 //chart last week vs current week
 var msyChart5 = null;
 function comparaSemana(/* data */) {
-
   // Extraer categorías y cantidad de ventas del array JSON
-/*   var categories = data.map((item) => item.fecha);
+  /*   var categories = data.map((item) => item.fecha);
   var ventas = data.map((item) => item.monto_total);
   console.log(data) */
 
   var ventasSemanaActual = [120, 200, 150, 80, 70, 110, 130];
-    var ventasSemanaAnterior = [100, 180, 120, 90, 60, 85, 110];
-    var dias = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'];
+  var ventasSemanaAnterior = [100, 180, 120, 90, 60, 85, 110];
+  var dias = [
+    'Lunes',
+    'Martes',
+    'Miércoles',
+    'Jueves',
+    'Viernes',
+    'Sábado',
+    'Domingo',
+  ];
 
   // Configurar opciones del gráfico
   msyChart5 = echarts.init(document.getElementById('graph5'));
 
   var option = {
-      title: {
-        text: ''
+    title: {
+      text: '',
+    },
+    tooltip: {
+      trigger: 'axis',
+    },
+    legend: {
+      data: ['Semana Actual', 'Semana Anterior'],
+    },
+    xAxis: {
+      type: 'category',
+      data: dias,
+    },
+    yAxis: {
+      type: 'value',
+    },
+    series: [
+      {
+        name: 'Semana Actual',
+        type: 'line',
+        data: ventasSemanaActual,
       },
-      tooltip: {
-        trigger: 'axis'
+      {
+        name: 'Semana Anterior',
+        type: 'line',
+        data: ventasSemanaAnterior,
       },
-      legend: {
-        data: ['Semana Actual', 'Semana Anterior']
-      },
-      xAxis: {
-        type: 'category',
-        data: dias
-      },
-      yAxis: {
-        type: 'value'
-      },
-      series: [
-        {
-          name: 'Semana Actual',
-          type: 'line',
-          data: ventasSemanaActual
-        },
-        {
-          name: 'Semana Anterior',
-          type: 'line',
-          data: ventasSemanaAnterior
-        }
-      ]
-    };
-  
+    ],
+  };
+
   // Aplicar opciones al gráfico
   msyChart5.setOption(option);
 }

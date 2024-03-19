@@ -41,19 +41,19 @@ $(document).ready(function () {
           contador++; // Incrementamos el contador en cada iteración
           template += `
                     <tr data-id="${inventario.id_producto}">
-                    <th scope="row">${contador}</th>
-                        <th scope="row">${inventario.nombre_producto}</th>
-                        <th scope="row">${inventario.marca_producto}</th>                        
-                        <th scope="row">${inventario.stock_producto}</th>
-                        <th scope="row">${inventario.precio_producto}</th>                        
-                        <th scope="row"><div class="text-center">
+                    <td scope="row">${contador}</td>
+                        <td scope="row">${inventario.nombre_producto}</td>
+                        <td scope="row">${inventario.marca_producto}</td>                        
+                        <td scope="row">${inventario.stock_producto}</td>
+                        <td scope="row">${inventario.precio_producto}</td>                        
+                        <td scope="row"><div class="text-center">
                         <img src="${imagenSrc}" style="${imagenStyle}"  class="img-circle" alt="...">
-                      </div></th>                        
-                        <th scope="row"><button id="btn_editar" data-id_inventario="${inventario.id_producto}" type="button" class="btn btn-info">
+                      </div></td>                        
+                        <td scope="row"><button id="btn_editar" data-id_inventario="${inventario.id_producto}" type="button" class="btn btn-info">
                         Editar
-                     </button></th>
-                        <th scope="row"> <button id="btn_eliminar" class="btn btn-danger" data-id="${inventario.id_producto}">Eliminar</button>
-                        </th>
+                     </button></td>
+                        <td scope="row"> <button id="btn_eliminar" class="btn btn-danger" data-id="${inventario.id_producto}">Eliminar</button>
+                        </td>
                         `;
         });
         $('#inventario').html(template);
@@ -179,7 +179,7 @@ $(document).ready(function () {
           Swal.fire({
             icon: 'error',
             title: 'Error',
-            text: 'Error .',
+            text: 'Error al crear, intente de nuevo.',
           });
         }
       },
@@ -297,7 +297,7 @@ $(document).ready(function () {
     const id_producto_eliminar = $(this).data('id');
     Swal.fire({
       title: '¿Estás seguro?',
-      text: '¡No podrás revertir esto!, la informacion personal del usuario y compras realizadas tambien seran eliminadas',
+      text: '¡No podrás revertir esto!',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
@@ -321,7 +321,7 @@ $(document).ready(function () {
           Swal.fire({
             icon: 'success',
             title: 'Eliminación exitosa',
-            text: 'El Usuario ha sido eliminada con éxito.',
+            text: 'El producto ha sido eliminado con éxito.',
           }).then(() => {
             window.location.href = 'inventario.php';
           });
@@ -329,7 +329,7 @@ $(document).ready(function () {
           Swal.fire({
             icon: 'error',
             title: 'Error',
-            text: 'No se pudo eliminar al Usuario.',
+            text: 'No se pudo eliminar el producto.',
           });
         }
       }
@@ -348,31 +348,36 @@ $(document).on('click', '#generatePDFInventario', function () {
   const xPos = (pdfWidth - imgWidth) / 2; // Centrar horizontalmente
   const yPos = (pdfHeight - imgHeight) / 2; // Centrar verticalmente
 
-  // Variables para el diseño del encabezado y la tabla
-  const imgData = 'assets/img/logo_titan.png'; // Ruta de tu logo
-  const watermarkImg = 'assets/img/watermark.png';
-  const contactNumbers = '943212297 - 932566922';
-  const address1 = 'Carretera Central Km 412';
-  const address2 = 'CPM Llicua - Amarilis - Huánuco';
-  const reportTitle = 'Reporte de Inventario';
+     // Variables para el diseño del encabezado y la tabla
+     const imgData = 'assets/img/logo_titan.png'; // Ruta de tu logo
+     const watermarkImg = 'assets/img/watermark.png';
+     const telefono = 'Teléfono:'
+     const contactNumbers = '943212297 - 932566922';
+     const direccion = 'Ubicación:';
+     const address1 = 'Carretera Central Km 412';
+     const address2 = 'CPM Llicua - Amarilis - Huánuco';
+     const reportTitle = 'Reporte de Inventario';
 
   /* footer */
   const reportFooter = 'TITAN';
   const currentDate = new Date().toLocaleDateString();
 
-  // Función para dibujar el encabezado en cada página
-  const drawHeader = () => {
-    doc.addImage(imgData, 'PNG', 10, 10, 30, 15);
-    doc.addImage(watermarkImg, 'PNG', xPos, yPos, imgWidth, imgHeight);
-    doc.setFontSize(10);
-    doc.setTextColor(150, 150, 150);
-    doc.text(contactNumbers, doc.internal.pageSize.getWidth() - 60, 15);
-    doc.text(address1, doc.internal.pageSize.getWidth() - 60, 25);
-    doc.text(address2, doc.internal.pageSize.getWidth() - 60, 30);
-    doc.setFontSize(22);
-    doc.setTextColor(19, 19, 19);
-    doc.text(reportTitle, doc.internal.pageSize.getWidth() - 140, 42);
-  };
+      // Función para dibujar el encabezado en cada página
+      const drawHeader = () => {
+        doc.addImage(imgData, 'PNG', 10, 10, 30, 15);
+        doc.addImage(watermarkImg, 'PNG', xPos, yPos, imgWidth, imgHeight);
+        doc.setFontSize(10);
+        doc.setTextColor(150, 150, 150);
+        doc.text(telefono, doc.internal.pageSize.getWidth() - 60, 10);
+        doc.text(contactNumbers, doc.internal.pageSize.getWidth() - 60, 15);
+        doc.text(direccion, doc.internal.pageSize.getWidth() - 60, 22);
+        doc.text(address1, doc.internal.pageSize.getWidth() - 60, 27);
+        doc.text(address2, doc.internal.pageSize.getWidth() - 60, 32);
+        doc.setFontSize(22);
+        doc.setTextColor(19, 19, 19);
+        doc.text(reportTitle, doc.internal.pageSize.getWidth() - 140, 42);
+      };
+  
 
   // Obtener la tabla DataTable original
   var table = $('#inventarioTable').DataTable();
@@ -464,7 +469,7 @@ $(document).on('click', '#generatePDFInventario', function () {
   var pdfWindow = window.open('', '_blank');
   pdfWindow.document.open();
   pdfWindow.document.write(
-    '<html><head><title>PDF Reporte de Ventas</title></head><body>'
+    '<html><head><title>PDF Reporte de Inventario</title></head><body>'
   );
   pdfWindow.document.write(
     '<embed width="100%" height="100%" src="' +

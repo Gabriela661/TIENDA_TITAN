@@ -1,5 +1,5 @@
 $(document).ready(function () {
-  var funcion;
+  var contador = 0;
   var funcion = '';
   var datetime = new Date();
   console.log(datetime);
@@ -16,7 +16,7 @@ $(document).ready(function () {
         const reportes = JSON.parse(response);
         console.log(reportes);
         let template = '';
-        let contador = 0; // Inicializamos el contador
+        contador = 0; // Inicializamos el contador
         reportes.forEach((reporte) => {
           // Asignar tipo_cliente en comparación de usuario
           // Usuarios = (cliente online)
@@ -29,19 +29,19 @@ $(document).ready(function () {
           contador++; // Incrementamos el contador en cada iteración
           template += `
           <tr>
-          <th scope="row">${contador}</th>
-            <th scope="row">${reporte.fecha}</th>          
-            <th scope="row">${reporte.nombre_cliente}</th>          
-            <th scope="row">${reporte.nombre_tipo_pago}</th>
-            <th scope="row">${tipo_cliente}</th>
-            <th scope="row">${reporte.total_venta}</th>
+          <td scope="row">${contador}</td>
+            <td scope="row">${reporte.fecha}</td>          
+            <td scope="row">${reporte.nombre_cliente}</td>          
+            <td scope="row">${reporte.nombre_tipo_pago}</td>
+            <td scope="row">${tipo_cliente}</td>
+            <td scope="row">${reporte.total_venta}</td>
           </tr>`;
         });
         $('#reporte_facturas_lista').html(template);
 
         // Destruir la instancia anterior de DataTables
         $('#reporte_facturas').DataTable().destroy();
-
+        $('#totalVentarep').text(contador);
         // Inicializar DataTables después de cargar los datos en la tabla
         $('#reporte_facturas').DataTable({
           paging: true,
@@ -77,7 +77,7 @@ $(document).ready(function () {
             <th>TIPO DE VENTA</th>
             <th>MONTO TOTAL</th>
           </tr>`;
-          let contador = 0; // Inicializamos el contador
+          contador = 0; // Inicializamos el contador
           reportes.forEach((reporte) => {
             if (reporte.id_usuario == reporte.id_cliente) {
               tipo_cliente = 'Online';
@@ -87,14 +87,15 @@ $(document).ready(function () {
             contador++; // Incrementamos el contador en cada iteración
             template += `
           <tr>
-          <th scope="row">${contador}</th>
-          <th scope="row">${reporte.fecha}</th>          
-          <th scope="row">${reporte.nombre_cliente}</th>          
-          <th scope="row">${reporte.nombre_tipo_pago}</th>
-          <th scope="row">${tipo_cliente}</th>
-          <th scope="row">${reporte.total_venta}</th>
+          <td scope="row">${contador}</td>
+          <td scope="row">${reporte.fecha}</td>          
+          <td scope="row">${reporte.nombre_cliente}</td>          
+          <td scope="row">${reporte.nombre_tipo_pago}</td>
+          <td scope="row">${tipo_cliente}</td>
+          <td scope="row">${reporte.total_venta}</td>
           </tr>`;
           });
+          $('#totalVentarep').text(contador);
           // Destruir la instancia anterior de DataTables
           $('#reporte_facturas').DataTable().destroy();
 
@@ -140,8 +141,9 @@ $(document).ready(function () {
           <th>TIPO DE VENTA</th>
           <th>MONTO TOTAL</th>
         </tr`;
-          let contador = 0; // Inicializamos el contador
+          contador = 0; // Inicializamos el contador
           reportes.forEach((reporte) => {
+            contador++;
             if (reporte.id_usuario == reporte.id_cliente) {
               tipo_cliente = 'Online';
             } else {
@@ -149,14 +151,15 @@ $(document).ready(function () {
             }
             template += `
             <tr>
-            <th scope="row">${contador}</th>
-            <th scope="row">${reporte.fecha}</th>          
-            <th scope="row">${reporte.nombre_cliente}</th>          
-            <th scope="row">${reporte.nombre_tipo_pago}</th>
-            <th scope="row">${tipo_cliente}</th>
-            <th scope="row">${reporte.total_venta}</th>
+            <td scope="row">${contador}</td>
+            <td scope="row">${reporte.fecha}</td>          
+            <td scope="row">${reporte.nombre_cliente}</td>          
+            <td scope="row">${reporte.nombre_tipo_pago}</td>
+            <td scope="row">${tipo_cliente}</td>
+            <td scope="row">${reporte.total_venta}</td>
             </tr>`;
           });
+          $('#totalVentarep').text(contador);
           // Destruir la instancia anterior de DataTables
           $('#reporte_facturas').DataTable().destroy();
 
@@ -210,7 +213,7 @@ $(document).ready(function () {
           <th>TIPO DE VENTA</th>
           <th>MONTO TOTAL</th>
         </tr`;
-          let contador = 0; // Inicializamos el contador
+          contador = 0; // Inicializamos el contador
           reportes.forEach((reporte) => {
             if (reporte.id_usuario == reporte.id_cliente) {
               tipo_cliente = 'Online';
@@ -220,14 +223,15 @@ $(document).ready(function () {
             contador++; // Incrementamos el contador en cada iteración
             template += `
             <tr>
-            <th scope="row">${contador}</th>
-            <th scope="row">${reporte.fecha}</th>          
-            <th scope="row">${reporte.nombre_cliente}</th>          
-            <th scope="row">${reporte.nombre_tipo_pago}</th>
-            <th scope="row">${tipo_cliente}</th>
-            <th scope="row">${reporte.total_venta}</th>
+            <td scope="row">${contador}</td>
+            <td scope="row">${reporte.fecha}</td>          
+            <td scope="row">${reporte.nombre_cliente}</td>          
+            <td scope="row">${reporte.nombre_tipo_pago}</td>
+            <td scope="row">${tipo_cliente}</td>
+            <td scope="row">${reporte.total_venta}</td>
             </tr>`;
           });
+          $('#totalVentarep').text(contador);
           // Destruir la instancia anterior de DataTables
           $('#reporte_facturas').DataTable().destroy();
 
@@ -252,6 +256,7 @@ $(document).ready(function () {
     }
   });
 
+  // Generar PDF
   $(document).on('click', '#generatePDFF', function () {
     const { jsPDF } = window.jspdf;
     const doc = new jsPDF();
@@ -266,10 +271,12 @@ $(document).ready(function () {
     // Variables para el diseño del encabezado y la tabla
     const imgData = 'assets/img/logo_titan.png'; // Ruta de tu logo
     const watermarkImg = 'assets/img/watermark.png';
+    const telefono = 'Teléfono:';
     const contactNumbers = '943212297 - 932566922';
+    const direccion = 'Ubicación:';
     const address1 = 'Carretera Central Km 412';
     const address2 = 'CPM Llicua - Amarilis - Huánuco';
-    const reportTitle = 'Reporte de Facturas';
+    const reportTitle = 'Reporte de Ventas';
 
     /* footer */
     const reportFooter = 'TITAN';
@@ -281,27 +288,15 @@ $(document).ready(function () {
       doc.addImage(watermarkImg, 'PNG', xPos, yPos, imgWidth, imgHeight);
       doc.setFontSize(10);
       doc.setTextColor(150, 150, 150);
+      doc.text(telefono, doc.internal.pageSize.getWidth() - 60, 10);
       doc.text(contactNumbers, doc.internal.pageSize.getWidth() - 60, 15);
-      doc.text(address1, doc.internal.pageSize.getWidth() - 60, 25);
-      doc.text(address2, doc.internal.pageSize.getWidth() - 60, 30);
+      doc.text(direccion, doc.internal.pageSize.getWidth() - 60, 22);
+      doc.text(address1, doc.internal.pageSize.getWidth() - 60, 27);
+      doc.text(address2, doc.internal.pageSize.getWidth() - 60, 32);
       doc.setFontSize(22);
       doc.setTextColor(19, 19, 19);
       doc.text(reportTitle, doc.internal.pageSize.getWidth() - 140, 42);
     };
-
-    // Función para generar la tabla
-    const generateTable = () => {
-      doc.autoTable({
-        html: '#reporte_facturas',
-        startY: 50,
-        theme: 'striped',
-        headStyles: {
-          fillColor: [228, 85, 18], // Cambiar a color naranja
-          textColor: [255, 255, 255], // Cambiar el color del texto del encabezado
-        },
-      });
-    };
-
     // Función para dibujar el pie de página en cada página
     const drawFooter = () => {
       const totalPages = doc.internal.getNumberOfPages();

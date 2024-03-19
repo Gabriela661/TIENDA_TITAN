@@ -1,4 +1,12 @@
-<title>Usuarios</title>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Usuarios</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+</head>
+
 <?php
 include_once "assets/views/nav.php";
 ?>
@@ -9,32 +17,43 @@ include_once "assets/views/nav.php";
     <!-- inicio Modal  crear usuario-->
     <div class="modal fade" id="crearUsuario" tabindex="-1" role="dialog" aria-labelledby="#crearUsuario" aria-hidden="true">
       <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="#crearUsuario">Registrar Nuevo Usuario</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
+        <div class="modal-content" style="background-color: #d1d5dd; color: black;">
           <div class="modal-body">
-            <form id="form_usuario" method="POST">
+            <form id="form_usuario" class="m-0 p-0" method="POST">
               <div class="card-body">
-                <div class="form-group">
-                  <label for="nombre_usuario">Nombres</label>
-                  <input type="text" class="form-control" id="nombre_usuario" name="nombre_usuario" placeholder="Nombres" required>
-                </div>
-                <div class="form-group">
-                  <label for="apellido_usuario">Apellidos</label>
-                  <input type="text" class="form-control" id="apellido_usuario" name="apellido_usuario" placeholder="Apellidos" required>
-                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <input type="text" class="form-control" id="nombre_usuario" name="nombre_usuario" placeholder="Nombres" required>
+                      <label class="form-label" for="nombre_usuario">Nombres</label>
+                    </div>
+                  </div>
 
-                <div class="form-group">
-                  <label for="correo_electronico_usuario">Correo Electrónico</label>
-                  <input type="email" class="form-control" id="correo_electronico_usuario" name="correo_electronico_usuario" placeholder="Correo Electrónico" required>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <input type="text" class="form-control" id="apellido_usuario" name="apellido_usuario" placeholder="Apellidos" required>
+                      <label class="form-label" for="apellido_usuario">Apellidos</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <input type="email" class="form-control" id="correo_electronico_usuario" name="correo_electronico_usuario" placeholder="Correo" required>
+                      <label for="correo_electronico_usuario">Correo Electrónico</label>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <input type="password" class="form-control" id="password_usuario" name="password_usuario" placeholder="Contraseña" required>
+                      <label for="password_usuario">Contraseña</label>
+                    </div>
+                  </div>
                 </div>
                 <div class="form-group">
-                  <label for="password_usuario">Contraseña</label>
-                  <input type="text" class="form-control" id="password_usuario" name="password_usuario" placeholder="Contraseña" required>
+                  <label for="rol_usuario">Tipo de Usuario</label>
+                  <select type="number" class="form-control" id="rol_usuario" name="rol_usuario" placeholder="Tipo Usuario">
+                  </select>
                 </div>
                 <div class="form-group">
                   <label for="foto_usuario">Fotografia del Usuario</label>
@@ -44,154 +63,138 @@ include_once "assets/views/nav.php";
                     <div id="imagen_preview" style="margin-top: 10px;" class="img-thumbnail"></div>
                   </center>
                 </div>
-                <div class="form-group">
-                  <label for="rol">Tipo de Usuario</label>
-                  <select type="number" class="form-control" id="rol_usuario" name="rol_usuario" placeholder="Tipo Usuario">
-                  </select>
+                <div class="pt-1 mb-2">
+                  <button class="btn btn-dark" type="submit"><i class="fas fa-save mr-2"></i>Guardar</button>
+                  <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fas fa-times-circle mr-2"></i> Cancelar</button>
                 </div>
               </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fas fa-times-circle"></i> Cancelar</button>
-            <button type="submit" class="btn btn-success"><i class="fas fa-save"></i> Guardar</button>
+            </form>
           </div>
         </div>
       </div>
     </div>
-    </form>
     <!--final  Modal  crear usuario-->
 
     <!-- inicio Modal  crear cliente-->
     <div class="modal fade" id="crearCliente" tabindex="-1" role="dialog" aria-labelledby="#crearCliente" aria-hidden="true">
       <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="#crearCliente">Registrar Nuevo Usuario</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
+        <div class="modal-content" style="background-color: #d1d5dd; color: black;">
           <div class="modal-body">
-            <form id="form_cliente" method="POST">
+            <form id="form_cliente" class="m-0 p-0" method="POST">
               <div class="card-body">
-                <div class="form-group">
-                  <label for="nombre_usuario">Nombres</label>
-                  <input type="text" class="form-control" id="nombre_cliente" name="nombre_cliente" placeholder="Nombres" required>
-                </div>
-                <div class="form-group">
-                  <label for="apellido_cliente">Apellidos</label>
-                  <input type="text" class="form-control" id="apellido_cliente" name="apellido_cliente" placeholder="Apellidos" required>
-                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <input type="text" class="form-control" id="nombre_cliente" name="nombre_cliente" placeholder="Nombres" required>
+                      <label for="nombre_cliente">Nombres</label>
+                    </div>
 
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <input type="text" class="form-control" id="apellido_cliente" name="apellido_cliente" placeholder="Apellidos" required>
+                      <label for="apellido_cliente">Apellidos</label>
+                    </div>
+                  </div>
+                </div>
                 <div class="form-group">
-                  <label for="correo_electronico_cliente">Correo Electrónico</label>
                   <input type="email" class="form-control" id="correo_electronico_cliente" name="correo_electronico_cliente" placeholder="Correo Electrónico">
+                  <label for="correo_electronico_cliente">Correo Electrónico</label>
                 </div>
 
                 <div class="form-group">
+                  <input type="number" class="form-control" id="contacto_cliente" name="contacto_cliente" placeholder="contacto_cliente">
                   <label for="contacto_cliente">Contacto</label>
-                  <input type="text" class="form-control" id="contacto_cliente" name="contacto_cliente" placeholder="contacto_cliente">
+                </div>
+                <div class="pt-1 mb-2">
+                  <button class="btn btn-dark" type="submit"><i class="fas fa-save mr-2"></i>Guardar</button>
+                  <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fas fa-times-circle mr-2"></i> Cancelar</button>
                 </div>
               </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fas fa-times-circle"></i> Cancelar</button>
-            <button type="submit" class="btn btn-success"><i class="fas fa-save"></i> Guardar</button>
+            </form>
           </div>
         </div>
       </div>
     </div>
-    </form>
+
     <!--final  Modal  crear cliente-->
 
     <!-- inicio Modal  editar cliente-->
     <div class="modal fade" id="editar_cliente" tabindex="-1" role="dialog" aria-labelledby="#editar_cliente" aria-hidden="true">
       <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">Editar Cliente</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
+        <div class="modal-content" style="background-color: #d1d5dd; color: black;">
           <div class="modal-body">
-            <form id="form_cliente_editar" method="POST">
+            <form id="form_cliente_editar" class="m-0 p-0" method="POST">
               <div class="card-body">
                 <div class=" d-none form-group">
                   <input type="text" class="form-control" id="id_clientee">
                 </div>
                 <div class="form-group">
-                  <label for="nombre_clientee">Nombres</label>
                   <input type="text" class="form-control" id="nombre_clientee" name="nombre_clientee" placeholder="Nombres">
+                  <label for="nombre_clientee">Nombres</label>
                 </div>
                 <div class="form-group">
-                  <label for="apellido_clientee">Apellidos</label>
                   <input type="text" class="form-control" id="apellido_clientee" name="apellido_clientee" placeholder="Apellidos">
+                  <label for="apellido_clientee">Apellidos</label>
                 </div>
                 <div class="form-group">
-                  <label for="correo_clientee">Correo Electronico</label>
                   <input type="text" class="form-control" id="correo_clientee" name="correo_clientee" placeholder="Correo Electronico">
+                  <label for="correo_clientee">Correo Electronico</label>
+                </div>
+                <div class="pt-1 mb-1">
+                  <button class="btn btn-dark" type="submit"><i class="fas fa-save mr-2"></i>Guardar</button>
+                  <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fas fa-times-circle mr-2"></i> Cancelar</button>
                 </div>
               </div>
               <!-- /.card-body -->
-          </div>
-
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fas fa-times-circle"></i> Cancelar</button>
-            <button type="submit" class="btn btn-warning"><i class="fas fa-save"></i> Guardar cambios</button>
+            </form>
           </div>
         </div>
       </div>
     </div>
-    </form>
+
     <!--final  Modal  editar cliente-->
 
     <!-- inicio Modal  editar usuario-->
     <div class="modal fade" id="editar_usuario" tabindex="-1" role="dialog" aria-labelledby="#editar_usuario" aria-hidden="true">
       <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">Editar Usuario</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
+        <div class="modal-content" style="background-color: #d1d5dd; color: black;">
           <div class="modal-body">
-            <form id="form_usuario_editar" method="POST">
+            <form id="form_usuario_editar" class="m-0" method="POST">
               <div class="card-body">
                 <div class=" d-none form-group">
                   <input type="text" class="form-control" id="id_usuarioe">
                 </div>
                 <div class="form-group">
-                  <label for="nombre_usuario">Nombres</label>
                   <input type="text" class="form-control" id="nombre_usuarioe" name="nombre_usuarioe" placeholder="Nombres">
+                  <label for="nombre_usuarioe">Nombres</label>
                 </div>
                 <div class="form-group">
-                  <label for="apellidos_usuario">Apellidos</label>
                   <input type="text" class="form-control" id="apellido_usuarioe" name="apellido_usuarioe" placeholder="Apellidos">
+                  <label for="apellido_usuarioe">Apellidos</label>
                 </div>
                 <div class="form-group">
-                  <label for="correo_usuarioe">Correo Electronico</label>
                   <input type="text" class="form-control" id="correo_usuarioe" name="correo_usuarioe" placeholder="Correo Electronico">
+                  <label for="correo_usuarioe">Correo Electronico</label>
+                </div>
+                <div class="pt-1 mb-1">
+                  <button class="btn btn-dark" type="submit"><i class="fas fa-save mr-2"></i>Guardar</button>
+                  <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fas fa-times-circle mr-2"></i> Cancelar</button>
                 </div>
               </div>
               <!-- /.card-body -->
-          </div>
-
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fas fa-times-circle"></i> Cancelar</button>
-            <button type="submit" class="btn btn-warning"><i class="fas fa-save"></i> Guardar cambios</button>
+            </form>
           </div>
         </div>
       </div>
     </div>
-    </form>
+
     <!--final  Modal  editar usuario-->
 
 
 
     <!-- Content Wrapper. Contains page content -->
-    <div class="content-wrapper">
+    <div class="content-wrapper" style="font-family: 'Open Sans', sans-serif;">
       <!-- Content Header (Page header) -->
       <section class="content-header">
         <div class="container-fluid">
@@ -233,14 +236,14 @@ include_once "assets/views/nav.php";
                             <a class="toggle-visU btn btn-success" data-column="1">Nombres</a>
                             <a class="toggle-visU btn btn-success" data-column="2">Apellidos</a>
                             <a class="toggle-visU btn btn-success" data-column="3">Correo</a>
-                            <a class="toggle-vis btn btn-success" data-column="4">Rol</a>
+                            <a class="toggle-visU btn btn-success" data-column="4">Rol</a>
                             <a class="toggle-visU btn btn-success" data-column="5">Foto</a>
                             <a class="toggle-visU btn btn-success" data-column="6">Editar</a>
                             <a class="toggle-visU btn btn-success" data-column="7">Eliminar</a>
                           </div>
                           <div><a type="button" class="btn btn-danger ml-4" href="#" id="generatePDFUsuarios"><i class="far fa-file-pdf"></i></a></div>
                         </div>
-                        <table id="personalTable" class="table table-bordered table-striped">
+                        <table id="personalTable" class="table table-bordered table-striped text-center mb-3">
                           <thead style="background-color: #e85813; color: white;">
                             <tr>
                               <th>N°</th>
@@ -277,7 +280,7 @@ include_once "assets/views/nav.php";
                         </div>
                         <div><a type="button" class="btn btn-danger ml-4" href="#" id="generatePDFCliente"><i class="far fa-file-pdf"></i></a></div>
                       </div>
-                      <table id="clienteTable" class="table table-bordered table-striped">
+                      <table id="clienteTable" class="table table-bordered table-striped text-center mb-4" style="width: 100%;">
                         <thead style="background-color: #e85813; color: white;">
                           <tr>
                             <th>N°</th>

@@ -17,8 +17,6 @@ if ($_POST['funcion'] == 'venta_producto_categorias') {
     echo $jsonstring;
 }
 
-
-
 //mostrar facturas entre fechas
 if ($_POST['funcion'] == 'fechas_graph3') {
     $fechaInicio = $_POST['fechaInicio'];
@@ -30,6 +28,80 @@ if ($_POST['funcion'] == 'fechas_graph3') {
         $json[] = array(
             'fecha' => $objeto->fecha,
             'monto_total' => $objeto->monto_total,
+        );
+    }
+    $jsonstring = json_encode($json);
+    echo $jsonstring;
+}
+
+if ($_POST['funcion'] == 'usuarioTotal') {
+    $json = array();
+    $graph->usuarioTotal();
+    foreach ($graph->objetos as $objeto) {
+        $json[] = array(
+            'totaluser' => $objeto->totaluser,
+        );
+    }
+    $jsonstring = json_encode($json);
+    echo $jsonstring;
+}
+
+if ($_POST['funcion'] == 'productoTotal') {
+    $json = array();
+    $graph->productoTotal();
+    foreach ($graph->objetos as $objeto) {
+        $json[] = array(
+            'productot' => $objeto->productot,
+        );
+    }
+    $jsonstring = json_encode($json);
+    echo $jsonstring;
+}
+
+if ($_POST['funcion'] == 'categoriasTotal') {
+    $json = array();
+    $graph->categoriasTotal();
+    foreach ($graph->objetos as $objeto) {
+        $json[] = array(
+            'cateffa' => $objeto->cateffa,
+        );
+    }
+    $jsonstring = json_encode($json);
+    echo $jsonstring;
+}
+
+if ($_POST['funcion'] == 'ingresosTotal') {
+    $json = array();
+    $graph->ingresosTotal();
+    foreach ($graph->objetos as $objeto) {
+        $json[] = array(
+            'ingrestot' => $objeto->ingrestot,
+        );
+    }
+    $jsonstring = json_encode($json);
+    echo $jsonstring;
+}
+
+if ($_POST['funcion'] == 'semanaComparar') {
+    $json = array();
+    $graph->semanaComparar();
+    foreach ($graph->objetos as $objeto) {
+        $json[] = array(
+            'fecha' => $objeto->fecha,
+            'monto_total' => $objeto->monto_total,
+        );
+    }
+    $jsonstring = json_encode($json);
+    echo $jsonstring;
+}
+
+if ($_POST['funcion'] == 'usuario_venta') {
+    $json = array();
+    $graph->usuario_venta();
+    foreach ($graph->objetos as $objeto) {
+        $json[] = array(
+            'nombre_usuario' => $objeto->nombre_usuario,
+            'total' => $objeto->total,
         );
     }
     $jsonstring = json_encode($json);

@@ -55,8 +55,6 @@ class graph
             $fechaf = date('Y-m-d', strtotime($fechaf . ' +1 day'));
         }
 
-
-
         $sql = "SELECT
             DATE_FORMAT(v.fecha, '%d-%m-%Y') AS fecha,
             SUM(dv.cantidad * p.precio_producto) AS monto_total
@@ -69,6 +67,70 @@ class graph
             GROUP BY
             DATE_FORMAT(v.fecha, '%d-%m-%Y');";
 
+        $query = $this->acceso->prepare($sql);
+        $query->execute();
+        $this->objetos = $query->fetchAll();
+        return $this->objetos;
+    }
+
+    function usuarioTotal()
+    {
+        $sql = "SELECT COUNT(id_cliente) as totaluser from cliente;";
+        $query = $this->acceso->prepare($sql);
+        $query->execute();
+        $this->objetos = $query->fetchAll();
+        return $this->objetos;
+    }
+
+    function productoTotal()
+    {
+        $sql = "SELECT COUNT(id_producto) as productot from producto;";
+        $query = $this->acceso->prepare($sql);
+        $query->execute();
+        $this->objetos = $query->fetchAll();
+        return $this->objetos;
+    }
+
+    function categoriasTotal()
+    {
+        $sql = "SELECT COUNT(id_categoria) as cateffa from categoria;";
+        $query = $this->acceso->prepare($sql);
+        $query->execute();
+        $this->objetos = $query->fetchAll();
+        return $this->objetos;
+    }
+
+    function ingresosTotal()
+    {
+        $sql = "SELECT SUM(total_venta) as ingrestot from venta;";
+        $query = $this->acceso->prepare($sql);
+        $query->execute();
+        $this->objetos = $query->fetchAll();
+        return $this->objetos;
+    }
+
+    function semanaComparar()
+    {
+        $sql = "SELECT
+        DATE_FORMAT(v.fecha, '%d-%m-%Y') AS fecha,
+        SUM(dv.cantidad * p.precio_producto) AS monto_total
+    FROM
+        venta v
+        JOIN detalle_venta dv ON v.id_venta = dv.id_venta
+        JOIN producto p ON dv.id_producto = p.id_producto
+    WHERE
+    v.fecha >= DATE_SUB(CURDATE(), INTERVAL 14 DAY) -- Selecting data for the last 14 days
+    GROUP BY
+        DATE_FORMAT(v.fecha, '%d-%m-%Y');";
+        $query = $this->acceso->prepare($sql);
+        $query->execute();
+        $this->objetos = $query->fetchAll();
+        return $this->objetos;
+    }
+
+    function usuario_venta()
+    {
+        $sql = "select nombre_usuario, sum(total_venta) as total from venta v inner join usuario u on u.id_usuario = v.id_usuario GROUP BY nombre_usuario;";
         $query = $this->acceso->prepare($sql);
         $query->execute();
         $this->objetos = $query->fetchAll();

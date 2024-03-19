@@ -18,14 +18,14 @@ $(document).ready(function () {
           contador++; // Incrementamos el contador en cada iteración
           template += `
                 <tr data-id="${rol.id_usuario}">
-                  <th scope="row">${contador}</th>
-                  <th scope="row">${rol.nombre_usuario}</th>
-                  <th scope="row">${rol.apellido_usuario}</th>
-                  <th scope="row">${rol.nombre_rol}</th>
-                  <th scope="row"><button id="btn_editar" data-id_rol="${rol.id_usuario} type="button" class="btn btn-warning">
+                  <td scope="row">${contador}</td>
+                  <td scope="row">${rol.nombre_usuario}</td>
+                  <td scope="row">${rol.apellido_usuario}</td>
+                  <td scope="row">${rol.nombre_rol}</td>
+                  <td scope="row"><button id="btn_editar" data-id_rol="${rol.id_usuario} type="button" class="btn btn-warning">
                         Editar rol
                      </button>
-                    </th>           
+                    </td>           
                 </tr>`;
         });
         $('#roles').html(template);

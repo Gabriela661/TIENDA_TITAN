@@ -1,3 +1,6 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
 <title>Reporte Usuario</title>
 <?php
 include_once "assets/views/nav.php";
@@ -9,7 +12,7 @@ include_once "assets/views/nav.php";
 <body>
     <div class="wrapper">
         <!-- Content Wrapper. Contains page content -->
-        <div class="content-wrapper">
+        <div class="content-wrapper" style="font-family: 'Open Sans', sans-serif;">
             <!-- Content Header (Page header) -->
             <section class="content-header">
                 <div class="container-fluid">
@@ -18,12 +21,12 @@ include_once "assets/views/nav.php";
                             <h4><i class="fa fa-briefcase mr-3" aria-hidden="true"></i><b>Reporte de Usuario</b></h4>
                             <div class="container">
                                 <div class="row">
-                                    <div class="col-lg-12">      
+                                    <div class="col-lg-12">
                                         &nbsp; <a type="button" class="btn btn-danger" href="#" id="generatePDF"><i class="far fa-file-pdf"></i></a>
                                         &nbsp;&nbsp;&nbsp;
                                         <button class="btn btn-primary">
                                             <i class="fa fa-user"></i> Total de Usuarios
-                                            <span class="badge bg-color6 text-c2">1</span>
+                                            <span class="badge bg-color6 text-c2" id="totalUsers"></span>
                                         </button>
                                     </div>
                                 </div>
@@ -42,8 +45,8 @@ include_once "assets/views/nav.php";
                                 <div class="card">
                                     <div class="card-body">
                                         <div class="table-responsive">
-                                            <table id="reporte_usuario" class="table table-bordered table-striped">
-                                                <thead style="background-color: #e85813; color: #e5ecf7;">
+                                            <table id="reporte_usuario" class="table table-bordered table-striped text-center mb-1">
+                                                <thead style="background-color: #e85813; color: white;">
                                                     <tr>
                                                         <th>N°</th>
                                                         <th>NOMBRE</th>
@@ -84,4 +87,3 @@ include_once "assets/views/nav.php";
 <!-- AdminLTE for demo purposes -->
 <script src="js/reporteUsuario.js"></script>
 <!-- <script src="../vista/assets/js/buscar.js"></script> -->
-

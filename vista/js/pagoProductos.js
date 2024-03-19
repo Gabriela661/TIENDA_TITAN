@@ -1,5 +1,28 @@
 
 $(document).ready(function () {
+    obtenerNumeroFactura();
+
+    /*FUNCION PARA OBTENER EL NUMERO DE FACTURA*/
+    function obtenerNumeroFactura() {
+      const funcion = "obtenerNumeroFactura";
+      $.post(
+        "controlador/productosControlador.php",
+        { funcion },
+        function (response) {
+          console.log(response);
+          let numeroFactura = parseInt(response.trim()); // Convierte el texto a un número entero
+          if (!isNaN(numeroFactura)) {
+            // Suma 1 al número de factura
+            numeroFactura = numeroFactura + 1;
+            $("#numeroFactura").val(numeroFactura);
+          } else {
+            console.error(
+              "La respuesta no contiene un número de factura válido."
+            );
+          }
+        }
+      );
+    }
   /*
    * Esta función se utiliza para enviar datos al controlador del servidor mediante una solicitud AJAX.
    * Recibe los siguientes parámetros:
@@ -210,10 +233,12 @@ $(document).ready(function () {
     $("#imagen").change(function () {
       if ($(this).prop("checked")) {
         console.log("Yape seleccionado");
+         $("#metodo").val("Yape");
         // Al seleccionar Yape, configurar el atributo data-metodo en el botón
         $("#notificar_pago").data("metodo", "Yape");
         $("#metodo_pago").val("Yape");
       } else {
+          $("#metodo").val("");
         console.log("Yape no seleccionado");
         // Si se deselecciona Yape, eliminar el atributo data-metodo del botón
         $("#notificar_pago").removeData("metodo");
@@ -224,10 +249,12 @@ $(document).ready(function () {
     // Evento change en el checkbox de Plin
     $("#imagen1").change(function () {
       if ($(this).prop("checked")) {
+        $("#metodo").val("Plin");
         // Al seleccionar Plin, configurar el atributo data-metodo en el botón
         $("#notificar_pago").data("metodo", "Plin");
         $("#metodo_pago").val("Plin");
       } else {
+         $("#metodo").val("");
         // Si se deselecciona Plin, eliminar el atributo data-metodo del botón
         $("#notificar_pago").removeData("metodo");
         $("#metodo_pago").val("");
@@ -301,6 +328,7 @@ $(document).ready(function () {
               showConfirmButton: false, // No mostrar botón
               timer: 3000, // Cerrar automáticamente después de 3 segundos
             });
+            var numeroFactura = document.getElementById("numeroFactura").value;
             var fechaEmision = document.getElementById("fecha_emision").value;
             var fechaVencimiento =
               document.getElementById("fecha_vencimiento").value;
@@ -309,6 +337,7 @@ $(document).ready(function () {
             var direccion = document.getElementById("direccion").value;
             var tipoMoneda = document.getElementById("tipo_moneda").value;
             var observaciones = document.getElementById("observaciones").value;
+             var metodo = document.getElementById("metodo").value;
             // Convertir el carrito a JSON
             var productos = document.getElementById("producto_json").value;
             // Enviar la solicitud POST para generar el PDF
@@ -323,6 +352,8 @@ $(document).ready(function () {
                 direccion: direccion,
                 tipoMoneda: tipoMoneda,
                 observaciones: observaciones,
+                metodo: metodo,
+                numeroFactura: numeroFactura,
               }),
             })
               .then((response) => response.blob())

@@ -99,7 +99,15 @@ if (isset($_GET['id_categoria'])) {
                                     <label for="obs">Observaciones:</label>
                                     <input class="form-control" id="observaciones" name="observaciones" placeholder="observaciones" required>
                                 </div>
-                                <div class=" col-md-12">
+                                <div tupe class=" col-md-12">
+                                    <label for="obs">Metodo de pago:</label>
+                                    <input class=" form-control" id="metodo" name="metodo" placeholder="Eliija un metodo de pago se rellenara automaticamente" readonly>
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="factura">Factura:</label>
+                                    <input type="number" id="numeroFactura" name="numeroFactura"></input>
+                                </div>
+                                <div class=" col-md-12 d-none">
                                     <label for="producto_json">Producto JSON:</label>
                                     <textarea id="producto_json" name="producto_json" rows="4" cols="50"></textarea>
                                 </div>
@@ -135,59 +143,59 @@ if (isset($_GET['id_categoria'])) {
                 <div class="col-md-6 ">
 
 
-                            <div class="card">
-                                <div class="card">
-                                    <div class="card-header">
-                                        <h3>Medios de pago</h3>
+                    <div class="card">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3>Medios de pago</h3>
+                            </div>
+                            <div class="card-body">
+                                <!-- Modo de pago Yape -->
+                                <div class="row mt-3">
+                                    <div class="col-md-12">
+                                        <input type="checkbox" id="imagen" name="imagen" onclick="image()">
+                                        <label>Pago con Yape</label>
                                     </div>
-                                    <div class="card-body">
-                                        <!-- Modo de pago Yape -->
-                                        <div class="row mt-3">
-                                            <div class="col-md-12">
-                                                <input type="checkbox" id="imagen" name="imagen" onclick="image()">
-                                                <label>Pago con Yape</label>
-                                            </div>
-                                            <div class="col-md-12 d-flex justify-content-center align-items-center">
-                                                <div id='imagencargando' class="w-50">
-                                                    <a class="brand-link">
-                                                        <img src="assets/img/tienda/Yape.jpeg" class="brand-image img-elevation-3 img-fluid">
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- Modo de pago Plin -->
-                                        <div class="row mt-3">
-                                            <div class="col-md-12">
-                                                <input type="checkbox" id="imagen1" name="imagen" onclick="image1()">
-                                                <label>Pago con Plin</label>
-                                            </div>
-                                            <div class="col-md-12 d-flex justify-content-center align-items-center">
-                                                <div id='imagencargandoplin' class="w-50">
-                                                    <a class="brand-link">
-                                                        <img src="assets/img/tienda/Plin.jpeg" class="brand-image img-elevation-3 img-fluid">
-                                                    </a>
-                                                </div>
-                                            </div>
+                                    <div class="col-md-12 d-flex justify-content-center align-items-center">
+                                        <div id='imagencargando' class="w-50">
+                                            <a class="brand-link">
+                                                <img src="assets/img/tienda/Yape.jpeg" class="brand-image img-elevation-3 img-fluid">
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="card">
-                                    <div class="card-header">
-                                        <h3>Proceso de verificación del pago</h3>
+                                <!-- Modo de pago Plin -->
+                                <div class="row mt-3">
+                                    <div class="col-md-12">
+                                        <input type="checkbox" id="imagen1" name="imagen" onclick="image1()">
+                                        <label>Pago con Plin</label>
                                     </div>
-                                    <div class="card-body">
-                                        <button id="notificar_pago" type="button" class="btn btn-warning btn-lg btn-block">Notificar el pago realizado</button>
-                                    </div>
-                                    <div class="card-body" id="codigo_confirmacion" style="display: none;">
-                                        <input type="text" maxlength="6" id="codigo_input" class="form-control" placeholder="Ingrese el código de 6 digitos">
-                                        <button id="confirmar_pago" type="button" class="btn btn-primary btn-lg  mt-3 btn-block">Verificar Codigo</button>
+                                    <div class="col-md-12 d-flex justify-content-center align-items-center">
+                                        <div id='imagencargandoplin' class="w-50">
+                                            <a class="brand-link">
+                                                <img src="assets/img/tienda/Plin.jpeg" class="brand-image img-elevation-3 img-fluid">
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header">
+                                <h3>Proceso de verificación del pago</h3>
+                            </div>
+                            <div class="card-body">
+                                <button id="notificar_pago" type="button" class="btn btn-warning btn-lg btn-block">Notificar el pago realizado</button>
+                            </div>
+                            <div class="card-body" id="codigo_confirmacion" style="display: none;">
+                                <input type="text" maxlength="6" id="codigo_input" class="form-control" placeholder="Ingrese el código de 6 digitos">
+                                <button id="confirmar_pago" type="button" class="btn btn-primary btn-lg  mt-3 btn-block">Verificar Codigo</button>
+                            </div>
+                        </div>
 
-                    <!-- FIN Boton pedido -->
+                        <!-- FIN Boton pedido -->
+                    </div>
                 </div>
             </div>
-        </div>
     </section>
 
 
@@ -215,6 +223,8 @@ if (isset($_GET['id_categoria'])) {
     <script src="vista/js/busquedaProductos.js"></script>
     <script src="vista/js/pagoProductos.js"></script>
     <script src="vista/js/imagen.js"></script>
+    
+
 
 </body>
 

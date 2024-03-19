@@ -177,3 +177,13 @@ if ($_POST['funcion'] == 'CantidadPaginas') {
 /* 
  * FIN FUNCION PARA OBTENER LA CANTIDAD DE PAGINAS
  */
+/* 
+ * FUNCION PARA OBTENER EL NUMERO DE LA FACTURA
+ */
+if ($_POST['funcion'] == 'obtenerNumeroFactura') {
+
+    $productos->obtenerNumeroFactura();
+}
+    /* 
+ * FIN FUNCION PARA OBTENER EL NUMERO DE LA FACTURA
+ */

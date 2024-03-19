@@ -1,4 +1,6 @@
 $(document).ready(function () {
+
+ 
   const idCategoria1 = $("#idCategoria").val();
 
   // Verifica si el valor no está vacío

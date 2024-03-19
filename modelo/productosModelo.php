@@ -290,4 +290,26 @@ GROUP BY c.id_categoria, c.nombre_categoria, c.imagen;";
         }
     }
     /* FIN DE LA FUNCION PARA LIMPIAR EL CARRITO */
+    // FUNCION PARA OBTENER EL NUMERO DE LA FACTURA
+    function obtenerNumeroFactura()
+    {
+        $sql = "SELECT MAX(id_venta) AS id_ultimaCompra FROM  venta;";
+        $query = $this->acceso->prepare($sql);
+        $query->execute();
+
+   
+            // Obtener el resultado de la consulta
+            $resultado = $query->fetch(PDO::FETCH_ASSOC);
+
+            if (isset($resultado['id_ultimacompra'])) {
+                // Acceder al valor del último ID de compra
+                $id_ultimaCompra = $resultado['id_ultimacompra'];
+                echo $id_ultimaCompra;
+            } else {
+                echo 'Error: No se encontró el último ID de compra';
+            }
+      
+    }
+    // FUNCION PARA OBTENER EL NUMERO DE LA FACTURA
+
 }

@@ -79,7 +79,9 @@ $(document).ready(function () {
       (response) => {
         /* console.log(response); */
         const reportes = JSON.parse(response);
-        //dibujar semana comparar
+        const resultados = completarFechas(reportes);
+        console.log('array comparar', resultados);
+        comparaSemana(resultados);
       }
     );
   }
@@ -93,7 +95,8 @@ $(document).ready(function () {
       (response) => {
         /* console.log(response) */
         const reportes = JSON.parse(response);
-        // dibujar con reportes
+        console.log(reportes);
+        createGrafph6(reportes);
       }
     );
   }
@@ -123,11 +126,21 @@ $(document).ready(function () {
         createGrafph(resultados, 'bar', 'Monto Final');
         pieChartCategoriaProducto(resultados);
         pieChartCategoriaProducto2(resultados);
-        comparaSemana();
+        //comparaSemana();
       }
     );
   }
 });
+
+// Función para generar colores aleatorios
+function getRandomColor() {
+  var letters = '0123456789ABCDEF';
+  var color = '#';
+  for (var i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+}
 
 // Completa los días que no hay ventas  [{"fecha":"-", "monto_total":0}]
 function completarFechas(datos) {
@@ -242,16 +255,6 @@ function createGrafph2(data, typeGraph, label) {
     myChart2.destroy();
   }
 
-  // Función para generar colores aleatorios
-  function getRandomColor() {
-    var letters = '0123456789ABCDEF';
-    var color = '#';
-    for (var i = 0; i < 6; i++) {
-      color += letters[Math.floor(Math.random() * 16)];
-    }
-    return color;
-  }
-
   // Generar colores aleatorios para cada dato
   var backgroundColors = [];
   for (var i = 0; i < dataY.length; i++) {
@@ -352,23 +355,41 @@ function pieChartCategoriaProducto2(data) {
 
 //chart last week vs current week
 var msyChart5 = null;
-function comparaSemana(/* data */) {
+function comparaSemana(data) {
+  var ventasSemanaActual = [];
+  var ventasSemanaAnterior = [];
   // Extraer categorías y cantidad de ventas del array JSON
-  /*   var categories = data.map((item) => item.fecha);
-  var ventas = data.map((item) => item.monto_total);
-  console.log(data) */
+  data.map((item, i) => {
+    if (i < 7) {
+      ventasSemanaAnterior.push(item.monto_total);
+    }
+  });
+  data.map((item, i) => {
+    if (i >= 7) {
+      ventasSemanaActual.push(item.monto_total);
+    }
+  });
 
-  var ventasSemanaActual = [120, 200, 150, 80, 70, 110, 130];
-  var ventasSemanaAnterior = [100, 180, 120, 90, 60, 85, 110];
-  var dias = [
+  var fechaInput = data[0].fecha;
+  console.log(fechaInput)
+  var fecha = new Date(fechaInput);
+  var diasSemana = [
+    'Domingo',
     'Lunes',
     'Martes',
     'Miércoles',
     'Jueves',
     'Viernes',
     'Sábado',
-    'Domingo',
   ];
+
+  var nombresDias = [];
+  for (var i = 0; i < 7; i++) {
+    fecha.setDate(fecha.getDate() + 1);
+    nombresDias.push(diasSemana[fecha.getDay()]);
+  }
+
+  var dias = nombresDias;
 
   // Configurar opciones del gráfico
   msyChart5 = echarts.init(document.getElementById('graph5'));
@@ -406,4 +427,53 @@ function comparaSemana(/* data */) {
 
   // Aplicar opciones al gráfico
   msyChart5.setOption(option);
+}
+
+//circular chart for categories x products
+var msyChart6 = null;
+
+function createGrafph6(data) {
+  msyChart6 = echarts.init(document.getElementById('graph6'));
+
+  // Extraer categorías y cantidad de ventas del array JSON
+  var cliente = data.map((item) => item.nombre_usuario);
+  var ventas = data.map((item) => item.total);
+
+  // Generar colores aleatorios para cada barra
+  var colors = [];
+  for (var i = 0; i < ventas.length; i++) {
+    colors.push(getRandomColor());
+  }
+
+  // Configurar opciones del gráfico
+  var options = {
+    title: {
+      text: '',
+    },
+    tooltip: {},
+    legend: {
+      data: ['Cantidad de Ventas'],
+    },
+    yAxis: {
+      data: cliente, // Cambiamos a eje Y y establecemos las categorías
+    },
+    xAxis: {}, // No necesitamos el eje X para este tipo de gráfico
+    series: [
+      {
+        name: 'Cantidad de Ventas',
+        type: 'bar',
+        data: ventas,
+        yAxisIndex: 0,
+        itemStyle: {
+          // Configurar colores para cada barra
+          color: function (params) {
+            return colors[params.dataIndex];
+          },
+        }, // Asociamos esta serie al eje Y
+      },
+    ],
+  };
+
+  // Aplicar opciones al gráfico
+  msyChart6.setOption(options);
 }

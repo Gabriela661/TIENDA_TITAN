@@ -8,7 +8,7 @@ include_once "assets/views/nav.php";
 
 
 
-<div class="content-wrapper"  style="font-family: 'Open Sans', sans-serif;">
+<div class="content-wrapper" style="font-family: 'Open Sans', sans-serif;">
     <div class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
@@ -46,7 +46,7 @@ include_once "assets/views/nav.php";
                 <div class="col-lg-3 col-6">
                     <div class="small-box bg-info">
                         <div class="inner text-white">
-                        <h3 id="productosTotalP"></h3>
+                            <h3 id="productosTotalP"></h3>
                             <p> Productos</p>
                         </div>
                         <a href="productos.php">
@@ -62,7 +62,7 @@ include_once "assets/views/nav.php";
                 <div class="col-lg-3 col-6">
                     <div class="small-box bg-warning">
                         <div class="inner text-white">
-                        <h3 id="categoriaTotalP"></h3>
+                            <h3 id="categoriaTotalP"></h3>
                             <p> Categorias</p>
                         </div>
                         <a href="categoria.php">
@@ -78,7 +78,7 @@ include_once "assets/views/nav.php";
                 <div class="col-lg-3 col-6">
                     <div class="small-box bg-success">
                         <div class="inner text-white">
-                        <h3 id="ingresosTotalP"></h3>
+                            <h3 id="ingresosTotalP"></h3>
                             <p>Ingresos</p>
 
                         </div>
@@ -100,7 +100,7 @@ include_once "assets/views/nav.php";
             <div class="card p-5">
                 <div class="row">
 
-                    <section class="col-lg-6 connectedSortable">                        
+                    <section class="col-lg-6 connectedSortable">
                         <div class="row">
                             <div class="col-md-12 mt-2">
                                 <div class="row">
@@ -169,38 +169,40 @@ include_once "assets/views/nav.php";
 
                         <div class="card">
                             <div class="card-header border-0">
-                                <div class="d-flex justify-content-between">
+                                <div class="d-flex justify-content-center">
                                     <h2 class="card-title">Ventas semanales</h3>
                                 </div>
                             </div>
-                            <div class="card-body">
+                            <div class="card-body d-flex justify-content-center">
                                 <canvas id="graph5" height="200"></canvas>
-
-                                <div class="d-flex flex-row justify-content-end">
-                                    <span class="mr-2">
-                                        <i class="fas fa-square text-primary"></i> Esta semana
-                                    </span>
-                                    <span>
-                                        <i class="fas fa-square text-gray"></i> Semana pasada
-                                    </span>
-                                </div>
                             </div>
                         </div>
 
                         <div class="card">
                             <div class="card-header border-0">
-                                <div class="d-flex justify-content-between">
-                                    <h3 class="card-title">Ventas categoría</h3>
+                                <div class="d-flex justify-content-center">
+                                    <h3 class="card-title">Venta por categoría</h3>
                                 </div>
                             </div>
                             <div class="card-body">
-                                <div class="position-relative mb-4">
+                                <div class="position-relative mb-4 d-flex justify-content-center">
                                     <canvas id="barChart" height="100"></canvas>
                                 </div>
                             </div>
                         </div>
 
-
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="d-flex justify-content-center">
+                                    <h3 class="card-title">Venta por usuario</h3>
+                                </div>
+                            </div>
+                            <div class="card-body d-flex justify-content-center">
+                                <div class="position-relative">
+                                    <canvas class="ml-3" height="300" width="450" id="graph6"></canvas>
+                                </div>
+                            </div>
+                        </div>
 
                         <!-- graph 2, 3, 4 -->
                         <div class="row">

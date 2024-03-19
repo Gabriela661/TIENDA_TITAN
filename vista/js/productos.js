@@ -296,7 +296,7 @@ function CantidadPaginas() {
         console.log("Cantidad de productos:", cantidad);
 
         // Calcular el número de páginas
-        const paginas = Math.ceil(cantidad / 1); // Suponiendo que deseas mostrar 12 productos por página
+        const paginas = Math.ceil(cantidad / 12); // Suponiendo que deseas mostrar 12 productos por página
 
         let paginaActual = parseInt($("#paginaSeleccionada").val());
         let paginacionHTML = `

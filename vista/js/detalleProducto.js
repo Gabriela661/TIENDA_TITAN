@@ -55,8 +55,8 @@ $(document).ready(function () {
                 <div class="product-image-thumb active"><img src="${imgArray[1]}" alt="Product Image"></div>
                 <div class="product-image-thumb" ><img src="${imgArray[2]}" alt="Product Image"></div>
                 <div class="product-image-thumb" ><img src="${imgArray[3]}" alt="Product Image"></div>
-                <div class="product-image-thumb" ><img src="${imgArray[1]}" alt="Product Image"></div>
-                <div class="product-image-thumb" ><img src="${imgArray[2]}" alt="Product Image"></div>
+                <div class="product-image-thumb" ><img src="${imgArray[0]}" alt="Product Image"></div>
+
               </div>
             </div>
                 <div class="col-lg-7 mt-4">

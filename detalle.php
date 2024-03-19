@@ -21,6 +21,7 @@ if (isset($_GET['id_producto'])) {
 ?>
 
 <link rel="stylesheet" href="assets/css/adminlte.min.css">
+<link rel="stylesheet" href="assets/css/stilos.css">
 
 <body>
     <!-- Input oculto para asignar el id del usuario-->
@@ -103,7 +104,7 @@ if (isset($_GET['id_producto'])) {
     <!-- Incluye jQuery desde CDN -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="assets/js/adminlte.min.js"></script>
-    
+
 </body>
 
 </html>

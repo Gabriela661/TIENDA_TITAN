@@ -71,7 +71,7 @@ class Productos
     public function productosTienda()
     {
         // Definir el número de productos por página
-        $productosPorPagina = 1;
+        $productosPorPagina = 12;
 
         // Verificar si se proporcionó la consulta y la página seleccionada
         if (!empty($_POST['consulta']) && !empty($_POST['pagina'])) {

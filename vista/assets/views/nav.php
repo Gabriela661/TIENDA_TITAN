@@ -39,9 +39,9 @@ include "header.php"
         </li>
 
         <!-- Messages Dropdown Menu -->
-        <li class="nav-item dropdown">
-            <!-- Carrito -->
-        </li>
+        <!--   <li class="nav-item dropdown"> -->
+        <!-- Carrito -->
+        <!--         </li>
         <li class="nav-item dropdown">
             <a class="nav-link" data-toggle="dropdown" href="#">
                 <i class="fa-solid fa-cart-shopping "></i>
@@ -58,10 +58,10 @@ include "header.php"
                     <i class="fa-solid fa-credit-card fa-lg"></i> Comprar
                 </a>
             </div>
-        </li>
+        </li> -->
 
         <!-- Notifications Dropdown Menu -->
-        <li class="nav-item dropdown">
+        <!-- <li class="nav-item dropdown">
             <a class="nav-link" data-toggle="dropdown" href="#">
                 <i class="far fa-bell "></i>
                 <span class="badge badge-warning navbar-badge">15</span>
@@ -86,7 +86,7 @@ include "header.php"
                 <div class="dropdown-divider"></div>
                 <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
             </div>
-        </li>
+        </li> -->
 
     </ul>
 </nav>
@@ -98,20 +98,22 @@ include "header.php"
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="../vista/index_principal.php" class="brand-link d-flex justify-content-center">
-        <img src="../assets/img/logo_titan1.png" class="brand-image img-elevation-3">
-    </a>
+    <?php if ($_SESSION['id_rol'] == 1 || $_SESSION['id_rol'] == 2) { ?>
+        <a href="../vista/index_principal.php" class="brand-link d-flex justify-content-center">
+            <img src="../assets/img/logo_titan1.png" class="brand-image img-elevation-3">
+        </a>
+    <?php }; ?>
 
     <!-- Sidebar -->
     <div class="sidebar">
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
-                <img src="../assets/img/default.png" class="img-circle elevation-2" alt="User Image">
+                <img src="assets/img/perfil_us/<?php echo $_SESSION['foto_usuario']; ?>" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
                 <a href="" class="d-block">
-                    USUARIO
+                    <?php echo $_SESSION['nombre_rol']; ?>
                 </a>
             </div>
         </div>
@@ -134,67 +136,85 @@ include "header.php"
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
+                <?php if ($_SESSION['id_rol'] == 1 ||  $_SESSION['id_rol'] == 2 ||  $_SESSION['id_rol'] == 4) {
+                ?>
+                    <li class="nav-item">
+                        <a href="caja.php" class="nav-link">
+                            <i class="fas fa-info-circle"></i>
+                            <p>Caja (movimientos)</p>
+                        </a>
+                    </li>
+                <?php
+                } ?>
+                <?php if ($_SESSION['id_rol'] == 1 ||  $_SESSION['id_rol'] == 2 ||  $_SESSION['id_rol'] == 4) { ?>
+                    <li class="nav-item">
+                        <a href="usuarios.php" class="nav-link">
+                            <i class="fas fa-users"></i>
+                            <p>Gestionar Usuarios</p>
+                        </a>
+                    </li>
+                <?php } ?>
+                <?php if ($_SESSION['id_rol'] == 1 ||  $_SESSION['id_rol'] == 2) { ?>
+                    <li class="nav-item">
+                        <a href="roles.php" class="nav-link">
+                            <i class="fas fa-users"></i>
+                            <p>Gestionar Roles</p>
+                        </a>
+                    </li>
+                <?php } ?>
+                <?php if ($_SESSION['id_rol'] == 1 ||  $_SESSION['id_rol'] == 2 ||  $_SESSION['id_rol'] == 3) { ?>
+                    <li class="nav-item">
+                        <a href="categoria.php" class="nav-link">
+                            <i class="fas fa-briefcase"></i>
+                            <p>Gestionar Categoria</p>
+                        </a>
+                    </li>
+                <?php } ?>
+                <?php if ($_SESSION['id_rol'] == 1 ||  $_SESSION['id_rol'] == 2 ||  $_SESSION['id_rol'] == 3 ||  $_SESSION['id_rol'] == 4) { ?>
+                    <li class="nav-item">
+                        <a href="inventario.php" class="nav-link">
+                            <i class="fas fa-toolbox"></i>
+                            <p>Productos</p>
+                        </a>
 
-                <li class="nav-item">
-                    <a href="caja.php" class="nav-link">
-                        <i class="fas fa-info-circle"></i>
-                        <p>Caja (movimientos)</p>
-                    </a>
-                </li>
-
-                <li class="nav-item">
-                    <a href="usuarios.php" class="nav-link">
-                        <i class="fas fa-users"></i>
-                        <p>Gestionar Usuarios</p>
-                    </a>
-                </li>
-
-                <li class="nav-item">
-                    <a href="roles.php" class="nav-link">
-                        <i class="fas fa-users"></i>
-                        <p>Gestionar Roles</p>
-                    </a>
-                </li>
-
-                <li class="nav-item">
-                    <a href="categoria.php" class="nav-link">
-                        <i class="fas fa-briefcase"></i>
-                        <p>Gestionar Categoria</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="inventario.php" class="nav-link">
-                        <i class="fas fa-toolbox"></i>
-                        <p>Productos</p>
-                    </a>
-
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="fas fa-chart-bar"></i>
-                        <p>Reportes</p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="reporteUsuario.php" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Reporte de usuarios</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="reporteFacturas.php" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Reporte de Facturas</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="reporteProductos.php" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Reporte de Productos</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
+                    </li>
+                <?php } ?>
+                <?php if ($_SESSION['id_rol'] == 1 ||  $_SESSION['id_rol'] == 2 ||  $_SESSION['id_rol'] == 3) { ?>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="fas fa-chart-bar"></i>
+                            <p>Reportes</p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <?php if ($_SESSION['id_rol'] == 1 ||  $_SESSION['id_rol'] == 2) { ?>
+                                <li class="nav-item">
+                                    <a href="reporteUsuario.php" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Reporte de vendedores</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="reporteCliente.php" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Reporte de clientes</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="reporteFacturas.php" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Reporte de Facturas</p>
+                                    </a>
+                                </li>
+                            <?php } ?>
+                            <li class="nav-item">
+                                <a href="reporteProductos.php" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Reporte de Productos</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                <?php } ?>
                 <li class="nav-item">
                     <a href="soporte.php" class="nav-link">
                         <i class="fa fa-info-circle"></i>
@@ -204,7 +224,7 @@ include "header.php"
 
 
                 <li class="nav-item">
-                    <a href="../index.php" class="nav-link">
+                    <a href="../Logout.php" class="nav-link">
                         <i class="fas fa-arrow-alt-circle-left"></i>
                         <p>
                             Salir

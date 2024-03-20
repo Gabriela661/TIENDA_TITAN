@@ -1,9 +1,11 @@
+import { test, generarPDF } from './generarPDF.js';
+
 $(document).ready(function () {
   var contador = 0;
   var funcion = '';
+  var tipo_cliente = '';
   var datetime = new Date();
   console.log(datetime);
-
   //mostrar reporte de usuarios
   reporte_facturas();
   function reporte_facturas(consulta) {
@@ -28,8 +30,8 @@ $(document).ready(function () {
           }
           contador++; // Incrementamos el contador en cada iteración
           template += `
-          <tr>
-          <td scope="row">${contador}</td>
+          <tr> 
+          <td scope="row">${reporte.id_venta}</td>
             <td scope="row">${reporte.fecha}</td>          
             <td scope="row">${reporte.nombre_cliente}</td>          
             <td scope="row">${reporte.nombre_tipo_pago}</td>
@@ -70,7 +72,7 @@ $(document).ready(function () {
           let template = '';
           let template2 = `
           <tr>
-            <th>N°</th>
+            <th>N° FACTURA</th>
             <th>FECHA</th>
             <th>CLIENTE</th>
             <th>TIPO DE PAGO</th>
@@ -87,7 +89,7 @@ $(document).ready(function () {
             contador++; // Incrementamos el contador en cada iteración
             template += `
           <tr>
-          <td scope="row">${contador}</td>
+          <td scope="row">${reporte.id_venta}</td>
           <td scope="row">${reporte.fecha}</td>          
           <td scope="row">${reporte.nombre_cliente}</td>          
           <td scope="row">${reporte.nombre_tipo_pago}</td>
@@ -134,7 +136,7 @@ $(document).ready(function () {
           let template = '';
           let template2 = `
           <tr>
-          <th>N°</th>
+          <th>N° FACTURA</th>
           <th>FECHA</th>
           <th>CLIENTE</th>
           <th>TIPO DE PAGO</th>
@@ -151,7 +153,7 @@ $(document).ready(function () {
             }
             template += `
             <tr>
-            <td scope="row">${contador}</td>
+            <td scope="row">${reporte.id_venta}</td>
             <td scope="row">${reporte.fecha}</td>          
             <td scope="row">${reporte.nombre_cliente}</td>          
             <td scope="row">${reporte.nombre_tipo_pago}</td>
@@ -206,7 +208,7 @@ $(document).ready(function () {
           console.log(reportes);
           let template = '';
           let template2 = `<tr>
-          <th>N°</th>
+          <th>FACTURA</th>
           <th>FECHA</th>
           <th>CLIENTE</th>
           <th>TIPO DE PAGO</th>
@@ -223,7 +225,7 @@ $(document).ready(function () {
             contador++; // Incrementamos el contador en cada iteración
             template += `
             <tr>
-            <td scope="row">${contador}</td>
+            <td scope="row">${reporte.id_venta}</td>
             <td scope="row">${reporte.fecha}</td>          
             <td scope="row">${reporte.nombre_cliente}</td>          
             <td scope="row">${reporte.nombre_tipo_pago}</td>
@@ -258,7 +260,21 @@ $(document).ready(function () {
 
   // Generar PDF
   $(document).on('click', '#generatePDFF', function () {
-    const { jsPDF } = window.jspdf;
+    generarPDF(
+      'logo_titan.png',
+      '+51 932 566 922',
+      '+51 943 212 297',
+      'CARRETERA CENTRAL KM. 412',
+      'REF. FRENTE AL GRIFO RACING',
+      'Amarilis - Huánuco, Huánuco, Perú',
+      'Reporte de Ventas',
+      'Reporte de Ventas',
+      'TITAN',
+      'reporte_facturas',
+      { a: 228, b: 85, c: 18 },
+      { d: 255, e: 255, f: 255 }
+    );
+    /* const { jsPDF } = window.jspdf;
     const doc = new jsPDF();
 
     const imgWidth = 100; // Ancho de la imagen
@@ -278,7 +294,7 @@ $(document).ready(function () {
     const address2 = 'CPM Llicua - Amarilis - Huánuco';
     const reportTitle = 'Reporte de Ventas';
 
-    /* footer */
+    // footer 
     const reportFooter = 'TITAN';
     const currentDate = new Date().toLocaleDateString();
 
@@ -351,17 +367,6 @@ $(document).ready(function () {
         '" type="application/pdf">'
     );
     pdfWindow.document.write('</body></html>');
-    pdfWindow.document.close();
-  });
-});
-
-$(document).ready(function () {
-  // Función para filtrar los resultados de la tabla según el texto de búsqueda
-  $('#buscar').on('input', function () {
-    var searchText = $(this).val().toLowerCase(); // Obtener el texto de búsqueda y convertirlo a minúsculas
-    $('#venta tr').filter(function () {
-      // Filtrar las filas de la tabla
-      $(this).toggle($(this).text().toLowerCase().indexOf(searchText) > -1); // Mostrar u ocultar la fila según si contiene el texto de búsqueda
-    });
+    pdfWindow.document.close(); */
   });
 });

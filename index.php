@@ -53,7 +53,7 @@
                     <a class="nav-link" href="#contact">Buscar</a>
                 </li>
                 <li class="nav-item">
-                    <a href="components.html" class="btn btn-primary ml-xl-4">Iniciar Sesion</a>
+                    <a href="login.php" class="btn btn-primary ml-xl-4">Iniciar Sesión</a>
                 </li>
             </ul>
         </div>
@@ -204,7 +204,7 @@
     <!-- bootstrap affix -->
     <script src="assets/vendors/bootstrap/bootstrap.affix.js"></script>
     <!-- google maps -->
-   
+
 
     <!-- FoodHut js -->
     <script src="assets/js/foodhut.js"></script>

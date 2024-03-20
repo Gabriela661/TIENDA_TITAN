@@ -14,7 +14,7 @@
                            <img src="assets/img/logo_titan_oficial.png" alt="" style="width: 200px; ">
                        </h6>
                        <p style="text-align: left;">
-                           Somos una empresa especializada en la venta de fierros tubos y drywall, ofreciendo una amplia gama de productos de alta calidad para satisfacer las necesidades de construcción y remodelación.
+                           Somos una empresa especializada en la venta de fierros, tubos y drywall, ofreciendo una amplia gama de productos de alta calidad para satisfacer las necesidades de construcción y remodelación.
                        </p>
                    </div>
                    <!-- Grid column -->
@@ -65,20 +65,20 @@
                        <p><i class="fas fa-home me-3"></i> Carretera Central Km 412 CPM Llicua - Amarilis -Huánuco </p>
                        <p><i class="fas fa-envelope me-3"></i> Titan@example.com</p>
                        <p> <i class="fab fa-whatsapp"></i> 94321197</p>
-                       <p> <i class="fab fa-whatsapp"></i> 932566922</p>
+                       <p> <i class="fab fa-whatsapp"></i> 93256692</p>
                    </div>
 
                    <!-- Grid column -->
                </div>
                <!-- Grid row -->
            </div>
+           
        </section>
        <!-- Section: Links  -->
 
        <!-- Copyright -->
        <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
-           © 2024 Copyright
-           <a class="text-reset fw-bold" href="">TITAN</a>
+           © 2024 Copyright TITAN
        </div>
        <!-- Copyright -->
    </footer>

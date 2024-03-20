@@ -145,13 +145,13 @@ $(document).ready(function () {
         let template = "";
         productosTienda.forEach((productoTienda) => {
           template += `
-  <div class="showcase">
+  <div class="showcase" style="background-color: white;">
                                 <div class="showcase-banner">
 
-                                    <img src="${productoTienda.imagen_producto}" alt="imagen producto"  class="product-img default">
-                                    <img src="${productoTienda.imagen_producto}" alt="Mens Winter Leathers Jackets" width="300" class="product-img hover">
+                                    <img src="${productoTienda.imagen_producto}" alt="imagen producto"  class="product-img default p-4">
+                                    <img  src="${productoTienda.imagen_producto}" alt="Mens Winter Leathers Jackets" width="300" class="product-img hover p-3">
 
-                                    <p class="showcase-badge">Stock: ${productoTienda.stock_producto}</p>
+                                    <p class="showcase-badge" >Stock: ${productoTienda.stock_producto}</p>
 
                                     <div class="showcase-actions">
       
@@ -176,10 +176,10 @@ $(document).ready(function () {
                                         </button>
                                     </div>
                                 </div>
-                                <div class="showcase-content">
-                                    <a href="#" class="showcase-category accent-orange">Marca: ${productoTienda.marca_producto}</a>
+                                <div class=" showcase-content">
+                                    <a href="#"  class="showcase-category">Marca: ${productoTienda.marca_producto}</a>
                                     <a href="#">
-                                        <h3 class="showcase-title">${productoTienda.nombre_producto}</h3>
+                                        <h3 class="showcase-title"  style="color: black;">${productoTienda.nombre_producto}</h3>
                                     </a>
                                     <div class="showcase-rating">
                                         <ion-icon name="star"></ion-icon>
@@ -253,7 +253,7 @@ $(document).ready(function () {
         let template = "";
         let contador = 0;
         categorias.forEach((categoria) => {
-          template += `     <div class="category-item">
+          template += `     <div style="background-color: white;" class="category-item">
                         <div class="category-img-box">
                             <img src="${categoria.imagen_producto}" alt="dress & frock" width="30">
                         </div>

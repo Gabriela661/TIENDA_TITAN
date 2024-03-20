@@ -4,31 +4,8 @@ session_start();
 
 // Si no hay un ID de usuario en la sesión, genera uno nuevo
 $_SESSION['user_id'] = 1;
-$user_id =$_SESSION['user_id'];
-
-
-// Muestra el ID de usuario
-//echo "ID de usuario: " . $user_id;
-
-
-include './assets/views/navbar.php';
-
-?>
-<br>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<link rel="stylesheet" href="./assets/css/style-prefix.css">
-<link rel="stylesheet" href="assets/css/stilos.css">
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-<!--
-    - google font link
-  -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-
-<!-- SE OBTIENE EL ID DE LA CATEGORIA SI ES QUE ELEGIO ALGUNA CATEGORIA -->
-<?php
+//id_usuario
+$user_id = $_SESSION['user_id'];
 if (isset($_GET['id_categoria'])) {
     $idCategoria = $_GET['id_categoria'];
 } else {
@@ -41,14 +18,36 @@ $pagina = isset($_GET['pagina']) ? $_GET['pagina'] : '';
 $pagina = !empty($pagina) ? $pagina : 1;
 
 ?>
+<!DOCTYPE html>
+<html lang="en">
 
-<body>
-    <!-- Input oculto para asignar el id de la categoria para el filtrado -->
-    <input id="idCategoria" class="d-none" type="text" value="<?php echo $idCategoria ?>">
-    <!-- Input oculto para asignar el id del usuario-->
-    <input id="id_usuario" type="hidden" value="<?php echo $user_id ?>">
-    <input id="paginaSeleccionada" class="d-none" name="pagina" value="<?php echo $pagina; ?>">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Start your development">
+    <meta name="author" content="Devcrud">
+    <title>TITAN</title>
+    <!-- librerias -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="assets/css/foodhut.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="./assets/css/fontawesome.min.css">
+    <link rel="stylesheet" href="./assets/css/style-prefix.css">
+    <link rel="stylesheet" href="assets/css/stilos.css">
 
+</head>
+
+<body data-spy="scroll" data-target=".navbar" data-offset="40" id="home">
+
+    <!-- Navbar -->
+    <?php
+    include_once "assets/views/navbar.php";
+    ?>
+    <!-- ./Navbar -->
+
+
+
+    <!-- ./Modal del carrito de compras -->
     <div id="modalCarrito" class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-right modal-dialog-centered modal-dialog-scrollable ">
             <div class="modal-content h-100">
@@ -76,16 +75,16 @@ $pagina = !empty($pagina) ? $pagina : 1;
                 <!-- Pie del modal -->
                 <div class="modal-footer d-flex justify-content-center ">
                     <div class="row col-12">
-                        <div class="col-6 col-md-6 col-lg-6">
+                        <div class="col-6 col-md-6 col-lg-4">
                             <a id="comprar" href="pagoProductos.php" type="button" class="btn btn-warning btn-block">
-                                <i class="fa-solid fa-cart-shopping"></i>
-                                Finalizar la Compra
+                                <i class="fas fa-shopping-cart"></i>
+                                Comprar
                             </a>
                         </div>
-                        <div class="col-6 col-md-6 col-lg-6">
-                            <button id="btnLimpiarCarrito" class="btn btn-danger btn-block">
-                                <i class="fa-solid fa-trash-can"></i> Limpiar el Carrito
-                            </button>
+                        <div class="col-6 col-md-6 col-lg-8">
+                            <a id="btnLimpiarCarrito" class="btn btn-danger btn-block">
+                                <i class="fas fa-broom"></i>Limpiar el Carrito
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -95,33 +94,30 @@ $pagina = !empty($pagina) ? $pagina : 1;
     <!-- ./Modal del carrito de compras -->
 
     <!-- Menu de tienda -->
-    <div>
+    <div class="has-bg-overlay middle-items wow fadeIn">
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <!-- Input oculto para asignar el id de la categoria para el filtrado -->
+        <input id="idCategoria" class="d-none" type="text" value="<?php echo $idCategoria ?>">
+        <!-- Input oculto para asignar el id del usuario-->
+        <input id="id_usuario" type="hidden" value="<?php echo $user_id ?>">
+        <input id="paginaSeleccionada" class="d-none" name="pagina" value="<?php echo $pagina; ?>">
         <div class="category">
-
-            <div class="container">
-
+            <div class="container pt-5">
                 <div class="category-item-container has-scrollbar" id="categoriaMenuHeader">
                 </div>
-
             </div>
-
         </div>
-        <!--
-      - PRODUCT
-    -->
-        <div class="product-container">
+        <div class="product-container ">
             <div class="container">
-                <!--
-          - SIDEBAR
-        -->
-
                 <div class="sidebar  has-scrollbar" data-mobile-menu>
-
                     <div class="sidebar-category">
-
                         <div class="sidebar-top">
-                            <h2 class="sidebar-title">Categorias</h2>
-
+                            <h2 class="sidebar-title">CATEGORIAS</h2>
                             <button class="sidebar-close-btn" data-mobile-menu-close-btn>
                                 <ion-icon name="close-outline"></ion-icon>
                             </button>
@@ -129,62 +125,43 @@ $pagina = !empty($pagina) ? $pagina : 1;
                         <!--Listado de categorias  -->
                         <ul id="categoriaMenu" class="sidebar-menu-category-list">
                         </ul>
-
                     </div>
-
-
                 </div>
-
                 <div class="product-box">
                     <div class="product-main">
-
-                        <h2 class="title">Nuestros Productos</h2>
-
-                        <div class="product-grid" id="productos_tienda">
-
-
-
+                        <div class="product-grid " id="productos_tienda">
                         </div>
-
                     </div>
-
                 </div>
-
             </div>
-
         </div>
     </div>
     <!-- Fin productos -->
 
-    <nav aria-label="Page navigation example" id="paginacion">
+    <div class="has-bg-overlay pb-3" id="paginacion">
 
-    </nav>
-
-    <!-- <a href="https://api.whatsapp.com/send?phone=51916232342&text=Hola!%20Estoy%20interesado%20en%20comprar%20productos%20de%20la%20categor%C3%ADa%20Perfiles%20met%C3%A1licos%20%C2%BFPodr%C3%ADas%20asistirme?" class="btnchat" target="_blank">
-        <i class="fab fa-whatsapp my-btnchat "></i>
-    </a> -->
+    </div>
     <!-- page whatsapp  -->
     <?php include 'whatsapp.php' ?>
-
-    <script src="assets/js/templatemo.js"></script>
-    <script src="assets/js/custom.js"></script>
-    <!-- Link js -->
-    <script src="vista/js/productos.js"></script>
-    <script src="vista/js/busquedaProductos.js"></script>
-    <script src="vista/js/carrito.js"></script>
-    <!--
-        - custom js link
-    -->
+    <!-- librerias js -->
+    <script src="assets/js/jquery-1.11.0.min.js"></script>
+    <script src="assets/vendors/bootstrap/bootstrap.bundle.js"></script>
+    <script src="assets/vendors/bootstrap/bootstrap.affix.js"></script>
+    <script src="assets/js/foodhut.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCtme10pzgKSPeJVJrG1O3tjR6lk98o4w8&callback=initMap"></script>
     <script src="./assets/js/script.js"></script>
-    <!--
-    - ionicon link
-  -->
+    <script src="assets/js/foodhut.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <!-- js de las funcionalidades -->
+    <script src="vista/js/productos.js"></script>
+    <script src="vista/js/contactanos.js"></script>
+    <script src="vista/js/busquedaProductos.js"></script>
+    <script src="vista/js/carrito.js"></script>
+
 </body>
 
 </html>
-<!-- Start Footer -->
+<!-- footer -->
 <?php include 'assets/views/footer.php' ?>
-<!-- End Footer -->
-<!-- AdminLTE App -->
+<!-- end of page footer -->

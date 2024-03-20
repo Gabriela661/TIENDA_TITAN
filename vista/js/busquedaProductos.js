@@ -27,14 +27,14 @@ $(document).ready(function () {
         // Itera sobre los productos y crea el HTML correspondiente
         busquedaProductos.forEach((producto) => {
           let imagenStyle = `max-width: 30px; height: auto; object-fit: cover; `;
-          let nombreStyle = `max-width: 350px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;font-size: 10px;`;
+          let nombreStyle = `max-width: 350px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;font-size: 17px;`;
 
           template += `
           <li>
               <a class="dropdown-item" href="detalle.php?id_producto=${producto.id_producto}">
                   <div class="d-flex" style="max-width: 400px; ">
                       <img src="${producto.imagen_producto}" alt="${producto.nombre_producto}" style="${imagenStyle}">
-                      <div class="ms-2" style="${nombreStyle}">
+                      <div class=" ml-1" style="${nombreStyle}">
                           <p class="mb-0">${producto.nombre_producto}</p>
                           <p class="mb-0">Precio: S/. ${producto.precio_producto}</p>
                       </div>

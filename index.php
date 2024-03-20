@@ -6,19 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Start your development">
     <meta name="author" content="Devcrud">
-    <link rel="stylesheet" href="assets/css/templatemo.css">
-    <title>TITAN_TIENDA</title>
+    <title>TITAN</title>
+    <!-- librerias -->
+    <!-- <link rel="stylesheet" href="assets/css/templatemo.css"> -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="assets/css/foodhut.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="assets/css/fontawesome.min.css">
+
 </head>
-<!-- Preloader -->
 
 <body data-spy="scroll" data-target=".navbar" data-offset="40" id="home">
+    <!-- Preloader -->
     <!-- Carga del logo en la pantalla principal -->
     <div class="preloader flex-column justify-content-center align-items-center">
         <img src="assets/img/logo_titan1.png" class="brand-image img-elevation-3" style="opacity: .8">
     </div>
+
     <!-- Navbar -->
     <nav class="custom-navbar navbar navbar-expand-lg navbar-dark fixed-top" data-spy="affix" data-offset-top="10">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -46,26 +50,45 @@
                 </span>
             </a>
             <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="#blog">Preguntas<span class="sr-only">(current)</span></a>
+                <li class="nav-item mr-2  mb-3">
+                    <div class="nav-icon position-relative text-decoration-none" href="#" data-bs-toggle="modal" data-bs-target="#templatemo_search">
+                        <div class="dropdown">
+                            <div class="input-group" style="border-radius: 20px;">
+                                <input type="text" name="buscar" class="form-control border-0" id="dropdownInput" placeholder="Buscar" aria-label="Buscar" aria-describedby="button-addon3" oninput="toggleDropdown()" style="font-size: 14px; padding: 0.375rem 0.75rem;">
+                                <div class="input-group-append">
+                                    <span class="input-group-text" id="button-addon3" style="background-color: orangered;"><i class="fas fa-search" style="color: white;"></i></span>
+                                </div>
+                            </div>
+
+
+
+                            <ul class="dropdown-menu w-100 z-index-1000 dropdown-menu-end" id="dropdownMenu">
+                                <!-- SE MUESTRAN LOS ARCHIVOS QUE SE BUSCAN -->
+                            </ul>
+                        </div>
+                    </div>
+
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#contact">Buscar</a>
-                </li>
-                <li class="nav-item">
-                    <a href="login.php" class="btn btn-primary ml-xl-4">Iniciar Sesión</a>
+                    <a href="components.html" class=" nav-link btn ml-xl-4" style="background-color: orangered; color: white; ">
+                        <i class="fas fa-sign-in-alt"></i> INICIAR SESION
+                    </a>
+
                 </li>
             </ul>
         </div>
     </nav>
+    <!-- ./Navbar -->
+
     <!-- header -->
     <header id="home" class="header">
         <div class="overlay text-white text-center">
             <img src="assets/img/logo_titan_oficial.png" style="width: 400px;" alt="">
-            <h4 class="display-4 mb-5">Mejores productos a mejores precios</h4>
-            <a class="btn btn-lg btn-primary" href="tienda.php">Ver productos</a>
+            <h4 class="section-title mb-5" style="color:orangered">MEJORES PRODUCTOS A MEJOR PRECIO</h4>
+            <a class="nav-link btn ml-xl-4 " style=" background-color: orangered; color: white;font-weight: bold;" href="tienda.php">VER PRODUCTOS</a>
         </div>
     </header>
+    <!-- ./header -->
     <br>
     <!-- CARRUSEL DE PRODUCTOS -->
 
@@ -112,10 +135,10 @@
     <!-- Seccion de calcular  -->
     <div class="container-fluid has-bg-overlay text-center text-light pb-4 middle-items" id="book-table">
         <div class="">
-            <h2 class="section-title mb-3">Calcular</h2>
+            <h4 class="section-title  mb-3 mt-3">CALCULAR </h4>
             <div class="row mb-3">
                 <div class="col-sm-6 col-md-3 col-xs-12">
-                    <input type="email" id="booktable" class="form-control form-control-lg custom-form-control" placeholder="EMAIL">
+                    <input type="email" id="booktable" class="form-control form-control-lg custom-form-control " placeholder="EMAIL">
                 </div>
                 <div class="col-sm-6 col-md-3 col-xs-12">
                     <input type="number" id="booktable" class="form-control form-control-lg custom-form-control" placeholder="NUMBER OF GUESTS" max="20" min="0">
@@ -126,35 +149,33 @@
                 <div class="col-sm-6 col-md-3 col-xs-12">
                     <input type="date" id="booktable" class="form-control form-control-lg custom-form-control" placeholder="DATE">
                 </div>
+
             </div>
-            <a href="#" class="btn btn-lg btn-primary" id="rounded-btn">VER PDF DE RESULTADOS</a>
+            <!-- <input type="submit" value="Calcular" class="form-control btn btn-success"> -->
         </div>
     </div>
+    <!-- ./Seccion de calcular  -->
 
     <!-- Categorias -->
     <div id="gallary" class="text-center has-bg-overlay text-light  middle-items wow fadeIn">
-        <h2 class="section-title">Nuestras Categorias</h2>
+        <h4 class="section-title ">NUESTRAS CATEGORIAS</h4>
     </div>
 
-    <!-- HTML del carrusel -->
+    <!-- carrusel de categorias -->
     <div class="container-fluid wow fadeIn has-bg-overlay text-dark has-height-md middle-items">
         <div id="carouselProductos" class="carousel slide justify-content-center" data-ride="carousel">
             <!-- Indicadores -->
             <ol class="carousel-indicators">
-                <!-- Los indicadores se generan dinámicamente con JavaScript -->
             </ol>
-
             <!-- Contenido del carrusel -->
             <div class="carousel-inner row ">
                 <!-- Los productos se agregan dinámicamente aquí -->
             </div>
-
             <!-- Flecha izquierda -->
             <a class="carousel-control-prev" href="#carouselProductos" role="button" data-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="sr-only">Previous</span>
             </a>
-
             <!-- Flecha derecha -->
             <a class="carousel-control-next" href="#carouselProductos" role="button" data-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
@@ -164,15 +185,15 @@
     </div>
     <!--  Productos mas vendidos  -->
     <div id="gallary" class="text-center has-bg-overlay text-light has-height-sm middle-items wow fadeIn">
-        <h2 class="section-title">Productos más vendidos</h2>
+        <h4 class="section-title">PRODUCTOS MAS VENDIDOS</h4>
     </div>
     <div class="gallary row has-bg-overlay justify-content-center" id="masVendidos">
     </div>
-    </div>
+    <!--  Productos mas vendidos  -->
     <!-- CONTACTANOS Section  -->
     <div class="container-fluid has-bg-overlay text-center text-light has-height-sm middle-items" id="calcular" style="background-image:url(assets/img/calcular.jpg)">
         <div class="container-fluid">
-            <h2 class="section-title">Contactanos</h2>
+            <h4 class="section-title">CONTACTANOS</h4>
             <form>
                 <div class="row mb-6">
                     <div class="col-sm-3 col-md-3 col-xs-12 my-1">
@@ -185,7 +206,7 @@
                         <input type="text" class="form-control" id="telefono" placeholder="Telefono">
                     </div>
                     <div class="col-sm-3 col-md-3 col-xs-12 my-1">
-                        <input id="contactanos" type="submit" value="Contactarse" class="form-control btn btn-success">
+                        <input id="contactanos" type="submit" value="Contactarse" class="form-control btn" style="background-color: orange; color: white;">
                     </div>
                 </div>
             </form>
@@ -210,7 +231,7 @@
     <script src="assets/js/foodhut.js"></script>
     <script src="vista/js/productos.js"></script>
     <script src="vista/js/contactanos.js"></script>
-
+    <script src="vista/js/busquedaProductos.js"></script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCtme10pzgKSPeJVJrG1O3tjR6lk98o4w8&callback=initMap"></script>
     <!-- FoodHut js -->
     <script src="assets/js/foodhut.js"></script>

@@ -11006,7 +11006,7 @@ a.text-dark:hover, a.text-dark:focus {
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: Arial,  sans-serif;
   color: #f8f9fa;
   background: #343a40;
   box-sizing: border-box;
@@ -11346,7 +11346,7 @@ pre {
 }
 
 .section-title {
-  font-size: 4rem;
+  font-size: 2rem;
 }
 
 .has-height-xs {

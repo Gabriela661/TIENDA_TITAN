@@ -6,19 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Start your development">
     <meta name="author" content="Devcrud">
+    <title>TITAN</title>
+    <!-- librerias -->
     <link rel="stylesheet" href="assets/css/templatemo.css">
-    <title>TITAN_TIENDA</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="assets/css/foodhut.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="assets/css/fontawesome.min.css">
+    
 </head>
-<!-- Preloader -->
 
 <body data-spy="scroll" data-target=".navbar" data-offset="40" id="home">
+    <!-- Preloader -->
     <!-- Carga del logo en la pantalla principal -->
     <div class="preloader flex-column justify-content-center align-items-center">
         <img src="assets/img/logo_titan1.png" class="brand-image img-elevation-3" style="opacity: .8">
     </div>
+
     <!-- Navbar -->
     <nav class="custom-navbar navbar navbar-expand-lg navbar-dark fixed-top" data-spy="affix" data-offset-top="10">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -58,14 +62,17 @@
             </ul>
         </div>
     </nav>
+    <!-- ./Navbar -->
+
     <!-- header -->
     <header id="home" class="header">
         <div class="overlay text-white text-center">
             <img src="assets/img/logo_titan_oficial.png" style="width: 400px;" alt="">
-            <h4 class="display-4 mb-5">Mejores productos a mejores precios</h4>
+            <h5 class="section-title mb-5">MEJORES PRODUCTOS A MEJOR PRECIO</h5>
             <a class="btn btn-lg btn-primary" href="tienda.php">Ver productos</a>
         </div>
     </header>
+    <!-- ./header -->
     <br>
     <!-- CARRUSEL DE PRODUCTOS -->
 
@@ -112,7 +119,7 @@
     <!-- Seccion de calcular  -->
     <div class="container-fluid has-bg-overlay text-center text-light pb-4 middle-items" id="book-table">
         <div class="">
-            <h2 class="section-title mb-3">Calcular</h2>
+            <h5 class="section-title mb-3 mt-3">CALCULAR</h5>
             <div class="row mb-3">
                 <div class="col-sm-6 col-md-3 col-xs-12">
                     <input type="email" id="booktable" class="form-control form-control-lg custom-form-control" placeholder="EMAIL">
@@ -126,14 +133,16 @@
                 <div class="col-sm-6 col-md-3 col-xs-12">
                     <input type="date" id="booktable" class="form-control form-control-lg custom-form-control" placeholder="DATE">
                 </div>
+
             </div>
-            <a href="#" class="btn btn-lg btn-primary" id="rounded-btn">VER PDF DE RESULTADOS</a>
+            <!-- <input type="submit" value="Calcular" class="form-control btn btn-success"> -->
         </div>
     </div>
+    <!-- ./Seccion de calcular  -->
 
     <!-- Categorias -->
     <div id="gallary" class="text-center has-bg-overlay text-light  middle-items wow fadeIn">
-        <h2 class="section-title">Nuestras Categorias</h2>
+        <h5 class="section-title ">NUESTRAS CATEGORIAS</h5>
     </div>
 
     <!-- HTML del carrusel -->
@@ -164,7 +173,7 @@
     </div>
     <!--  Productos mas vendidos  -->
     <div id="gallary" class="text-center has-bg-overlay text-light has-height-sm middle-items wow fadeIn">
-        <h2 class="section-title">Productos más vendidos</h2>
+        <h5 class="section-title">PRODUCTOS MAS VENDIDOS</h5>
     </div>
     <div class="gallary row has-bg-overlay justify-content-center" id="masVendidos">
     </div>
@@ -172,7 +181,7 @@
     <!-- CONTACTANOS Section  -->
     <div class="container-fluid has-bg-overlay text-center text-light has-height-sm middle-items" id="calcular" style="background-image:url(assets/img/calcular.jpg)">
         <div class="container-fluid">
-            <h2 class="section-title">Contactanos</h2>
+            <h6 class="section-title">CONTACTANOS</h6>
             <form>
                 <div class="row mb-6">
                     <div class="col-sm-3 col-md-3 col-xs-12 my-1">
@@ -204,7 +213,7 @@
     <!-- bootstrap affix -->
     <script src="assets/vendors/bootstrap/bootstrap.affix.js"></script>
     <!-- google maps -->
-   
+
 
     <!-- FoodHut js -->
     <script src="assets/js/foodhut.js"></script>

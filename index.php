@@ -42,15 +42,12 @@
             <a class="navbar-brand m-auto" href="#">
                 <img src="assets/img/logo_titan1.png" class="brand-img" alt="">
                 <span class="brand-txt">
-                    <img src="assets/img/logo_titan1.png" alt="" style="width: 100px; height: 40px;">
+                    <img src="assets/img/logo_titan_oficial.png" alt="" style="width: 100px; height: 60px;">
                 </span>
             </a>
             <ul class="navbar-nav">
                 <li class="nav-item">
                     <a class="nav-link" href="#blog">Preguntas<span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#testmonial">Reviews</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#contact">Buscar</a>
@@ -64,8 +61,8 @@
     <!-- header -->
     <header id="home" class="header">
         <div class="overlay text-white text-center">
-            <h1 class="display-2 font-weight-bold my-3">TITAN TIENDA</h1>
-            <h2 class="display-4 mb-5">Mejores productos a mejores precios</h2>
+            <img src="assets/img/logo_titan_oficial.png" style="width: 400px;" alt="">
+            <h4 class="display-4 mb-5">Mejores productos a mejores precios</h4>
             <a class="btn btn-lg btn-primary" href="tienda.php">Ver productos</a>
         </div>
     </header>
@@ -85,7 +82,7 @@
             <div class="carousel-inner">
                 <div class="carousel-item active">
                     <a href="vermasproductos.php?id=1">
-                        <img src="assets/img/publicidad/publicidad2.png" alt="Slide 1" class="d-block w-100">
+                        <img src="assets/img/publicidad/publicidad1.png" alt="Slide 1" class="d-block w-100">
                     </a>
                 </div>
                 <div class="carousel-item">
@@ -95,7 +92,7 @@
                 </div>
                 <div class="carousel-item">
                     <a href="vermasproductos.php?id=3">
-                        <img src="assets/img/publicidad/publicidad2.png" alt="Slide 3" class="d-block w-100">
+                        <img src="assets/img/publicidad/publicidad1.png" alt="Slide 3" class="d-block w-100">
                     </a>
                 </div>
             </div>
@@ -113,7 +110,7 @@
     </div>
 
     <!-- Seccion de calcular  -->
-    <div class="container-fluid has-bg-secondary text-center text-light pb-4 middle-items" id="book-table">
+    <div class="container-fluid has-bg-overlay text-center text-light pb-4 middle-items" id="book-table">
         <div class="">
             <h2 class="section-title mb-3">Calcular</h2>
             <div class="row mb-3">
@@ -166,10 +163,10 @@
         </div>
     </div>
     <!--  Productos mas vendidos  -->
-    <div id="gallary" class="text-center text-light has-height-sm middle-items wow fadeIn">
+    <div id="gallary" class="text-center has-bg-overlay text-light has-height-sm middle-items wow fadeIn">
         <h2 class="section-title">Productos más vendidos</h2>
     </div>
-    <div class="gallary row justify-content-center" id="masVendidos">
+    <div class="gallary row has-bg-overlay justify-content-center" id="masVendidos">
     </div>
     </div>
     <!-- CONTACTANOS Section  -->
@@ -187,7 +184,9 @@
                     <div class="col-sm-3 col-md-3 col-xs-12 my-1">
                         <input type="text" class="form-control" id="telefono" placeholder="Telefono">
                     </div>
-                    <input id="contactanos" type="submit" value="Contactarse" class="col-sm-3 btn btn-success my-1">
+                    <div class="col-sm-3 col-md-3 col-xs-12 my-1">
+                        <input id="contactanos" type="submit" value="Contactarse" class="form-control btn btn-success">
+                    </div>
                 </div>
             </form>
         </div>
@@ -205,7 +204,7 @@
     <!-- bootstrap affix -->
     <script src="assets/vendors/bootstrap/bootstrap.affix.js"></script>
     <!-- google maps -->
-    <!-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCtme10pzgKSPeJVJrG1O3tjR6lk98o4w8&callback=initMap"></script> -->
+   
 
     <!-- FoodHut js -->
     <script src="assets/js/foodhut.js"></script>

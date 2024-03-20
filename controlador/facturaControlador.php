@@ -100,7 +100,7 @@ class MYPDF extends TCPDF
         $this->SetFont('helvetica', 'B', 11);
         // DATOS DE LA EMPRESA
         $this->SetXY(10, 30);
-        $this->Cell(30, 10, 'CONSTRU TIENDA S.A.C.', 0, false);
+        $this->Cell(30, 10, 'TIENDA TITAN S.A.C.', 0, false);
         $this->SetXY(10, 35);
         $this->SetFont('helvetica', '', 9);
         $this->Cell(30, 10, 'JR. BOLIVAR # 495', 0, false);

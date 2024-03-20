@@ -48,4 +48,7 @@ if (isset($_POST['codigo'])) {
     } else {
         echo "incorrecto";
     }
+
 }
+
+

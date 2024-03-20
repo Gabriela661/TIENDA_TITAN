@@ -28,3 +28,18 @@ echo $jsonstring;
 /*
 * FIN FUNCION PARA CARGAR EL CARRITO AL MODAL
 */
+/* 
+ * FUNCION PARA GUARDAR LA VENTA EN EL CARRITO
+ */
+if ($_POST['funcion'] == 'registrar_venta') {
+    $id_usuario = $_POST['id_usuario'];
+    $nombre_cliente = $_POST['nombre_cliente'];
+    $ruc = $_POST['ruc'];
+    $direccion = $_POST['direccion'];
+    $telefono = $_POST['telefono'];
+    $metodo = $_POST['metodo'];
+    $productosPago->registrar_venta($id_usuario, $metodo, $nombre_cliente, $telefono, $ruc, $direccion);
+}
+/* 
+ * FIN FUNCION PARA GUARDAR LA VENTA EN EL CARRITO
+ */

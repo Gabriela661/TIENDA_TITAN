@@ -45,8 +45,8 @@ $(document).ready(function () {
   }
 
   /*FIN FUNCION PARA ENVIAR DATOS AL CONTROLADOR*/
-
-  cargarProductosPago(1);
+ const id_usuario = document.getElementById("id_usuario").value;
+  cargarProductosPago(id_usuario);
 
   /*FUNCION PARA CARGAR LOS PRODUCTOS AL PROCESO DE PAGO*/
  let productosSeleccionados = [];
@@ -307,24 +307,6 @@ $(document).ready(function () {
               timer: 3000, // Cerrar automáticamente después de 3 segundos
             });
 
-            //DATOS DE LA COMPRA
-            var cantidad_compra = 0;
-            var total_compra = 0;
-
-            carrito.forEach((producto) => {
-              // Sumar la cantidad de cada producto al total de la compra
-              cantidad_compra += parseInt(producto.cantidad);
-
-              // Calcular el precio total del producto multiplicando el precio por la cantidad
-              var precioTotalProducto =
-                parseFloat(producto.precio) * parseInt(producto.cantidad);
-
-              // Sumar el precio total del producto al total de la compra
-              total_compra += precioTotalProducto;
-            });
-            // limitar a 2 decimales
-            total_compra = total_compra.toFixed(2);
-
 
             //DATOS DEL CLIENTE
             var metodop = document.getElementById("metodo").value;
@@ -339,56 +321,101 @@ $(document).ready(function () {
             }
 
            
-            var nombre_cliente = document.getElementById("razon_social").value;
-            var ruc = document.getElementById("ruc").value;
-            var direccion = document.getElementById("direccion").value;
-            var telefono = document.getElementById("telefono").value;
+            const id_usuario = document.getElementById("id_usuario").value;
+           var nombre_cliente = document.getElementById("razon_social").value;
+           var ruc = document.getElementById("ruc").value;
+           var direccion = document.getElementById("direccion").value;
+           var telefono = document.getElementById("telefono").value;
 
-            
+           const formData = new FormData();
+           formData.append("funcion", "registrar_venta");
+           formData.append("id_usuario", id_usuario);
+           formData.append("nombre_cliente", nombre_cliente);
+           formData.append("ruc", ruc);
+           formData.append("direccion", direccion);
+           formData.append("telefono", telefono);
+           formData.append("metodo", metodo);
+
+           // Envía los datos al controlador utilizando la función enviarDatos
+           enviarDatos(
+             "controlador/pagoProductosControlador.php",
+             formData,
+             function (response) {
+               console.log(response);
+               // Condicional de acuerdo a la respuesta del servidor
+               if (response.trim() === "vendido") {
+                 Swal.fire({
+                   icon: "success",
+                   title: "Producto añadido ",
+                   text: "El producto se ha agregado al carrito",
+                 }).then(() => {
+                   //generar la factura
+
+                   var numeroFactura =
+                     document.getElementById("numeroFactura").value;
+                   var fechaEmision =
+                     document.getElementById("fecha_emision").value;
+                   var fechaVencimiento =
+                     document.getElementById("fecha_vencimiento").value;
+                   var razonSocial =
+                     document.getElementById("razon_social").value;
+                   var ruc = document.getElementById("ruc").value;
+                   var direccion = document.getElementById("direccion").value;
+                   var tipoMoneda =
+                     document.getElementById("tipo_moneda").value;
+                   var observaciones =
+                     document.getElementById("observaciones").value;
+                   var metodo = document.getElementById("metodo").value;
+                   // Convertir el carrito a JSON
+                   var productos =
+                     document.getElementById("producto_json").value;
+                   // Enviar la solicitud POST para generar el PDF
+                   fetch("controlador/facturaControlador.php", {
+                     method: "POST",
+                     body: JSON.stringify({
+                       productos: productos,
+                       fechaEmision: fechaEmision,
+                       fechaVencimiento: fechaVencimiento,
+                       razonSocial: razonSocial,
+                       ruc: ruc,
+                       direccion: direccion,
+                       tipoMoneda: tipoMoneda,
+                       observaciones: observaciones,
+                       metodo: metodo,
+                       numeroFactura: numeroFactura,
+                     }),
+                   })
+                     .then((response) => response.blob())
+                     .then((blob) => {
+                       const url = window.URL.createObjectURL(blob);
+
+                       // Abrir el PDF en otra pestaña
+                       window.open(url, "_blank");
+
+                       // Limpiar la URL creada
+                       window.URL.revokeObjectURL(url);
+                     })
+                     .catch((error) => {
+                       console.error("Error en la solicitud POST:", error);
+                     });
+                 });
+               } else {
+                 // Muestra un mensaje de error utilizando SweetAlert si la respuesta indica un problema
+                 Swal.fire({
+                   icon: "error",
+                   title: "Error",
+                   text: "Error no se pudo agregar el producto al carrito de compras",
+                 });
+               }
+             },
+             function (error) {
+               // Función de error: se ejecuta si hay un problema en la solicitud AJAX
+               mostrarMensaje("noadd", "Error en la solicitud AJAX");
+             }
+           );
+
            
-          //generar la factura
-
-            var numeroFactura = document.getElementById("numeroFactura").value;
-            var fechaEmision = document.getElementById("fecha_emision").value;
-            var fechaVencimiento =
-              document.getElementById("fecha_vencimiento").value;
-            var razonSocial = document.getElementById("razon_social").value;
-            var ruc = document.getElementById("ruc").value;
-            var direccion = document.getElementById("direccion").value;
-            var tipoMoneda = document.getElementById("tipo_moneda").value;
-            var observaciones = document.getElementById("observaciones").value;
-            var metodo = document.getElementById("metodo").value;
-            // Convertir el carrito a JSON
-            var productos = document.getElementById("producto_json").value;
-            // Enviar la solicitud POST para generar el PDF
-            fetch("controlador/facturaControlador.php", {
-              method: "POST",
-              body: JSON.stringify({
-                productos: productos,
-                fechaEmision: fechaEmision,
-                fechaVencimiento: fechaVencimiento,
-                razonSocial: razonSocial,
-                ruc: ruc,
-                direccion: direccion,
-                tipoMoneda: tipoMoneda,
-                observaciones: observaciones,
-                metodo: metodo,
-                numeroFactura: numeroFactura,
-              }),
-            })
-              .then((response) => response.blob())
-              .then((blob) => {
-                const url = window.URL.createObjectURL(blob);
-
-                // Abrir el PDF en otra pestaña
-                window.open(url, "_blank");
-
-                // Limpiar la URL creada
-                window.URL.revokeObjectURL(url);
-              })
-              .catch((error) => {
-                console.error("Error en la solicitud POST:", error);
-              });
+         
           } else {
             // Mostrar SweetAlert2 indicando que el código es incorrecto
             Swal.fire({

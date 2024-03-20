@@ -40,4 +40,30 @@ class productosPago
         }
     }
     /* FIN FUNCION PARA CARGAR LOS PRODUCTOS EN EL CARRITO  */
+
+    /* FUNCION PARA REGISTRAR LA VENTA  */
+    public function registrar_venta($id_usuario, $metodo, $nombre_cliente, $telefono, $ruc, $direccion)
+    {
+
+            $sql = "CALL Proceso_Pago_Usuario(:id_usuario, :metodo_pago, :nombre_cliente, :telefono, :ruc, :direccion)";
+
+            $query = $this->acceso->prepare($sql);
+            $query->bindParam(':id_usuario', $id_usuario, PDO::PARAM_INT);
+            $query->bindParam(':metodo_pago', $metodo, PDO::PARAM_INT);
+            $query->bindParam(':nombre_cliente', $nombre_cliente, PDO::PARAM_STR);
+            $query->bindParam(':telefono', $telefono, PDO::PARAM_STR);
+            $query->bindParam(':ruc', $ruc, PDO::PARAM_STR);
+            $query->bindParam(':direccion', $direccion, PDO::PARAM_STR);
+
+            if ($query->execute()) {
+                echo 'vendido';
+            } else {
+                echo 'error';
+            }
+
+    }
+
+
+    /* FIN FUNCION PARA REGISTRAR LA VENTA */
+    
 }

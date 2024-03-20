@@ -4,9 +4,7 @@ session_start();
 
 // Si no hay un ID de usuario en la sesión, genera uno nuevo
 $_SESSION['user_id'] = 1;
-$user_id =
-    $_SESSION['user_id'];
-
+$user_id =$_SESSION['user_id'];
 
 
 // Muestra el ID de usuario
@@ -17,9 +15,7 @@ include './assets/views/navbar.php';
 
 ?>
 <br>
-
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
 <link rel="stylesheet" href="./assets/css/style-prefix.css">
 <link rel="stylesheet" href="assets/css/stilos.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

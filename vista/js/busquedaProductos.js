@@ -56,6 +56,10 @@ $(document).ready(function () {
   document
     .getElementById("dropdownInput")
     .addEventListener("input", busquedaProductos);
+  
+  
+  
+  
 });
 /*
  * FIN FUNCION DE BUSQUEDA

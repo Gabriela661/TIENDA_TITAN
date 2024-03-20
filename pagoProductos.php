@@ -2,13 +2,14 @@
 // Inicia la sesión
 session_start();
 
-// Verifica si ya existe un ID de usuario en la sesión
-if (!isset($_SESSION['user_id'])) {
-    // Si no hay un ID de usuario en la sesión, genera uno nuevo
-    $_SESSION['user_id'] = uniqid();
-}
+// // Verifica si ya existe un ID de usuario en la sesión
+// if (!isset($_SESSION['user_id'])) {
+//     // Si no hay un ID de usuario en la sesión, genera uno nuevo
+//     $_SESSION['user_id'] = uniqid();
+// }
 
 // Obtiene el ID de usuario de la sesión
+$_SESSION['user_id'] = 1;
 $user_id = $_SESSION['user_id'];
 
 // Muestra el ID de usuario
@@ -36,8 +37,7 @@ if (isset($_GET['id_categoria'])) {
 ?>
 
 <body>
-    <!-- Input oculto para asignar el id del usuario-->
-    <input id_="id_usuario" class="d-none" type="text" value="1">
+
     <!-- Modal del carrito de compras -->
 
     <!--./Detalle de la navegacion-->
@@ -60,7 +60,8 @@ if (isset($_GET['id_categoria'])) {
                                 <?php
                                 date_default_timezone_set('America/Lima'); // Establecer el huso horario de Perú
                                 ?>
-
+                                <!-- Input oculto para asignar el id del usuario-->
+                                <input id="id_usuario" type="hidden" value="<?php echo $user_id ?>">
                                 <div class="col-md-6">
                                     <label for="fecha_vencimiento">Fecha de vencimiento:</label>
                                     <?php
@@ -223,7 +224,7 @@ if (isset($_GET['id_categoria'])) {
     <script src="vista/js/busquedaProductos.js"></script>
     <script src="vista/js/pagoProductos.js"></script>
     <script src="vista/js/imagen.js"></script>
-    
+
 
 
 </body>

@@ -136,7 +136,7 @@ $(document).ready(function () {
       // Establecer el valor en 1 por defecto
       paginaSeleccionada = 1;
     }
-    console.log(paginaSeleccionada);
+    // console.log(paginaSeleccionada);
     $.post(
       "controlador/productosControlador.php",
       { consulta, funcion,pagina:paginaSeleccionada },

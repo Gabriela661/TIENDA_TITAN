@@ -229,7 +229,9 @@ if ($_SESSION['id_rol'] == 1 || $_SESSION['id_rol'] == 2 || $_SESSION['id_rol'] 
                   <?php if ($_SESSION['id_rol'] == 1 || $_SESSION['id_rol'] == 2) { ?>
                     <li class="nav-item"><a class="nav-link active" href="#personal" data-toggle="tab">Personal</a></li>
                   <?php } ?>
-                  <li class="nav-item"><a class="nav-link <?php if ($_SESSION['id_rol'] == 4) { echo 'active';}?>" href="#cliente" data-toggle="tab">Clientes</a></li>
+                  <li class="nav-item"><a class="nav-link <?php if ($_SESSION['id_rol'] == 4) {
+                                                            echo 'active';
+                                                          } ?>" href="#cliente" data-toggle="tab">Clientes</a></li>
                 </ul>
               </div>
               <div class="card-body">
@@ -277,7 +279,9 @@ if ($_SESSION['id_rol'] == 1 || $_SESSION['id_rol'] == 2 || $_SESSION['id_rol'] 
                       </div>
                     </div>
                   <?php } ?>
-                  <div class="<?php if ($_SESSION['id_rol'] == 4) { echo 'active';}?> tab-pane btn-cliente" id="cliente">
+                  <div class="<?php if ($_SESSION['id_rol'] == 4) {
+                                echo 'active';
+                              } ?> tab-pane btn-cliente" id="cliente">
                     <div class="card">
                       <div class="card-body table-responsive">
                         <!--      <div class="d-flex justify-content-between mb-2">
@@ -293,7 +297,7 @@ if ($_SESSION['id_rol'] == 1 || $_SESSION['id_rol'] == 2 || $_SESSION['id_rol'] 
                         </div>
                         <div><a type="button" class="btn btn-danger ml-4" href="#" id="generatePDFCliente"><i class="far fa-file-pdf"></i></a></div>
                       </div> -->
-                        <table id="clienteTable" class="table table-bordered table-striped text-center mb-4" style="width: 100%;">
+                        <table id="clienteTable" class="<?php echo ($_SESSION['id_rol'] == 1 || $_SESSION['id_rol'] == 2) ? 'editdelete' : ''; ?> table table-bordered table-striped text-center mb-4" style="width: 100%;">
                           <thead style="background-color: #e85813; color: white;">
                             <tr>
                               <th>N°</th>
@@ -301,8 +305,10 @@ if ($_SESSION['id_rol'] == 1 || $_SESSION['id_rol'] == 2 || $_SESSION['id_rol'] 
                               <th>Apellidos</th>
                               <th>Correo Electronico</th>
                               <th>Tipo de cliente</th>
-                              <th>Editar</th>
-                              <th>Eliminar</th>
+                              <?php if ($_SESSION['id_rol'] == 1 || $_SESSION['id_rol'] == 2) { ?>
+                                <th>Editar</th>
+                                <th>Eliminar</th>
+                              <?php } ?>
                             </tr>
                           </thead>
                           <tbody id="listar_clientes">

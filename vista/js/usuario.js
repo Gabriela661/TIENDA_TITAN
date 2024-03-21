@@ -76,6 +76,8 @@ $(document).ready(function () {
       (response) => {
         const clientes = JSON.parse(response);
         let template = '';
+        var table = document.getElementById('clienteTable');
+        var editDelete = table.classList.contains('editdelete');
         let contador = 0; // Inicializamos el contador
         clientes.forEach((cliente) => {
           // Asignar tipo_cliente en comparación de usuario
@@ -92,13 +94,13 @@ $(document).ready(function () {
           <td scope="row">${cliente.nombre_cliente}</td>
           <td scope="row">${cliente.apellido_cliente}</td>
           <td scope="row">${cliente.correo_cliente}</td>
-          <td scope="row">${tipo_cliente}</td>
-          <td scope="row">  <button id="btn_editarc" class="btn btn-warning btn-editarAdm" type="button"
-          data-toggle="modal" data-target="#editar_cliente" data-id_cliente="${cliente.id_cliente}">
-          Editar
-          </button></td>
-          <td scope="row"><button class="btn btn-danger borrar_cliente" data-id="${cliente.id_cliente}">Eliminar</button></td>
-          </tr>`;
+          <td scope="row">${tipo_cliente}</td>`;
+          if (editDelete) {
+            template += `<td scope="row">  <button id="btn_editarc" class="btn btn-warning btn-editarAdm" type="button"
+            data-toggle="modal" data-target="#editar_cliente" data-id_cliente="${cliente.id_cliente}">Editar</button></td>
+            <td scope="row"><button class="btn btn-danger borrar_cliente" data-id="${cliente.id_cliente}">Eliminar</button></td>`;
+          }
+          template += `</tr>`;
         });
         $('#listar_clientes').html(template);
 
@@ -563,35 +565,35 @@ $(document).ready(function () {
     const xPos = (pdfWidth - imgWidth) / 2; // Centrar horizontalmente
     const yPos = (pdfHeight - imgHeight) / 2; // Centrar verticalmente
 
-     // Variables para el diseño del encabezado y la tabla
-     const imgData = 'assets/img/logo_titan.png'; // Ruta de tu logo
-     const watermarkImg = 'assets/img/watermark.png';
-     const telefono = 'Teléfono:'
-     const contactNumbers = '943212297 - 932566922';
-     const direccion = 'Ubicación:';
-     const address1 = 'Carretera Central Km 412';
-     const address2 = 'CPM Llicua - Amarilis - Huánuco';
-     const reportTitle = 'Reporte de Usuarios';
- 
-     /* footer */
-     const reportFooter = 'TITAN';
-     const currentDate = new Date().toLocaleDateString();
- 
-     // Función para dibujar el encabezado en cada página
-     const drawHeader = () => {
-       doc.addImage(imgData, 'PNG', 10, 10, 30, 15);
-       doc.addImage(watermarkImg, 'PNG', xPos, yPos, imgWidth, imgHeight);
-       doc.setFontSize(10);
-       doc.setTextColor(150, 150, 150);
-       doc.text(telefono, doc.internal.pageSize.getWidth() - 60, 10);
-       doc.text(contactNumbers, doc.internal.pageSize.getWidth() - 60, 15);
-       doc.text(direccion, doc.internal.pageSize.getWidth() - 60, 22);
-       doc.text(address1, doc.internal.pageSize.getWidth() - 60, 27);
-       doc.text(address2, doc.internal.pageSize.getWidth() - 60, 32);
-       doc.setFontSize(22);
-       doc.setTextColor(19, 19, 19);
-       doc.text(reportTitle, doc.internal.pageSize.getWidth() - 140, 42);
-     };
+    // Variables para el diseño del encabezado y la tabla
+    const imgData = 'assets/img/logo_titan.png'; // Ruta de tu logo
+    const watermarkImg = 'assets/img/watermark.png';
+    const telefono = 'Teléfono:';
+    const contactNumbers = '943212297 - 932566922';
+    const direccion = 'Ubicación:';
+    const address1 = 'Carretera Central Km 412';
+    const address2 = 'CPM Llicua - Amarilis - Huánuco';
+    const reportTitle = 'Reporte de Usuarios';
+
+    /* footer */
+    const reportFooter = 'TITAN';
+    const currentDate = new Date().toLocaleDateString();
+
+    // Función para dibujar el encabezado en cada página
+    const drawHeader = () => {
+      doc.addImage(imgData, 'PNG', 10, 10, 30, 15);
+      doc.addImage(watermarkImg, 'PNG', xPos, yPos, imgWidth, imgHeight);
+      doc.setFontSize(10);
+      doc.setTextColor(150, 150, 150);
+      doc.text(telefono, doc.internal.pageSize.getWidth() - 60, 10);
+      doc.text(contactNumbers, doc.internal.pageSize.getWidth() - 60, 15);
+      doc.text(direccion, doc.internal.pageSize.getWidth() - 60, 22);
+      doc.text(address1, doc.internal.pageSize.getWidth() - 60, 27);
+      doc.text(address2, doc.internal.pageSize.getWidth() - 60, 32);
+      doc.setFontSize(22);
+      doc.setTextColor(19, 19, 19);
+      doc.text(reportTitle, doc.internal.pageSize.getWidth() - 140, 42);
+    };
 
     // Obtener la tabla DataTable original
     var table = $('#personalTable').DataTable();
@@ -705,35 +707,35 @@ $(document).ready(function () {
     const xPos = (pdfWidth - imgWidth) / 2; // Centrar horizontalmente
     const yPos = (pdfHeight - imgHeight) / 2; // Centrar verticalmente
 
-     // Variables para el diseño del encabezado y la tabla
-     const imgData = 'assets/img/logo_titan.png'; // Ruta de tu logo
-     const watermarkImg = 'assets/img/watermark.png';
-     const telefono = 'Teléfono:'
-     const contactNumbers = '943212297 - 932566922';
-     const direccion = 'Ubicación:';
-     const address1 = 'Carretera Central Km 412';
-     const address2 = 'CPM Llicua - Amarilis - Huánuco';
-     const reportTitle = 'Reporte de Clientes';
- 
-     /* footer */
-     const reportFooter = 'TITAN';
-     const currentDate = new Date().toLocaleDateString();
- 
-     // Función para dibujar el encabezado en cada página
-     const drawHeader = () => {
-       doc.addImage(imgData, 'PNG', 10, 10, 30, 15);
-       doc.addImage(watermarkImg, 'PNG', xPos, yPos, imgWidth, imgHeight);
-       doc.setFontSize(10);
-       doc.setTextColor(150, 150, 150);
-       doc.text(telefono, doc.internal.pageSize.getWidth() - 60, 10);
-       doc.text(contactNumbers, doc.internal.pageSize.getWidth() - 60, 15);
-       doc.text(direccion, doc.internal.pageSize.getWidth() - 60, 22);
-       doc.text(address1, doc.internal.pageSize.getWidth() - 60, 27);
-       doc.text(address2, doc.internal.pageSize.getWidth() - 60, 32);
-       doc.setFontSize(22);
-       doc.setTextColor(19, 19, 19);
-       doc.text(reportTitle, doc.internal.pageSize.getWidth() - 140, 42);
-     };
+    // Variables para el diseño del encabezado y la tabla
+    const imgData = 'assets/img/logo_titan.png'; // Ruta de tu logo
+    const watermarkImg = 'assets/img/watermark.png';
+    const telefono = 'Teléfono:';
+    const contactNumbers = '943212297 - 932566922';
+    const direccion = 'Ubicación:';
+    const address1 = 'Carretera Central Km 412';
+    const address2 = 'CPM Llicua - Amarilis - Huánuco';
+    const reportTitle = 'Reporte de Clientes';
+
+    /* footer */
+    const reportFooter = 'TITAN';
+    const currentDate = new Date().toLocaleDateString();
+
+    // Función para dibujar el encabezado en cada página
+    const drawHeader = () => {
+      doc.addImage(imgData, 'PNG', 10, 10, 30, 15);
+      doc.addImage(watermarkImg, 'PNG', xPos, yPos, imgWidth, imgHeight);
+      doc.setFontSize(10);
+      doc.setTextColor(150, 150, 150);
+      doc.text(telefono, doc.internal.pageSize.getWidth() - 60, 10);
+      doc.text(contactNumbers, doc.internal.pageSize.getWidth() - 60, 15);
+      doc.text(direccion, doc.internal.pageSize.getWidth() - 60, 22);
+      doc.text(address1, doc.internal.pageSize.getWidth() - 60, 27);
+      doc.text(address2, doc.internal.pageSize.getWidth() - 60, 32);
+      doc.setFontSize(22);
+      doc.setTextColor(19, 19, 19);
+      doc.text(reportTitle, doc.internal.pageSize.getWidth() - 140, 42);
+    };
 
     // Obtener la tabla DataTable original
     var table = $('#clienteTable').DataTable();

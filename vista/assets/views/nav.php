@@ -10,7 +10,7 @@ include "header.php"
             <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-            <a href="index_principal.php" class="nav-link">Inicio</a>
+            <a href="<?php echo ($_SESSION['id_rol'] == 1 || $_SESSION['id_rol'] == 2) ? 'index_principal.php' : '#'; ?>" class="nav-link">Inicio</a>
         </li>
     </ul>
     <!-- Right navbar links -->

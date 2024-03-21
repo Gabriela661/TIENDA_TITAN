@@ -27,7 +27,7 @@ if ($_SESSION['id_rol'] == 1 || $_SESSION['id_rol'] == 2 || $_SESSION['id_rol'] 
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="index_principal.php">Inicio</a></li>
+                            <li class="breadcrumb-item"><a href="<?php echo ($_SESSION['id_rol'] == 1 || $_SESSION['id_rol'] == 2) ? 'index_principal.php' : '#'; ?>">Inicio</a></li>
                             <li class="breadcrumb-item active">Ayuda</li>
                         </ol>
                     </div>

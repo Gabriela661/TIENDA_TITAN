@@ -40,6 +40,8 @@ $(document).ready(function () {
         let template = '';
         let contador = 0; // Inicializamos el contador
         inventarios.forEach((inventario) => {
+          var table = document.getElementById('inventarioTable');
+          var editDelete = table.classList.contains('editdelete');
           let imagenStyle = `width: 50px; height: 50px;`;
           var carpetaContenedora = inventario.nombre_categoria;
           // Definir url parcial de la carpeta contenedora
@@ -57,29 +59,18 @@ $(document).ready(function () {
           });
 
           var imagenSrc = url_parcial + '/' + ImgName;
-
-          //Crear componentes img con sus urls imágenes
-          /*           urls_img.map((i) => {
-            console.log(first)
-            componente_imagenes = `<img src="${url_parcial}/${i}" style="${imagenStyle}"  class="img-circle" alt="...">`;
-          }); */
           contador++; // Incrementamos el contador en cada iteración
-          template += `
-                    <tr data-id="${inventario.id_producto}">
-                    <td scope="row">${contador}</td>
-                        <td scope="row">${inventario.nombre_producto}</td>
-                        <td scope="row">${inventario.marca_producto}</td>                        
-                        <td scope="row">${inventario.stock_producto}</td>
-                        <td scope="row">${inventario.precio_producto}</td>                        
-                        <td scope="row"><div class="text-center">
-                        <img src="${imagenSrc}" style="${imagenStyle}"  class="img-circle" alt="...">
-                      </div></td>                        
-                        <td scope="row"><button id="btn_editar" data-id_inventario="${inventario.id_producto}" type="button" class="btn btn-info">
-                        Editar
-                     </button></td>
-                        <td scope="row"> <button id="btn_eliminar" class="btn btn-danger" data-id="${inventario.id_producto}">Eliminar</button>
-                        </td>
-                        `;
+          template += `<tr data-id="${inventario.id_producto}">
+          <td scope="row">${contador}</td>
+          <td scope="row">${inventario.nombre_producto}</td>
+          <td scope="row">${inventario.marca_producto}</td>                        
+          <td scope="row">${inventario.stock_producto}</td>
+          <td scope="row">${inventario.precio_producto}</td>                        
+          <td scope="row"><div class="text-center"><img src="${imagenSrc}" style="${imagenStyle}"  class="img-circle" alt="..."></div></td>`;
+          if (editDelete) {
+            template += `<td scope="row"><button id="btn_editar" data-id_inventario="${inventario.id_producto}" type="button" class="btn btn-info">Editar</button></td><td scope="row"> <button id="btn_eliminar" class="btn btn-danger" data-id="${inventario.id_producto}">Eliminar</button></td>`;
+          }
+          template += `</tr>`;
         });
         $('#inventario').html(template);
         // Inicializar DataTables después de cargar los datos en la tabla

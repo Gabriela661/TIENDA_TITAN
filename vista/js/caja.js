@@ -9,6 +9,8 @@ $(document).ready(function () {
 
   function listarIngresos(consulta) {
     funcion = 'listarIngresos';
+    var table = document.getElementById('ingresoTable');
+    var editDelete = table.classList.contains('editdelete');
     $.post(
       '../controlador/cajaControlador.php',
       { consulta, funcion },
@@ -20,17 +22,16 @@ $(document).ready(function () {
         ingresos.forEach((ingreso) => {
           contador++;
           template += `<tr data-id="${ingreso.id_caja}">
-                            <td>${contador}</td>
-                            <td>${ingreso.concepto}</td>
-                            <td>${ingreso.accion}</td>
-                            <td>${ingreso.monto}</td>
-                            <td>${ingreso.created_at}</td>
-                            <td scope="row">  <button id="btn_editarCaja" class="btn btn-warning btn-editarAdm" type="button"
-          data-toggle="modal" data-target="#editar_caja" data-id_caja="${ingreso.id_caja}">
-          <i class="fas fa-edit"></i>
-          </button></td>
-          <td scope="row"><button class="btn btn-danger borrar_caja" data-id="${ingreso.id_caja}"><i class="fas fa-trash"></i></button></td>
-                        </tr>`;
+          <td>${contador}</td>
+          <td>${ingreso.concepto}</td>
+          <td>${ingreso.accion}</td>
+          <td>${ingreso.monto}</td>
+          <td>${ingreso.created_at}</td>`;
+          if (editDelete) {
+            template += `<td scope="row">  <button id="btn_editarCaja" class="btn btn-warning btn-editarAdm" type="button" data-toggle="modal" data-target="#editar_caja" data-id_caja="${ingreso.id_caja}"><i class="fas fa-edit"></i></button></td><td scope="row"><button class="btn btn-danger borrar_caja" data-id="${ingreso.id_caja}"><i class="fas fa-trash"></i></button></td>`;
+          }
+
+          template += `</tr>`;
 
           sumaCantidadTotalI += parseFloat(ingreso.monto); // Suma de cantidad_total
         });
@@ -66,29 +67,31 @@ $(document).ready(function () {
 
   function listarEgresos(consulta) {
     funcion = 'listarEgresos';
+    var table = document.getElementById('egresoTable');
+    var editDelete = table.classList.contains('editdelete');
     $.post(
       '../controlador/cajaControlador.php',
       { consulta, funcion },
       (response) => {
         const egresos = JSON.parse(response);
-        console.log(egresos);
         let template = '';
         let contador = 0;
 
         egresos.forEach((egreso) => {
           contador++;
           template += `<tr data-id="${egreso.id_caja}">
-                            <td>${contador}</td>
-                            <td>${egreso.concepto}</td>
-                            <td>${egreso.accion}</td>
-                            <td>${egreso.monto}</td>
-                            <td>${egreso.created_at}</td>
-                            <td scope="row">  <button id="btn_editarCaja" class="btn btn-warning btn-editarAdm" type="button"
-          data-toggle="modal" data-target="#editar_caja" data-id_caja="${egreso.id_caja}">
-          <i class="fas fa-edit"></i>
-          </button></td>
-          <td scope="row"><button class="btn btn-danger borrar_caja" data-id="${egreso.id_caja}"><i class="fas fa-trash"></i></button></td>
-                        </tr>`;
+            <td>${contador}</td>
+            <td>${egreso.concepto}</td>
+            <td>${egreso.accion}</td>
+            <td>${egreso.monto}</td>
+            <td>${egreso.created_at}</td>`;
+          if (editDelete) {
+            template += `<td scope="row">  <button id="btn_editarCaja" class="btn btn-warning btn-editarAdm" type="button"
+            data-toggle="modal" data-target="#editar_caja" data-id_caja="${egreso.id_caja}"><i class="fas fa-edit"></i></button></td>
+            <td scope="row"><button class="btn btn-danger borrar_caja" data-id="${egreso.id_caja}"><i class="fas fa-trash"></i></button></td>`;
+          }
+
+          template += `</tr>`;
 
           sumaCantidadTotalE += parseFloat(egreso.monto); // Suma de cantidad_total
         });
@@ -352,7 +355,7 @@ $(document).ready(function () {
     // Variables para el diseño del encabezado y la tabla
     const imgData = 'assets/img/logo_titan.png'; // Ruta de tu logo
     const watermarkImg = 'assets/img/watermark.png';
-    const telefono = 'Teléfono:'
+    const telefono = 'Teléfono:';
     const contactNumbers = '943212297 - 932566922';
     const direccion = 'Ubicación:';
     const address1 = 'Carretera Central Km 412';
@@ -494,7 +497,7 @@ $(document).ready(function () {
     // Variables para el diseño del encabezado y la tabla
     const imgData = 'assets/img/logo_titan.png'; // Ruta de tu logo
     const watermarkImg = 'assets/img/watermark.png';
-    const telefono = 'Teléfono:'
+    const telefono = 'Teléfono:';
     const contactNumbers = '943212297 - 932566922';
     const direccion = 'Ubicación:';
     const address1 = 'Carretera Central Km 412';

@@ -190,23 +190,23 @@ if ($_SESSION['id_rol'] == 1 || $_SESSION['id_rol'] == 2 || $_SESSION['id_rol'] 
                                                     <!-- Tabla de ingresos -->
                                                     <div class="card-body table-responsive">
                                                         <div class="d-flex justify-content-between mb-2 align-items-center">
-                                                            <!-- <div>
-                                                            <h5>Mostrar/ocultar columnas:</h5>
-                                                            <a class="toggle-visI btn btn-success" data-column="0">N°</a>
-                                                            <a class="toggle-visI btn btn-success" data-column="1">Concepto</a>
-                                                            <a class="toggle-visI btn btn-success" data-column="2">Acción</a>
-                                                            <a class="toggle-visI btn btn-success" data-column="3">Monto</a>
-                                                            <a class="toggle-visI btn btn-success" data-column="4">Fecha</a>
-                                                            <a class="toggle-visI btn btn-success" data-column="5">Editar</a>
-                                                            <a class="toggle-visI btn btn-success" data-column="6">Eliminar</a>
-                                                        </div> -->
+                                                            <!-- <div class="d-none">
+                                                                <h5>Mostrar/ocultar columnas:</h5>
+                                                                <a class="toggle-visI btn btn-success" data-column="0">N°</a>
+                                                                <a class="toggle-visI btn btn-success" data-column="1">Concepto</a>
+                                                                <a class="toggle-visI btn btn-success" data-column="2">Acción</a>
+                                                                <a class="toggle-visI btn btn-success" data-column="3">Monto</a>
+                                                                <a class="toggle-visI btn btn-success" data-column="4">Fecha</a>
+                                                                <a class="toggle-visI btn btn-success" data-column="5">Editar</a>
+                                                                <a class="toggle-visI btn btn-success" data-column="6">Eliminar</a>
+                                                            </div> -->
                                                             <?php if ($_SESSION['id_rol'] == 1 || $_SESSION['id_rol'] == 2) { ?>
                                                                 <div id="ingresoTotal">
                                                                 </div>
                                                             <?php } ?>
                                                             <!--  <div><a type="button" class="btn btn-danger ml-4" href="#" id="generatePDFIngreso"><i class="far fa-file-pdf"></i></a></div> -->
                                                         </div>
-                                                        <table id="ingresoTable" class="table table-bordered table-striped mt-1 mb-4 text-center">
+                                                        <table id="ingresoTable" class="<?php echo ($_SESSION['id_rol'] == 1 || $_SESSION['id_rol'] == 2) ? 'editdelete' : ''; ?> table table-bordered table-striped mt-1 mb-4 text-center">
                                                             <thead style="background-color: #f34005; color: white;">
                                                                 <tr>
                                                                     <th>N°</th>
@@ -214,8 +214,11 @@ if ($_SESSION['id_rol'] == 1 || $_SESSION['id_rol'] == 2 || $_SESSION['id_rol'] 
                                                                     <th>Acción</th>
                                                                     <th>Monto</th>
                                                                     <th>Fecha</th>
-                                                                    <th>Editar</th>
-                                                                    <th>Borrar</th>
+                                                                    <?php if ($_SESSION['id_rol'] == 1 || $_SESSION['id_rol'] == 2) { ?>
+                                                                        <th>Editar</th>
+                                                                        <th>Borrar</th>
+                                                                    <?php } ?>
+
                                                                 </tr>
                                                             </thead>
                                                             <tbody id="ingresos_lista">
@@ -247,7 +250,7 @@ if ($_SESSION['id_rol'] == 1 || $_SESSION['id_rol'] == 2 || $_SESSION['id_rol'] 
                                                         <?php } ?>
                                                         <!-- <div><a type="button" class="btn btn-danger ml-4" href="#" id="generatePDFEgreso"><i class="far fa-file-pdf"></i></a></div> -->
                                                     </div>
-                                                    <table id="egresoTable" class="table table-bordered table-striped mt-1 mb-4 text-center" style="width: 100%;">
+                                                    <table id="egresoTable" class="<?php echo ($_SESSION['id_rol'] == 1 || $_SESSION['id_rol'] == 2) ? 'editdelete' : ''; ?> table table-bordered table-striped mt-1 mb-4 text-center" style="width: 100%;">
                                                         <thead style="background-color: #f34005; color: white;">
                                                             <tr>
                                                                 <th>N°</th>
@@ -255,8 +258,10 @@ if ($_SESSION['id_rol'] == 1 || $_SESSION['id_rol'] == 2 || $_SESSION['id_rol'] 
                                                                 <th>Acción</th>
                                                                 <th>Monto</th>
                                                                 <th>Fecha</th>
-                                                                <th>Editar</th>
-                                                                <th>Borrar</th>
+                                                                <?php if ($_SESSION['id_rol'] == 1 || $_SESSION['id_rol'] == 2) { ?>
+                                                                    <th>Editar</th>
+                                                                    <th>Borrar</th>
+                                                                <?php } ?>
                                                             </tr>
                                                         </thead>
                                                         <tbody id="egresos_lista">

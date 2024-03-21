@@ -2,32 +2,26 @@
 session_start();
 if ($_SESSION['id_rol'] == 1 || $_SESSION['id_rol'] == 2) {
 ?>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
-    <title>Administración</title>
     <?php
     include_once "assets/views/nav.php";
     ?>
 
-
-
-    <div class="content-wrapper" style="background-image: url(assets/img/main.jpg);" style="font-family: 'Open Sans', sans-serif;">
+    <div class="content-wrapper" style="background: url(assets/img/main.jpg) no-repeat center center fixed; background-size: cover; min-height: 750px;
+" style="font-family: 'Open Sans', sans-serif;">
         <div class="content-header">
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-12">
-                        <center>
+                        <!-- <center>
                             <h1 class="m-0"> Sistema Ferretaría <strong>TITAN</strong> </h1>
-                        </center>
+                        </center> -->
                     </div>
                 </div>
             </div>
         </div>
 
         <!-- Main content -->
-        <div class="content" >
+        <div class="content">
             <div class="container-fluid">
 
                 <div class="row mb-2">
@@ -102,120 +96,120 @@ if ($_SESSION['id_rol'] == 1 || $_SESSION['id_rol'] == 2) {
                 <hr>
                 <!-- Gráficos -->
                 <!-- Contenedor principal de gráficas -->
-                <div class="card p-5" style="background-color: #cdd2db;">
-                    <div class="row">
 
-                        <section class="col-lg-6 connectedSortable">
-                            <div class="row">
-                                <div class="col-md-12 mt-2">
-                                    <div class="row">
-                                        <div class="card col-md-10">
-                                            <div class="row card-header">
-                                                <div class="col-md-4">
-                                                    <label for="fechaInicioG3">Inicial:</label>
-                                                    <input type="date" id="fechaInicioG3" class="form-control">
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <label for="fechaFinG3">Final:</label>
-                                                    <input type="date" id="fechaFinG3" class="form-control">
-                                                </div>
-                                                <div class="col-md-2">
-                                                    <button id="btnCargarGrap3" class="btn btn-primary">Cargar</button>
-                                                </div>
+                <div class="row">
+
+                    <section class="col-lg-6 connectedSortable">
+                        <div class="row">
+                            <div class="col-md-12 mt-2">
+                                <div class="row">
+                                    <div class="card col-md-10">
+                                        <div class="row card-header">
+                                            <div class="col-md-4">
+                                                <label for="fechaInicioG3">Inicial:</label>
+                                                <input type="date" id="fechaInicioG3" class="form-control">
                                             </div>
-                                            <div class="card-body">
-                                                <div class="tab-content p-0">
-                                                    <div class="chart tab-pane active" style="position: relative; height: 300px;">
-                                                        <canvas id="graph3" height="300" style="height: 300px;"></canvas>
-                                                    </div>
-                                                </div>
+                                            <div class="col-md-4">
+                                                <label for="fechaFinG3">Final:</label>
+                                                <input type="date" id="fechaFinG3" class="form-control">
+                                            </div>
+                                            <div class="col-md-2">
+                                                <button id="btnCargarGrap3" class="btn btn-primary">Cargar</button>
                                             </div>
                                         </div>
-                                    </div>
-
-
-                                    <div class="row">
-                                        <div class="card col-md-10">
-                                            <div class="card-header">
-                                                <h3 class="card-title">
-                                                    <i class="fas fa-chart-pie mr-1"></i>
-                                                    Ventas
-                                                </h3>
-                                                <div class="card-tools">
-                                                    <ul class="nav nav-pills ml-auto">
-                                                        <li class="nav-item">
-                                                            <a class="nav-link active" href="#revenue-chart" data-toggle="tab">Area</a>
-                                                        </li>
-                                                        <li class="nav-item">
-                                                            <a class="nav-link" href="#sales-chart" data-toggle="tab">Circular</a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <div class="card-body">
-                                                <div class="tab-content p-0">
-
-                                                    <div class="chart tab-pane active" id="revenue-chart" style="position: relative; height: 300px;">
-                                                        <canvas id="revenue-chart-canvas" height="300" style="height: 300px;"></canvas>
-                                                    </div>
-                                                    <div class="chart tab-pane" id="sales-chart" style="position: relative; height: 400px;">
-                                                        <canvas id="sales-chart-canvas" height="400" style="height: 300px;"></canvas>
-                                                    </div>
+                                        <div class="card-body">
+                                            <div class="tab-content p-0">
+                                                <div class="chart tab-pane active" style="position: relative; height: 300px;">
+                                                    <canvas id="graph3" height="300" style="height: 300px;"></canvas>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </section>
 
-                        <section class="col-lg-6 connectedSortable">
-                            <!-- graph 1 -->
 
-                            <div class="card">
-                                <div class="card-header border-0">
-                                    <div class="d-flex justify-content-center">
-                                        <h2 class="card-title">Ventas semanales</h3>
-                                    </div>
-                                </div>
-                                <div class="card-body d-flex justify-content-center">
-                                    <canvas id="graph5" height="200"></canvas>
-                                </div>
-                            </div>
+                                <div class="row">
+                                    <div class="card col-md-10">
+                                        <div class="card-header">
+                                            <h3 class="card-title">
+                                                <i class="fas fa-chart-pie mr-1"></i>
+                                                Ventas
+                                            </h3>
+                                            <div class="card-tools">
+                                                <ul class="nav nav-pills ml-auto">
+                                                    <li class="nav-item">
+                                                        <a class="nav-link active" href="#revenue-chart" data-toggle="tab">Area</a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a class="nav-link" href="#sales-chart" data-toggle="tab">Circular</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="tab-content p-0">
 
-                            <div class="card">
-                                <div class="card-header border-0">
-                                    <div class="d-flex justify-content-center">
-                                        <h3 class="card-title">Venta por categoría</h3>
-                                    </div>
-                                </div>
-                                <div class="card-body">
-                                    <div class="position-relative mb-4 d-flex justify-content-center">
-                                        <canvas id="barChart" height="100"></canvas>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="card">
-                                <div class="card-header">
-                                    <div class="d-flex justify-content-center">
-                                        <h3 class="card-title">Venta por usuario</h3>
-                                    </div>
-                                </div>
-                                <div class="card-body d-flex justify-content-center">
-                                    <div class="position-relative">
-                                        <canvas class="ml-3" height="300" width="450" id="graph6"></canvas>
+                                                <div class="chart tab-pane active" id="revenue-chart" style="position: relative; height: 300px;">
+                                                    <canvas id="revenue-chart-canvas" height="300" style="height: 300px;"></canvas>
+                                                </div>
+                                                <div class="chart tab-pane" id="sales-chart" style="position: relative; height: 400px;">
+                                                    <canvas id="sales-chart-canvas" height="400" style="height: 300px;"></canvas>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                    </section>
 
-                            <!-- graph 2, 3, 4 -->
-                            <div class="row">
+                    <section class="col-lg-6 connectedSortable">
+                        <!-- graph 1 -->
 
+                        <div class="card">
+                            <div class="card-header border-0">
+                                <div class="d-flex justify-content-center">
+                                    <h2 class="card-title">Ventas semanales</h3>
+                                </div>
                             </div>
+                            <div class="card-body d-flex justify-content-center">
+                                <canvas id="graph5" height="200"></canvas>
+                            </div>
+                        </div>
 
-                            <!-- graph 5 y 6 -->
-                            <!-- <div class="row mt-2">
+                        <div class="card">
+                            <div class="card-header border-0">
+                                <div class="d-flex justify-content-center">
+                                    <h3 class="card-title">Venta por categoría</h3>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="position-relative mb-4 d-flex justify-content-center">
+                                    <canvas id="barChart" height="100"></canvas>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="d-flex justify-content-center">
+                                    <h3 class="card-title">Venta por usuario</h3>
+                                </div>
+                            </div>
+                            <div class="card-body d-flex justify-content-center">
+                                <div class="position-relative">
+                                    <canvas class="ml-3" height="300" width="450" id="graph6"></canvas>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- graph 2, 3, 4 -->
+                        <div class="row">
+
+                        </div>
+
+                        <!-- graph 5 y 6 -->
+                        <!-- <div class="row mt-2">
                              <h2>Gráfico 5</h2>
                              <div class="col-md-6">
                              </div>
@@ -223,10 +217,10 @@ if ($_SESSION['id_rol'] == 1 || $_SESSION['id_rol'] == 2) {
                              <div class="col-md-6">
                              </div>
                          </div> -->
-                        </section>
-                    </div>
-
+                    </section>
                 </div>
+
+
 
             </div>
 
@@ -243,11 +237,11 @@ if ($_SESSION['id_rol'] == 1 || $_SESSION['id_rol'] == 2) {
  </footer> -->
 
     <script src="js/graph/graph.js"></script>
-    </div>
-    </body>
 <?php
-    /* include_once "assets/views/footer.php"; */
+    include_once "assets/views/footer.php";
 } else {
     header('Location: ../login.php');
 }
 ?>
+</div>
+</body>

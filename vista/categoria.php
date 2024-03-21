@@ -1,3 +1,8 @@
+<?php
+session_start();
+if ($_SESSION['id_rol'] == 1 || $_SESSION['id_rol'] == 2 || $_SESSION['id_rol'] == 3) {
+?>
+
 <title>Adm || Categorias</title>
 <?php
 include_once "assets/views/nav.php";
@@ -125,3 +130,9 @@ include_once "assets/views/nav.php";
 <!-- Archivo js para las funcionalidades -->
 <script src="js/categoria.js"></script>
 </div>
+<?php
+    include_once "assets/views/footer.php";
+} else {
+    header('Location: ../login.php');
+}
+?>

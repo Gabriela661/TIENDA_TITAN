@@ -3,7 +3,6 @@ $(document).ready(function () {
 
   var sumaCantidadTotalI = 0; // Variable para almacenar la suma de cantidad_total Ing
   var sumaCantidadTotalE = 0; // Variable para almacenar la suma de cantidad_total Egre
-  var cajaTotal = 0; // Variable para almacenar la suma de cantidad_total Egre
 
   listarIngresos();
   listarEgresos();
@@ -28,15 +27,15 @@ $(document).ready(function () {
                             <td>${ingreso.created_at}</td>
                             <td scope="row">  <button id="btn_editarCaja" class="btn btn-warning btn-editarAdm" type="button"
           data-toggle="modal" data-target="#editar_caja" data-id_caja="${ingreso.id_caja}">
-          Editar
+          <i class="fas fa-edit"></i>
           </button></td>
-          <td scope="row"><button class="btn btn-danger borrar_caja" data-id="${ingreso.id_caja}">Eliminar</button></td>
+          <td scope="row"><button class="btn btn-danger borrar_caja" data-id="${ingreso.id_caja}"><i class="fas fa-trash"></i></button></td>
                         </tr>`;
 
           sumaCantidadTotalI += parseFloat(ingreso.monto); // Suma de cantidad_total
         });
         // Agregar fila con la suma de cantidad_total
-        var totalI = `<h4>Total Ingreso: S/. <strong>${sumaCantidadTotalI}</strong></h4>`;
+        var totalI = `<h4>Ingreso: S/. <strong>${sumaCantidadTotalI}</strong></h4>`;
 
         $('#ingresoTotal').html(totalI);
         $('#ingresos_lista').html(template);
@@ -86,15 +85,15 @@ $(document).ready(function () {
                             <td>${egreso.created_at}</td>
                             <td scope="row">  <button id="btn_editarCaja" class="btn btn-warning btn-editarAdm" type="button"
           data-toggle="modal" data-target="#editar_caja" data-id_caja="${egreso.id_caja}">
-          Editar
+          <i class="fas fa-edit"></i>
           </button></td>
-          <td scope="row"><button class="btn btn-danger borrar_caja" data-id="${egreso.id_caja}">Eliminar</button></td>
+          <td scope="row"><button class="btn btn-danger borrar_caja" data-id="${egreso.id_caja}"><i class="fas fa-trash"></i></button></td>
                         </tr>`;
 
           sumaCantidadTotalE += parseFloat(egreso.monto); // Suma de cantidad_total
         });
         // Agregar fila con la suma de cantidad_total
-        var totalE = `<h4>Total Egreso: S/. <strong>${sumaCantidadTotalE}</strong></h4>`;
+        var totalE = `<h4>Egreso: S/. <strong>${sumaCantidadTotalE}</strong></h4>`;
 
         $('#egresoTotal').html(totalE);
         $('#egresos_lista').html(template);
@@ -165,6 +164,7 @@ $(document).ready(function () {
         $('#actione').val(clienteEdit.accion);
         $('#conceptoe').val(clienteEdit.concepto);
         $('#montoe').val(clienteEdit.monto);
+        $('#desce').val(clienteEdit.descripcion);
         // Mostrar el modal de edición
         $('#editar_caja').modal('hide');
       }
@@ -178,6 +178,8 @@ $(document).ready(function () {
     const id_cajae = $('#id_cajae').val();
     const actione = $('#actione').val();
     const conceptoe = $('#conceptoe').val();
+    const desce = $('#desce').val();
+    const id_usuarioCe = $('#id_usuarioCe').val();
     const montoe = $('#montoe').val();
 
     // Crea un objeto FormData
@@ -187,6 +189,8 @@ $(document).ready(function () {
     formData.append('id_cajae', id_cajae);
     formData.append('actione', actione);
     formData.append('conceptoe', conceptoe);
+    formData.append('desce', desce);
+    formData.append('id_usuarioCe', id_usuarioCe);
     formData.append('montoe', montoe);
 
     // Envía los datos al controlador utilizando la función enviarDatos
@@ -229,15 +233,17 @@ $(document).ready(function () {
     const action = $('#action').val();
     const concepto = $('#concepto').val();
     const monto = $('#monto').val();
-    const descIngreso = $('#descIngreso').val();
+    const desc = $('#desc').val();
+    const id_usuarioC = $('#id_usuarioC').val();
 
     // Crea un objeto FormData
     const formData = new FormData($('#form_caja')[0]);
     formData.append('funcion', 'crear_caja');
     formData.append('action', action);
-    formData.append('descIngreso', descIngreso);
+    formData.append('desc', desc);
     formData.append('concepto', concepto);
     formData.append('monto', monto);
+    formData.append('id_usuarioC', id_usuarioC);
 
     // Envía los datos al controlador utilizando la función enviarDatos
     enviarDatos(

@@ -10,15 +10,15 @@ class usuario
         $db = new conexion();
         $this->acceso = $db->pdo;
     }
-    // //logerase
-    // function Logearse($email, $pass)
-    // {
-    //     $sql = "SELECT * FROM usuario inner join rol on rol_usuario=id_rol WHERE correo_electronico=:email and password=:pass;";
-    //     $query = $this->acceso->prepare($sql);
-    //     $query->execute(array(':email' => $email, ':pass' => $pass));
-    //     $this->objetos = $query->fetchAll();
-    //     return $this->objetos;
-    // }
+    //logerase
+    function Logearse($email, $pass)
+    {
+        $sql = "SELECT * FROM usuario u inner join rol r on u.id_rol = r.id_rol WHERE correo_usuario=:email and password=:pass;";
+        $query = $this->acceso->prepare($sql);
+        $query->execute(array(':email' => $email, ':pass' => $pass));
+        $this->objetos = $query->fetchAll();
+        return $this->objetos;
+    }
 
 
     /* FUNCION PARA LISTAR EL PERSONAL DE LA BASE DE DATOS*/

@@ -1,3 +1,7 @@
+<?php
+session_start();
+if ($_SESSION['id_rol'] == 1 || $_SESSION['id_rol'] == 2 || $_SESSION['id_rol'] == 3) {
+?>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
@@ -99,5 +103,12 @@ include_once "assets/views/nav.php";
     </div>
 
 </body>
-<script src="js/reporteProductos.js"></script>
+<script type="module" src="js/reporteProductos.js"></script>
 </div>
+
+<?php
+    include_once "assets/views/footer.php";
+} else {
+    header('Location: ../login.php');
+}
+?>

@@ -9,6 +9,7 @@ if ($_POST['funcion'] == 'reporte_facturas') {
     $reporte_facturas->reporte_facturas();
     foreach ($reporte_facturas->objetos as $objeto) {
         $json[] = array(
+            'id_venta' => $objeto->id_venta,
             'nombre_tipo_pago' => $objeto->nombre_tipo_pago,
             'id_usuario' => $objeto->id_usuario,
             'id_cliente' => $objeto->id_cliente,
@@ -29,6 +30,7 @@ if ($_POST['funcion'] == 'dia_facturas') {
     $reporte_facturas->dia_facturas();
     foreach ($reporte_facturas->objetos as $objeto) {
         $json[] = array(
+            'id_venta' => $objeto->id_venta,
             'id_usuario' => $objeto->id_usuario,
             'id_cliente' => $objeto->id_cliente,
             'nombre_tipo_pago' => $objeto->nombre_tipo_pago,
@@ -49,6 +51,7 @@ if ($_POST['funcion'] == 'mes_facturas') {
     $reporte_facturas->mes_facturas();
     foreach ($reporte_facturas->objetos as $objeto) {
         $json[] = array(
+            'id_venta' => $objeto->id_venta,
             'id_usuario' => $objeto->id_usuario,
             'id_cliente' => $objeto->id_cliente,
             'nombre_tipo_pago' => $objeto->nombre_tipo_pago,
@@ -70,6 +73,7 @@ if ($_POST['funcion'] == 'fechas_facturas') {
     $reporte_facturas->fechas_facturas($fechaInicio, $fechaFin);
     foreach ($reporte_facturas->objetos as $objeto) {
         $json[] = array(
+            'id_venta' => $objeto->id_venta,
             'id_usuario' => $objeto->id_usuario,
             'id_cliente' => $objeto->id_cliente,
             'nombre_tipo_pago' => $objeto->nombre_tipo_pago,

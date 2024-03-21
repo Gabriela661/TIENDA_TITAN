@@ -15,7 +15,7 @@ class reporte_facturas
     // listar facturas
     function reporte_facturas()
     {
-        $sql = "SELECT tp.nombre_tipo_pago, c.nombre_cliente, v.id_cliente, v.id_usuario, v.total_venta, v.fecha, v.url_factura
+        $sql = "SELECT id_venta, tp.nombre_tipo_pago, c.nombre_cliente, v.id_cliente, v.id_usuario, v.total_venta, v.fecha, v.url_factura
         FROM venta v
         JOIN cliente c ON v.id_cliente = c.id_cliente
         JOIN tipo_pago tp ON v.id_tipo_pago = tp.id_tipo_pago
@@ -31,6 +31,7 @@ class reporte_facturas
     function dia_facturas()
     { //CURDATE()        
         $sql = "SELECT 
+        id_venta,
         tp.nombre_tipo_pago,
         c.nombre_cliente,
         v.id_cliente,
@@ -57,6 +58,7 @@ class reporte_facturas
     function mes_facturas()
     { //CURDATE()
         $sql = "SELECT 
+        id_venta,
         tp.nombre_tipo_pago,
         c.nombre_cliente,
         v.id_cliente,
@@ -105,6 +107,7 @@ class reporte_facturas
             $fechaf = date('Y-m-d', strtotime($fechaf . ' +1 day'));
         }
         $sql = "SELECT 
+        id_venta,
         tp.nombre_tipo_pago,
         c.nombre_cliente,
         v.id_cliente,

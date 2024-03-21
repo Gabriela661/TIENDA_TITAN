@@ -35,6 +35,7 @@ if ($_POST['funcion'] == 'listar') {
             'concepto' => $objeto->concepto,
             'accion' => $objeto->accion,
             'monto' => $objeto->monto,
+            'descripcion' => $objeto->descripcion,
             'created_at' => $objeto->created_at,
         );
     }
@@ -71,14 +72,16 @@ if ($_POST['funcion'] == 'crear_caja') {
     $accion = $_POST['action'];
     $monto = $_POST['monto'];
     $concepto = $_POST['concepto'];
-    $id_usuario = 1;
+    $id_usuario = $_POST['id_usuarioC'];
+    $desc = $_POST['desc'];
     /* $id_usuario = $_POST['id_usuario']; cuando haya session tomar el id del usuario */
 
     $caja->crear_caja(
         $accion,
         $monto,
         $concepto,
-        $id_usuario
+        $id_usuario,
+        $desc
     );
 }
 
@@ -89,9 +92,10 @@ if ($_POST['funcion'] == 'editar_caja') {
         $concepto = $_POST['conceptoe'];
         $accion = $_POST['actione'];
         $monto = $_POST['montoe'];
-        $id_usuario = 1;
-        /* $id_usuario = $_POST['id_usuario']; cuando haya session tomar el id del usuario */
-        $caja->editar_caja($id_caja, $concepto, $accion, $monto, $id_usuario);
+        $desce = $_POST['desce'];
+        /* $id_usuario = 1; */
+        $id_usuario = $_POST['id_usuarioCe'];/*  cuando haya session tomar el id del usuario  */
+        $caja->editar_caja($id_caja, $concepto, $accion, $monto, $id_usuario, $desce);
     } catch (Exception $e) {
         echo 'error';
     }

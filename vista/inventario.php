@@ -11,7 +11,7 @@ if ($_SESSION['id_rol'] == 1 || $_SESSION['id_rol'] == 2 || $_SESSION['id_rol'] 
 
   <?php include_once "assets/views/nav.php"; ?>
 
-  <?php if ($_SESSION['id_rol'] == 1 || $_SESSION['id_rol'] == 2 || $_SESSION['id_rol'] == 3) { ?>
+<?php /* if ($_SESSION['id_rol'] == 1 || $_SESSION['id_rol'] == 2 || $_SESSION['id_rol'] == 3) { */ ?> 
   <!-- Modal crear producto -->
     <div class="modal fade" id="crearInventario" tabindex="-1" role="dialog" aria-labelledby="#crearInventario" aria-hidden="true">
       <div class="modal-dialog sm:modal-sm modal-lg" role="document">
@@ -74,7 +74,7 @@ if ($_SESSION['id_rol'] == 1 || $_SESSION['id_rol'] == 2 || $_SESSION['id_rol'] 
                       <input type="file" name="imagen_principal_producto" id="imagen_principal_producto" accept="image/jpg, image/jpeg, image/png" class="form-control-file">
                       <label for="imagen_principal_producto">Imagen principal</label>
                       <div id="imagen_preview1" style="margin-top: 10px;" class="text-center mt-2">
-                        <img src="" alt="Imagen principal" class="img-thumbnail" style="max-height: 150px;">
+                        <img src="../vista/assets/img/default.png" alt="Imagen principal" class="img-thumbnail" style="max-height: 100px;">
                       </div>
                     </div>
                   </div>
@@ -83,7 +83,7 @@ if ($_SESSION['id_rol'] == 1 || $_SESSION['id_rol'] == 2 || $_SESSION['id_rol'] 
                       <input type="file" name="imagen_secundaria_1_producto" id="imagen_secundaria_1_producto" accept="image/jpg, image/jpeg, image/png" class="form-control-file">
                       <label for="imagen_secundaria_1_producto">Imagen secundaria 1</label>
                       <div id="imagen_preview2" style="margin-top: 10px;" class="text-center mt-2">
-                        <img src="" alt="Imagen secundaria 1" class="img-thumbnail" style="max-height: 150px;">
+                        <img src="../vista/assets/img/default.png" alt="Imagen secundaria 1" class="img-thumbnail" style="max-height: 100px;">
                       </div>
                     </div>
                   </div>
@@ -92,7 +92,7 @@ if ($_SESSION['id_rol'] == 1 || $_SESSION['id_rol'] == 2 || $_SESSION['id_rol'] 
                       <input type="file" name="imagen_secundaria_2_producto" id="imagen_secundaria_2_producto" accept="image/jpg, image/jpeg, image/png" class="form-control-file">
                       <label for="imagen_secundaria_2_producto">Imagen secundaria 2</label>
                       <div id="imagen_preview3" style="margin-top: 10px;" class="text-center mt-2">
-                        <img src="" alt="Imagen secundaria 2" class="img-thumbnail" style="max-height: 150px;">
+                        <img src="../vista/assets/img/default.png" alt="Imagen secundaria 2" class="img-thumbnail" style="max-height: 100px;">
                       </div>
                     </div>
                   </div>
@@ -101,7 +101,7 @@ if ($_SESSION['id_rol'] == 1 || $_SESSION['id_rol'] == 2 || $_SESSION['id_rol'] 
                       <input type="file" name="imagen_secundaria_3_producto" id="imagen_secundaria_3_producto" accept="image/jpg, image/jpeg, image/png" class="form-control-file">
                       <label for="imagen_secundaria_3_producto">Imagen secundaria 3</label>
                       <div id="imagen_preview4" style="margin-top: 10px;" class="text-center mt-2">
-                        <img src="" alt="Imagen secundaria 3" class="img-thumbnail" style="max-height: 150px;">
+                        <img src="../vista/assets/img/default.png" alt="Imagen secundaria 3" class="img-thumbnail" style="max-height: 100px;">
                       </div>
                     </div>
                   </div>
@@ -118,7 +118,7 @@ if ($_SESSION['id_rol'] == 1 || $_SESSION['id_rol'] == 2 || $_SESSION['id_rol'] 
         </div>
       </div>
     </div>
-  <?php } ?>
+  <?php /* } */ ?>
 
 
   <?php if ($_SESSION['id_rol'] == 1 || $_SESSION['id_rol'] == 2 || $_SESSION['id_rol'] == 3) { ?>

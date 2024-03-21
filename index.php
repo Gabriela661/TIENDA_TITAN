@@ -70,7 +70,7 @@
 
                 </li>
                 <li class="nav-item">
-                    <a href="components.html" class=" nav-link btn ml-xl-4" style="background-color: orangered; color: white; ">
+                    <a href="login.php" class=" nav-link btn ml-xl-4" style="background-color: orangered; color: white; ">
                         <i class="fas fa-sign-in-alt"></i> INICIAR SESION
                     </a>
 

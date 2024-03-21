@@ -95,6 +95,8 @@ export function generarPDF(
     },
   });
 
+  console.log(doc.output('datauristring'));
+
   // Abrir el PDF en una nueva ventana
   var pdfWindow = window.open('', '_blank');
   pdfWindow.document.open();

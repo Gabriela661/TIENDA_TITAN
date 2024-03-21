@@ -3,6 +3,31 @@ $(document).ready(function () {
   var funcion = '';
 
   //listar inventario en una tabla
+
+  document
+    .getElementById('imagen_preview1')
+    .addEventListener('click', function () {
+      document.getElementById('imagen_principal_producto').click();
+    });
+
+  document
+    .getElementById('imagen_preview2')
+    .addEventListener('click', function () {
+      document.getElementById('imagen_secundaria_1_producto').click();
+    });
+
+  document
+    .getElementById('imagen_preview3')
+    .addEventListener('click', function () {
+      document.getElementById('imagen_secundaria_2_producto').click();
+    });
+
+  document
+    .getElementById('imagen_preview4')
+    .addEventListener('click', function () {
+      document.getElementById('imagen_secundaria_3_producto').click();
+    });
+
   inventario();
 
   function inventario(consulta) {
@@ -348,36 +373,35 @@ $(document).on('click', '#generatePDFInventario', function () {
   const xPos = (pdfWidth - imgWidth) / 2; // Centrar horizontalmente
   const yPos = (pdfHeight - imgHeight) / 2; // Centrar verticalmente
 
-     // Variables para el diseño del encabezado y la tabla
-     const imgData = 'assets/img/logo_titan.png'; // Ruta de tu logo
-     const watermarkImg = 'assets/img/watermark.png';
-     const telefono = 'Teléfono:'
-     const contactNumbers = '943212297 - 932566922';
-     const direccion = 'Ubicación:';
-     const address1 = 'Carretera Central Km 412';
-     const address2 = 'CPM Llicua - Amarilis - Huánuco';
-     const reportTitle = 'Reporte de Inventario';
+  // Variables para el diseño del encabezado y la tabla
+  const imgData = 'assets/img/logo_titan.png'; // Ruta de tu logo
+  const watermarkImg = 'assets/img/watermark.png';
+  const telefono = 'Teléfono:';
+  const contactNumbers = '943212297 - 932566922';
+  const direccion = 'Ubicación:';
+  const address1 = 'Carretera Central Km 412';
+  const address2 = 'CPM Llicua - Amarilis - Huánuco';
+  const reportTitle = 'Reporte de Inventario';
 
   /* footer */
   const reportFooter = 'TITAN';
   const currentDate = new Date().toLocaleDateString();
 
-      // Función para dibujar el encabezado en cada página
-      const drawHeader = () => {
-        doc.addImage(imgData, 'PNG', 10, 10, 30, 15);
-        doc.addImage(watermarkImg, 'PNG', xPos, yPos, imgWidth, imgHeight);
-        doc.setFontSize(10);
-        doc.setTextColor(150, 150, 150);
-        doc.text(telefono, doc.internal.pageSize.getWidth() - 60, 10);
-        doc.text(contactNumbers, doc.internal.pageSize.getWidth() - 60, 15);
-        doc.text(direccion, doc.internal.pageSize.getWidth() - 60, 22);
-        doc.text(address1, doc.internal.pageSize.getWidth() - 60, 27);
-        doc.text(address2, doc.internal.pageSize.getWidth() - 60, 32);
-        doc.setFontSize(22);
-        doc.setTextColor(19, 19, 19);
-        doc.text(reportTitle, doc.internal.pageSize.getWidth() - 140, 42);
-      };
-  
+  // Función para dibujar el encabezado en cada página
+  const drawHeader = () => {
+    doc.addImage(imgData, 'PNG', 10, 10, 30, 15);
+    doc.addImage(watermarkImg, 'PNG', xPos, yPos, imgWidth, imgHeight);
+    doc.setFontSize(10);
+    doc.setTextColor(150, 150, 150);
+    doc.text(telefono, doc.internal.pageSize.getWidth() - 60, 10);
+    doc.text(contactNumbers, doc.internal.pageSize.getWidth() - 60, 15);
+    doc.text(direccion, doc.internal.pageSize.getWidth() - 60, 22);
+    doc.text(address1, doc.internal.pageSize.getWidth() - 60, 27);
+    doc.text(address2, doc.internal.pageSize.getWidth() - 60, 32);
+    doc.setFontSize(22);
+    doc.setTextColor(19, 19, 19);
+    doc.text(reportTitle, doc.internal.pageSize.getWidth() - 140, 42);
+  };
 
   // Obtener la tabla DataTable original
   var table = $('#inventarioTable').DataTable();

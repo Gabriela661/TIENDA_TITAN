@@ -13,7 +13,7 @@ if ($_SESSION['id_rol'] == 1 || $_SESSION['id_rol'] == 2) {
 
 
 
-    <div class="content-wrapper" style="font-family: 'Open Sans', sans-serif;">
+    <div class="content-wrapper" style="background-image: url(assets/img/main.jpg);" style="font-family: 'Open Sans', sans-serif;">
         <div class="content-header">
             <div class="container-fluid">
                 <div class="row mb-2">
@@ -27,7 +27,7 @@ if ($_SESSION['id_rol'] == 1 || $_SESSION['id_rol'] == 2) {
         </div>
 
         <!-- Main content -->
-        <div class="content">
+        <div class="content" >
             <div class="container-fluid">
 
                 <div class="row mb-2">

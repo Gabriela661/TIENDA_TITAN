@@ -154,7 +154,7 @@ include "header.php"
                         </a>
                     </li>
                 <?php } ?>
-                <?php if ($_SESSION['id_rol'] == 1 ||  $_SESSION['id_rol'] == 2) { ?>
+                <?php if ($_SESSION['id_rol'] == 1) { ?>
                     <li class="nav-item">
                         <a href="roles.php" class="nav-link">
                             <i class="fas fa-users"></i>
@@ -202,7 +202,7 @@ include "header.php"
                                 <li class="nav-item">
                                     <a href="reporteFacturas.php" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Reporte de Facturas</p>
+                                        <p>Reporte de Ventas</p>
                                     </a>
                                 </li>
                             <?php } ?>
@@ -215,6 +215,12 @@ include "header.php"
                         </ul>
                     </li>
                 <?php } ?>
+                <li class="nav-item">
+                    <a href="secundario.php" class="nav-link">
+                        <i class="fa fa-user"></i>
+                        <p>Sección Cliente</p>
+                    </a>
+                </li>
                 <li class="nav-item">
                     <a href="soporte.php" class="nav-link">
                         <i class="fa fa-info-circle"></i>

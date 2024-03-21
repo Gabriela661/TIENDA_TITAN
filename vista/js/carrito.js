@@ -335,7 +335,7 @@ $(document).ready(function () {
                         <div class="col">
                             <div class="row mb-3">
                                 <div class="col">
-                                    <label id="nombreProducto" name="nombreProducto" class="h4">${producto.nombre_producto}</label>
+                                    <h6 style="color:black" id="nombreProducto" name="nombreProducto" class="h6">${producto.nombre_producto}</h6>
                                 </div>
                                 <div class="col-auto">
                                     <button data-id_carrito="${producto.id_carrito}" data-id_usuario="1" id="eliminarProducto"type="button" class="btn-close" >
@@ -345,7 +345,7 @@ $(document).ready(function () {
                             </div>
                             <div class="row">
                                 <div class="col">
-                                    <label id="cantidad" name="cantidad" class="h5">${producto.cantidad_carrito} x ${producto.precio_producto}</label>
+                                    <label id="cantidad" name="cantidad" class="h6">${producto.cantidad_carrito} x ${producto.precio_producto}</label>
                                 </div>
                             </div>
                         </div>

@@ -1,12 +1,11 @@
 $(document).ready(function () {
-  $(document).on('click', '.product-image-thumb', function () {
-    
-       console.log("brfre");
-       var $image_element = $(this).find("img");
-       $(".product-image").prop("src", $image_element.attr("src"));
-       $(".product-image-thumb.active").removeClass("active");
-       $(this).addClass("active");
-     });
+  $(document).on("click", ".product-image-thumb", function () {
+    console.log("brfre");
+    var $image_element = $(this).find("img");
+    $(".product-image").prop("src", $image_element.attr("src"));
+    $(".product-image-thumb.active").removeClass("active");
+    $(this).addClass("active");
+  });
   /*FUNCION PARA ENVIAR DATOS AL CONTROLADOR*/
   function enviarDatos(url, formData, successCallback, errorCallback) {
     $.ajax({
@@ -46,10 +45,10 @@ $(document).ready(function () {
             imgArray.push(baseUrl + "/" + url);
           });
           template += ` 
-                <div class="col-lg-5 mt-4">
-              <h3 class="d-inline-block d-sm-none">LOWA Men’s Renegade GTX Mid Hiking Boots Review</h3>
+                <div class="col-lg-5 mt-4 ">
+
               <div class="col-12">
-                <img src="${imgArray[0]}" class="product-image" alt="Product Image">
+                <img style="height:665px" src="${imgArray[3]}" class="product-image" alt="Product Image">
               </div>
               <div class="col-12 product-image-thumbs">
                 <div class="product-image-thumb active"><img src="${imgArray[1]}" alt="Product Image"></div>
@@ -59,35 +58,35 @@ $(document).ready(function () {
 
               </div>
             </div>
-                <div class="col-lg-7 mt-4">
+                <div  class="col-lg-7 mt-4">
                     <div class="card">
                         <div class="card-body">
-                            <h1 class="h2">${detalle.nombre_producto}</h1>
-                            <p class="h3 py-2">S/. ${detalle.precio_producto}</p>
+                            <h1 class="h2" style="color:black" >${detalle.nombre_producto}</h1>
+                            <p style="color:black" class="h4 py-2">S/. ${detalle.precio_producto}</p>
                             <p class="py-2">
                                 <i class="fa fa-star text-warning"></i>
                                 <i class="fa fa-star text-warning"></i>
                                 <i class="fa fa-star text-warning"></i>
                                 <i class="fa fa-star text-warning"></i>
                                 <i class="fa fa-star text-secondary"></i>
-                                <span class="list-inline-item text-dark">Puntuación 4.8 | 36 Comentarios</span>
+                                <span style="color:black" class="h4 list-inline-item text-dark">Puntuación 4.8 | 36 Comentarios</span>
                             </p>
                             <ul class="list-inline">
                                 <li class="list-inline-item">
-                                    <h6>Categoría:${detalle.categoria_producto}</h6>
+                                    <h4 style="color:black">Categoría:${detalle.categoria_producto}</h4>
                                 </li>
                             </ul>
-                            <h6>Descripción:</h6>
-                            <p>${detalle.descripcion_producto}</p>
+                            <h4 style="color:black" >Descripción:</h4>
+                            <p class="h4" style="color:black">${detalle.descripcion_producto}</p>
                             <ul class="list-inline">
                                 <li class="list-inline-item">
-                                    <h6>Marca:${detalle.marca_producto}</h6>
+                                    <h4 class="h4" style="color:black">Marca:${detalle.marca_producto}</h4>
                                 </li>
 
                             </ul>
                              <ul class="list-inline">
                                 <li class="list-inline-item">
-                                    <h6>Stock disponible:${detalle.stock_producto}</h6>
+                                    <h6 class="h4" style="color:black">Stock disponible: ${detalle.stock_producto}</h6>
                                 </li>
 
                             </ul>
@@ -95,25 +94,27 @@ $(document).ready(function () {
                                 <input type="hidden" name="product-title" value="Activewear">
                                <div class="row">
                                     
-                                    <div class="col-auto">
-                                        <button class="btn btn-success" id="btn-minus">-</button>
-                                    </div>
-                                    <div class="col-auto">
-                                        <input  class="form-control" id="cantidad" value="1" style="border:0; width: 40px;" readonly>
-                                    </div>
-                                    <div class="col-auto">
-                                        <button class="btn btn-success" id="btn-plus">+</button>
-                                    </div>
+                                   <div class="col-auto">
+    <button class="btn-add" id="btn-minus" style="background-color: orangered; color: white; padding">-</button>
+</div>
+<div class="col-auto">
+    <input id="cantidad" value="1" style="border: 0; width: 40px; text-align: center;" readonly>
+
+</div>
+<div class="col-auto">
+    <button class="btn-add" id="btn-plus" style="background-color: orangered; color: white;">+</button>
+</div>
+
                                 </div>
 
-                             <div class="row pb-3">
+                             <div class="row pb-4">
                                 <div class="col-lg-6 d-grid">
-                                    <button class="btn btn-success text-white mt-2" data-id_producto="${detalle.id_producto}" id="agregarCarritoBtndetalle">
-                                        <i class="fas fa-cart-plus"></i>
+                                    <button style="background-color: green" class="btn  text-white mt-2" data-id_producto="${detalle.id_producto}" id="agregarCarritoBtndetalle">
+                                        <i class="fas fa-cart-plus"></i> Agregar carrito 
                                     </button>
                                 </div>
                                 <div class="col-lg-6 d-grid">
-                                    <a id="verCarrito" class="btn btn-success text-white mt-2" href="#" data-bs-toggle="modal" data-bs-target="#modalCarrito">
+                                    <a style="background-color: orangered"  id="verCarrito" class="btn text-white mt-2" href="#" data-bs-toggle="modal" data-bs-target="#modalCarrito">
                                        <i class="far fa-eye"></i> Ver Carrito
                                     </a>
                                 </div>
@@ -179,10 +180,10 @@ $(document).ready(function () {
                         <div class="col">
                             <div class="row mb-3">
                                 <div class="col">
-                                    <label id="nombreProducto" name="nombreProducto" class="h4">${producto.nombre_producto}</label>
+                                    <label id="nombreProducto" name="nombreProducto" class="h5">${producto.nombre_producto}</label>
                                 </div>
                                 <div class="col-auto">
-                                    <button data-id_carrito="${producto.id_carrito}" data-id_usuario="1" id="eliminarProducto"type="button" class="btn-close" >
+                                    <button data-id_carrito="${producto.id_carrito}" data-id_usuario="1" id="eliminarProducto"type="button" class="close" >
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>

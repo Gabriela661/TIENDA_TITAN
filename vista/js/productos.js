@@ -155,9 +155,6 @@ $(document).ready(function () {
 
                                     <div class="showcase-actions">
       
-                                        <button class="btn-action">
-                                            <ion-icon name="heart-outline"></ion-icon>
-                                        </button>
 
                                         <a href="detalle.php?id_producto=${productoTienda.id_producto}"  class="btn-action">
                                             <ion-icon name="eye-outline"></ion-icon>
@@ -174,6 +171,7 @@ $(document).ready(function () {
                                         <button data-id_producto="${productoTienda.id_producto}"  id="agregarCarritoBtn" class="btn-action">
                                             <ion-icon name="bag-add-outline"></ion-icon>
                                         </button>
+                                        
                                     </div>
                                 </div>
                                 <div class=" showcase-content">

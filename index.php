@@ -83,9 +83,24 @@
     <!-- header -->
     <header id="home" class="header">
         <div class="overlay text-white text-center">
-            <img src="assets/img/logo_titan_oficial.png" style="width: 400px;" alt="">
-            <h4 class="section-title mb-5" style="color:orangered">MEJORES PRODUCTOS A MEJOR PRECIO</h4>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <img src="assets/img/logo_titan_oficial.png" style="width:700px;" alt="">
+
             <a class="nav-link btn ml-xl-4 " style=" background-color: orangered; color: white;font-weight: bold;" href="tienda.php">VER PRODUCTOS</a>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <h1 class="section-title mb-5">MEJORES PRODUCTOS A MEJOR PRECIO</h1>
         </div>
     </header>
     <!-- ./header -->

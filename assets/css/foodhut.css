@@ -549,15 +549,12 @@ mark,
   max-width: 100%;
   height: auto;
 }
-
-.img-thumbnail {
-  padding: 0.25rem;
-  background-color: #a4acb4;
-  border: 1px solid #dee2e6;
-  border-radius: 0.2rem;
+.product-image {
   max-width: 100%;
   height: auto;
+  width: 100%;
 }
+
 
 .figure {
   display: inline-block;
@@ -2925,6 +2922,28 @@ textarea.form-control.is-invalid {
   background-color: transparent;
   border: 1px solid transparent;
   padding: 0.4rem 0.78rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: 0.2rem;
+  -webkit-transition: color 0.15s ease-in-out,
+    background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
+    box-shadow 0.15s ease-in-out;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+.btn-add {
+  display: inline-block;
+  font-weight: 400;
+  color: #f8f9fa;
+  text-align: center;
+  vertical-align: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background-color: transparent;
+  border: 1px solid transparent;
+  padding: 0rem 0.78rem;
   font-size: 1rem;
   line-height: 1.5;
   border-radius: 0.2rem;
@@ -11215,12 +11234,12 @@ a.close.disabled {
 }
 
 .text-primary {
-  color: #ff214f !important;
+  color: orangered !important;
 }
 
 a.text-primary:hover,
 a.text-primary:focus {
-  color: #d4002c !important;
+  color: orangered !important;
 }
 
 .text-secondary {
@@ -11424,7 +11443,6 @@ a.text-dark:focus {
 
 body {
   font-family: "ULTIMO News702BT-Bold.ttf";
-  color: #f8f9fa;
   background: #343a40;
   box-sizing: border-box;
 }
@@ -11834,4 +11852,36 @@ pre {
 .gallary .gallary-item:hover .gallary-overlay {
   visibility: visible;
   opacity: 1;
+}
+.product-image {
+  max-width: 100%;
+  height: auto;
+  width: 100%;
+}
+.product-image-thumbs {
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 2rem;
+}
+.product-image-thumb {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.075);
+  border-radius: 0.25rem;
+  background-color: #fff;
+  border: 1px solid #dee2e6;
+  display: -ms-flexbox;
+  display: flex;
+  margin-right: 1rem;
+  max-width: 7rem;
+  padding: 0.5rem;
+}
+.product-image-thumb img {
+  max-width: 100%;
+  height: auto;
+  -ms-flex-item-align: center;
+  align-self: center;
+}
+.product-image-thumb:hover {
+  opacity: 0.5;
 }

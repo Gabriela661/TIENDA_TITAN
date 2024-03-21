@@ -26,7 +26,7 @@ $pagina = !empty($pagina) ? $pagina : 1;
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Start your development">
     <meta name="author" content="Devcrud">
-    <title>TITAN</title>
+    <title>TIENDA</title>
     <!-- librerias -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="assets/css/foodhut.css">
@@ -69,7 +69,7 @@ $pagina = !empty($pagina) ? $pagina : 1;
                 <!-- sub total -->
                 <div class="row mb-3">
                     <div class="col">
-                        <label class=" ml-3 h3" id="subtotal" name="subtotal"></label>
+                        <label class=" ml-3 h5" id="subtotal" name="subtotal"></label>
                     </div>
                 </div>
                 <!-- Pie del modal -->

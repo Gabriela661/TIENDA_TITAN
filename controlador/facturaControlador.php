@@ -88,11 +88,11 @@ class MYPDF extends TCPDF
         //LOGO DE LA TIENDA
         $this->setJPEGQuality(90);
         $this->Image(
-            '../assets/img/logo_titan1.png',
+            '../assets/img/titan_logo_negro.png',
             10,
-            10,
+            5,
             45,
-            20,
+            30,
             'PNG',
             'https://titan.com/'
         );

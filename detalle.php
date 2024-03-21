@@ -22,12 +22,13 @@ if (isset($_GET['id_producto'])) {
     <meta name="author" content="Devcrud">
     <title>DETALLE PRODUCTO</title>
     <!-- librerias -->
+    <link rel="stylesheet" href="assets/css/style-prefix.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="assets/css/foodhut.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="./assets/css/fontawesome.min.css">
     <link rel="stylesheet" href="assets/css/stilos.css">
-    <link rel="stylesheet" href="assets/css/style-prefix.css">
+
 
 
 </head>
@@ -70,13 +71,13 @@ if (isset($_GET['id_producto'])) {
                 <!-- Pie del modal -->
                 <div class="modal-footer d-flex justify-content-center ">
                     <div class="row col-12">
-                        <div class="col-6 col-md-6 col-lg-4">
+                        <div class="col-6 col-md-6 col-lg-5">
                             <a id="comprar" href="pagoProductos.php" type="button" class="btn btn-warning btn-block">
                                 <i class="fas fa-shopping-cart"></i>
                                 Comprar
                             </a>
                         </div>
-                        <div class="col-6 col-md-6 col-lg-8">
+                        <div class="col-6 col-md-6 col-lg-7">
                             <a id="btnLimpiarCarrito" class="btn btn-danger btn-block">
                                 <i class="fas fa-broom"></i>Limpiar el Carrito
                             </a>
@@ -96,8 +97,6 @@ if (isset($_GET['id_producto'])) {
         <br>
         <br>
         <br>
-        <br>
-        <br>
         <!-- Input oculto para asignar el id del usuario-->
         <input id="id_usuario" type="hidden" value="<?php echo $user_id ?>">
         <div class="container pb-5">
@@ -107,18 +106,18 @@ if (isset($_GET['id_producto'])) {
             </div>
         </div>
         <!-- PRODUCTOS SIMILARES -->
-        <div id="gallary" class="text-center has-bg-overlay text-light  middle-items wow fadeIn">
-            <h4 class="section-title ">PRODUCTOS SIMILARES</h4>
+        <div id="gallary" class="text-center  text-light  middle-items wow fadeIn">
+            <h4 class="h4 mb-2">PRODUCTOS SIMILARES</h4>
         </div>
 
         <!-- carrusel de productos similares -->
-        <div class="container-fluid wow fadeIn has-bg-overlay text-dark has-height-md middle-items">
-            <div id="carouselProductosSimilares" class="carousel slide justify-content-center" data-ride="carousel">
+        <div class="container-fluid wow fadeIn  text-dark has-height-md middle-items">
+            <div id="carouselProductosSimilares" class=" product-main carousel slide justify-content-center" data-ride="carousel">
                 <!-- Indicadores -->
                 <ol class="carousel-indicators">
                 </ol>
                 <!-- Contenido del carrusel -->
-                <div class="carousel-inner row ">
+                <div class="carousel-inner row product-grid ">
                     <!-- Los productos se agregan dinámicamente aquí -->
                 </div>
                 <!-- Flecha izquierda -->

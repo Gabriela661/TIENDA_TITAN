@@ -1,8 +1,6 @@
 $(document).ready(function () {
-
- 
   const idCategoria1 = $("#idCategoria").val();
-
+  mostrarOfertas();
   // Verifica si el valor no está vacío
   if (idCategoria1 != "") {
     // El campo está lleno, realiza la acción que deseas aquí
@@ -139,7 +137,7 @@ $(document).ready(function () {
     // console.log(paginaSeleccionada);
     $.post(
       "controlador/productosControlador.php",
-      { consulta, funcion,pagina:paginaSeleccionada },
+      { consulta, funcion, pagina: paginaSeleccionada },
       (response) => {
         const productosTienda = JSON.parse(response);
         let template = "";
@@ -281,23 +279,23 @@ $(document).ready(function () {
 
   CantidadPaginas();
   /*FUNCION OBTENER LA CANTIDAD DE PAGINAS*/
-function CantidadPaginas() {
-  const idCategoria = $("#idCategoria").val();
-  const funcion = "CantidadPaginas";
-  $.post(
-    "controlador/productosControlador.php",
-    { funcion },
-    function (response) {
-      const cantidad = parseInt(response.trim()); // Convierte el texto a un número entero
+  function CantidadPaginas() {
+    const idCategoria = $("#idCategoria").val();
+    const funcion = "CantidadPaginas";
+    $.post(
+      "controlador/productosControlador.php",
+      { funcion },
+      function (response) {
+        const cantidad = parseInt(response.trim()); // Convierte el texto a un número entero
 
-      if (!isNaN(cantidad)) {
-        // console.log("Cantidad de productos:", cantidad);
+        if (!isNaN(cantidad)) {
+          // console.log("Cantidad de productos:", cantidad);
 
-        // Calcular el número de páginas
-        const paginas = Math.ceil(cantidad / 12); // Suponiendo que deseas mostrar 12 productos por página
+          // Calcular el número de páginas
+          const paginas = Math.ceil(cantidad / 12); // Suponiendo que deseas mostrar 12 productos por página
 
-        let paginaActual = parseInt($("#paginaSeleccionada").val());
-        let paginacionHTML = `
+          let paginaActual = parseInt($("#paginaSeleccionada").val());
+          let paginacionHTML = `
                 <ul class="pagination justify-content-center">
                     <li class="page-item${
                       paginaActual === 1 ? " disabled" : ""
@@ -313,22 +311,22 @@ function CantidadPaginas() {
                         }" tabindex="-1">Anterior</a>
                     </li>`;
 
-        // Calcular el rango de páginas a mostrar
-        const rango = 2; // Número de páginas a mostrar antes y después de la página actual
+          // Calcular el rango de páginas a mostrar
+          const rango = 2; // Número de páginas a mostrar antes y después de la página actual
 
-        for (
-          let i = Math.max(1, paginaActual - rango);
-          i <= Math.min(paginas, paginaActual + rango);
-          i++
-        ) {
-          paginacionHTML += `<li class="page-item${
-            i === paginaActual ? " active" : ""
-          }"><a class="page-link" href="tienda.php?pagina=${i}${
-            idCategoria ? `&id_categoria=${idCategoria}` : ""
-          }">${i}</a></li>`;
-        }
+          for (
+            let i = Math.max(1, paginaActual - rango);
+            i <= Math.min(paginas, paginaActual + rango);
+            i++
+          ) {
+            paginacionHTML += `<li class="page-item${
+              i === paginaActual ? " active" : ""
+            }"><a class="page-link" href="tienda.php?pagina=${i}${
+              idCategoria ? `&id_categoria=${idCategoria}` : ""
+            }">${i}</a></li>`;
+          }
 
-        paginacionHTML += `
+          paginacionHTML += `
                     <li class="page-item${
                       paginaActual === paginas ? " disabled" : ""
                     }">
@@ -343,13 +341,88 @@ function CantidadPaginas() {
                         }">Siguiente</a>
                     </li>
                 </ul>`;
-        $("#paginacion").html(paginacionHTML);
-      } else {
-        console.error("La respuesta no contiene una cantidad válida.");
+          $("#paginacion").html(paginacionHTML);
+        } else {
+          console.error("La respuesta no contiene una cantidad válida.");
+        }
       }
-    }
-  );
-}
-
+    );
+  }
   /*FIN FUNCION OBTENER LA CANTIDAD DE PAGINAS*/
+
+  /*FUNCION PARA MOSTRAR LAS OFERTAS*/
+  function mostrarOfertas() {
+    funcion = "mostrarOfertas";
+    $.post("controlador/productosControlador.php", { funcion }, (response) => {
+      const productosOferta = JSON.parse(response);
+      let productosHtml = "";
+      let itemsPerSlide = 5; // Número de productos por slide
+      productosOferta.forEach((producto, index) => {
+        if (index % itemsPerSlide === 0) {
+          productosHtml += `<div class="carousel-item ${
+            index === 0 ? "active" : ""
+          }"><div class="row justify-content-center ">`;
+        }
+        productosHtml += `
+                              
+  <div class="showcase" style="background-color: white;">
+                                <div class="showcase-banner">
+
+                                    <img src="${productosOferta.imagen_producto}" alt="imagen producto"  class="product-img default p-4">
+                                    <img  src="${productosOferta.imagen_producto}" alt="Mens Winter Leathers Jackets" width="300" class="product-img hover p-3">
+
+                                    <p class="showcase-badge" >Stock: ${productosOferta.stock_producto}</p>
+
+                                    <div class="showcase-actions">
+      
+
+                                        <a href="detalle.php?id_producto=${productoTienda.id_producto}"  class="btn-action">
+                                            <ion-icon name="eye-outline"></ion-icon>
+                                        </a>
+                                        <button class="btn-action restarBtn">
+                                             <ion-icon name="remove"></ion-icon>
+                                        </button>
+                                        <button >
+                                            <input class="cantidadInput" type="text" value="1" min="0" style="border:0; width: 25px;" readonly>
+                                        </button>
+                                        <button class="btn-action sumarBtn">
+                                        <ion-icon name="add"></ion-icon>                                 
+                                        </button>
+                                        <button data-id_producto="${productoTienda.id_producto}"  id="agregarCarritoBtn" class="btn-action">
+                                            <ion-icon name="bag-add-outline"></ion-icon>
+                                        </button>
+                                        
+                                    </div>
+                                </div>
+                                <div class=" showcase-content">
+                                    <a href="#"  class="showcase-category">Marca: ${productoTienda.marca_producto}</a>
+                                    <a href="#">
+                                        <h3 class="showcase-title"  style="color: black;">${productoTienda.nombre_producto}</h3>
+                                    </a>
+                                    <div class="showcase-rating">
+                                        <ion-icon name="star"></ion-icon>
+                                        <ion-icon name="star"></ion-icon>
+                                        <ion-icon name="star"></ion-icon>
+                                        <ion-icon name="star-outline"></ion-icon>
+                                        <ion-icon name="star-outline"></ion-icon>
+                                    </div>
+                                    <div class="price-box">
+                                        <p class="price">S/. ${productoTienda.precio_producto}</p>
+                                    </div>
+                                </div>
+                            </div>
+        `;
+        if (
+          (index + 1) % itemsPerSlide === 0 ||
+          index === productosOferta.length - 1
+        ) {
+          productosHtml += `</div></div>`;
+        }
+      });
+
+      $("#carouselOfertas .carousel-inner").html(productosHtml);
+      $("#carouselOfertas").carousel(0); // Mueve el carrusel al primer producto al terminar de cargar
+    });
+  }
+  /*FIN DE FUNCION PARA MOSTRAR LAS OFERTAS*/
 });

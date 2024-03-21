@@ -1,6 +1,5 @@
 $(document).ready(function () {
   $(document).on("click", ".product-image-thumb", function () {
-    console.log("brfre");
     var $image_element = $(this).find("img");
     $(".product-image").prop("src", $image_element.attr("src"));
     $(".product-image-thumb.active").removeClass("active");
@@ -45,9 +44,9 @@ $(document).ready(function () {
             imgArray.push(baseUrl + "/" + url);
           });
           template += ` 
-                <div class="col-lg-5 mt-4 ">
+                <div class="col-lg-5 mt-2 ">
                     <div class="col-12">
-                      <img style="height:500px" src="${imgArray[3]}" class="product-image img-fluid" alt="Product Image">
+                      <img style="height:650px" src="${imgArray[3]}" class="product-image img-fluid" alt="Product Image">
                     </div>
                     <div class="col-12 product-image-thumbs">
                       <div class="product-image-thumb active"><img src="${imgArray[1]}" alt="Product Image"></div>
@@ -57,43 +56,85 @@ $(document).ready(function () {
                       </div>
                     </div>
                 </div>
-                <div  class="col-lg-7 mt-4">
-                    <div class="card" style="height:650px">
-                        <div class="card-body">
-                            <h2 class="h2" style="color:black;font-weight:bold" >${detalle.nombre_producto}</h2>
-                            <p style="color:black ;" class="h5 py-1">Precio: S/. ${detalle.precio_producto}</p>
-                            <p style="color:black" class="h5 py-1">Categoria: ${detalle.categoria_producto}</p>
-                            <p style="color:black" class="h5 py-1">Descripción: ${detalle.descripcion_producto}</p>
-                            <p style="color:black" class="h5 py-1">Marca: ${detalle.marca_producto}</p>
-                             <p style="color:black" class="h5 py-1">Cantidad Disponible: ${detalle.stock_producto}</p>             
+              <div class="col-lg-7 mt-2">
+    <div class="card" style=" padding: 10px;">
+        <div class="card-body" style="padding: 10px;">
+            <h2 class="h2" style="color: black; font-weight: bold; padding: 10px;">${detalle.nombre_producto}</h2>
+            <hr style="border-top: 2px solid orangered; margin-bottom: 10px;">
+            <p style="color: black; padding: 10px;" class="h5 py-1">Precio: S/. ${detalle.precio_producto}</p>
+            <p style="color: black; padding: 10px;" class="h5 py-1">Categoria: ${detalle.categoria_producto}</p>
+             <div class="alert" role="alert" style="padding: 10px; background-color: rgba(255, 69, 0, 0.5);">
+                <p style="color: black; padding: 10px;" class="h5 py-1">Cantidad Disponible: ${detalle.stock_producto}</p>
+            </div>
+             <p style="color: black; padding: 10px;" class="h5 py-1">Marca: ${detalle.marca_producto}</p>
+            <p style="color: black; padding: 10px;" class="h5 py-1">Descripción: ${detalle.descripcion_producto}</p>
+           
+            <div class="row align-items-center" style="padding: 10px;">
+                <div class="col-auto mb-2 mb-md-0">
+                    <button class="btn-add btn h5" id="btn-minus" style="background-color: orangered; color: white;">-</button>
+                </div>
+                <div class="col-auto mb-2 mb-md-0">
+                    <input id="cantidad" class="h5" value="1" style="border: 0; width: 40px; text-align: center; padding: 5px;" readonly>
+                </div>
+                <div class="col-auto mb-2 mb-md-0">
+                    <button class="btn-add btn h5" id="btn-plus" style="background-color: orangered; color: white;">+</button>
+                </div>
+                <div class="col-md-4 col-12 mb-2">
+                    <button style="background-color: orangered; width: 100%; padding: 10px;" class="btn text-white" data-id_producto="${detalle.id_producto}" id="agregarCarritoBtndetalle">
+                        <i class="fas fa-cart-plus"></i>
+                    </button>
+                </div>
 
-                           <div class="row align-items-center">
-      <div class="col-auto mb-2 mb-md-0">
-            <button class="btn-add btn h5" id="btn-minus" style="background-color: orangered; color: white;">-</button>
-        </div>
-        <div class="col-auto mb-2 mb-md-0 ">
-            <input id="cantidad" class="h5" value="1" style="border: 0; width: 40px; text-align: center;" readonly>
-        </div>
-        <div class="col-auto mb-2 mb-md-0 ">
-            <button class="btn-add btn h5" id="btn-plus" style="background-color: orangered; color: white;">+</button>
-        </div>
-      <div class="col-md-4 col-12 mb-2 ">
-        <button style="background-color: green; width: 100%;" class="btn text-white" data-id_producto="${detalle.id_producto}" id="agregarCarritoBtndetalle">
-            <i class="fas fa-cart-plus"></i> Agregar al carrito 
-        </button>
+                <div class="col-md-4 col-12 mb-2 h5">
+                    <a style=" width: 100%; padding: 10px;" id="verCarrito" class="btn btn-secondary text-white" href="#" data-bs-toggle="modal" data-bs-target="#modalCarrito">
+                        <i class="far fa-eye"></i> Ver Carrito
+                    </a>
+                </div>
+                </div>
+                <div class="row align-items-center" style="padding: 10px;">
+    <div class="col-12 mb-2 text-center">
+        <h4 class="h4" style="color: black; font-weight: bold;">Consultar Stock</h4>
+        <hr style="border-top: 2px solid orangered; margin-bottom: 10px;">
     </div>
-    <div class="col-md-4 col-12 mb-2 h5">
-        <a style="background-color: orangered; width: 100%;" id="verCarrito" class="btn text-white" href="#" data-bs-toggle="modal" data-bs-target="#modalCarrito">
-            <i class="far fa-eye"></i> Ver Carrito
-        </a>
+
+   <div class="col-md-6 col-12 mb-2 text-center">
+    <div class="text-secondary" style="width: 100%; padding: 10px;">
+        <i class="fas fa-phone" style="color: orangered;"></i> 932 566 922
+    </div>
+</div>
+<div class="col-md-6 col-12 mb-2 text-center">
+    <div class="text-secondary" style="width: 100%; padding: 10px;">
+        <i class="fab fa-whatsapp" style="color: orangered;"></i> 943 212 297
     </div>
 </div>
 
 
+</div>
+  <div class="row align-items-center" style="padding: 10px;">
+    <div class="col-12 mb-2 text-center">
+        <h4 class="h4" style="color: black; font-weight: bold;">Especificaciones tecnicas</h4>
+        <hr style="border-top: 2px solid orangered; margin-bottom: 10px;">
+    </div>
 
-                        </div>
-                    </div>
-                </div>`;
+  <div class="col-md-6 col-12 mb-2">
+    <button class="btn btn-outline-secondary" style="width: 100%; padding: 10px;">
+        <i class="fas fa-file-pdf" style="color: orangered;"></i> Certificaciones de Calidad 
+    </button>
+</div>
+<div class="col-md-6 col-12 mb-2">
+    <label class="btn btn-outline-secondary" style="width: 100%; padding: 10px;">
+        <i class="fas fa-file-pdf" style="color: orangered;"></i>Especificaciones Técnicas
+    </label>
+</div>
+
+</div>
+
+
+        </div>
+    </div>
+</div>
+
+`;
         });
         $("#detalle_producto").html(template);
       }
@@ -150,7 +191,7 @@ $(document).ready(function () {
                         <div class="col">
                             <div class="row mb-3">
                                 <div class="col">
-                                    <label id="nombreProducto" name="nombreProducto" class="h5">${producto.nombre_producto}</label>
+                                    <label id="nombreProducto" name="nombreProducto" class="h6">${producto.nombre_producto}</label>
                                 </div>
                                 <div class="col-auto">
                                     <button data-id_carrito="${producto.id_carrito}" data-id_usuario="1" id="eliminarProducto"type="button" class="close" >
@@ -160,7 +201,7 @@ $(document).ready(function () {
                             </div>
                             <div class="row">
                                 <div class="col">
-                                    <label id="cantidad" name="cantidad" class="h5">${producto.cantidad_carrito} x ${producto.precio_producto}</label>
+                                    <label id="cantidad" name="cantidad" class="h6">${producto.cantidad_carrito} x ${producto.precio_producto}</label>
                                 </div>
                             </div>
                         </div>
@@ -190,31 +231,29 @@ $(document).ready(function () {
     }
   });
   /*FIN FUNCION PARA CERRAR EL MODAL*/
-  productosSimilares(); 
+  productosSimilares();
+  /*FIN MOSTRAR LOS PRODUCTOS SIMILARES*/
   function productosSimilares() {
     const idProducto = $("#id_producto").val();
-    console.log("par "+idProducto);
     funcion = "productosSimilares";
     $.post(
       "controlador/productosControlador.php",
       { idProducto, funcion },
       (response) => {
-        console.log(response);
         const productos = JSON.parse(response);
         let productosHtml = "";
-        let itemsPerSlide = 4; // Número de productos por slide
+        let itemsPerSlide = 5; // Número de productos por slide
         productos.forEach((producto, index) => {
           if (index % itemsPerSlide === 0) {
             productosHtml += `<div class="carousel-item ${
               index === 0 ? "active" : ""
-            }"><div class="row justify-content-center">`;
+            }"><div class="row justify-content-center ">`;
           }
           productosHtml += `
-          <div class="showcase" style="background-color: white;">
+                              <div class="showcase bg-white mx-3 mb-2 " style="width:200px" >
                                 <div class="showcase-banner">
-
-                                    <img src="${producto.imagen_producto}" alt="imagen producto"  class="product-img default p-4">
-                                    <img  src="${producto.imagen_producto}" alt="Mens Winter Leathers Jackets" width="300" class="product-img hover p-3">
+                                    <img style="" src="${producto.imagen_producto}" alt="imagen producto"  class="product-img default p-2">
+                                    <img  src="${producto.imagen_producto}" alt="Mens Winter Leathers Jackets" width="200" class="product-img hover p-3">
 
                                     <p class="showcase-badge" >Stock: ${producto.stock_producto}</p>
 
@@ -270,4 +309,5 @@ $(document).ready(function () {
       }
     );
   }
+  /*FIN DE FUNCION MOSTRAR LOS PRODUCTOS SIMILARES*/
 });

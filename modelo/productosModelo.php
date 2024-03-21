@@ -322,7 +322,7 @@ GROUP BY c.id_categoria, c.nombre_categoria, c.imagen;";
     /**
      * Obtiene y devuelve la lista de productos similares de la tienda  con respecto a un producto
      *
-     * @return array Lista de productos de la tienda.
+     * @return array Lista de productos similares de la tienda.
      */
     public function productosSimilares()
     {
@@ -363,6 +363,44 @@ GROUP BY c.id_categoria, c.nombre_categoria, c.imagen;";
         $queryProductosSimilares->bindParam(':idCategoria', $idCategoria, PDO::PARAM_INT);
         $queryProductosSimilares->execute();
         $this-> objetos = $queryProductosSimilares->fetchAll();
+        return $this->objetos;
+    }
+    /**
+     * Obtiene y devuelve la lista de productos similares de la tienda  con respecto a un producto
+     *
+     * @return array Lista de productos similares de la tienda.
+     */
+    public function mostrarOfertas()
+    {    
+
+        $sql = "SELECT 
+            p.id_producto,
+            p.nombre_producto,
+            p.marca_producto,
+            p.descripcion_producto,
+            p.stock_producto,
+            p.precio_producto,
+            p.descuento,
+            ROUND(p.precio_producto - (p.precio_producto * p.descuento / 100), 2) AS precio_descuento, -- Calculamos y redondeamos el precio de descuento
+            c.nombre_categoria AS categoria_producto,
+            (
+                SELECT url_imagen
+                FROM imagen i
+                WHERE i.id_producto = p.id_producto
+                ORDER BY i.id_imagen ASC
+                LIMIT 1
+            ) AS imagen_producto
+        FROM
+            producto p
+        JOIN
+            categoria c ON p.id_categoria = c.id_categoria
+        WHERE
+            p.descuento > 0; -- Filtramos por productos con descuento mayor a 0
+        ";
+
+        $query = $this->acceso->prepare($sql);
+        $query->execute();
+        $this->objetos = $query->fetchAll();
         return $this->objetos;
     }
 }

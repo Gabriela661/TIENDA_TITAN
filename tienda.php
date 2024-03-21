@@ -75,13 +75,13 @@ $pagina = !empty($pagina) ? $pagina : 1;
                 <!-- Pie del modal -->
                 <div class="modal-footer d-flex justify-content-center ">
                     <div class="row col-12">
-                        <div class="col-6 col-md-6 col-lg-4">
+                        <div class="col-6 col-md-6 col-lg-5">
                             <a id="comprar" href="pagoProductos.php" type="button" class="btn btn-warning btn-block">
                                 <i class="fas fa-shopping-cart"></i>
                                 Comprar
                             </a>
                         </div>
-                        <div class="col-6 col-md-6 col-lg-8">
+                        <div class="col-6 col-md-6 col-lg-7">
                             <a id="btnLimpiarCarrito" class="btn btn-danger btn-block">
                                 <i class="fas fa-broom"></i>Limpiar el Carrito
                             </a>
@@ -106,6 +106,39 @@ $pagina = !empty($pagina) ? $pagina : 1;
         <!-- Input oculto para asignar el id del usuario-->
         <input id="id_usuario" type="hidden" value="<?php echo $user_id ?>">
         <input id="paginaSeleccionada" class="d-none" name="pagina" value="<?php echo $pagina; ?>">
+        <!-- Categorias -->
+        <div id="gallary" class="text-center text-light  middle-items wow fadeIn">
+            <h4 class="section-title ">APROVECHA NUESTRAS OFERTAS</h4>
+        </div>
+
+        <!-- carrusel de categorias -->
+        <div class="container-fluid wow fadeIn  text-dark has-height-md ">
+            <div id="carouselOfertas" class="carousel slide justify-content-center" data-ride="carousel row">
+                <!-- Indicadores -->
+                <ol class="carousel-indicators">
+                </ol>
+
+                <!-- Contenido del carrusel -->
+                <div class=" carousel-inner ">
+                    <div class="product-box">
+                        <div class="product-main">
+                            <div class="product-grid " id="h">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Flecha izquierda -->
+                <a class="carousel-control-prev" href="#carouselProductos" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <!-- Flecha derecha -->
+                <a class="carousel-control-next" href="#carouselProductos" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
         <div class="category">
             <div class="container pt-5">
                 <div class="category-item-container has-scrollbar" id="categoriaMenuHeader">

@@ -1,26 +1,27 @@
    <!-- Start Footer -->
    <!-- Footer -->
-   <footer class="text-center text-lg-start bg-body-tertiary text-muted">
+   <footer class="text-lg-start bg-body-tertiary text-muted">
 
        <!-- Section: Links  -->
        <section class="">
-           <div class="container text-center text-md-start mt-5">
+           <div class=" text-md-start mt-1"> <!-- Añadir la clase px-0 aquí -->
                <!-- Grid row -->
-               <div class="row mt-3">
+               <div class="mx-auto row px-0 mt-3">
                    <!-- Grid column -->
-                   <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                   <div class="col-md-4 col-lg-4 col-xl-4 mb-4">
                        <!-- Content -->
-                       <h6 class="text-uppercase fw-bold">
-                           <img src="assets/img/logo_titan_oficial.png" alt="" style="width: 200px; ">
+                       <h6 class="text-uppercase fw-bold text-center">
+                           <img src="assets/img/logo_titan_oficial.png" alt="" style="width: 200px; margin: auto; display: block;">
                        </h6>
                        <p style="text-align: left;">
-                           Somos una empresa especializada en la venta de fierros, tubos y drywall, ofreciendo una amplia gama de productos de alta calidad para satisfacer las necesidades de construcción y remodelación.
+                           Somos una tienda especializada en la venta de fierros, tubos y drywall, ofreciendo una amplia gama de productos de alta calidad para satisfacer las necesidades de construcción y remodelación.
                        </p>
                    </div>
+
                    <!-- Grid column -->
 
                    <!-- Grid column -->
-                   <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4" style="text-align: left;">
+                   <div class="col-md-2 col-lg-2 col-xl-2  mb-4" style="text-align: left;">
                        <!-- Links -->
                        <h6 class="text-uppercase fw-bold mb-4">
                            Categorias
@@ -35,10 +36,11 @@
                            <a href="tienda.php?id_categoria=3" class="text-reset">Drywall</a>
                        </p>
                    </div>
+
                    <!-- Grid column -->
 
                    <!-- Grid column -->
-                   <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4" style=" text-align: left;">
+                   <div class="col-md-2 col-lg-2 col-xl-2  mb-4" style=" text-align: left;">
                        <!-- Links -->
                        <h6 class="text-uppercase fw-bold mb-4">
                            Menú
@@ -59,21 +61,27 @@
                    <!-- Grid column -->
 
                    <!-- Grid column -->
-                   <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4" style="text-align: left;">
+                   <div class="col-md-4 col-lg-4 col-xl-4 mb-md-0 mb-4" style="text-align: left;">
                        <!-- Links -->
                        <h6 class="text-uppercase fw-bold mb-4">Ubicanos</h6>
-                       <p><i class="fas fa-home me-3"></i> Carretera Central Km 412 CPM Llicua - Amarilis -Huánuco </p>
-                       <p><i class="fas fa-envelope me-3"></i> Titan@example.com</p>
-                       <p> <i class="fab fa-whatsapp"></i> 94321197</p>
-                       <p> <i class="fab fa-whatsapp"></i> 93256692</p>
+                       <p><i class="fas fa-home me-3"></i> CARRETERA CENTRAL KM. 412 REF. FRENTE AL GRIFO RACING AMARILIS - HUÁNUCO</p>
+                       <p>
+                           <a class="text-muted" href="https://www.facebook.com/FIERROSACEROSTITAN/" target="_blank" rel="noopener noreferrer">
+                               <i class="fab fa-facebook me-3"></i> Fierros Y Aceros TITÁN
+                           </a>
+                       </p>
+
+                       <p> <i class="fas fa-phone me-3"></i>
+                           943 212 297</p>
+                       <p> <i class="fab fa-whatsapp"></i> 932 566 922</p>
                    </div>
 
                    <!-- Grid column -->
                </div>
                <!-- Grid row -->
            </div>
-           
        </section>
+
        <!-- Section: Links  -->
 
        <!-- Copyright -->

@@ -1,44 +1,35 @@
-let imagenVisibleYape = false;
-let imagenVisiblePlin = false;
-//Funcion para mostrar la imagen del QR de yape
+// Inicialmente, ocultar las imágenes
+document.getElementById("imagencargando").style.display = "none";
+document.getElementById("imagencargandoplin").style.display = "none";
+
+// Funcion para mostrar la imagen del QR de yape
 function image() {
-  if (!imagenVisibleYape) {
-    document.getElementById("imagencargando").innerHTML = "";
-    imagenVisibleYape = true;
+  var checkBoxYape = document.getElementById("imagen");
+  var checkBoxPlin = document.getElementById("imagen1");
+  var imagenYape = document.getElementById("imagencargando");
+  var imagenPlin = document.getElementById("imagencargandoplin");
 
-    // Deseleccionar la opción Plin si estaba seleccionada
-    if (imagenVisiblePlin) {
-      document.getElementById("imagen1").checked = false;
-      imagenVisiblePlin = false;
-      document.getElementById("imagencargandoplin").innerHTML = "";
-    }
-
-    imagen =
-      '<img src="assets/img/tienda/Yape.jpeg" class="img-fluid" alt="cargando..." />';
-    document.getElementById("imagencargando").innerHTML = imagen;
+  if (checkBoxYape.checked == true) {
+    checkBoxPlin.checked = false;
+    imagenPlin.style.display = "none";
+    imagenYape.style.display = "block";
   } else {
-    document.getElementById("imagencargando").innerHTML = "";
-    imagenVisibleYape = false;
+    imagenYape.style.display = "none";
   }
 }
-//Funcion para mostrar la imagen del QR de PLin
+
+// Funcion para mostrar la imagen del QR de Plin
 function image1() {
-  if (!imagenVisiblePlin) {
-    document.getElementById("imagencargandoplin").innerHTML = "";
-    imagenVisiblePlin = true;
+  var checkBoxYape = document.getElementById("imagen");
+  var checkBoxPlin = document.getElementById("imagen1");
+  var imagenYape = document.getElementById("imagencargando");
+  var imagenPlin = document.getElementById("imagencargandoplin");
 
-    // Deseleccionar la opción Yape si estaba seleccionada
-    if (imagenVisibleYape) {
-      document.getElementById("imagen").checked = false;
-      imagenVisibleYape = false;
-      document.getElementById("imagencargando").innerHTML = "";
-    }
-
-    imagen =
-      '<img src="assets/img/tienda/Plin.jpeg" class="img-fluid" alt="cargando..." />';
-    document.getElementById("imagencargandoplin").innerHTML = imagen;
+  if (checkBoxPlin.checked == true) {
+    checkBoxYape.checked = false;
+    imagenYape.style.display = "none";
+    imagenPlin.style.display = "block";
   } else {
-    document.getElementById("imagencargandoplin").innerHTML = "";
-    imagenVisiblePlin = false;
+    imagenPlin.style.display = "none";
   }
 }

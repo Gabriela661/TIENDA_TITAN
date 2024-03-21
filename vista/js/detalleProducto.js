@@ -46,80 +46,50 @@ $(document).ready(function () {
           });
           template += ` 
                 <div class="col-lg-5 mt-4 ">
-
-              <div class="col-12">
-                <img style="height:665px" src="${imgArray[3]}" class="product-image" alt="Product Image">
-              </div>
-              <div class="col-12 product-image-thumbs">
-                <div class="product-image-thumb active"><img src="${imgArray[1]}" alt="Product Image"></div>
-                <div class="product-image-thumb" ><img src="${imgArray[2]}" alt="Product Image"></div>
-                <div class="product-image-thumb" ><img src="${imgArray[3]}" alt="Product Image"></div>
-                <div class="product-image-thumb" ><img src="${imgArray[0]}" alt="Product Image"></div>
-
-              </div>
-            </div>
+                    <div class="col-12">
+                      <img style="height:500px" src="${imgArray[3]}" class="product-image img-fluid" alt="Product Image">
+                    </div>
+                    <div class="col-12 product-image-thumbs">
+                      <div class="product-image-thumb active"><img src="${imgArray[1]}" alt="Product Image"></div>
+                      <div class="product-image-thumb" ><img src="${imgArray[2]}" alt="Product Image"></div>
+                      <div class="product-image-thumb" ><img src="${imgArray[3]}" alt="Product Image"></div>
+                      <div class="product-image-thumb" ><img src="${imgArray[0]}" alt="Product Image">
+                      </div>
+                    </div>
+                </div>
                 <div  class="col-lg-7 mt-4">
-                    <div class="card">
+                    <div class="card" style="height:650px">
                         <div class="card-body">
-                            <h1 class="h2" style="color:black" >${detalle.nombre_producto}</h1>
-                            <p style="color:black" class="h4 py-2">S/. ${detalle.precio_producto}</p>
-                            <p class="py-2">
-                                <i class="fa fa-star text-warning"></i>
-                                <i class="fa fa-star text-warning"></i>
-                                <i class="fa fa-star text-warning"></i>
-                                <i class="fa fa-star text-warning"></i>
-                                <i class="fa fa-star text-secondary"></i>
-                                <span style="color:black" class="h4 list-inline-item text-dark">Puntuación 4.8 | 36 Comentarios</span>
-                            </p>
-                            <ul class="list-inline">
-                                <li class="list-inline-item">
-                                    <h4 style="color:black">Categoría:${detalle.categoria_producto}</h4>
-                                </li>
-                            </ul>
-                            <h4 style="color:black" >Descripción:</h4>
-                            <p class="h4" style="color:black">${detalle.descripcion_producto}</p>
-                            <ul class="list-inline">
-                                <li class="list-inline-item">
-                                    <h4 class="h4" style="color:black">Marca:${detalle.marca_producto}</h4>
-                                </li>
+                            <h2 class="h2" style="color:black;font-weight:bold" >${detalle.nombre_producto}</h2>
+                            <p style="color:black ;" class="h5 py-1">Precio: S/. ${detalle.precio_producto}</p>
+                            <p style="color:black" class="h5 py-1">Categoria: ${detalle.categoria_producto}</p>
+                            <p style="color:black" class="h5 py-1">Descripción: ${detalle.descripcion_producto}</p>
+                            <p style="color:black" class="h5 py-1">Marca: ${detalle.marca_producto}</p>
+                             <p style="color:black" class="h5 py-1">Cantidad Disponible: ${detalle.stock_producto}</p>             
 
-                            </ul>
-                             <ul class="list-inline">
-                                <li class="list-inline-item">
-                                    <h6 class="h4" style="color:black">Stock disponible: ${detalle.stock_producto}</h6>
-                                </li>
-
-                            </ul>
-
-                                <input type="hidden" name="product-title" value="Activewear">
-                               <div class="row">
-                                    
-                                   <div class="col-auto">
-    <button class="btn-add" id="btn-minus" style="background-color: orangered; color: white; padding">-</button>
-</div>
-<div class="col-auto">
-    <input id="cantidad" value="1" style="border: 0; width: 40px; text-align: center;" readonly>
-
-</div>
-<div class="col-auto">
-    <button class="btn-add" id="btn-plus" style="background-color: orangered; color: white;">+</button>
+                           <div class="row align-items-center">
+      <div class="col-auto mb-2 mb-md-0">
+            <button class="btn-add btn h5" id="btn-minus" style="background-color: orangered; color: white;">-</button>
+        </div>
+        <div class="col-auto mb-2 mb-md-0 ">
+            <input id="cantidad" class="h5" value="1" style="border: 0; width: 40px; text-align: center;" readonly>
+        </div>
+        <div class="col-auto mb-2 mb-md-0 ">
+            <button class="btn-add btn h5" id="btn-plus" style="background-color: orangered; color: white;">+</button>
+        </div>
+      <div class="col-md-4 col-12 mb-2 ">
+        <button style="background-color: green; width: 100%;" class="btn text-white" data-id_producto="${detalle.id_producto}" id="agregarCarritoBtndetalle">
+            <i class="fas fa-cart-plus"></i> Agregar al carrito 
+        </button>
+    </div>
+    <div class="col-md-4 col-12 mb-2 h5">
+        <a style="background-color: orangered; width: 100%;" id="verCarrito" class="btn text-white" href="#" data-bs-toggle="modal" data-bs-target="#modalCarrito">
+            <i class="far fa-eye"></i> Ver Carrito
+        </a>
+    </div>
 </div>
 
-                                </div>
 
-                             <div class="row pb-4">
-                                <div class="col-lg-6 d-grid">
-                                    <button style="background-color: green" class="btn  text-white mt-2" data-id_producto="${detalle.id_producto}" id="agregarCarritoBtndetalle">
-                                        <i class="fas fa-cart-plus"></i> Agregar carrito 
-                                    </button>
-                                </div>
-                                <div class="col-lg-6 d-grid">
-                                    <a style="background-color: orangered"  id="verCarrito" class="btn text-white mt-2" href="#" data-bs-toggle="modal" data-bs-target="#modalCarrito">
-                                       <i class="far fa-eye"></i> Ver Carrito
-                                    </a>
-                                </div>
-                                
-                            </div>
 
                         </div>
                     </div>
@@ -204,4 +174,100 @@ $(document).ready(function () {
     );
   }
   /*FIN FUNCION PARA CARGAR LOS PRODUCTOS AL CARRITO */
+  /*FUNCION PARA CERRAR EL MODAL*/
+  // Obtener el botón de cierre del modal por su ID
+  const closeButton = document.querySelector("#modalCarrito .close");
+
+  // Agregar un event listener para escuchar el clic en el botón de cierre
+  closeButton.addEventListener("click", function () {
+    // Cerrar el modal utilizando Bootstrap API
+    const modal = document.getElementById("modalCarrito");
+    if (modal) {
+      const modalInstance = bootstrap.Modal.getInstance(modal);
+      if (modalInstance) {
+        modalInstance.hide();
+      }
+    }
+  });
+  /*FIN FUNCION PARA CERRAR EL MODAL*/
+  productosSimilares(); 
+  function productosSimilares() {
+    const idProducto = $("#id_producto").val();
+    console.log("par "+idProducto);
+    funcion = "productosSimilares";
+    $.post(
+      "controlador/productosControlador.php",
+      { idProducto, funcion },
+      (response) => {
+        console.log(response);
+        const productos = JSON.parse(response);
+        let productosHtml = "";
+        let itemsPerSlide = 4; // Número de productos por slide
+        productos.forEach((producto, index) => {
+          if (index % itemsPerSlide === 0) {
+            productosHtml += `<div class="carousel-item ${
+              index === 0 ? "active" : ""
+            }"><div class="row justify-content-center">`;
+          }
+          productosHtml += `
+          <div class="showcase" style="background-color: white;">
+                                <div class="showcase-banner">
+
+                                    <img src="${producto.imagen_producto}" alt="imagen producto"  class="product-img default p-4">
+                                    <img  src="${producto.imagen_producto}" alt="Mens Winter Leathers Jackets" width="300" class="product-img hover p-3">
+
+                                    <p class="showcase-badge" >Stock: ${producto.stock_producto}</p>
+
+                                    <div class="showcase-actions">
+      
+
+                                        <a href="detalle.php?id_producto=${producto.id_producto}"  class="btn-action">
+                                            <ion-icon name="eye-outline"></ion-icon>
+                                        </a>
+                                        <button class="btn-action restarBtn">
+                                             <ion-icon name="remove"></ion-icon>
+                                        </button>
+                                        <button >
+                                            <input class="cantidadInput" type="text" value="1" min="0" style="border:0; width: 25px;" readonly>
+                                        </button>
+                                        <button class="btn-action sumarBtn">
+                                        <ion-icon name="add"></ion-icon>                                 
+                                        </button>
+                                        <button data-id_producto="${producto.id_producto}"  id="agregarCarritoBtn" class="btn-action">
+                                            <ion-icon name="bag-add-outline"></ion-icon>
+                                        </button>
+                                        
+                                    </div>
+                                </div>
+                                <div class=" showcase-content">
+                                    <a href="#"  class="showcase-category">Marca: ${producto.marca_producto}</a>
+                                    <a href="#">
+                                        <h3 class="showcase-title"  style="color: black;">${producto.nombre_producto}</h3>
+                                    </a>
+                                    <div class="showcase-rating">
+                                        <ion-icon name="star"></ion-icon>
+                                        <ion-icon name="star"></ion-icon>
+                                        <ion-icon name="star"></ion-icon>
+                                        <ion-icon name="star-outline"></ion-icon>
+                                        <ion-icon name="star-outline"></ion-icon>
+                                    </div>
+                                    <div class="price-box">
+                                        <p class="price">S/. ${producto.precio_producto}</p>
+                                    </div>
+                                </div>
+                            </div>
+        `;
+          if (
+            (index + 1) % itemsPerSlide === 0 ||
+            index === producto.length - 1
+          ) {
+            productosHtml += `</div></div>`;
+          }
+        });
+
+        $("#carouselProductosSimilares .carousel-inner").html(productosHtml);
+        $("#carouselProductosSimilares").carousel(0); // Mueve el carrusel al primer producto al terminar de cargar
+      }
+    );
+  }
 });

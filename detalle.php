@@ -27,6 +27,8 @@ if (isset($_GET['id_producto'])) {
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="./assets/css/fontawesome.min.css">
     <link rel="stylesheet" href="assets/css/stilos.css">
+    <link rel="stylesheet" href="assets/css/style-prefix.css">
+
 
 </head>
 
@@ -104,6 +106,34 @@ if (isset($_GET['id_producto'])) {
 
             </div>
         </div>
+        <!-- PRODUCTOS SIMILARES -->
+        <div id="gallary" class="text-center has-bg-overlay text-light  middle-items wow fadeIn">
+            <h4 class="section-title ">PRODUCTOS SIMILARES</h4>
+        </div>
+
+        <!-- carrusel de productos similares -->
+        <div class="container-fluid wow fadeIn has-bg-overlay text-dark has-height-md middle-items">
+            <div id="carouselProductosSimilares" class="carousel slide justify-content-center" data-ride="carousel">
+                <!-- Indicadores -->
+                <ol class="carousel-indicators">
+                </ol>
+                <!-- Contenido del carrusel -->
+                <div class="carousel-inner row ">
+                    <!-- Los productos se agregan dinámicamente aquí -->
+                </div>
+                <!-- Flecha izquierda -->
+                <a class="carousel-control-prev" href="#carouselProductos" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <!-- Flecha derecha -->
+                <a class="carousel-control-next" href="#carouselProductos" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+        <!-- ./PRODUCTOS SIMILARES -->
     </div>
 
     <!-- page whatsapp  -->

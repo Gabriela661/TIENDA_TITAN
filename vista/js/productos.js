@@ -100,11 +100,11 @@ $(document).ready(function () {
                            
                         </div>
                         <div style="width: 150px;">
-                            <h6 class="h6 mt-4 text-center" style="color: black; background-color: white; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${productoMV.nombre_producto}</h6>
-                            <p class="card-text" style="font-size: 12px; text-align: center;">Precio: S/. ${productoMV.precio_producto}</p>
+                            <h5 class="h5 mt-4 text-center" style="color: black; background-color: white; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${productoMV.nombre_producto}</h5>
+                            <p class="card-text h5" style=" text-align: left;">Precio: S/. ${productoMV.precio_producto}</p>
                         </div>
                         <div style="width: 150px; display: flex;">
-                            <a href="detalle.php?id_producto=${productoMV.id_producto}" class="btn btn-primary d-block mx-auto mt-3" style="background-color: orange; border-color: orange; transition: background-color 0.3s, border-color 0.3s;" onmouseover="this.style.backgroundColor='#6c757d'; this.style.borderColor='#6c757d'" onmouseout="this.style.backgroundColor='orange'; this.style.borderColor='orange'">Ver Detalles</a>
+                            <a href="detalle.php?id_producto=${productoMV.id_producto}" class="h5 btn d-block mx-auto mt-3" style="background-color: orangered; border-color: orangered; transition: background-color 0.3s, border-color 0.3s;" onmouseover="this.style.backgroundColor='#6c757d'; this.style.borderColor='#6c757d'" onmouseout="this.style.backgroundColor='orangered'; this.style.borderColor='orangered'">Ver Detalles</a>
                         </div>
                     </div>
                 </div>
@@ -291,7 +291,7 @@ function CantidadPaginas() {
       const cantidad = parseInt(response.trim()); // Convierte el texto a un número entero
 
       if (!isNaN(cantidad)) {
-        console.log("Cantidad de productos:", cantidad);
+        // console.log("Cantidad de productos:", cantidad);
 
         // Calcular el número de páginas
         const paginas = Math.ceil(cantidad / 12); // Suponiendo que deseas mostrar 12 productos por página

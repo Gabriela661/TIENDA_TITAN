@@ -95,7 +95,7 @@ $(document).ready(function () {
                           timer: 2000, // tiempo en milisegundos (2 segundos)
                           showConfirmButton: false, // oculta el botón de confirmación
                         }).then(() => {
-                           $("#cantidad").val(1);
+                          $("#cantidad").val(1);
                           const id_usuario =
                             document.getElementById("id_usuario").value;
                           cargarCarrito(id_usuario);
@@ -139,7 +139,7 @@ $(document).ready(function () {
                           title: "Producto añadido ",
                           text: "El producto se ha agregado al carrito",
                         }).then(() => {
-                           $("#cantidad").val(1);
+                          $("#cantidad").val(1);
                           document.getElementById("id_usuario").value;
                           cargarCarrito(id_usuario);
 
@@ -434,6 +434,7 @@ $(document).ready(function () {
   });
   /*FIN FUNCION PARA MOSTRAR UN MENSAJE DE ADVERTENCIA AL QUERER LIMPIAR EL CARRITO*/
 
+  /*FUNCION PARA CERRAR EL MODAL*/
   // Obtener el botón de cierre del modal por su ID
   const closeButton = document.querySelector("#modalCarrito .btn-close");
 
@@ -448,6 +449,5 @@ $(document).ready(function () {
       }
     }
   });
-
-
+  /*FIN FUNCION PARA CERRAR EL MODAL*/
 });

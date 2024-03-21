@@ -270,8 +270,11 @@ GROUP BY c.id_categoria, c.nombre_categoria, c.imagen;";
             return $this->objetos;
         }
     }
-    
-    /* FUNCION PARA LIMPIAR EL CARRITO */
+
+    /**
+     * limpia el carrito
+     *
+     */
     function CantidadPaginas()
     {
         $sql = "SELECT COUNT(*) AS cantidad_productos FROM producto";
@@ -289,27 +292,77 @@ GROUP BY c.id_categoria, c.nombre_categoria, c.imagen;";
             echo 'Error al obtener la cantidad de productos';
         }
     }
-    /* FIN DE LA FUNCION PARA LIMPIAR EL CARRITO */
-    // FUNCION PARA OBTENER EL NUMERO DE LA FACTURA
+
+
+    /**
+     * Obtiene y devuelve la lista el numero de la factura
+     *
+     * @return array numero de factura.
+     */
     function obtenerNumeroFactura()
     {
         $sql = "SELECT MAX(id_venta) AS id_ultimaCompra FROM  venta;";
         $query = $this->acceso->prepare($sql);
         $query->execute();
 
-   
-            // Obtener el resultado de la consulta
-            $resultado = $query->fetch(PDO::FETCH_ASSOC);
 
-            if (isset($resultado['id_ultimacompra'])) {
-                // Acceder al valor del último ID de compra
-                $id_ultimaCompra = $resultado['id_ultimacompra'];
-                echo $id_ultimaCompra;
-            } else {
-                echo 'Error: No se encontró el último ID de compra';
-            }
-      
+        // Obtener el resultado de la consulta
+        $resultado = $query->fetch(PDO::FETCH_ASSOC);
+
+        if (isset($resultado['id_ultimacompra'])) {
+            // Acceder al valor del último ID de compra
+            $id_ultimaCompra = $resultado['id_ultimacompra'];
+            echo $id_ultimaCompra;
+        } else {
+            echo 'Error: No se encontró el último ID de compra';
+        }
     }
-    // FUNCION PARA OBTENER EL NUMERO DE LA FACTURA
 
+
+    /**
+     * Obtiene y devuelve la lista de productos similares de la tienda  con respecto a un producto
+     *
+     * @return array Lista de productos de la tienda.
+     */
+    public function productosSimilares()
+    {
+        $idProducto = $_POST['idProducto'];
+
+        // Consulta SQL para seleccionar la categoría del producto
+        $sqlCategoria = "SELECT id_categoria FROM producto WHERE id_producto = :idProducto";
+        $queryCategoria = $this->acceso->prepare($sqlCategoria);
+        $queryCategoria->bindParam(':idProducto', $idProducto, PDO::PARAM_INT);
+        $queryCategoria->execute();
+        $categoria = $queryCategoria->fetch(PDO::FETCH_ASSOC);
+
+        $idCategoria = $categoria['id_categoria'];
+
+        $sqlProductosSimilares = "SELECT 
+            p.id_producto,
+            p.nombre_producto,
+            p.marca_producto,
+            p.descripcion_producto,
+            p.stock_producto,
+            p.precio_producto,
+            c.nombre_categoria AS categoria_producto,
+            (
+                SELECT url_imagen
+                FROM imagen i
+                WHERE i.id_producto = p.id_producto
+                ORDER BY i.id_imagen ASC
+                LIMIT 1
+            ) AS imagen_producto
+        FROM
+            producto p
+        JOIN
+            categoria c ON p.id_categoria = c.id_categoria
+        WHERE
+            p.id_categoria = :idCategoria";
+
+        $queryProductosSimilares = $this->acceso->prepare($sqlProductosSimilares);
+        $queryProductosSimilares->bindParam(':idCategoria', $idCategoria, PDO::PARAM_INT);
+        $queryProductosSimilares->execute();
+        $this-> objetos = $queryProductosSimilares->fetchAll();
+        return $this->objetos;
+    }
 }

@@ -184,6 +184,31 @@ if ($_POST['funcion'] == 'obtenerNumeroFactura') {
 
     $productos->obtenerNumeroFactura();
 }
-    /* 
+/* 
  * FIN FUNCION PARA OBTENER EL NUMERO DE LA FACTURA
+ */
+
+/* 
+ * FUNCION PARA LISTAR LOS PRODUCTOS SIMILARES
+ */
+if ($_POST['funcion'] == 'productosSimilares') {
+    $json = array();
+    $productos->productosSimilares();
+    foreach ($productos->objetos as $objeto) {
+
+        $json[] = array(
+                'id_producto' => $objeto->id_producto,
+                'nombre_producto' => $objeto->nombre_producto,
+                'precio_producto' => $objeto->precio_producto,
+                'descripcion_producto' => $objeto->descripcion_producto,
+                'stock_producto' => $objeto->stock_producto,
+                'imagen_producto' => 'vista/assets/img/' .  strtolower($objeto->categoria_producto) . '/' . $objeto->imagen_producto,
+                'marca_producto' => $objeto->marca_producto,
+            );
+    }
+    $jsonstring = json_encode($json);
+    echo $jsonstring;
+}
+/* 
+ * FIN FUNCION PARA LISTAR LOS PRODUCTOS SIMILARES
  */

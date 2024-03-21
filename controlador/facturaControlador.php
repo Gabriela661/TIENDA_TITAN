@@ -100,12 +100,12 @@ class MYPDF extends TCPDF
         $this->SetFont('helvetica', 'B', 11);
         // DATOS DE LA EMPRESA
         $this->SetXY(10, 30);
-        $this->Cell(30, 10, 'TIENDA TITAN S.A.C.', 0, false);
+        $this->Cell(30, 10, 'TITAN ', 0, false);
         $this->SetXY(10, 35);
         $this->SetFont('helvetica', '', 9);
-        $this->Cell(30, 10, 'JR. BOLIVAR # 495', 0, false);
+        $this->Cell(30, 10, 'CARRETERA CENTRAL KM. 412 REF. FRENTE AL GRIFO RACING', 0, false);
         $this->SetXY(10, 40);
-        $this->Cell(30, 10, 'HUÁNUCO - HUÁNUCO - HUÁNUCO', 0, false);
+        $this->Cell(30, 10, 'AMARILIS - HUÁNUCO - HUÁNUCO', 0, false);
         //Linea de la tabla
         $this->Line(10, 47, 200, 47);
 
@@ -114,7 +114,7 @@ class MYPDF extends TCPDF
         $this->Cell(80, 21, '', 1, false, 'C');
         // RUC y número de factura
         $this->SetXY(120, 15);
-        $this->Cell(80, 5, 'RUC: 10321021024', 0, false, 'C');
+        $this->Cell(80, 5, 'RUC: 10480490121', 0, false, 'C');
         $this->SetXY(130, 20);
         $this->Cell(60, 5, 'FACTURA ELECTRONICA ', 0, false, 'C');
         $this->SetXY(120, 25);

@@ -2,19 +2,15 @@
 // Inicia la sesión
 session_start();
 
-// // Verifica si ya existe un ID de usuario en la sesión
-// if (!isset($_SESSION['user_id'])) {
-//     // Si no hay un ID de usuario en la sesión, genera uno nuevo
-//     $_SESSION['user_id'] = uniqid();
-// }
-
 // Obtiene el ID de usuario de la sesión
 $_SESSION['user_id'] = 1;
 $user_id = $_SESSION['user_id'];
-
-// Muestra el ID de usuario
-//echo "ID de usuario: " . $user_id;
-include './assets/views/navbar.php'
+//se obtiene la categoria
+if (isset($_GET['id_categoria'])) {
+    $idCategoria = $_GET['id_categoria'];
+} else {
+    $idCategoria = "";
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -50,77 +46,167 @@ include './assets/views/navbar.php'
         <br>
         <br>
         <br>
-        <br>
-        <br>
-        <br>
-        <div class="banner-especial -lr">
-            <img class="img-responsive vdk" src="assets/img/contacto1.jpeg" alt="Combo" width="100%" height="auto">
-            <br><br><br>
-            <center>
-                <p class="banner-especial__txt">Puedes contactarnos a través de nuestros canales de venta y de atención.<br>
-                    Nuestros asesores te atenderán con gusto.</p>
-            </center>
-        </div>
+        <section class="content mt-3">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-5 mx-auto">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3>Detalle Facturación</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label for="fecha_emision">Fecha de emisión:</label>
+                                        <input type="date" class="form-control" id="fecha_emision" name="fecha_emision" placeholder="Fecha de emisión" value="<?php echo date('Y-m-d'); ?>" readonly required>
+                                    </div>
+                                    <?php
+                                    date_default_timezone_set('America/Lima'); // Establecer el huso horario de Perú
+                                    ?>
+                                    <!-- Input oculto para asignar el id del usuario-->
+                                    <input id="id_usuario" type="hidden" value="<?php echo $user_id ?>">
+                                    <div class="col-md-6">
+                                        <label for="fecha_vencimiento">Fecha de vencimiento:</label>
+                                        <?php
+                                        // Calcular la fecha de vencimiento sumando 30 días a la fecha de emisión
+                                        $fecha_emision = date('Y-m-d'); // Obtener la fecha de emisión actual
+                                        $fecha_vencimiento = date('Y-m-d', strtotime($fecha_emision . ' + 30 days')); // Sumar 30 días a la fecha de emisión
+                                        ?>
+                                        <input type="date" class="form-control" id="fecha_vencimiento" name="fecha_vencimiento" placeholder="Fecha de vencimiento" value="<?php echo $fecha_vencimiento; ?>" readonly required>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <label for="Razon_social">Razon social:</label>
+                                        <input class="form-control" id="razon_social" name="razon_social" placeholder="Nombre de la Empresa" required>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <label for="ruc">RUC:</label>
+                                        <span id="ruc_info" class="text-muted">El ruc empieza por 10 o 20</span>
+                                        <input type="text" class="form-control" id="ruc" name="ruc" placeholder="RUC" maxlength="11" required>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <label for="direccion">Dirección del cliente:</label>
+                                        <input class="form-control" id="direccion" name="direccion" placeholder="Dirección de la Empresa" required>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <label for="telefono">Teléfono:</label>
+                                        <input class="form-control" id="telefono" name="telefono" placeholder="Telefono" required>
+                                    </div>
+                                    <div class="d-none col-md-12">
+                                        <label for="tipo_moneda">Tipo de Moneda:</label>
+                                        <select class="form-control" id="tipo_moneda" name="tipo_moneda" required>
+                                            <option value="SOL">Soles peruanos (PEN)</option>
+                                            <option value="USD">Dólares estadounidenses (USD)</option>
+                                            <option value="EUR">Euros (EUR)</option>
+                                        </select>
+                                    </div>
+                                    <div class="d-none col-md-12">
+                                        <label for="obs">Observaciones:</label>
+                                        <input class="form-control" id="observaciones" name="observaciones" placeholder="observaciones" required>
+                                    </div>
+                                    <div tupe class=" col-md-12">
+                                        <label for="obs">Metodo de pago:</label>
+                                        <input class=" form-control" id="metodo" name="metodo" placeholder="Seleccione un metodo de pago y  se rellenara automaticamente esta casilla" readonly>
+                                    </div>
+                                    <div class="d-none col-md-12">
+                                        <label for="factura">Factura:</label>
+                                        <input type="number" id="numeroFactura" name="numeroFactura"></input>
+                                    </div>
+                                    <div class=" col-md-12 d-none">
+                                        <label for="producto_json">Producto JSON:</label>
+                                        <textarea id="producto_json" name="producto_json" rows="4" cols="50"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card mt-3 mb-3">
+                            <div class="card-header">
+                                <h3>Tus Productos</h3>
+                            </div>
+                            <div class="card-body">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Producto</th>
+                                            <th>Cantidad</th>
+                                            <th>Subtotal S/</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="productos_carrito">
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <th></th>
+                                            <th>Total S/</th>
+                                            <th><label for="totalCompra" id="totalCompra"></label></th>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-5 mx-auto">
 
-        <div class="container">
-            <div class="col-md-12  ">
-                <h2 class="text-center">Nuestros canales de venta</h2>
-                <div class="h-100 py-5 shadow ">
-                    <div class="row">
-                        <div class="col-md-4 center">
-                            <div class="h1 text-primary text-center"><i class="fa fa-globe text-orange"></i></div>
-                            <h2 class="h5 mt-4 text-center">Compra por nuestra web</h2>
-                            <center><a href="#" class="text-dark text-decoration-none">www.titan.pe</a></center>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="h1 text-primary text-center"><i class="fab fa-whatsapp text-orange"></i></div>
-                            <h2 class="h5 mt-4 text-center">Compra por WhatsApp</h2>
-                            <center> <a href="https://api.whatsapp.com/send?phone=%2051916232342" class="text-dark text-decoration-none">923556568</a></center>
-                        </div>
-                        <div class="col-md-4 center">
-                            <div class="h1 text-primary text-center"><i class="fas fa-shopping-cart text-orange"></i></div>
-                            <h2 class="h5 mt-4 text-center">Compra por teléfono</h2>
-                            <center><a href="#" class="text-dark text-decoration-none">Lunes a Domimngo de 8:00 a 20:00(01) 619 - 1616</a></center>
+
+                        <div class="card">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3>Metodos de pago</h3>
+                                </div>
+                                <div class="card-body">
+                                    <!-- Modo de pago Yape -->
+                                    <div class="row mt-3">
+                                        <div class="col-md-12">
+                                            <input type="checkbox" id="imagen" name="imagen" onclick="image()">
+                                            <label>Pago con Yape</label>
+                                        </div>
+                                        <div class="col-md-12 d-flex justify-content-center align-items-center">
+                                            <div id='imagencargando' class="w-50">
+                                                <a class="brand-link">
+                                                    <img src="assets/img/tienda/Yape.jpeg" class="brand-image img-elevation-3 img-fluid">
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Modo de pago Plin -->
+                                    <div class="row mt-3">
+                                        <div class="col-md-12">
+                                            <input type="checkbox" id="imagen1" name="imagen" onclick="image1()">
+                                            <label>Pago con Plin</label>
+                                        </div>
+                                        <div class="col-md-12 d-flex justify-content-center align-items-center">
+                                            <div id='imagencargandoplin' class="w-50">
+                                                <a class="brand-link">
+                                                    <img src="assets/img/tienda/Plin.jpeg" class="brand-image img-elevation-3 img-fluid">
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3>Proceso de verificación del pago</h3>
+                                </div>
+                                <div class="card-body">
+                                    <button id="notificar_pago" type="button" class="btn btn-warning btn-lg btn-block">Notificar el pago realizado</button>
+                                </div>
+                                <div class="card-body" id="codigo_confirmacion" style="display: none;">
+                                    <input type="text" maxlength="6" id="codigo_input" class="form-control" placeholder="Ingrese el código de 6 digitos">
+                                    <button id="confirmar_pago" type="button" class="btn btn-primary btn-lg  mt-3 btn-block">Verificar Codigo</button>
+                                </div>
+                            </div>
+
+                            <!-- FIN Boton pedido -->
                         </div>
                     </div>
                 </div>
             </div>
-            <br>
-            <br>
-            <div class="col-md-12 ">
-                <h2 class="text-center">Nuestros canales de atención</h2>
-                <div class="h-100 py-5 shadow">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="h1 text-primary text-center"><i class="fab fa-facebook-messenger text-orange"></i></div>
-                            <h2 class="h5 mt-4 text-center">Chatea con nostros</h2>
-                            <center> <a href="" class="text-dark text-decoration-none">Facebook messenger todo el día,todos los días del año</a></center>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="h1 text-primary text-center"><i class="fas fa-envelope text-orange"></i></div>
-                            <h2 class="h5 mt-4 text-center">Escríbenos</h2>
-                            <center> <a href="" class="text-dark text-decoration-none">A nuestro correo electrónico servicioalcliente@titan.pe</a></center>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="h1 text-primary text-center"><i class="fa fa-phone text-orange"></i></div>
-                            <h2 class="h5 mt-4 text-center">Compra por teléfono</h2>
-                            <center> <a href="" class="text-dark text-decoration-none">Lunes a Domingo de 8:00 a 20:00(01) 619 - 4810</a></center>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        </section>
 
-        <!-- Start Contact -->
-
-        <div id="contact" class="container-fluid bg-dark text-light border-top wow fadeIn">
-            <div class="row">
-                <div class="col-md-12 px-0">
-                    <div id="map" style="width: 100%; height: 100%; min-height: 600px"></div>
-                </div>
-
-            </div>
-        </div>
+        <!-- Contenedor del PDF -->
+        <div id="ObtenerResultadosMC"></div>
+        <!-- ./Contenedor del PDF -->
     </div>
 
     <!-- page whatsapp  -->
@@ -137,6 +223,8 @@ include './assets/views/navbar.php'
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <!-- js de las funcionalidades -->
     <script src="vista/js/busquedaProductos.js"></script>
+    <script src="vista/js/pagoProductos.js"></script>
+    <script src="vista/js/imagen.js"></script>
 
 </body>
 

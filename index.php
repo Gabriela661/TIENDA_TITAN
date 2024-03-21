@@ -90,7 +90,9 @@
             <br>
             <br>
             <br>
-            <img src="assets/img/logo_titan_oficial.png" style="width:700px;" alt="">
+            <img src="assets/img/logo_titan_oficial.png" class="img-fluid d-md-none" style="max-width: 100%;" alt="">
+            <img src="assets/img/logo_titan_oficial.png" class="img-fluid d-none d-md-block" style="width: 700px;" alt="">
+
 
             <a class="nav-link btn ml-xl-4 " style=" background-color: orangered; color: white;font-weight: bold;" href="tienda.php">VER PRODUCTOS</a>
             <br>
@@ -221,7 +223,7 @@
                         <input type="text" class="form-control" id="telefono" placeholder="Telefono">
                     </div>
                     <div class="col-sm-3 col-md-3 col-xs-12 my-1">
-                        <input id="contactanos" type="submit" value="Contactarse" class="form-control btn" style="background-color: orange; color: white;">
+                        <input id="contactanos" type="submit" value="Contactarse" class="form-control btn" style="background-color: orangered; color: white;">
                     </div>
                 </div>
             </form>

@@ -1,5 +1,4 @@
 $(document).ready(function () {
-  var funcion;
   var funcion = '';
 
   //listar inventario en una tabla

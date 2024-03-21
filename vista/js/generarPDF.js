@@ -95,7 +95,9 @@ export function generarPDF(
     },
   });
 
-  console.log(doc.output('datauristring'));
+  doc.setProperties({
+    title: pdfTitle + '(' + currentDate + ') - ' + textFooter,
+  });
 
   // Abrir el PDF en una nueva ventana
   var pdfWindow = window.open('', '_blank');

@@ -6,6 +6,10 @@ if ($_SESSION['id_rol'] == 1 || $_SESSION['id_rol'] == 2) {
     include_once "assets/views/nav.php";
     ?>
 
+<!-- LIBRERIAS -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <div class="content-wrapper" style="background: url(assets/img/main.jpg) no-repeat center center fixed; background-size: cover; min-height: 750px;
 " style="font-family: 'Open Sans', sans-serif;">
         <div class="content-header">
@@ -119,8 +123,8 @@ if ($_SESSION['id_rol'] == 1 || $_SESSION['id_rol'] == 2) {
                                         </div>
                                         <div class="card-body">
                                             <div class="tab-content p-0">
-                                                <div class="chart tab-pane active" style="position: relative; height: 300px;">
-                                                    <canvas id="graph3" height="300" style="height: 300px;"></canvas>
+                                                <div class="chart tab-pane active d-flex justify-content-center">
+                                                    <canvas id="graph3" height="280"></canvas>
                                                 </div>
                                             </div>
                                         </div>
@@ -139,26 +143,47 @@ if ($_SESSION['id_rol'] == 1 || $_SESSION['id_rol'] == 2) {
                                                 <ul class="nav nav-pills ml-auto">
                                                     <li class="nav-item">
                                                         <a class="nav-link active" href="#revenue-chart" data-toggle="tab">Area</a>
-                                                    </li>
-                                                    <li class="nav-item">
-                                                        <a class="nav-link" href="#sales-chart" data-toggle="tab">Circular</a>
-                                                    </li>
+                                                    </li>                                                    
                                                 </ul>
                                             </div>
                                         </div>
                                         <div class="card-body">
                                             <div class="tab-content p-0">
+                                                <div class="chart tab-pane active d-flex justify-content-center" id="revenue-chart">
+                                                    <canvas id="revenue-chart-canvas" height="300"></canvas>
+                                                </div>                                                
+                                            </div>
+                                        </div>
 
-                                                <div class="chart tab-pane active" id="revenue-chart" style="position: relative; height: 300px;">
-                                                    <canvas id="revenue-chart-canvas" height="300" style="height: 300px;"></canvas>
-                                                </div>
-                                                <div class="chart tab-pane" id="sales-chart" style="position: relative; height: 400px;">
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="card col-md-10">
+                                        <div class="card-header">
+                                            <h3 class="card-title">
+                                                <i class="fas fa-chart-pie mr-1"></i>
+                                                Ventas
+                                            </h3>
+                                            <div class="card-tools">
+                                                <ul class="nav nav-pills ml-auto">
+                                                    <li class="nav-item">
+                                                        <a class="nav-link active" href="#sales-chart" data-toggle="tab">Barra</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="tab-content p-0">                                                
+                                                <div class="chart tab-pane active d-flex justify-content-center" id="sales-chart">
                                                     <canvas id="sales-chart-canvas" height="400" style="height: 300px;"></canvas>
                                                 </div>
                                             </div>
                                         </div>
+
                                     </div>
                                 </div>
+
                             </div>
                         </div>
                     </section>
@@ -173,7 +198,7 @@ if ($_SESSION['id_rol'] == 1 || $_SESSION['id_rol'] == 2) {
                                 </div>
                             </div>
                             <div class="card-body d-flex justify-content-center">
-                                <canvas id="graph5" height="200"></canvas>
+                                <canvas id="graph5" height="320"></canvas>
                             </div>
                         </div>
 
@@ -184,8 +209,8 @@ if ($_SESSION['id_rol'] == 1 || $_SESSION['id_rol'] == 2) {
                                 </div>
                             </div>
                             <div class="card-body">
-                                <div class="position-relative mb-4 d-flex justify-content-center">
-                                    <canvas id="barChart" height="100"></canvas>
+                                <div class="position-relative d-flex justify-content-center" >
+                                    <canvas id="barChart" height="320"></canvas>
                                 </div>
                             </div>
                         </div>
@@ -198,7 +223,7 @@ if ($_SESSION['id_rol'] == 1 || $_SESSION['id_rol'] == 2) {
                             </div>
                             <div class="card-body d-flex justify-content-center">
                                 <div class="position-relative">
-                                    <canvas class="ml-3" height="300" width="450" id="graph6"></canvas>
+                                    <canvas class="ml-3" height="340" width="450" id="graph6"></canvas>
                                 </div>
                             </div>
                         </div>

@@ -61,11 +61,9 @@ $(document).ready(function () {
       }
     );
   }
-
   /*FIN FUNCION PARA LISTAR LOS USUARIOS DE LA BASE DE DATOS*/
 
   /*FUNCION PARA LISTAR LOS CLIENTES DE LA BASE DE DATOS*/
-
   listar_cliente();
   function listar_cliente(consulta) {
     // Se define la función a ejecutar en el controlador
@@ -346,7 +344,6 @@ $(document).ready(function () {
     const nombrese = $('#nombre_clientee').val();
     const apellidose = $('#apellido_clientee').val();
     const correo_clientee = $('#correo_clientee').val();
-    console.log(nombrese);
     const formData = new FormData($('#form_cliente_editar')[0]);
 
     formData.append('funcion', 'editar_cliente');
@@ -360,7 +357,6 @@ $(document).ready(function () {
       '../controlador/usuarioControlador.php',
       formData,
       function (response) {
-        console.log(response);
         if (response.trim() === 'edits') {
           Swal.fire({
             icon: 'success',
@@ -435,7 +431,6 @@ $(document).ready(function () {
       '../controlador/usuarioControlador.php',
       formData,
       function (response) {
-        console.log(response);
         if (response.trim() === 'edits') {
           Swal.fire({
             icon: 'success',
@@ -507,7 +502,6 @@ $(document).ready(function () {
       '../controlador/usuarioControlador.php',
       { id_usuario, funcion },
       function (response) {
-        console.log(response);
         if (response.trim() === 'delete') {
           Swal.fire({
             icon: 'success',
@@ -534,7 +528,6 @@ $(document).ready(function () {
       '../controlador/usuarioControlador.php',
       { id_cliente, funcion },
       function (response) {
-        console.log(response);
         if (response.trim() === 'delete') {
           Swal.fire({
             icon: 'success',
@@ -610,7 +603,6 @@ $(document).ready(function () {
       })
       .toArray();
 
-    console.log(visibleColumns);
 
     // Eliminar las columnas no visibles de la tabla clonada
     $clonedTable.find('thead th').each(function (index, th) {
@@ -752,7 +744,6 @@ $(document).ready(function () {
       })
       .toArray();
 
-    console.log(visibleColumns);
 
     // Eliminar las columnas no visibles de la tabla clonada
     $clonedTable.find('thead th').each(function (index, th) {

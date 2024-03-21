@@ -11,7 +11,6 @@ if ($_SESSION['id_rol'] == 1 || $_SESSION['id_rol'] == 2 || $_SESSION['id_rol'] 
 
   <?php include_once "assets/views/nav.php"; ?>
 
-  <?php /* if ($_SESSION['id_rol'] == 1 || $_SESSION['id_rol'] == 2 || $_SESSION['id_rol'] == 3) { */ ?>
   <!-- Modal crear producto -->
   <div class="modal fade" id="crearInventario" tabindex="-1" role="dialog" aria-labelledby="#crearInventario" aria-hidden="true">
     <div class="modal-dialog sm:modal-sm modal-lg" role="document">
@@ -108,7 +107,9 @@ if ($_SESSION['id_rol'] == 1 || $_SESSION['id_rol'] == 2 || $_SESSION['id_rol'] 
               </div>
 
               <div class="pt-1 mb-1">
-                <button class="btn btn-dark" type="submit"><i class="fas fa-save mr-2"></i>Guardar</button>
+                <?php if ($_SESSION['id_rol'] == 1 || $_SESSION['id_rol'] == 2 || $_SESSION['id_rol'] == 3) { ?>
+                  <button class="btn btn-dark" type="submit"><i class="fas fa-save mr-2"></i>Guardar</button>
+                <?php } ?>
                 <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fas fa-times-circle mr-2"></i> Cancelar</button>
               </div>
 
@@ -118,7 +119,7 @@ if ($_SESSION['id_rol'] == 1 || $_SESSION['id_rol'] == 2 || $_SESSION['id_rol'] 
       </div>
     </div>
   </div>
-  <?php /* } */ ?>
+
 
 
   <?php if ($_SESSION['id_rol'] == 1 || $_SESSION['id_rol'] == 2 || $_SESSION['id_rol'] == 3) { ?>
@@ -261,6 +262,7 @@ if ($_SESSION['id_rol'] == 1 || $_SESSION['id_rol'] == 2 || $_SESSION['id_rol'] 
         </div>
       </div>
     </section>
+
     <!-- Tabla de productos -->
     <section class="content">
       <div class="container-fluid">
@@ -272,7 +274,7 @@ if ($_SESSION['id_rol'] == 1 || $_SESSION['id_rol'] == 2 || $_SESSION['id_rol'] 
                 <div class="card-body table-responsive"> <!-- Agrega la clase table-responsive al contenedor de la tabla -->
                   <div class="d-flex justify-content-between align-items-center mb-3">
                     <div>
-                      <!--                     <h5>Mostrar/ocultar columnas:</h5>
+                    <!--<h5>Mostrar/ocultar columnas:</h5>
                     <a class="toggle-visIn btn btn-success" data-column="0">N°</a>
                     <a class="toggle-visIn btn btn-success" data-column="1">Nombre</a>
                     <a class="toggle-visIn btn btn-success" data-column="2">Marca</a>                    

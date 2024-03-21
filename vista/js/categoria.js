@@ -109,8 +109,9 @@ $(document).ready(function () {
             title: 'Creación exitosa',
             text: 'La categoria ha sido creada con éxito.',
           }).then(() => {
-            // Limpia el formulario, actualiza la lista de categorías
-            $('#form_categoria').trigger('reset');
+            (window.location.href = 'categoria.php'),
+              // Limpia el formulario, actualiza la lista de categorías
+              $('#form_categoria').trigger('reset');
             location.reload();
           });
         } else {

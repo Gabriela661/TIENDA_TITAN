@@ -1,4 +1,4 @@
-import { test, generarPDF } from './generarPDF.js';
+import { generarPDF } from './generarPDF.js';
 
 $(document).ready(function () {
   var contador = 0;
@@ -16,7 +16,6 @@ $(document).ready(function () {
       { consulta, funcion },
       (response) => {
         const reportes = JSON.parse(response);
-        console.log(reportes);
         let template = '';
         contador = 0; // Inicializamos el contador
         reportes.forEach((reporte) => {
@@ -197,7 +196,6 @@ $(document).ready(function () {
     function fechas_facturas(consulta) {
       const fechaInicio = $('#fecha_inicio').val();
       const fechaFin = $('#fecha_fin').val();
-      console.log(fechaFin, fechaInicio);
       // Se define la función a ejecutar en el controlador
       funcion = 'fechas_facturas';
       $.post(
@@ -205,7 +203,6 @@ $(document).ready(function () {
         { consulta, fechaInicio, fechaFin, funcion },
         (response) => {
           const reportes = JSON.parse(response);
-          console.log(reportes);
           let template = '';
           let template2 = `<tr>
           <th>FACTURA</th>

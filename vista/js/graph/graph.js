@@ -277,7 +277,7 @@ function createGrafph2(data, typeGraph, label) {
       ],
     },
     options: {
-      responsive: true, // Hacer que la gráfica sea responsive
+      responsive: false, // Hacer que la gráfica sea responsive
     },
   });
 }

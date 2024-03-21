@@ -18,68 +18,71 @@ if ($_SESSION['id_rol'] == 1 || $_SESSION['id_rol'] == 2 || $_SESSION['id_rol'] 
 
   <body>
     <div class="wrapper">
-      <!-- inicio Modal  crear usuario-->
-      <?php if ($_SESSION['id_rol'] == 1 || $_SESSION['id_rol'] == 2) { ?>
-        <div class="modal fade" id="crearUsuario" tabindex="-1" role="dialog" aria-labelledby="#crearUsuario" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content" style="background-color: #d1d5dd; color: black;">
-              <div class="modal-body">
-                <form id="form_usuario" class="m-0 p-0" method="POST">
-                  <div class="card-body">
-                    <div class="row">
-                      <div class="col-md-6">
-                        <div class="form-group">
-                          <input type="text" class="form-control" id="nombre_usuario" name="nombre_usuario" placeholder="Nombres" required>
-                          <label class="form-label" for="nombre_usuario">Nombres</label>
-                        </div>
-                      </div>
+      <!-- inicio Modal crear usuario-->
 
-                      <div class="col-md-6">
-                        <div class="form-group">
-                          <input type="text" class="form-control" id="apellido_usuario" name="apellido_usuario" placeholder="Apellidos" required>
-                          <label class="form-label" for="apellido_usuario">Apellidos</label>
-                        </div>
+      <div class="modal fade" id="crearUsuario" tabindex="-1" role="dialog" aria-labelledby="#crearUsuario" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content" style="background-color: #d1d5dd; color: black;">
+            <div class="modal-body">
+              <form id="form_usuario" class="m-0 p-0" method="POST">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <input type="text" class="form-control" id="nombre_usuario" name="nombre_usuario" placeholder="Nombres" required>
+                        <label class="form-label" for="nombre_usuario">Nombres</label>
                       </div>
                     </div>
-                    <div class="row">
-                      <div class="col-md-6">
-                        <div class="form-group">
-                          <input type="email" class="form-control" id="correo_electronico_usuario" name="correo_electronico_usuario" placeholder="Correo" required>
-                          <label for="correo_electronico_usuario">Correo Electrónico</label>
-                        </div>
+
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <input type="text" class="form-control" id="apellido_usuario" name="apellido_usuario" placeholder="Apellidos" required>
+                        <label class="form-label" for="apellido_usuario">Apellidos</label>
                       </div>
-                      <div class="col-md-6">
-                        <div class="form-group">
-                          <input type="password" class="form-control" id="password_usuario" name="password_usuario" placeholder="Contraseña" required>
-                          <label for="password_usuario">Contraseña</label>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <label for="rol_usuario">Tipo de Usuario</label>
-                      <select type="number" class="form-control" id="rol_usuario" name="rol_usuario" placeholder="Tipo Usuario">
-                      </select>
-                    </div>
-                    <div class="form-group">
-                      <label for="foto_usuario">Fotografia del Usuario</label>
-                      <br>
-                      <input type="file" name="foto_usuario" id="foto_usuario">
-                      <center>
-                        <div id="imagen_preview" style="margin-top: 10px;" class="img-thumbnail"></div>
-                      </center>
-                    </div>
-                    <div class="pt-1 mb-2">
-                      <button class="btn btn-dark" type="submit"><i class="fas fa-save mr-2"></i>Guardar</button>
-                      <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fas fa-times-circle mr-2"></i> Cancelar</button>
                     </div>
                   </div>
-                </form>
-              </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <input type="email" class="form-control" id="correo_electronico_usuario" name="correo_electronico_usuario" placeholder="Correo" required>
+                        <label for="correo_electronico_usuario">Correo Electrónico</label>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <input type="password" class="form-control" id="password_usuario" name="password_usuario" placeholder="Contraseña" required>
+                        <label for="password_usuario">Contraseña</label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="rol_usuario">Tipo de Usuario</label>
+                    <?php if ($_SESSION['id_rol'] == 1 || $_SESSION['id_rol'] == 2) { ?>
+                      <select type="number" class="form-control" id="rol_usuario" name="rol_usuario" placeholder="Tipo Usuario">
+                      </select>
+                    <?php } ?>
+                  </div>
+                  <div class="form-group">
+                    <label for="foto_usuario">Fotografia del Usuario</label>
+                    <br>
+                    <input type="file" name="foto_usuario" id="foto_usuario">
+                    <center>
+                      <div id="imagen_preview" style="margin-top: 10px;" class="img-thumbnail"></div>
+                    </center>
+                  </div>
+                  <div class="pt-1 mb-2">
+                    <button class="btn btn-dark" type="submit"><i class="fas fa-save mr-2"></i>Guardar</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fas fa-times-circle mr-2"></i> Cancelar</button>
+                  </div>
+                </div>
+              </form>
             </div>
           </div>
         </div>
-        <!--final  Modal  crear usuario-->
-      <?php } ?>
+      </div>
+      <!--final  Modal  crear usuario-->
+
+
       <!-- inicio Modal  crear cliente-->
       <div class="modal fade" id="crearCliente" tabindex="-1" role="dialog" aria-labelledby="#crearCliente" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -121,7 +124,6 @@ if ($_SESSION['id_rol'] == 1 || $_SESSION['id_rol'] == 2 || $_SESSION['id_rol'] 
           </div>
         </div>
       </div>
-
       <!--final  Modal  crear cliente-->
 
       <!-- inicio Modal  editar cliente-->
@@ -157,11 +159,10 @@ if ($_SESSION['id_rol'] == 1 || $_SESSION['id_rol'] == 2 || $_SESSION['id_rol'] 
           </div>
         </div>
       </div>
-
       <!--final  Modal  editar cliente-->
 
+      <!-- inicio Modal  editar usuario-->
       <?php if ($_SESSION['id_rol'] == 1 || $_SESSION['id_rol'] == 2) { ?>
-        <!-- inicio Modal  editar usuario-->
         <div class="modal fade" id="editar_usuario" tabindex="-1" role="dialog" aria-labelledby="#editar_usuario" aria-hidden="true">
           <div class="modal-dialog" role="document">
             <div class="modal-content" style="background-color: #d1d5dd; color: black;">
@@ -194,8 +195,8 @@ if ($_SESSION['id_rol'] == 1 || $_SESSION['id_rol'] == 2 || $_SESSION['id_rol'] 
             </div>
           </div>
         </div>
-        <!--final  Modal  editar usuario-->
       <?php } ?>
+      <!--final  Modal  editar usuario-->
 
 
 
@@ -303,8 +304,8 @@ if ($_SESSION['id_rol'] == 1 || $_SESSION['id_rol'] == 2 || $_SESSION['id_rol'] 
                               <th>N°</th>
                               <th>Nombres</th>
                               <th>Apellidos</th>
-                              <th>Correo Electronico</th>
-                              <th>Tipo de cliente</th>
+                              <th>Correo</th>
+                              <th>Tipo cliente</th>
                               <?php if ($_SESSION['id_rol'] == 1 || $_SESSION['id_rol'] == 2) { ?>
                                 <th>Editar</th>
                                 <th>Eliminar</th>
@@ -325,11 +326,7 @@ if ($_SESSION['id_rol'] == 1 || $_SESSION['id_rol'] == 2 || $_SESSION['id_rol'] 
         </section>
         <!-- /.content -->
       </div>
-      <!-- Control Sidebar -->
-      <aside class="control-sidebar control-sidebar-dark">
-        <!-- Control sidebar content goes here -->
-      </aside>
-      <!-- /.control-sidebar -->
+
     </div>
 
   </body>

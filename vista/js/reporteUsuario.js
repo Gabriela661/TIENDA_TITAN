@@ -92,7 +92,8 @@ $(document).ready(function () {
       }
     );
   }
-// Sellers report
+
+  // Sellers report
   $(document).on('click', '#generatePDF', function () {
     generarPDF(
       'logo_titan.png',

@@ -43,10 +43,10 @@
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownServicios">
                         <li><a class="dropdown-item" href="corte_plasma.php"> Corte en plasma CNC computarizado</a></li>
                         <li><a class="dropdown-item" href="fab_alucin.php"> Fabricación de ALUZINC</a></li>
-                        <li><a class="dropdown-item" href="rolado_tubos">Rolado de tubos y perfiles</a></li>
+                        <li><a class="dropdown-item" href="rolado_tubos.php">Rolado de tubos y perfiles</a></li>
                         <li><a class="dropdown-item" href="dobles_planchas.php">Doblez de Planchas para puerta y canaleta</a></li>
-                        <li><a class="dropdown-item" href="rolado_planchas">Rolado de Planchas</a></li>
-                        <li><a class="dropdown-item" href="dobles_codo">Dobles de Codos</a></li>
+                        <li><a class="dropdown-item" href="rolado_planchas.php">Rolado de Planchas</a></li>
+                        <li><a class="dropdown-item" href="dobles_codo.php">Dobles de Codos</a></li>
                     </ul>
                 </li>
                 <li class="nav-item">

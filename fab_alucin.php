@@ -44,24 +44,25 @@
                     <div class="col-md-6 col-sm-12 mb-2 d-flex justify-content-center align-items-stretch">
                         <div class="text-white" style="background-color: #f8f9fa; padding: 20px; border-radius: 10px; height: 100%;">
                             <p class="h5" style="color:black; text-align: justify; margin-bottom: 20px;">
-                                En Titan, ofrecemos un servicio de corte en plasma CNC computarizado de última generación para satisfacer las demandas de corte más exigentes en la industria metalúrgica. Nuestro equipo de corte en plasma utiliza tecnología avanzada y está respaldado por un equipo experimentado para proporcionar cortes precisos y de alta calidad en una amplia gama de materiales y espesores.
+                                En Titan, ofrecemos un servicio de fabricación de aluzinc con tecnología de vanguardia para satisfacer las necesidades más exigentes en la industria metalúrgica. Nuestro equipo de fabricación de aluzinc utiliza procesos avanzados y está respaldado por profesionales experimentados para ofrecer productos de alta calidad y rendimiento en una amplia variedad de aplicaciones.
                             </p>
                             <div style="color:black; background-color: #ffffff; padding: 15px; border-radius: 5px; margin-bottom: 20px;">
                                 <h6 style="color: #007bff;">Características y Beneficios:</h6>
                                 <ul style="list-style-type: none; padding-left: 0;">
-                                    <li><i class="fas fa-check-circle" style="color: #28a745;"></i> Precisión y Calidad: Nuestra máquina de corte en plasma CNC garantiza cortes precisos y limpios, con una calidad de borde superior, lo que minimiza el desperdicio de material y reduce los costos de acabado.</li>
-                                    <li><i class="fas fa-check-circle" style="color: #28a745;"></i> Versatilidad: Con capacidad para cortar una variedad de materiales conductores, como acero al carbono, acero inoxidable, aluminio y cobre, nuestro servicio de corte en plasma es adecuado para una amplia gama de aplicaciones industriales.</li>
-                                    <li><i class="fas fa-check-circle" style="color: #28a745;"></i> Eficiencia y Productividad: La automatización del proceso mediante control numérico por computadora (CNC) garantiza una mayor eficiencia y productividad, reduciendo los tiempos de ciclo y aumentando la capacidad de producción.</li>
-                                    <li><i class="fas fa-check-circle" style="color: #28a745;"></i> Flexibilidad de Diseño: Aprovechando la tecnología CAD/CAM, podemos trabajar con una amplia variedad de diseños personalizados y geometrías complejas, ofreciendo flexibilidad en la creación de piezas y componentes según las especificaciones del cliente.</li>
-                                    <li><i class="fas fa-check-circle" style="color: #28a745;"></i> Entrega Rápida y Fiabilidad: Nuestro equipo de corte en plasma está capacitado para manejar proyectos de cualquier tamaño con plazos ajustados, garantizando una entrega rápida y confiable para satisfacer las necesidades de nuestros clientes.</li>
+                                    <li><i class="fas fa-check-circle" style="color: #28a745;"></i> Durabilidad y Resistencia: El aluzinc ofrece una excelente resistencia a la corrosión y a los daños causados por la intemperie, lo que garantiza una vida útil prolongada y un rendimiento óptimo en diversas condiciones ambientales.</li>
+                                    <li><i class="fas fa-check-circle" style="color: #28a745;"></i> Versatilidad: Con su versatilidad en aplicaciones de revestimiento y construcción, el aluzinc es ideal para una amplia gama de proyectos, desde edificios industriales y comerciales hasta estructuras residenciales y agrícolas.</li>
+                                    <li><i class="fas fa-check-circle" style="color: #28a745;"></i> Eficiencia Energética: Gracias a su capacidad para reflejar el calor y la luz solar, el aluzinc ayuda a mantener un ambiente interior fresco durante el verano y reduce la necesidad de refrigeración, lo que contribuye a la eficiencia energética y ahorro de costos.</li>
+                                    <li><i class="fas fa-check-circle" style="color: #28a745;"></i> Sostenibilidad: El aluzinc es un material reciclable y respetuoso con el medio ambiente, lo que lo convierte en una opción eco-amigable para proyectos de construcción y fabricación que buscan minimizar su impacto ambiental.</li>
+                                    <li><i class="fas fa-check-circle" style="color: #28a745;"></i> Facilidad de Instalación: Con su ligereza y flexibilidad, el aluzinc es fácil de transportar, manipular e instalar, lo que reduce los tiempos de construcción y los costos asociados.</li>
                                 </ul>
                             </div>
                         </div>
                     </div>
 
+
                     <div class="col-md-6 col-sm-12 mb-2 d-flex justify-content-center align-items-center bg-white">
-                        
-                            <iframe src="https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/reel/1773848133055564" width="400" height="600" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+
+                        <iframe src="https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/reel/1773848133055564" width="400" height="600" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
 
                     </div>
                 </div>

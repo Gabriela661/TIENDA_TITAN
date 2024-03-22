@@ -36,28 +36,41 @@
 
         <section class="">
             <center>
-                <h2 class="text-white">CORTE EN PLASMA CNC COMPUTARIZADO</h2>
+                <h2 class="text-white">ROLADO DE TUBOS </h2>
                 <hr style="border-top: 2px solid orangered; width: 50%;">
             </center>
             <div class="container">
                 <div class="row py-3">
                     <div class="col-md-6 col-sm-12 mb-2 d-flex justify-content-center align-items-stretch">
-                        <div class="text-white" style="background-color: #f8f9fa; padding: 20px; border-radius: 10px; height: 100%;">
-                            <p class="h5" style="color:black; text-align: justify; margin-bottom: 20px;">
-                                En Titan, ofrecemos un servicio de corte en plasma CNC computarizado de última generación para satisfacer las demandas de corte más exigentes en la industria metalúrgica. Nuestro equipo de corte en plasma utiliza tecnología avanzada y está respaldado por un equipo experimentado para proporcionar cortes precisos y de alta calidad en una amplia gama de materiales y espesores.
-                            </p>
-                            <div style="color:black; background-color: #ffffff; padding: 15px; border-radius: 5px; margin-bottom: 20px;">
+                        <div class="card text-dark" style="border-radius: 10px; background-color: #f8f9fa;">
+                            <div class="card-body">
+                                <h5 class="card-title" style="color: #007bff;">Servicio de Rolado de Tubos</h5>
+                                <p class="card-text" style="text-align: justify;">
+                                    En Fierros y Aceros Titán ofrecemos un servicio de rolado de tubos con la máxima precisión y calidad para satisfacer las necesidades de nuestros clientes. Nuestro equipo altamente calificado utiliza tecnología de vanguardia para garantizar curvas perfectas en planchas y tubos, cumpliendo con los estándares más exigentes de la industria.
+                                </p>
+                                <p class="card-text" style="text-align: justify;">
+                                    Contamos con la experiencia y el compromiso necesarios para realizar los proyectos de rolado de tubos con eficiencia y rapidez. Nuestro enfoque en la calidad nos permite ofrecer resultados excepcionales en cada trabajo, asegurando la plena satisfacción de nuestros clientes.
+                                </p>
+                                <p class="card-text" style="text-align: justify;">
+                                    En Fierros y Aceros Titán, valoramos la importancia de la precisión y la excelencia en cada proyecto. Confíe en nosotros para obtener las curvas más precisas y la más alta calidad en rolado de tubos.
+                                </p>
+                                <p class="card-text" style="text-align: justify;">
+                                    ¡Contacte con nosotros hoy mismo y descubra cómo podemos ayudarle con sus proyectos estructurales en acero!
+                                </p>
+                                <hr>
                                 <h6 style="color: #007bff;">Características y Beneficios:</h6>
                                 <ul style="list-style-type: none; padding-left: 0;">
-                                    <li><i class="fas fa-check-circle" style="color: #28a745;"></i> Precisión y Calidad: Nuestra máquina de corte en plasma CNC garantiza cortes precisos y limpios, con una calidad de borde superior, lo que minimiza el desperdicio de material y reduce los costos de acabado.</li>
-                                    <li><i class="fas fa-check-circle" style="color: #28a745;"></i> Versatilidad: Con capacidad para cortar una variedad de materiales conductores, como acero al carbono, acero inoxidable, aluminio y cobre, nuestro servicio de corte en plasma es adecuado para una amplia gama de aplicaciones industriales.</li>
-                                    <li><i class="fas fa-check-circle" style="color: #28a745;"></i> Eficiencia y Productividad: La automatización del proceso mediante control numérico por computadora (CNC) garantiza una mayor eficiencia y productividad, reduciendo los tiempos de ciclo y aumentando la capacidad de producción.</li>
-                                    <li><i class="fas fa-check-circle" style="color: #28a745;"></i> Flexibilidad de Diseño: Aprovechando la tecnología CAD/CAM, podemos trabajar con una amplia variedad de diseños personalizados y geometrías complejas, ofreciendo flexibilidad en la creación de piezas y componentes según las especificaciones del cliente.</li>
-                                    <li><i class="fas fa-check-circle" style="color: #28a745;"></i> Entrega Rápida y Fiabilidad: Nuestro equipo de corte en plasma está capacitado para manejar proyectos de cualquier tamaño con plazos ajustados, garantizando una entrega rápida y confiable para satisfacer las necesidades de nuestros clientes.</li>
+                                    <li><i class="fas fa-check-circle" style="color: #28a745;"></i> Curvas perfectas en planchas y tubos</li>
+                                    <li><i class="fas fa-check-circle" style="color: #28a745;"></i> Tecnología de vanguardia</li>
+                                    <li><i class="fas fa-check-circle" style="color: #28a745;"></i> Eficiencia y rapidez en los proyectos</li>
+                                    <li><i class="fas fa-check-circle" style="color: #28a745;"></i> Resultados excepcionales garantizados</li>
+                                    <li><i class="fas fa-check-circle" style="color: #28a745;"></i> Satisfacción del cliente asegurada</li>
                                 </ul>
                             </div>
                         </div>
                     </div>
+
+
 
                     <div class="col-md-6 col-sm-12 mb-2 d-flex justify-content-center align-items-center bg-white">
                         <div style="height: 100%;">

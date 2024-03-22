@@ -36,26 +36,36 @@
         <br>
         <br>
 
-        <section class="bg-secondary py-5">
-            <div class="container">
-                <div class="row align-items-center py-5">
-                    <div class="col-md-8 text-white">
-                        <i></i>
-                        <h1>Nosotros</h1>
-                        <p class="h5">
-                            Bienvenido a Titan, tu destino confiable para soluciones en la industria metalúrgica. Nos especializamos en la venta de tubos y perfiles, planchas, coberturas y servicios para satisfacer las necesidades de la industria metal metálica.
-
-                            En Titan, ofrecemos rolados de tubos y perfiles, doblez de planchas para puertas y canaletas, rolado de planchas, dobleces de codos y corte en plasma CNC computarizado. Nos comprometemos a proporcionar productos de calidad, atención al cliente excepcional y soluciones personalizadas para cada proyecto.
-
-                            Contáctanos hoy mismo para descubrir cómo podemos ayudarte con tus necesidades en la industria metalúrgica. Titan, tu socio confiable en metalurgia.
-                        </p>
+        <section class=" py-2">
+            <div class="container bg-white">
+                <div class="row align-items-center py-1">
+                    <div class="col-md-4 col-sm-12 mb-2 d-flex justify-content-center"> <!-- Añadido mb-2 y d-flex justify-content-center -->
+                        <img src="assets/img/titan_logo_negro.png" style="width:300px;height:300px" alt="About Hero">
                     </div>
-                    <div class="col-md-4">
-                        <img src="assets/img/logo_titan_oficial.png" style="width:300px;height:300px" alt="About Hero">
+                    <div class="col-md-4 text-black col-sm-12 mb-2 d-flex justify-content-center align-items-center"> <!-- Añadido mb-2 y d-flex justify-content-center align-items-center -->
+                        <div class="pb-2">
+                            <center>
+                                <h1 class="pt-2">SOBRE NOSOTROS</h1>
+                            </center>
+                            <br>
+                            <p class="h5 " style="text-align: justify;">
+                                En Titan, somos tu socio confiable en la industria metalúrgica. Nos especializamos en brindar soluciones integrales para satisfacer las necesidades de nuestros clientes. Ofrecemos una amplia variedad de productos y servicios, incluyendo la venta de tubos y perfiles, planchas, coberturas, y una variedad de servicios especializados.
+                                <br>
+                                Nuestros servicios incluyen rolado de tubos y perfiles, doblez de planchas para puertas y canaletas, rolado de planchas, dobleces de codos y corte en plasma CNC computarizado. Nos comprometemos a proporcionar productos de la más alta calidad y ofrecer atención al cliente excepcional.
+                                <br>
+                                ¡Contáctanos hoy mismo y descubre cómo podemos ayudarte con tus proyectos en la industria metalúrgica! Titan, tu socio confiable en metalurgia.
+                            </p>
+
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 col-sm-12 mb-2 d-flex justify-content-center"> <!-- Añadido mb-2 y d-flex justify-content-center -->
+                        <img src="assets/img/nosotros.jpg" style="width:300px;height:300px" alt="About Hero">
                     </div>
                 </div>
             </div>
         </section>
+
         <!-- Close Banner -->
 
         <!-- Start Section -->

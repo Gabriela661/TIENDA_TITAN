@@ -15,9 +15,12 @@
                     SERVICIOS
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdownServicios">
-                    <li><a class="dropdown-item" href="#">Servicio 1</a></li>
-                    <li><a class="dropdown-item" href="#">Servicio 2</a></li>
-                    <li><a class="dropdown-item" href="#">Servicio 3</a></li>
+                    <li><a class="dropdown-item" href="corte_plasma.php"> Corte en plasma CNC computarizado</a></li>
+                    <li><a class="dropdown-item" href="fab_alucin.php"> Fabricación de ALUZINC</a></li>
+                    <li><a class="dropdown-item" href="rolado_tubos">Rolado de tubos y perfiles</a></li>
+                    <li><a class="dropdown-item" href="dobles_planchas.php">Doblez de Planchas para puerta y canaleta</a></li>
+                    <li><a class="dropdown-item" href="rolado_planchas">Rolado de Planchas</a></li>
+                    <li><a class="dropdown-item" href="dobles_codo">Dobles de Codos</a></li>
                 </ul>
             </li>
             <li class="nav-item">

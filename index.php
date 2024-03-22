@@ -36,6 +36,19 @@
                 <li class="nav-item">
                     <a class="nav-link" href="tienda.php">TIENDA</a>
                 </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownServicios" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        SERVICIOS
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownServicios">
+                        <li><a class="dropdown-item" href="corte_plasma.php"> Corte en plasma CNC computarizado</a></li>
+                        <li><a class="dropdown-item" href="fab_alucin.php"> Fabricación de ALUZINC</a></li>
+                        <li><a class="dropdown-item" href="rolado_tubos">Rolado de tubos y perfiles</a></li>
+                        <li><a class="dropdown-item" href="dobles_planchas.php">Doblez de Planchas para puerta y canaleta</a></li>
+                        <li><a class="dropdown-item" href="rolado_planchas">Rolado de Planchas</a></li>
+                        <li><a class="dropdown-item" href="dobles_codo">Dobles de Codos</a></li>
+                    </ul>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="nosotros.php">NOSOTROS</a>
                 </li>

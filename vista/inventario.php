@@ -172,7 +172,7 @@ if ($_SESSION['id_rol'] == 1 || $_SESSION['id_rol'] == 2 || $_SESSION['id_rol'] 
                       <input type="file" name="imagen_principal_productoe" id="imagen_principal_productoe" accept="image/jpg, image/jpeg, image/png" class="form-control-file">
                       <label for="imagen_principal_productoe">Imagen principal</label>
                       <div id="imagen_preview1e" style="margin-top: 10px;" class="text-center mt-2">
-                        <img src="" alt="Imagen principal" class="img-thumbnail" style="max-height: 150px;">
+                        <img src="../vista/assets/img/default.png" alt="Imagen principal" class="img-thumbnail" style="max-height: 50px;">
                       </div>
                     </div>
                   </div>
@@ -181,7 +181,7 @@ if ($_SESSION['id_rol'] == 1 || $_SESSION['id_rol'] == 2 || $_SESSION['id_rol'] 
                       <input type="file" name="imagen_secundaria_1_productoe" id="imagen_secundaria_1_productoe" accept="image/jpg, image/jpeg, image/png" class="form-control-file">
                       <label for="imagen_secundaria_1_productoe">Imagen secundaria 1</label>
                       <div id="imagen_preview2e" style="margin-top: 10px;" class="text-center mt-2">
-                        <img src="" alt="Imagen secundaria 1" class="img-thumbnail" style="max-height: 150px;">
+                        <img src="../vista/assets/img/default.png" alt="Imagen secundaria 1" class="img-thumbnail" style="max-height: 50px;">
                       </div>
                     </div>
                   </div>
@@ -190,7 +190,7 @@ if ($_SESSION['id_rol'] == 1 || $_SESSION['id_rol'] == 2 || $_SESSION['id_rol'] 
                       <input type="file" name="imagen_secundaria_2_productoe" id="imagen_secundaria_2_productoe" accept="image/jpg, image/jpeg, image/png" class="form-control-file">
                       <label for="imagen_secundaria_2_productoe">Imagen secundaria 2</label>
                       <div id="imagen_preview3e" style="margin-top: 10px;" class="text-center mt-2">
-                        <img src="" alt="Imagen secundaria 2" class="img-thumbnail" style="max-height: 150px;">
+                        <img src="../vista/assets/img/default.png" alt="Imagen secundaria 2" class="img-thumbnail" style="max-height: 50px;">
                       </div>
                     </div>
                   </div>
@@ -199,7 +199,7 @@ if ($_SESSION['id_rol'] == 1 || $_SESSION['id_rol'] == 2 || $_SESSION['id_rol'] 
                       <input type="file" name="imagen_secundaria_3_productoe" id="imagen_secundaria_3_productoe" accept="image/jpg, image/jpeg, image/png" class="form-control-file">
                       <label for="imagen_secundaria_3_productoe">Imagen secundaria 3</label>
                       <div id="imagen_preview4e" style="margin-top: 10px;" class="text-center mt-2">
-                        <img src="" alt="Imagen secundaria 3" class="img-thumbnail" style="max-height: 150px;">
+                        <img src="../vista/assets/img/default.png" alt="Imagen secundaria 3" class="img-thumbnail" style="max-height: 50px;">
                       </div>
                     </div>
                   </div>
@@ -267,14 +267,13 @@ if ($_SESSION['id_rol'] == 1 || $_SESSION['id_rol'] == 2 || $_SESSION['id_rol'] 
     <section class="content">
       <div class="container-fluid">
         <div class="row">
-          <div class="col-12">
-            <div class="card">
-              <div class="card">
-                <!-- /.card-header -->
-                <div class="card-body table-responsive"> <!-- Agrega la clase table-responsive al contenedor de la tabla -->
-                  <div class="d-flex justify-content-between align-items-center mb-3">
-                    <div>
-                    <!--<h5>Mostrar/ocultar columnas:</h5>
+          <div class="col-md-12 mb-4">
+
+            <!-- /.card-header -->
+            <div class="table-responsive"> <!-- Agrega la clase table-responsive al contenedor de la tabla -->
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <div>
+                  <!--<h5>Mostrar/ocultar columnas:</h5>
                     <a class="toggle-visIn btn btn-success" data-column="0">N°</a>
                     <a class="toggle-visIn btn btn-success" data-column="1">Nombre</a>
                     <a class="toggle-visIn btn btn-success" data-column="2">Marca</a>                    
@@ -283,30 +282,29 @@ if ($_SESSION['id_rol'] == 1 || $_SESSION['id_rol'] == 2 || $_SESSION['id_rol'] 
                     <a class="toggle-visIn btn btn-success" data-column="5">Imagen</a>
                     <a class="toggle-visIn btn btn-success" data-column="6">Editar</a>
                     <a class="toggle-visIn btn btn-success" data-column="7">Eliminar</a> -->
-                    </div>
-                  </div>
-                  <table id="inventarioTable" class="<?php echo ($_SESSION['id_rol'] == 1 || $_SESSION['id_rol'] == 2 || $_SESSION['id_rol'] == 3) ? 'editdelete' : ''; ?> table table-bordered table-striped text-center">
-                    <thead style="background-color: #e85813; color: white;">
-                      <tr>
-                        <th>N°</th>
-                        <th>NOMBRE</th>
-                        <th>MARCA</th>
-                        <!-- <th>DESCRIPCION </th> -->
-                        <th>CANTIDAD </th>
-                        <th>PRECIO</th>
-                        <th>IMAGEN PRODUCTO</th>
-                        <?php if ($_SESSION['id_rol'] == 1 || $_SESSION['id_rol'] == 2 || $_SESSION['id_rol'] == 3) { ?>
-                          <th>EDITAR</th>
-                          <th>ELIMINAR</th>
-                        <?php } ?>
-                      </tr>
-                    </thead>
-                    <tbody id="inventario">
-                    </tbody>
-                  </table>
                 </div>
               </div>
+              <table id="inventarioTable" class="<?php echo ($_SESSION['id_rol'] == 1 || $_SESSION['id_rol'] == 2 || $_SESSION['id_rol'] == 3) ? 'editdelete' : ''; ?> table table-bordered table-striped text-center">
+                <thead style="background-color: #e85813; color: white;">
+                  <tr>
+                    <th>N°</th>
+                    <th>NOMBRE</th>
+                    <th>MARCA</th>
+                    <!-- <th>DESCRIPCION </th> -->
+                    <th>CANTIDAD </th>
+                    <th>PRECIO</th>
+                    <th>IMAGEN PRODUCTO</th>
+                    <?php if ($_SESSION['id_rol'] == 1 || $_SESSION['id_rol'] == 2 || $_SESSION['id_rol'] == 3) { ?>
+                      <th>EDITAR</th>
+                      <th>ELIMINAR</th>
+                    <?php } ?>
+                  </tr>
+                </thead>
+                <tbody id="inventario">
+                </tbody>
+              </table>
             </div>
+
           </div>
         </div>
       </div>
@@ -326,7 +324,7 @@ if ($_SESSION['id_rol'] == 1 || $_SESSION['id_rol'] == 2 || $_SESSION['id_rol'] 
 
   <script src="js/inventario.js"></script>
 <?php
-  include_once "assets/views/footer.php";
+  /* include_once "assets/views/footer.php"; */
 } else {
   header('Location: ../login.php');
 }

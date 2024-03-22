@@ -67,7 +67,7 @@ $(document).ready(function () {
           <td scope="row">${inventario.precio_producto}</td>                        
           <td scope="row"><div class="text-center"><img src="${imagenSrc}" style="${imagenStyle}"  class="img-circle" alt="..."></div></td>`;
           if (editDelete) {
-            template += `<td scope="row"><button id="btn_editar" data-id_inventario="${inventario.id_producto}" type="button" class="btn btn-info">Editar</button></td><td scope="row"> <button id="btn_eliminar" class="btn btn-danger" data-id="${inventario.id_producto}">Eliminar</button></td>`;
+            template += `<td scope="row"><button id="btn_editar" data-id_inventario="${inventario.id_producto}" type="button" class="btn btn-info"><i class="fas fa-edit"></i></button></td><td scope="row"> <button id="btn_eliminar" class="btn btn-danger" data-id="${inventario.id_producto}"><i class="fas fa-trash"></i></button></td>`;
           }
           template += `</tr>`;
         });
@@ -81,6 +81,7 @@ $(document).ready(function () {
           language: {
             url: '//cdn.datatables.net/plug-ins/1.10.21/i18n/Spanish.json',
           },
+          columnDefs: [{ className: 'text-center', targets: '_all' }],
         });
         $('a.toggle-visIn').on('click', function (e) {
           e.preventDefault();

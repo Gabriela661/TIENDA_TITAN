@@ -48,6 +48,7 @@ $(document).ready(function () {
           language: {
             url: '//cdn.datatables.net/plug-ins/1.10.21/i18n/Spanish.json',
           },
+          columnDefs: [{ className: 'text-center', targets: '_all' }],
         });
 
         $('a.toggle-visI').on('click', function (e) {
@@ -110,6 +111,7 @@ $(document).ready(function () {
           language: {
             url: '//cdn.datatables.net/plug-ins/1.10.21/i18n/Spanish.json',
           },
+          columnDefs: [{ className: 'text-center', targets: '_all' }],
         });
 
         $('a.toggle-visE').on('click', function (e) {

@@ -206,14 +206,12 @@ if ($_SESSION['id_rol'] == 1 || $_SESSION['id_rol'] == 2 || $_SESSION['id_rol'] 
         <section class="content-header">
           <div class="container-fluid">
             <div class="row mb-2">
-              <div class="col-sm-6">
+              <div class="col-sm-6 d-flex">
                 <h4><i class="fas fa-users"></i> <b>Lista de Usuarios</b></h4>
                 <?php if ($_SESSION['id_rol'] == 1 || $_SESSION['id_rol'] == 2) { ?>
-                  <button type="button" class="btn btn-primary ml-3" data-toggle="modal" data-target="#crearUsuario">
-                    Nuevo Usuario</button></h1>
+                  <button type="button" class="btn btn-primary ml-3" data-toggle="modal" data-target="#crearUsuario"><i class="fas fa-plus"></i> Usuario</button></h1>
                 <?php } ?>
-                <button type="button" class="btn btn-primary ml-3" data-toggle="modal" data-target="#crearCliente">
-                  Nuevo Cliente</button></h1>
+                <button type="button" class="btn btn-primary ml-3" data-toggle="modal" data-target="#crearCliente"><i class="fas fa-plus"></i> Cliente</button></h1>
               </div>
             </div>
           </div><!-- /.container-fluid -->
@@ -223,27 +221,25 @@ if ($_SESSION['id_rol'] == 1 || $_SESSION['id_rol'] == 2 || $_SESSION['id_rol'] 
         <section class="content">
           <!-- contenedor de usuarios -->
           <div class="col-md-12">
-            <div class="card">
-              <div class="card-header p-2">
-                <!-- botones para cambiar entre personal y clientes -->
-                <ul class="nav nav-pills">
-                  <?php if ($_SESSION['id_rol'] == 1 || $_SESSION['id_rol'] == 2) { ?>
-                    <li class="nav-item"><a class="nav-link active" href="#personal" data-toggle="tab">Personal</a></li>
-                  <?php } ?>
-                  <li class="nav-item"><a class="nav-link <?php if ($_SESSION['id_rol'] == 4) {
-                                                            echo 'active';
-                                                          } ?>" href="#cliente" data-toggle="tab">Clientes</a></li>
-                </ul>
-              </div>
-              <div class="card-body">
-                <div class="tab-content">
-                  <?php if ($_SESSION['id_rol'] == 1 || $_SESSION['id_rol'] == 2) { ?>
-                    <div class="active tab-pane btn-personal" id="personal">
-                      <div class="timeline timeline-inverse">
-                        <div class="card">
-                          <!-- Tabla del personal -->
-                          <div class="card-body table-responsive">
-                            <!--                         <div class="d-flex justify-content-between mb-2 align-items-center">
+
+            <div class="p-2">
+              <!-- botones para cambiar entre personal y clientes -->
+              <ul class="nav nav-pills">
+                <?php if ($_SESSION['id_rol'] == 1 || $_SESSION['id_rol'] == 2) { ?>
+                  <li class="nav-item"><a class="nav-link active" href="#personal" data-toggle="tab">Personal</a></li>
+                <?php } ?>
+                <li class="nav-item"><a class="nav-link <?php if ($_SESSION['id_rol'] == 4) {
+                                                          echo 'active';
+                                                        } ?>" href="#cliente" data-toggle="tab">Clientes</a></li>
+              </ul>
+            </div>
+
+            <div class="tab-content">
+              <?php if ($_SESSION['id_rol'] == 1 || $_SESSION['id_rol'] == 2) { ?>
+                <div class="active tab-pane btn-personal" id="personal">
+                  <!-- Tabla del personal -->
+                  <div class="table-responsive">
+                    <!--                         <div class="d-flex justify-content-between mb-2 align-items-center">
                           <div>
                             <h5>Mostrar/ocultar columnas:</h5>
                             <a class="toggle-visU btn btn-success" data-column="0">N°</a>
@@ -258,34 +254,33 @@ if ($_SESSION['id_rol'] == 1 || $_SESSION['id_rol'] == 2 || $_SESSION['id_rol'] 
                           <div><a type="button" class="btn btn-danger ml-4" href="#" id="generatePDFUsuarios"><i class="far fa-file-pdf"></i></a></div>
                         </div> -->
 
-                            <table id="personalTable" class="table table-bordered table-striped text-center mb-3">
-                              <thead style="background-color: #e85813; color: white;">
-                                <tr>
-                                  <th>N°</th>
-                                  <th>Nombres</th>
-                                  <th>Apellidos</th>
-                                  <th>Correo</th>
-                                  <th>Rol</th>
-                                  <th>Foto</th>
-                                  <th>Editar</th>
-                                  <th>Eliminar</th>
-                                </tr>
-                              </thead>
-                              <tbody id="listar_personal">
-                              </tbody>
-                            </table>
-                          </div>
-                          <!-- ./Tabla del personal -->
-                        </div>
-                      </div>
-                    </div>
-                  <?php } ?>
-                  <div class="<?php if ($_SESSION['id_rol'] == 4) {
-                                echo 'active';
-                              } ?> tab-pane btn-cliente" id="cliente">
-                    <div class="card">
-                      <div class="card-body table-responsive">
-                        <!--      <div class="d-flex justify-content-between mb-2">
+                    <table id="personalTable" class="table table-bordered table-striped text-center mb-3">
+                      <thead style="background-color: #e85813; color: white;">
+                        <tr>
+                          <th>N°</th>
+                          <th>Nombres</th>
+                          <th>Apellidos</th>
+                          <th>Correo</th>
+                          <th>Rol</th>
+                          <th>Foto</th>
+                          <th>Editar</th>
+                          <th>Eliminar</th>
+                        </tr>
+                      </thead>
+                      <tbody id="listar_personal">
+                      </tbody>
+                    </table>
+                  </div>
+                  <!-- ./Tabla del personal -->
+
+                </div>
+              <?php } ?>
+              <div class="<?php if ($_SESSION['id_rol'] == 4) {
+                            echo 'active';
+                          } ?> tab-pane btn-cliente" id="cliente">
+
+                <div class="table-responsive">
+                  <!--      <div class="d-flex justify-content-between mb-2">
                         <div>
                           <h5>Mostrar/ocultar columnas:</h5>
                           <a class="toggle-visC btn btn-success" data-column="0">N°</a>
@@ -298,29 +293,29 @@ if ($_SESSION['id_rol'] == 1 || $_SESSION['id_rol'] == 2 || $_SESSION['id_rol'] 
                         </div>
                         <div><a type="button" class="btn btn-danger ml-4" href="#" id="generatePDFCliente"><i class="far fa-file-pdf"></i></a></div>
                       </div> -->
-                        <table id="clienteTable" class="<?php echo ($_SESSION['id_rol'] == 1 || $_SESSION['id_rol'] == 2) ? 'editdelete' : ''; ?> table table-bordered table-striped text-center mb-4" style="width: 100%;">
-                          <thead style="background-color: #e85813; color: white;">
-                            <tr>
-                              <th>N°</th>
-                              <th>Nombres</th>
-                              <th>Apellidos</th>
-                              <th>Correo</th>
-                              <th>Tipo cliente</th>
-                              <?php if ($_SESSION['id_rol'] == 1 || $_SESSION['id_rol'] == 2) { ?>
-                                <th>Editar</th>
-                                <th>Eliminar</th>
-                              <?php } ?>
-                            </tr>
-                          </thead>
-                          <tbody id="listar_clientes">
-                          </tbody>
-                        </table>
-                      </div>
-                    </div>
-                  </div>
+                  <table id="clienteTable" class="<?php echo ($_SESSION['id_rol'] == 1 || $_SESSION['id_rol'] == 2) ? 'editdelete' : ''; ?> table table-bordered table-striped text-center mb-4" style="width: 100%;">
+                    <thead style="background-color: #e85813; color: white;">
+                      <tr>
+                        <th>N°</th>
+                        <th>Nombres</th>
+                        <th>Apellidos</th>
+                        <th>Correo</th>
+                        <th>Tipo cliente</th>
+                        <?php if ($_SESSION['id_rol'] == 1 || $_SESSION['id_rol'] == 2) { ?>
+                          <th>Editar</th>
+                          <th>Eliminar</th>
+                        <?php } ?>
+                      </tr>
+                    </thead>
+                    <tbody id="listar_clientes">
+                    </tbody>
+                  </table>
                 </div>
+
               </div>
             </div>
+
+
           </div>
           <!-- contenedor de usuarios -->
         </section>

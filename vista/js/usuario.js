@@ -27,11 +27,8 @@ $(document).ready(function () {
                         <td scope="row"><div class="text-center">
                             <img src="${personal.foto_usuario}" style="${imagenStyle}"  class="img-circle" alt="...">
                           </div></td>       
-                        <td scope="row"> <button id="btn_editar" class="btn btn-warning btn-editarAdm" type="button"
-                                  data-toggle="modal" data-target="#editar_usuario" data-id_usuario="${personal.id_usuario}">
-                                Editar
-                            </button></td>
-                        <td scope="row"><button class="btn btn-danger borrar_usuario" data-id="${personal.id_usuario}">Eliminar</button></td>
+                        <td scope="row"> <button id="btn_editar" class="btn btn-warning btn-editarAdm" type="button" data-toggle="modal" data-target="#editar_usuario" data-id_usuario="${personal.id_usuario}"><i class="fas fa-edit"></i></button></td>
+                        <td scope="row"><button class="btn btn-danger borrar_usuario" data-id="${personal.id_usuario}"><i class="fas fa-trash"></i></button></td>
                         `;
         });
         $('#listar_personal').html(template);
@@ -45,6 +42,7 @@ $(document).ready(function () {
           language: {
             url: '//cdn.datatables.net/plug-ins/1.10.21/i18n/Spanish.json',
           },
+          columnDefs: [{ className: 'text-center', targets: '_all' }],
         });
 
         $('a.toggle-visU').on('click', function (e) {
@@ -95,8 +93,8 @@ $(document).ready(function () {
           <td scope="row">${tipo_cliente}</td>`;
           if (editDelete) {
             template += `<td scope="row">  <button id="btn_editarc" class="btn btn-warning btn-editarAdm" type="button"
-            data-toggle="modal" data-target="#editar_cliente" data-id_cliente="${cliente.id_cliente}">Editar</button></td>
-            <td scope="row"><button class="btn btn-danger borrar_cliente" data-id="${cliente.id_cliente}">Eliminar</button></td>`;
+            data-toggle="modal" data-target="#editar_cliente" data-id_cliente="${cliente.id_cliente}"><i class="fas fa-edit"></i></button></td>
+            <td scope="row"><button class="btn btn-danger borrar_cliente" data-id="${cliente.id_cliente}"><i class="fas fa-trash"></i></button></td>`;
           }
           template += `</tr>`;
         });
@@ -111,6 +109,7 @@ $(document).ready(function () {
           language: {
             url: '//cdn.datatables.net/plug-ins/1.10.21/i18n/Spanish.json',
           },
+          columnDefs: [{ className: 'text-center', targets: '_all' }],
         });
         $('a.toggle-visC').on('click', function (e) {
           e.preventDefault();

@@ -11,7 +11,7 @@ $(document).ready(function () {
       { consulta, funcion },
       (response) => {
         const roles = JSON.parse(response);
-        console.log(roles)
+        console.log(roles);
         let template = '';
         let contador = 0; // Inicializamos el contador
         roles.forEach((rol) => {
@@ -22,10 +22,7 @@ $(document).ready(function () {
                   <td scope="row">${rol.nombre_usuario}</td>
                   <td scope="row">${rol.apellido_usuario}</td>
                   <td scope="row">${rol.nombre_rol}</td>
-                  <td scope="row"><button id="btn_editar" data-id_rol="${rol.id_usuario} type="button" class="btn btn-warning">
-                        Editar rol
-                     </button>
-                    </td>           
+                  <td scope="row"><button id="btn_editar" data-id_rol="${rol.id_usuario} type="button" class="btn btn-warning"><i class="fas fa-edit"></i></button></td>           
                 </tr>`;
         });
         $('#roles').html(template);
@@ -39,6 +36,7 @@ $(document).ready(function () {
           language: {
             url: '//cdn.datatables.net/plug-ins/1.10.21/i18n/Spanish.json',
           },
+          columnDefs: [{ className: 'text-center', targets: '_all' }],
         });
       }
     );

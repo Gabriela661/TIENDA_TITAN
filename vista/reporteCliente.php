@@ -2,10 +2,13 @@
 session_start();
 if ($_SESSION['id_rol'] == 1 || $_SESSION['id_rol'] == 2) {
 ?>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
-    <title>Reporte Clientes</title>
+
+    <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+        <title>Reporte Clientes</title>
+    </head>
     <?php
     include_once "assets/views/nav.php";
     ?>
@@ -45,31 +48,23 @@ if ($_SESSION['id_rol'] == 1 || $_SESSION['id_rol'] == 2) {
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-12">
-                                <div class="card">
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <div class="table-responsive">
-                                                <table id="reporte_cliente" class="table table-bordered table-striped text-center mb-1">
-                                                    <thead style="background-color: #e85813; color: white;">
-                                                        <tr>
-                                                            <th>N°</th>
-                                                            <th>NOMBRE</th>
-                                                            <th>APELLIDOS</th>
-                                                            <th>TIPO COMPRA</th>
-                                                            <th>CANTIDAD COMPRA</th>
-                                                            <th>TOTAL COMPRA</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody id="reporte_cliente_lista">
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
-                                        <!-- /.card-body -->
-                                    </div>
-                                    <!-- /.card -->
+
+                                <div class="table-responsive">
+                                    <table id="reporte_cliente" class="table table-bordered table-striped text-center mb-1">
+                                        <thead style="background-color: #e85813; color: white;">
+                                            <tr>
+                                                <th>N°</th>
+                                                <th>NOMBRE</th>
+                                                <th>APELLIDOS</th>
+                                                <th>TIPO COMPRA</th>
+                                                <th>CANTIDAD COMPRA</th>
+                                                <th>TOTAL COMPRA</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="reporte_cliente_lista">
+                                        </tbody>
+                                    </table>
                                 </div>
-                                <!-- /.col -->
                             </div>
                             <!-- /.row -->
                         </div>

@@ -40,6 +40,7 @@ $(document).ready(function () {
           language: {
             url: '//cdn.datatables.net/plug-ins/1.10.21/i18n/Spanish.json',
           },
+          columnDefs: [{ className: 'text-center', targets: '_all' }],
         });
       }
     );
@@ -88,6 +89,7 @@ $(document).ready(function () {
           language: {
             url: '//cdn.datatables.net/plug-ins/1.10.21/i18n/Spanish.json',
           },
+          columnDefs: [{ className: 'text-center', targets: '_all' }],
         });
       }
     );

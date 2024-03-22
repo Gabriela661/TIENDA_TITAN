@@ -2,15 +2,16 @@
 session_start();
 if ($_SESSION['id_rol'] == 1) {
 ?>
-  <title>Roles</title>
 
-  <?php include_once "assets/views/nav.php"; ?>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+  <head>
+    <title>Roles</title>
+    <?php include_once "assets/views/nav.php"; ?>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+  </head>
 
   <div class="wrapper">
-
 
     <!-- Modal para editar -->
     <div class="modal fade" id="editarRol" tabindex="-1" role="dialog" aria-labelledby="editarRolLabel" aria-hidden="true">
@@ -50,7 +51,7 @@ if ($_SESSION['id_rol'] == 1) {
         <div class="container-fluid">
           <div class="row">
             <div class="col-sm-6">
-              <h3 class="ml-5"><strong>Administrar Roles</strong></h3>
+              <h3 class="ml-2 text-xl"><strong>Administrar Roles</strong></h3>
             </div>
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
@@ -67,25 +68,21 @@ if ($_SESSION['id_rol'] == 1) {
       <section class="content">
         <div class="container-fluid">
           <div class="row">
-            <div class="col-lg-10">
-              <div class="card ml-5">
-                <div class="card">
-                  <div class="card-body table-responsive">
-                    <table id="rolesTable" class="table table-bordered table-striped text-center mb-2">
-                      <thead style="background-color: #e85813; color: white;">
-                        <tr>
-                          <th>N°</th>
-                          <th>USUARIO</th>
-                          <th>APELLIDOS</th>
-                          <th>ROL</th>
-                          <th>EDITAR</th>
-                        </tr>
-                      </thead>
-                      <tbody id="roles">
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
+            <div class="col-lg-12">
+              <div class="card-body table-responsive">
+                <table id="rolesTable" class="table table-bordered table-striped text-center mb-2">
+                  <thead style="background-color: #e85813; color: white;">
+                    <tr>
+                      <th>N°</th>
+                      <th>USUARIO</th>
+                      <th>APELLIDOS</th>
+                      <th>ROL</th>
+                      <th>EDITAR</th>
+                    </tr>
+                  </thead>
+                  <tbody id="roles">
+                  </tbody>
+                </table>
               </div>
             </div>
           </div>
@@ -102,7 +99,7 @@ if ($_SESSION['id_rol'] == 1) {
   <script src="js/roles.js"></script>
 
 <?php
-  include_once "assets/views/footer.php";
+/*   include_once "assets/views/footer.php"; */
 } else {
   header('Location: ../login.php');
 }

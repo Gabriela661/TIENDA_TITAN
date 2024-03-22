@@ -222,13 +222,17 @@ include "header.php"
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="guide.php" class="nav-link">
+                        <i class="fas fa-info"></i>
+                        <p>Guía de uso</p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="soporte.php" class="nav-link">
                         <i class="fa fa-info-circle"></i>
                         <p>Soporte</p>
                     </a>
                 </li>
-
-
                 <li class="nav-item">
                     <a href="../Logout.php" class="nav-link">
                         <i class="fas fa-arrow-alt-circle-left"></i>

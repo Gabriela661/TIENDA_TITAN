@@ -41,6 +41,7 @@ $(document).ready(function () {
           language: {
             url: '//cdn.datatables.net/plug-ins/1.10.21/i18n/Spanish.json',
           },
+          columnDefs: [{ className: 'text-center', targets: '_all' }],
         });
       }
     );
@@ -97,6 +98,7 @@ $(document).ready(function () {
             language: {
               url: '//cdn.datatables.net/plug-ins/1.10.21/i18n/Spanish.json',
             },
+            columnDefs: [{ className: 'text-center', targets: '_all' }],
           });
         }
       );
@@ -156,6 +158,7 @@ $(document).ready(function () {
             language: {
               url: '//cdn.datatables.net/plug-ins/1.10.21/i18n/Spanish.json',
             },
+            columnDefs: [{ className: 'text-center', targets: '_all' }],
           });
         }
       );
@@ -215,6 +218,7 @@ $(document).ready(function () {
             language: {
               url: '//cdn.datatables.net/plug-ins/1.10.21/i18n/Spanish.json',
             },
+            columnDefs: [{ className: 'text-center', targets: '_all' }],
           });
         }
       );
@@ -237,16 +241,5 @@ $(document).ready(function () {
       { a: 228, b: 85, c: 18 },
       { d: 255, e: 255, f: 255 }
     );
-  });
-});
-
-$(document).ready(function () {
-  // Función para filtrar los resultados de la tabla según el texto de búsqueda
-  $('#buscar').on('input', function () {
-    var searchText = $(this).val().toLowerCase(); // Obtener el texto de búsqueda y convertirlo a minúsculas
-    $('#venta tr').filter(function () {
-      // Filtrar las filas de la tabla
-      $(this).toggle($(this).text().toLowerCase().indexOf(searchText) > -1); // Mostrar u ocultar la fila según si contiene el texto de búsqueda
-    });
   });
 });

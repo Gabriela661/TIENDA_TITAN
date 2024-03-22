@@ -60,29 +60,22 @@ if ($_SESSION['id_rol'] == 1 || $_SESSION['id_rol'] == 2) {
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-12">
-                                <div class="card">
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <div class="table-responsive">
-                                                <table id="reporte_facturas" class="table table-bordered table-striped text-center mb-1">
-                                                    <thead id="facturas_lista_head" style="background-color: #e85813; color: white;">
-                                                        <tr>
-                                                            <th>FACTURA</th>
-                                                            <th>FECHA</th>
-                                                            <th>CLIENTE</th>
-                                                            <th>TIPO DE PAGO</th>
-                                                            <th>TIPO DE VENTA</th>
-                                                            <th>MONTO TOTAL</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody id="reporte_facturas_lista">
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
-                                        <!-- /.card-body -->
-                                    </div>
-                                    <!-- /.card -->
+
+                                <div class="table-responsive">
+                                    <table id="reporte_facturas" class="table table-bordered table-striped text-center mb-1">
+                                        <thead id="facturas_lista_head" style="background-color: #e85813; color: white;">
+                                            <tr>
+                                                <th>FACTURA</th>
+                                                <th>FECHA</th>
+                                                <th>CLIENTE</th>
+                                                <th>TIPO DE PAGO</th>
+                                                <th>TIPO DE VENTA</th>
+                                                <th>MONTO TOTAL</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="reporte_facturas_lista">
+                                        </tbody>
+                                    </table>
                                 </div>
                                 <!-- /.col -->
                             </div>

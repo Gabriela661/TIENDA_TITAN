@@ -34,13 +34,11 @@ $(document).ready(function () {
                         <td>
                             <button id="btn_editar" data-id_categoria="${categoria.id_categoria}" type="button" class="btn btn-warning">
                             <i class="fas fa-edit"></i>
-                            Editar Categoría
                             </button>
                         </td>
                         <td>
                             <button class="btn btn-danger borrar_categoria" data-id="${categoria.id_categoria}">
                             <i class="fas fa-trash-alt"></i>
-                            Eliminar
                             </button>
                         </td>
                         </tr>`;
@@ -56,6 +54,7 @@ $(document).ready(function () {
           language: {
             url: '//cdn.datatables.net/plug-ins/1.10.21/i18n/Spanish.json',
           },
+          columnDefs: [{ className: 'text-center', targets: '_all' }],
         });
       }
     );

@@ -2,27 +2,30 @@
 session_start();
 if ($_SESSION['id_rol'] == 1 || $_SESSION['id_rol'] == 2 || $_SESSION['id_rol'] == 4) {
 ?>
-    <title>Caja</title>
+
+    <head>
+        <title>Caja</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+    </head>
     <?php include_once "assets/views/nav.php"; ?>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
     <div class="wrapper">
 
 
         <!-- inicio Modal editar movimiento caja-->
         <div class="modal fade" id="editar_caja" tabindex="-1" role="dialog" aria-labelledby="#editar_caja" aria-hidden="true">
-            <div class="modal-dialog sm:modal-sm modal-lg" role="document">
+            <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-body">
                         <div class="container h-100" style="background-color: #d1d5dd; color: black;">
                             <div class="row d-flex justify-content-center align-items-center h-100">
                                 <div class="col col-xl-10">
                                     <div class="row g-0">
-                                        <div class="col-md-5 d-none d-md-block pt-5">
+                                        <!-- <div class="col-md-5 d-none d-md-block pt-5">
                                             <img src="./assets/img/caja.png" alt="login form" class="img-fluid" style="border-radius: 1rem 0 0 1rem;" />
-                                        </div>
-                                        <div class="col-md-7 d-flex align-items-center">
+                                        </div> -->
+                                        <div class="col-md-12 d-flex align-items-center">
                                             <div class="card-body">
                                                 <form id="form_editar_caja" method="POST">
 
@@ -107,18 +110,12 @@ if ($_SESSION['id_rol'] == 1 || $_SESSION['id_rol'] == 2 || $_SESSION['id_rol'] 
                                     </button>
                                 </div>
                             <?php } ?>
-                            <div class="container mt-2" style="background-color: #d1d5dd; color: black;">
+                            <div class="container mt-2">
                                 <div class="row d-flex justify-content-center align-items-center">
                                     <div class="col">
                                         <div class="row">
-                                            <!--  <div class="col-md-5 d-none d-md-block pt-5">
-                                            <img src="./assets/img/caja.png" alt="login form" class="img-fluid" style="border-radius: 1rem 0 0 1rem;" />
-                                        </div> -->
                                             <div class="col-md-12 d-flex align-items-center">
-                                                <div class="card-body p-3 p-lg-4 text-black">
-                                                    <!--  <button type="button" class="close d-none d-md-block" data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button> -->
+                                                <div class="card-body p-3 p-lg-4 text-black" style="border-radius: 10px; border: 1px solid #f34005;">
                                                     <form id="form_caja" method="POST">
 
                                                         <div class="d-flex align-items-center mb-3 pb-1">
@@ -173,22 +170,21 @@ if ($_SESSION['id_rol'] == 1 || $_SESSION['id_rol'] == 2 || $_SESSION['id_rol'] 
                         </div>
                         <div class="col-md-8">
 
-                            <div class="card">
-                                <div class="card-header p-3 d-flex justify-content-between align-items-center">
+                            <div class="">
+                                <div class="p d-flex justify-content-between align-items-center">
                                     <!-- botones para cambiar entre personal y clientes -->
-                                    <h4><i class="fas fa-users"></i> <b>Movimientos de caja</b></h4>
+                                    <h4><b>Movimientos de caja</b></h4>
                                     <ul class="nav nav-pills">
                                         <li class="nav-item"><a class="nav-link active" href="#ingresos" data-toggle="tab">Ingresos</a></li>
                                         <li class="nav-item"><a class="nav-link" href="#egresos" data-toggle="tab">Egresos</a></li>
                                     </ul>
                                 </div>
-                                <div class="card-body">
+                                <div class="">
                                     <div class="tab-content">
                                         <div class="active tab-pane btn-ingresos" id="ingresos">
-                                            <div class="timeline timeline-inverse">
-                                                <div class="card">
+                                                <div class="">
                                                     <!-- Tabla de ingresos -->
-                                                    <div class="card-body table-responsive">
+                                                    <div class="table-responsive">
                                                         <div class="d-flex justify-content-between mb-2 align-items-center">
                                                             <!-- <div class="d-none">
                                                                 <h5>Mostrar/ocultar columnas:</h5>
@@ -227,12 +223,11 @@ if ($_SESSION['id_rol'] == 1 || $_SESSION['id_rol'] == 2 || $_SESSION['id_rol'] 
 
                                                     </div>
                                                     <!-- ./Tabla del personal -->
-                                                </div>
-                                            </div>
+                                                </div>                                            
                                         </div>
                                         <div class="tab-pane btn-egresos" id="egresos">
-                                            <div class="card">
-                                                <div class="card-body table-responsive">
+                                            <div class="">
+                                                <div class="table-responsive">
                                                     <div class="d-flex justify-content-between mb-2">
                                                         <!-- <div>
                                                         <h5>Mostrar/ocultar columnas:</h5>
@@ -299,16 +294,14 @@ if ($_SESSION['id_rol'] == 1 || $_SESSION['id_rol'] == 2 || $_SESSION['id_rol'] 
     </div>
 
     <script src="../vista/assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!-- AdminLTE App -->
-    <script src="../vista/assets/js/adminlte.min.js"></script>
-    <!-- AdminLTE for demo purposes -->
+   
 
     <!-- Footer -->
 
     <script src="js/caja.js"></script>
 
 <?php
-    include_once "assets/views/footer.php";
+    /* include_once "assets/views/footer.php"; */
 } else {
     header('Location: ../login.php');
 }

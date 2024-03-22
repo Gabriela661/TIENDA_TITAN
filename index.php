@@ -20,7 +20,7 @@
     <!-- Preloader -->
     <!-- Carga del logo en la pantalla principal -->
     <div class="preloader flex-column justify-content-center align-items-center">
-        <img src="assets/img/logo_titan1.png" class="brand-image img-elevation-3" style="opacity: .8">
+        <img src="assets/img/titan_logo_negro.png" class="brand-image img-elevation-3" style="opacity: .8">
     </div>
 
     <!-- Navbar -->
@@ -54,11 +54,13 @@
                     <div class="nav-icon position-relative text-decoration-none" href="#" data-bs-toggle="modal" data-bs-target="#templatemo_search">
                         <div class="dropdown">
                             <div class="input-group" style="border-radius: 20px;">
-                                <input type="text" name="buscar" class="form-control border-0" id="dropdownInput" placeholder="Buscar" aria-label="Buscar" aria-describedby="button-addon3" oninput="toggleDropdown()" style="font-size: 14px; padding: 0.375rem 0.75rem;">
-                                <div class="input-group-append">
+
+                                <input type="text" name="buscar" class="form-control border-0 pt-2 pb-3" id="dropdownInput" placeholder="Buscar" aria-label="Buscar" aria-describedby="button-addon3" oninput="toggleDropdown()" style="font-size: 14px; padding: 0.375rem 0.75rem;">
+                                <div class="input-group-prepend">
                                     <span class="input-group-text" id="button-addon3" style="background-color: orangered;"><i class="fas fa-search" style="color: white;"></i></span>
                                 </div>
                             </div>
+
 
 
 
@@ -122,17 +124,17 @@
             <div class="carousel-inner">
                 <div class="carousel-item active">
                     <a href="vermasproductos.php?id=1">
-                        <img src="assets/img/publicidad/publicidad1.png" alt="Slide 1" class="d-block w-100">
+                        <img src="assets/img/1_2.png" alt="Slide 1" class="d-block w-100">
                     </a>
                 </div>
                 <div class="carousel-item">
                     <a href="vermasproductos.php?id=2">
-                        <img src="assets/img/publicidad/publicidad2.png" alt="Slide 2" class="d-block w-100">
+                        <img src="assets/img/1_2.png" alt="Slide 2" class="d-block w-100">
                     </a>
                 </div>
                 <div class="carousel-item">
                     <a href="vermasproductos.php?id=3">
-                        <img src="assets/img/publicidad/publicidad1.png" alt="Slide 3" class="d-block w-100">
+                        <img src="assets/img/3_1.png" alt="Slide 3" class="d-block w-100">
                     </a>
                 </div>
             </div>
@@ -265,6 +267,6 @@
                 // Una vez que el preloader se ha ocultado completamente, mostrar el contenido de la página
                 $("#main-content").fadeIn("slow");
             });
-        }, 2000); // Tiempo en milisegundos (3 segundos)
+        }, 1500); // Tiempo en milisegundos (3 segundos)
     });
 </script>

@@ -38,57 +38,56 @@
         <div class="banner-especial -lr">
             <img class="img-responsive vdk" src="assets/img/contacto1.jpeg" alt="Combo" width="100%" height="auto">
             <br><br><br>
-            <center>
-                <p class="banner-especial__txt">Puedes contactarnos a través de nuestros canales de venta y de atención.<br>
-                    Nuestros asesores te atenderán con gusto.</p>
-            </center>
         </div>
 
         <div class="container">
             <div class="col-md-12  ">
-                <h2 class="text-center">Nuestros canales de venta</h2>
+                <h2 class="text-center" style="color: white;">Nuestros canales de venta</h2>
                 <div class="h-100 py-5 shadow ">
-                    <div class="row">
-                        <div class="col-md-4 center">
+                    <div class="row d-flex justify-content-center">
+                        <div class="col-md-3 center bg-white rounded pt-4 pb-4 mr-4">
                             <div class="h1 text-primary text-center"><i class="fa fa-globe text-orange"></i></div>
                             <h2 class="h5 mt-4 text-center">Compra por nuestra web</h2>
                             <center><a href="#" class="text-dark text-decoration-none">www.titan.pe</a></center>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-3 center bg-white rounded pt-4 pb-4 mr-4">
                             <div class="h1 text-primary text-center"><i class="fab fa-whatsapp text-orange"></i></div>
                             <h2 class="h5 mt-4 text-center">Compra por WhatsApp</h2>
-                            <center> <a href="https://api.whatsapp.com/send?phone=%2051916232342" class="text-dark text-decoration-none">923556568</a></center>
+                            <center><a href="#" class="text-dark text-decoration-none">943 212 297</a></center>
                         </div>
-                        <div class="col-md-4 center">
+                        <div class="col-md-3 center bg-white rounded pt-4 pb-4">
                             <div class="h1 text-primary text-center"><i class="fas fa-shopping-cart text-orange"></i></div>
-                            <h2 class="h5 mt-4 text-center">Compra por teléfono</h2>
-                            <center><a href="#" class="text-dark text-decoration-none">Lunes a Domimngo de 8:00 a 20:00(01) 619 - 1616</a></center>
+                            <h2 class="h5 mt-4 text-center">Compras en nuestra tienda fisica</h2>
+                            <center><a href="#" class="text-dark text-decoration-none">Lunes a Domingo de 8:00 am a 6:00pm </a></center>
                         </div>
                     </div>
+
+
                 </div>
             </div>
             <br>
             <br>
             <div class="col-md-12 ">
-                <h2 class="text-center">Nuestros canales de atención</h2>
+                <h2 class="text-center " style="color: white;">Nuestros canales de atención</h2>
                 <div class="h-100 py-5 shadow">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="h1 text-primary text-center"><i class="fab fa-facebook-messenger text-orange"></i></div>
+                    <div class="row d-flex justify-content-center">
+                        <div class="col-md-3 center bg-white rounded pt-4 pb-4 mr-4">
+                            <div class="h1 text-primary text-center "><i class="fab fa-facebook-messenger text-orange"></i></div>
                             <h2 class="h5 mt-4 text-center">Chatea con nostros</h2>
-                            <center> <a href="" class="text-dark text-decoration-none">Facebook messenger todo el día,todos los días del año</a></center>
+                            <center> <a href="" class="text-dark text-decoration-none">Encuentranos como Fierros Y Aceros TITÁN </a></center>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-3 center bg-white rounded pt-4 pb-4 mr-4">
                             <div class="h1 text-primary text-center"><i class="fas fa-envelope text-orange"></i></div>
                             <h2 class="h5 mt-4 text-center">Escríbenos</h2>
-                            <center> <a href="" class="text-dark text-decoration-none">A nuestro correo electrónico servicioalcliente@titan.pe</a></center>
+                            <center> <a href="" class="text-dark text-decoration-none">A nuestro correo electrónico fierrosyacerostitan@outlook.com</a></center>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-3 center bg-white rounded pt-4 pb-4">
                             <div class="h1 text-primary text-center"><i class="fa fa-phone text-orange"></i></div>
-                            <h2 class="h5 mt-4 text-center">Compra por teléfono</h2>
-                            <center> <a href="" class="text-dark text-decoration-none">Lunes a Domingo de 8:00 a 20:00(01) 619 - 4810</a></center>
+                            <h2 class="h5 mt-4 text-center">Consultas por teléfono</h2>
+                            <center> <a href="" class="text-dark text-decoration-none">Lunes a Domingo de 8:00 am a 6:00 pm - 932 566 922</a></center>
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>

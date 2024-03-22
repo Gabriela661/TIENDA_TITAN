@@ -28,11 +28,13 @@
                 <div class="nav-icon position-relative text-decoration-none" href="#" data-bs-toggle="modal" data-bs-target="#templatemo_search">
                     <div class="dropdown">
                         <div class="input-group" style="border-radius: 20px;">
-                            <input type="text" name="buscar" class="form-control border-0" id="dropdownInput" placeholder="Buscar" aria-label="Buscar" aria-describedby="button-addon3" oninput="toggleDropdown()" style="font-size: 14px; padding: 0.375rem 0.75rem;">
-                            <div class="input-group-append">
+
+                            <input type="text" name="buscar" class="form-control border-0 pt-2 pb-3" id="dropdownInput" placeholder="Buscar" aria-label="Buscar" aria-describedby="button-addon3" oninput="toggleDropdown()" style="font-size: 14px; padding: 0.375rem 0.75rem;">
+                            <div class="input-group-prepend">
                                 <span class="input-group-text" id="button-addon3" style="background-color: orangered;"><i class="fas fa-search" style="color: white;"></i></span>
                             </div>
                         </div>
+
 
 
 

@@ -216,10 +216,10 @@ $(document).ready(function () {
         categorias.forEach((categoria) => {
           template += `
            <li class="sidebar-menu-category">
-                                <a id="categoria" data-id_categoria="${categoria.id_categoria}"  class="sidebar-accordion-menu" data-accordion-btn>
+                                <a id="categoria" data-id_categoria="${categoria.id_categoria}" style=" cursor: pointer;"  class="sidebar-accordion-menu" data-accordion-btn>
                                     <div class="menu-title-flex">
-                                        <img src="${categoria.imagen_producto}" alt="clothes" width="20" height="20" class="menu-title-img">
-                                        <p class="menu-title">
+                                        <img src="${categoria.imagen_producto}" alt="clothes" width="30" height="30" class="menu-title-img">
+                                        <p class="h5">
                                      ${categoria.nombre_categoria}</p>
                                     </div>
                                    
@@ -406,7 +406,7 @@ $(document).ready(function () {
     </a>
     <a  class="showcase-title mt-0" style="color: orangered;">Marca: ${producto.marca_producto}</a>
      <a >
-        <h3 class="showcase-title" style="color: black;">${producto.stock_producto}</h3>
+        <h3 class="showcase-title" style="color: black;">Stock disponible: ${producto.stock_producto}</h3>
     </a>
     
 

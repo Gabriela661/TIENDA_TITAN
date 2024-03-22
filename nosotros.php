@@ -42,14 +42,16 @@
                     <div class="col-md-8 text-white">
                         <i></i>
                         <h1>Nosotros</h1>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                        <p class="h5">
+                            Bienvenido a Titan, tu destino confiable para soluciones en la industria metalúrgica. Nos especializamos en la venta de tubos y perfiles, planchas, coberturas y servicios para satisfacer las necesidades de la industria metal metálica.
+
+                            En Titan, ofrecemos rolados de tubos y perfiles, doblez de planchas para puertas y canaletas, rolado de planchas, dobleces de codos y corte en plasma CNC computarizado. Nos comprometemos a proporcionar productos de calidad, atención al cliente excepcional y soluciones personalizadas para cada proyecto.
+
+                            Contáctanos hoy mismo para descubrir cómo podemos ayudarte con tus necesidades en la industria metalúrgica. Titan, tu socio confiable en metalurgia.
                         </p>
                     </div>
                     <div class="col-md-4">
-                        <img src="vista/assets/img/figura2.png" style="width:300px;height:300px" alt="About Hero">
+                        <img src="assets/img/logo_titan_oficial.png" style="width:300px;height:300px" alt="About Hero">
                     </div>
                 </div>
             </div>
@@ -60,21 +62,37 @@
         <section class="container py-5">
             <div class="row text-center pt-5 pb-3">
                 <div class="col-lg-6 m-auto">
-                    <h1 class="h1">Nuestro servicios</h1>
+                    <h1 class="h1" style="color: white;">Nuestro Compromiso</h1>
                 </div>
             </div>
             <div class="row justify-content-center">
-                <div class="col-md-6 col-lg-3 pb-5">
-                    <div class="h-100 py-5 services-icon-wap shadow">
-                        <div class="h1 text-primary text-center"><i class="fa fa-percent"></i></div>
-                        <h2 class="h5 mt-4 text-center">Promociones</h2>
+                <div class="col-md-4 col-lg-4 pb-5">
+                    <div class="card bg-white shadow">
+                        <div class="h-100 py-5 services-icon-wap">
+                            <div class="h1 text-primary text-center"><i class="fa fa-star"></i></div>
+                            <h2 class="h5 mt-4 text-center">Calidad</h2>
+                            <p class="text-center">Nos esforzamos por ofrecer productos y servicios de la más alta calidad para satisfacer las necesidades de nuestros clientes.</p>
+                        </div>
                     </div>
                 </div>
 
-                <div class="col-md-6 col-lg-3 pb-5">
-                    <div class="h-100 py-5 services-icon-wap shadow">
-                        <div class="h1 text-primary text-center"><i class="fa fa-user"></i></div>
-                        <h2 class="h5 mt-4 text-center">24 Hours Service</h2>
+                <div class="col-md-4 col-lg-4 pb-5">
+                    <div class="card bg-white shadow">
+                        <div class="h-100 py-5 services-icon-wap">
+                            <div class="h1 text-primary text-center"><i class="fa fa-money-bill"></i></div>
+                            <h2 class="h5 mt-4 text-center">Precios bajos</h2>
+                            <p class="text-center">Ofrecemos precios competitivos sin comprometer la calidad, para que puedas obtener los mejores productos al mejor precio.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4 pb-5">
+                    <div class="card bg-white shadow">
+                        <div class="h-100 py-5 services-icon-wap">
+                            <div class="h1 text-primary text-center"><i class="fa fa-percent"></i></div>
+                            <h2 class="h5 mt-4 text-center">Ofertas</h2>
+                            <p class="text-center">Mantente al tanto de nuestras promociones especiales y descuentos exclusivos para aprovechar los mejores precios en nuestros productos.</p>
+                        </div>
                     </div>
                 </div>
             </div>

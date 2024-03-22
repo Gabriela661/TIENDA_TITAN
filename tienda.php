@@ -106,12 +106,12 @@ $pagina = !empty($pagina) ? $pagina : 1;
         <!-- Input oculto para asignar el id del usuario-->
         <input id="id_usuario" type="hidden" value="<?php echo $user_id ?>">
         <input id="paginaSeleccionada" class="d-none" name="pagina" value="<?php echo $pagina; ?>">
-        <div id="gallary" class="text-center  text-light  middle-items wow fadeIn">
-            <h4 class="h4 mb-2">PRODUCTOS SIMILARES</h4>
+        <div id="gallary" class="text-center text-light  middle-items wow fadeIn" >
+            <h4 class="h4 mb-2" style="font-weight: bold;">¡APROVECHA NUESTRAS OFERTAS!</h4>
         </div>
 
         <!-- carrusel de productos similares -->
-        <div class="container-fluid wow fadeIn  text-dark has-height-md middle-items">
+        <div class="pt-5 container-fluid wow fadeIn  text-dark has-height-md middle-items">
             <div id="carouselofertas" class=" product-main carousel slide justify-content-center" data-ride="carousel">
                 <!-- Indicadores -->
                 <ol class="carousel-indicators">
@@ -132,21 +132,24 @@ $pagina = !empty($pagina) ? $pagina : 1;
                 </a>
             </div>
         </div>
-        <div class="category">
-            <div class="container pt-5">
+        <div id="gallary" class="text-center  text-light  middle-items wow fadeIn">
+            <h4 class="h4 mb-2">NUESTRAS CATEGORIAS</h4>
+        </div>
+        <div class="category ">
+            <div class="container pt-5 ">
                 <div class="category-item-container has-scrollbar" id="categoriaMenuHeader">
                 </div>
             </div>
         </div>
-        <div class="product-container ">
+        <div id="gallary" class="text-center  text-light  middle-items wow fadeIn">
+            <h4 class="h4 mb-2">NUESTROS PRODUCTOS</h4>
+        </div>
+        <div class="product-container pt-5 ">
             <div class="container">
                 <div class="sidebar  has-scrollbar" data-mobile-menu>
                     <div class="sidebar-category">
-                        <div class="sidebar-top">
-                            <h2 class="sidebar-title">CATEGORIAS</h2>
-                            <button class="sidebar-close-btn" data-mobile-menu-close-btn>
-                                <ion-icon name="close-outline"></ion-icon>
-                            </button>
+                        <div class="sidebar-top d-flex justify-content-center">
+                            <h2 class="sidebar-title ">CATEGORIAS</h2>
                         </div>
                         <!--Listado de categorias  -->
                         <ul id="categoriaMenu" class="sidebar-menu-category-list">

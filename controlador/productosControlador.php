@@ -226,6 +226,7 @@ if ($_POST['funcion'] == 'mostrarOfertas') {
             'nombre_producto' => $objeto->nombre_producto,
             'precio_producto' => $objeto->precio_producto,
             'precio_descuento' => $objeto->precio_descuento,
+            'descuento' => $objeto->descuento,
             'descripcion_producto' => $objeto->descripcion_producto,
             'stock_producto' => $objeto->stock_producto,
             'imagen_producto' => 'vista/assets/img/' .  strtolower($objeto->categoria_producto) . '/' . $objeto->imagen_producto,

@@ -1569,7 +1569,7 @@ body::-webkit-scrollbar-thumb:hover { background: hsl(0, 0%, 70%); }
   top: 15px;
   left: 15px;
   background: orangered;
-  font-size: var(--fs-8);
+  font-size: 18px; /* Tamaño de fuente más grande */
   font-weight: var(--weight-500);
   color: var(--white);
   padding: 0 8px;
@@ -1577,6 +1577,7 @@ body::-webkit-scrollbar-thumb:hover { background: hsl(0, 0%, 70%); }
           border-radius: var(--border-radius-sm);
   z-index: 3;
 }
+
 
 .product-grid .showcase-badge.angle {
   top: 8px;

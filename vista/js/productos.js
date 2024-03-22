@@ -356,7 +356,7 @@ $(document).ready(function () {
     $.post("controlador/productosControlador.php", { funcion }, (response) => {
       const productosOferta = JSON.parse(response);
       let productosHtml = "";
-      let itemsPerSlide = 5; // Número de productos por slide
+      let itemsPerSlide = 4; // Número de productos por slide
       productosOferta.forEach((producto, index) => {
         if (index % itemsPerSlide === 0) {
           productosHtml += `<div class="carousel-item ${
@@ -364,19 +364,17 @@ $(document).ready(function () {
           }"><div class="row justify-content-center ">`;
         }
         productosHtml += `
-                              
-  <div class="showcase" style="background-color: white;">
+                              <div class="showcase bg-white mx-3 mb-2 " style="width:200px" >
                                 <div class="showcase-banner">
+                                    <img style="" src="${producto.imagen_producto}" alt="imagen producto"  class="product-img default p-2">
+                                    <img  src="${producto.imagen_producto}" alt="Mens Winter Leathers Jackets" width="200" class="product-img hover p-3">
 
-                                    <img src="${productosOferta.imagen_producto}" alt="imagen producto"  class="product-img default p-4">
-                                    <img  src="${productosOferta.imagen_producto}" alt="Mens Winter Leathers Jackets" width="300" class="product-img hover p-3">
-
-                                    <p class="showcase-badge" >Stock: ${productosOferta.stock_producto}</p>
+                                    <p class="showcase-badge" > - ${producto.descuento}% </p>
 
                                     <div class="showcase-actions">
       
 
-                                        <a href="detalle.php?id_producto=${productoTienda.id_producto}"  class="btn-action">
+                                        <a href="detalle.php?id_producto=${producto.id_producto}"  class="btn-action">
                                             <ion-icon name="eye-outline"></ion-icon>
                                         </a>
                                         <button class="btn-action restarBtn">
@@ -388,28 +386,33 @@ $(document).ready(function () {
                                         <button class="btn-action sumarBtn">
                                         <ion-icon name="add"></ion-icon>                                 
                                         </button>
-                                        <button data-id_producto="${productoTienda.id_producto}"  id="agregarCarritoBtn" class="btn-action">
+                                        <button data-id_producto="${producto.id_producto}"  id="agregarCarritoBtn" class="btn-action">
                                             <ion-icon name="bag-add-outline"></ion-icon>
                                         </button>
                                         
                                     </div>
                                 </div>
                                 <div class=" showcase-content">
-                                    <a href="#"  class="showcase-category">Marca: ${productoTienda.marca_producto}</a>
-                                    <a href="#">
-                                        <h3 class="showcase-title"  style="color: black;">${productoTienda.nombre_producto}</h3>
-                                    </a>
-                                    <div class="showcase-rating">
-                                        <ion-icon name="star"></ion-icon>
-                                        <ion-icon name="star"></ion-icon>
-                                        <ion-icon name="star"></ion-icon>
-                                        <ion-icon name="star-outline"></ion-icon>
-                                        <ion-icon name="star-outline"></ion-icon>
-                                    </div>
-                                    <div class="price-box">
-                                        <p class="price">S/. ${productoTienda.precio_producto}</p>
-                                    </div>
-                                </div>
+                               <div class="text-center">
+                               <div class="btn btn-outline-secondary custom-price-container" style="background-color: orangered; border-color: orangered;">
+        <p class="price mb-0 text-white">S/. ${producto.precio_descuento}</p>
+    </div>
+    </div>
+        <p class="price" style="color:black"> Antes: <del>S/. ${producto.precio_producto}</del></p>
+
+    
+    <a >
+        <h3 class="showcase-title" style="color: black;">${producto.nombre_producto}</h3>
+    </a>
+    <a  class="showcase-title mt-0" style="color: orangered;">Marca: ${producto.marca_producto}</a>
+     <a >
+        <h3 class="showcase-title" style="color: black;">${producto.stock_producto}</h3>
+    </a>
+    
+
+
+                           
+                            </div>
                             </div>
         `;
         if (
@@ -420,8 +423,8 @@ $(document).ready(function () {
         }
       });
 
-      $("#carouselOfertas .carousel-inner").html(productosHtml);
-      $("#carouselOfertas").carousel(0); // Mueve el carrusel al primer producto al terminar de cargar
+      $("#carouselofertas .carousel-inner").html(productosHtml);
+      $("#carouselofertas").carousel(0);
     });
   }
   /*FIN DE FUNCION PARA MOSTRAR LAS OFERTAS*/

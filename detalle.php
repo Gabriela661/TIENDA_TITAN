@@ -106,8 +106,8 @@ if (isset($_GET['id_producto'])) {
             </div>
         </div>
         <!-- PRODUCTOS SIMILARES -->
-        <div id="gallary" class="text-center  text-light  middle-items wow fadeIn">
-            <h4 class="h4 mb-2">PRODUCTOS SIMILARES</h4>
+        <div id="gallary" class="text-center  text-light  middle-items wow fadeIn ">
+            <h4 class="h4 mb-4">PRODUCTOS SIMILARES</h4>
         </div>
 
         <!-- carrusel de productos similares -->
@@ -121,12 +121,12 @@ if (isset($_GET['id_producto'])) {
                     <!-- Los productos se agregan dinámicamente aquí -->
                 </div>
                 <!-- Flecha izquierda -->
-                <a class="carousel-control-prev" href="#carouselProductos" role="button" data-slide="prev">
+                <a class="carousel-control-prev" href="#carouselProductosSimilares" role="button" data-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span class="sr-only">Previous</span>
                 </a>
                 <!-- Flecha derecha -->
-                <a class="carousel-control-next" href="#carouselProductos" role="button" data-slide="next">
+                <a class="carousel-control-next" href="#carouselProductosSimilares" role="button" data-slide="next">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="sr-only">Next</span>
                 </a>

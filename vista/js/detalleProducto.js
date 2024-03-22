@@ -59,7 +59,7 @@ $(document).ready(function () {
               <div class="col-lg-7 mt-2">
     <div class="card" style=" padding: 10px;">
         <div class="card-body" style="padding: 10px;">
-            <h2 class="h2" style="color: black; font-weight: bold; padding: 10px;">${detalle.nombre_producto}</h2>
+            <h4 class="h4" style="color: black; font-weight: bold; padding: 10px;">${detalle.nombre_producto}</h4>
             <hr style="border-top: 2px solid orangered; margin-bottom: 10px;">
             <p style="color: black; padding: 10px;" class="h5 py-1">Precio: S/. ${detalle.precio_producto}</p>
             <p style="color: black; padding: 10px;" class="h5 py-1">Categoria: ${detalle.categoria_producto}</p>
@@ -242,7 +242,7 @@ $(document).ready(function () {
       (response) => {
         const productos = JSON.parse(response);
         let productosHtml = "";
-        let itemsPerSlide = 5; // Número de productos por slide
+        let itemsPerSlide = 4; // Número de productos por slide
         productos.forEach((producto, index) => {
           if (index % itemsPerSlide === 0) {
             productosHtml += `<div class="carousel-item ${

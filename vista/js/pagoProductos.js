@@ -256,7 +256,7 @@ $(document).ready(function () {
         Swal.fire({
           icon: "error",
           title: "Oops...",
-          text: "Por favor complete todos los campos de detalle de la proforma",
+          text: "Por favor complete todos los campos de detalle de la factura",
         });
       } else {
         // Comprobar si se ha seleccionado un método de pago
@@ -301,7 +301,7 @@ $(document).ready(function () {
             // Mostrar SweetAlert2 indicando que el código es correcto
             Swal.fire({
               title: "Código correcto",
-              text: "El código de confirmación es válido, a continuación se mostrara la proforma",
+              text: "El código de confirmación es válido, a continuación se mostrara la factura",
               icon: "success",
               showConfirmButton: false, // No mostrar botón
               timer: 3000, // Cerrar automáticamente después de 3 segundos
@@ -346,8 +346,10 @@ $(document).ready(function () {
                if (response.trim() === "vendido") {
                  Swal.fire({
                    icon: "success",
-                   title: "Producto añadido ",
-                   text: "El producto se ha agregado al carrito",
+                   title: "Pago verificado",
+                   text: "El pago se verificó correctamente, se está generando su factura",
+                   showConfirmButton: false, // Oculta el botón de confirmación
+                   timer: 2000, // Establece el tiempo de espera antes de que el cuadro de diálogo se cierre automáticamente en milisegundos
                  }).then(() => {
                    //generar la factura
 
@@ -404,7 +406,7 @@ $(document).ready(function () {
                  Swal.fire({
                    icon: "error",
                    title: "Error",
-                   text: "Error no se pudo agregar el producto al carrito de compras",
+                   text: "Error no se pudo generar la factura",
                  });
                }
              },

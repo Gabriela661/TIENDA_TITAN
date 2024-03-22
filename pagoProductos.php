@@ -133,7 +133,11 @@ if (isset($_GET['id_categoria'])) {
                                     </thead>
                                     <tbody id="productos_carrito">
                                     </tbody>
+
                                     <tfoot>
+                                        <tr>
+                                            <td colspan="3" style="border-top: 1px solid black;"></td>
+                                        </tr>
                                         <tr>
                                             <th></th>
                                             <th>Total S/</th>
@@ -189,12 +193,13 @@ if (isset($_GET['id_categoria'])) {
                                     <h3>Proceso de verificación del pago</h3>
                                 </div>
                                 <div class="card-body">
-                                    <button id="notificar_pago" type="button" class="btn btn-warning btn-lg btn-block">Notificar el pago realizado</button>
+                                    <button id="notificar_pago" type="button" class="btn btn-secondary btn-lg btn-block">Notificar el pago realizado</button>
                                 </div>
                                 <div class="card-body" id="codigo_confirmacion" style="display: none;">
-                                    <input type="text" maxlength="6" id="codigo_input" class="form-control" placeholder="Ingrese el código de 6 digitos">
-                                    <button id="confirmar_pago" type="button" class="btn btn-primary btn-lg  mt-3 btn-block">Verificar Codigo</button>
+                                    <input type="text" maxlength="6" id="codigo_input" class="form-control" placeholder="Ingrese el código de 6 dígitos">
+                                    <button id="confirmar_pago" type="button" class="btn  btn-lg  mt-3 btn-block" style="background-color: orangered;">Verificar Código</button>
                                 </div>
+
                             </div>
 
                             <!-- FIN Boton pedido -->

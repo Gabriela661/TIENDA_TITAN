@@ -345,7 +345,7 @@ $(document).ready(function () {
                             </div>
                             <div class="row">
                                 <div class="col">
-                                    <label id="cantidad" name="cantidad" class="h6">${producto.cantidad_carrito} x ${producto.precio_producto}</label>
+                                    <label id="cantidad" name="cantidad" class="h6">${producto.cantidad_carrito} x ${producto.precio_con_descuento}</label>
                                 </div>
                             </div>
                         </div>
@@ -450,4 +450,9 @@ $(document).ready(function () {
     }
   });
   /*FIN FUNCION PARA CERRAR EL MODAL*/
+    $(document).on("click", "#ver_carrito", function () {
+      // const id_usuario = $(this).data("id_usuario");
+      const id_usuario = document.getElementById("id_usuario").value;
+      cargarCarrito(id_usuario);
+    });
 });

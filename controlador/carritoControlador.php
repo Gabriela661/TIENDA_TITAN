@@ -32,6 +32,7 @@ if ($_POST['funcion'] == 'cargarCarrito') {
             'total_valor_carrito' => $objeto->total_valor_carrito,
             'nombre_producto' => $objeto->nombre_producto,
             'precio_producto' => $objeto->precio_producto,
+            'precio_con_descuento' => $objeto->precio_con_descuento,
             'stock_producto' => $objeto->stock_producto,
             'imagen_producto' => 'vista/assets/img/' .  strtolower($objeto->nombre_categoria) . '/' . $objeto->imagen_producto,
         );

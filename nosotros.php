@@ -37,12 +37,12 @@
         <br>
 
         <section class=" py-2">
-            <div class="container bg-white">
+            <div class="container">
                 <div class="row align-items-center py-1">
                     <div class="col-md-4 col-sm-12 mb-2 d-flex justify-content-center"> <!-- Añadido mb-2 y d-flex justify-content-center -->
-                        <img src="assets/img/titan_logo_negro.png" style="width:300px;height:300px" alt="About Hero">
+                        <img src="assets/img/logo_titan_oficial.png" style="width:400px;" alt="About Hero">
                     </div>
-                    <div class="col-md-4 text-black col-sm-12 mb-2 d-flex justify-content-center align-items-center"> <!-- Añadido mb-2 y d-flex justify-content-center align-items-center -->
+                    <div class="col-md-4 text-white col-sm-12 mb-2 d-flex justify-content-center align-items-center"> <!-- Añadido mb-2 y d-flex justify-content-center align-items-center -->
                         <div class="pb-2">
                             <center>
                                 <h1 class="pt-2">SOBRE NOSOTROS</h1>
@@ -60,7 +60,7 @@
                     </div>
 
                     <div class="col-md-4 col-sm-12 mb-2 d-flex justify-content-center"> <!-- Añadido mb-2 y d-flex justify-content-center -->
-                        <img src="assets/img/nosotros.jpg" style="width:300px;height:300px" alt="About Hero">
+                        <img src="assets/img/nosotros.png" style="width:400px;height:400px" alt="About Hero">
                     </div>
                 </div>
             </div>

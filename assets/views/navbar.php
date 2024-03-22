@@ -10,13 +10,25 @@
             <li class="nav-item">
                 <a class="nav-link" href="tienda.php">TIENDA</a>
             </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownServicios" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    SERVICIOS
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdownServicios">
+                    <li><a class="dropdown-item" href="#">Servicio 1</a></li>
+                    <li><a class="dropdown-item" href="#">Servicio 2</a></li>
+                    <li><a class="dropdown-item" href="#">Servicio 3</a></li>
+                </ul>
+            </li>
             <li class="nav-item">
                 <a class="nav-link" href="nosotros.php">NOSOTROS</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="contacto.php">CONTACTO</a>
             </li>
+
         </ul>
+
         <a class="navbar-brand m-auto" href="#">
             <img src="assets/img/logo_titan1.png" class="brand-img" alt="">
             <span class="brand-txt">

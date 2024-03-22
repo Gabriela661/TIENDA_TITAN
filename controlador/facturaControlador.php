@@ -181,7 +181,7 @@ $pdf = new MYPDF(
 
 // TITULO AL DOCUMENTO PDF
 $pdf->SetCreator(PDF_CREATOR);
-$pdf->SetTitle('PROFORMA');
+$pdf->SetTitle('FACTURA');
 
 //RECEPCION DE LOS PRODUCTOS
 $json_data = file_get_contents("php://input");
@@ -358,4 +358,4 @@ if ($inicio < $cont) {
 }
 
 //Close and output PDF document
-$pdf->Output('PROFORMA.pdf', 'I');
+$pdf->Output('FACTURA.pdf', 'I');

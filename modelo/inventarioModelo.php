@@ -45,9 +45,9 @@ class inventario
     }
 
     //crear producto
-    function crear_producto($codigo_producto, $nombre_producto, $precio_producto, $descripcion_producto, $cantidad_producto, $marca_producto, $categoria_producto, $imagen_producto1, $imagen_producto2, $imagen_producto3, $imagen_producto4)
+    function crear_producto($codigo_producto, $nombre_producto, $precio_producto, $descripcion_producto, $cantidad_producto, $marca_producto, $categoria_producto, $imagen_producto1, $imagen_producto2, $imagen_producto3, $imagen_producto4,$certificado_calidad, $doc_especificaciones)
     {
-        $sql = "INSERT INTO producto (codigo_producto, nombre_producto, precio_producto, descripcion_producto, stock_producto, marca_producto, id_categoria) VALUES (:codigo_producto, :nombre_producto, :precio_producto, :descripcion_producto, :cantidad_producto, :marca_producto, :categoria_producto)";
+        $sql = "INSERT INTO producto (codigo_producto, nombre_producto, precio_producto, descripcion_producto, stock_producto, marca_producto, id_categoria,certificado_calidad) VALUES (:codigo_producto, :nombre_producto, :precio_producto, :descripcion_producto, :cantidad_producto, :marca_producto, :categoria_producto, :certificado_calidad)";
         $query = $this->acceso->prepare($sql);
         $query->execute(array(
             ':codigo_producto' => $codigo_producto,
@@ -56,7 +56,8 @@ class inventario
             ':descripcion_producto' => $descripcion_producto,
             ':cantidad_producto' => $cantidad_producto,
             ':marca_producto' => $marca_producto,
-            ':categoria_producto' => $categoria_producto
+            ':categoria_producto' => $categoria_producto,
+            ':certificado_calidad' => $certificado_calidad,
         ));
 
         // Obtiene el ID del último producto insertado
@@ -109,6 +110,16 @@ class inventario
             $sql_imagen = "INSERT INTO imagen (id_producto) VALUES (:producto_id)";
             $query_imagen = $this->acceso->prepare(($sql_imagen));
             $query_imagen->execute(array(':producto_id' => $producto_id));
+        }
+        foreach ($doc_especificaciones as $documento) {
+            $sql_documento = "INSERT INTO especificacion_tecnica(url_especificacion, id_producto) VALUES (:documento, :producto_id)";
+            $query_documento = $this->acceso->prepare($sql_documento);
+            $query_documento->execute(
+                array(
+                    ':documento' => $documento,
+                    ':producto_id' => $producto_id,
+                )
+            );
         }
 
         echo 'Producto Agregado';

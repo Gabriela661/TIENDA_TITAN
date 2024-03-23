@@ -42,6 +42,7 @@ if ($_POST['funcion'] == 'crear_producto') {
     $imagen_producto2 = '';
     $imagen_producto3 = '';
     $imagen_producto4 = '';
+    $certificado_calidad = '';
 
     $categoria_text = strtolower($categoria_text);
 
@@ -81,6 +82,29 @@ if ($_POST['funcion'] == 'crear_producto') {
         move_uploaded_file($_FILES['imagen_producto_s3']['tmp_name'], $ruta);
         $imagen_producto4 = $nombre_inventario;
     }
+    // Procesamiento del certificado de calidad
+    if (isset($_FILES['certificado_calidad'])) {
+        $certificado_calidad = $_FILES['certificado_calidad']['name'];
+        $file_tmp = $_FILES['certificado_calidad']['tmp_name'];
+        $file_destination = '../vista/assets/pdf/certificadoCalidad/' . $certificado_calidad;
+        if (move_uploaded_file($file_tmp, $file_destination)) {
+            // echo "El archivo PDF se ha guardado correctamente.";
+        }
+    }
+
+    $doc_especificaciones = []; // Inicializar como un arreglo vacío
+
+    foreach ($_FILES as $key => $file) {
+        // Verificar si el nombre del campo de archivo comienza con 'datosMultimedia'
+        if (strpos($key, 'especificaciones') === 0 && !empty($file['name'])) {
+            $ruta_archivos = '../vista/assets/pdf/Especificaciones/';
+            $nombre_archivo = uniqid() . '-' . $file['name'];
+            $ruta = $ruta_archivos . $nombre_archivo;
+            move_uploaded_file($file['tmp_name'], $ruta);
+            $doc_especificaciones[] = $nombre_archivo; // Agregar el nombre del archivo al arreglo
+    
+        }
+    }
     
     $inventario->crear_producto(
         $codigo_producto,
@@ -93,7 +117,9 @@ if ($_POST['funcion'] == 'crear_producto') {
         $imagen_producto1,
         $imagen_producto2,
         $imagen_producto3,
-        $imagen_producto4
+        $imagen_producto4,
+        $certificado_calidad,
+        $doc_especificaciones
     );
 }
 

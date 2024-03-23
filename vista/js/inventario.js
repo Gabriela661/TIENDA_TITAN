@@ -153,10 +153,11 @@ $(document).ready(function () {
     const imagen_producto_s1 = $('#imagen_secundaria_1_producto')[0].files[0];
     const imagen_producto_s2 = $('#imagen_secundaria_2_producto')[0].files[0];
     const imagen_producto_s3 = $('#imagen_secundaria_3_producto')[0].files[0];
-    console.log(imagen_producto_principal);
-    console.log(imagen_producto_s1);
-    console.log(imagen_producto_s2);
-    console.log(imagen_producto_s3);
+    const certificado_calidad = $("#certificado_calidad")[0].files[0];
+    // console.log(imagen_producto_principal);
+    // console.log(imagen_producto_s1);
+    // console.log(imagen_producto_s2);
+    // console.log(imagen_producto_s3);
 
     const formData = new FormData($('#form_inventario')[0]);
     formData.append('funcion', 'crear_producto');
@@ -172,7 +173,12 @@ $(document).ready(function () {
     formData.append('imagen_producto_s1', imagen_producto_s1);
     formData.append('imagen_producto_s2', imagen_producto_s2);
     formData.append('imagen_producto_s3', imagen_producto_s3);
-
+    formData.append("certificado_calidad", certificado_calidad);
+   
+    for (let i = 0; i < arrayFiles.length; i++) {
+      formData.append("especificaciones" + i, arrayFiles[i]); // Agregar cada archivo con un nombre de campo único
+  }
+  
     enviarDatos(
       '../controlador/inventarioControlador.php',
       formData,

@@ -14,7 +14,7 @@ include_once "assets/views/nav.php";
 <link rel="stylesheet" href="../vista/assets/css/adminlte.min.css">
 <!-- <link rel="stylesheet" href="assets/css/stilos.css">-->
 <link rel="stylesheet" href="../vista/assets/css/stilos.css">
-
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <body>
     <div class="wrapper">
         <!-- Content Wrapper. Contains page content -->

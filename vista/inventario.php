@@ -3,12 +3,13 @@ session_start();
 if ($_SESSION['id_rol'] == 1 || $_SESSION['id_rol'] == 2 || $_SESSION['id_rol'] == 3 || $_SESSION['id_rol'] == 4) {
 ?>
 
-
   <title>Inventario</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
-
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="assets/plugins/dropzone_copy/dropzone.css">
+  <script src="assets/plugins/dropzone_copy/dropzone.js"></script>
   <?php include_once "assets/views/nav.php"; ?>
 
   <!-- Modal crear producto -->
@@ -104,8 +105,25 @@ if ($_SESSION['id_rol'] == 1 || $_SESSION['id_rol'] == 2 || $_SESSION['id_rol'] 
                     </div>
                   </div>
                 </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <label>Certificado de calidad</label>
+                    <input type="file" name="certificado_calidad" id="certificado_calidad">
+                  </div>
+                </div>
               </div>
-
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group agregarMultimedia">
+                    <label>Especificaciones tecnicas</label>
+                    <div class="multimediaFisica" id="multimediaFisica">
+                      <div class="message">
+                        <span id="placeholder" style="color: gray;">Arrastra o haz clic para subir archivos.</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
               <div class="pt-1 mb-1">
                 <?php if ($_SESSION['id_rol'] == 1 || $_SESSION['id_rol'] == 2 || $_SESSION['id_rol'] == 3) { ?>
                   <button class="btn btn-dark" type="submit"><i class="fas fa-save mr-2"></i>Guardar</button>
@@ -119,13 +137,35 @@ if ($_SESSION['id_rol'] == 1 || $_SESSION['id_rol'] == 2 || $_SESSION['id_rol'] 
       </div>
     </div>
   </div>
+  <script>
+    var arrayFiles = [];
+    $(".multimediaFisica").dropzone({
+      url: "/",
+      addRemoveLinks: true,
+      acceptedFiles: "application/pdf",
+      // maxFilesize: 2, //2mb
+      maxFiles: 10, //maximo 10 archivos
+      dictInvalidFileType: "Solo se permiten archivos PDF.",
+      init: function() {
+        this.on("addedfile", function(file) {
+          arrayFiles.push(file);
+          console.log("arrayFiles", arrayFiles);
+        });
 
+        this.on("removedfile", function(file) {
+          var index = arrayFiles.indexOf(file);
 
-
+          arrayFiles.splice(index, 1);
+          console.log("arrayFiles", arrayFiles);
+        });
+      },
+    });
+    //console.log(arrayFiles);
+  </script>
   <?php if ($_SESSION['id_rol'] == 1 || $_SESSION['id_rol'] == 2 || $_SESSION['id_rol'] == 3) { ?>
     <!-- Modal para editar el inventario -->
     <div class="modal fade" id="editarInventario" tabindex="-1" role="dialog" aria-labelledby="editarProductoLabel" aria-hidden="true">
-      <div class="modal-dialog  sm:modal-sm modal-lg" role="document">
+      <div class="modal-dialog  modal-xl" role="document">
         <div class="modal-content" style="background-color: #d1d5dd; color: black;">
           <div class="modal-body">
             <form id="form_editar_producto" method="POST">

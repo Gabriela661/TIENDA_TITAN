@@ -6,6 +6,7 @@ if ($_SESSION['id_rol'] == 1 || $_SESSION['id_rol'] == 2) {
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <title>Reporte Ventas</title>
     <?php
     include_once "assets/views/nav.php";

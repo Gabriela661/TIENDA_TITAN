@@ -13,6 +13,10 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="./assets/css/fontawesome.min.css">
     <link rel="stylesheet" href="assets/css/stilos.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Titan+One&display=swap" rel="stylesheet">
+
 
 </head>
 
@@ -36,7 +40,9 @@
 
         <section class="">
             <center>
-                <h2 class="text-white">FABRICACION DE ALUZIN</h2>
+                <h2 class="text-white" style="font-family: 'Titan One', sans-serif;">FABRICACION DE ALUZIN</h2>
+
+
                 <hr style="border-top: 2px solid orangered; width: 50%;">
             </center>
             <div class="container">

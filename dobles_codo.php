@@ -46,10 +46,10 @@
                             <p class="h5" style="color:black; text-align: justify; margin-bottom: 20px;">
                                 En Titan, ofrecemos un servicio especializado en el rolado de tubos, brindando las curvas más precisas para las planchas y tubos que necesitan nuestros clientes. Nuestro compromiso es ofrecer un servicio de calidad en la habilitación de material, asegurando estándares óptimos en cada proceso.
                             </p>
-                            <p style="color:black; text-align: justify; margin-bottom: 20px;">
+                            <p class="h5" style="color:black; text-align: justify; margin-bottom: 20px;">
                                 Contamos con la tecnología más avanzada y personal altamente calificado para garantizar la precisión y rapidez en cada proyecto. Desde la selección del material hasta el acabado final, mantenemos un enfoque constante en la calidad.
                             </p>
-                            <p style="color:black; text-align: justify; margin-bottom: 20px;">
+                            <p class="h5" style="color:black; text-align: justify; margin-bottom: 20px;">
                                 Nuestro servicio de rolado cubre tubos de todas las medidas. Somos especialistas en proporcionar soluciones adaptadas a las necesidades específicas de cada cliente, garantizando resultados sobresalientes en cada trabajo.
                             </p>
                             <div style="color:black; background-color: #ffffff; padding: 15px; border-radius: 5px;">

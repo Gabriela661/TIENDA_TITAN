@@ -75,15 +75,15 @@ $pagina = !empty($pagina) ? $pagina : 1;
                 <!-- Pie del modal -->
                 <div class="modal-footer d-flex justify-content-center ">
                     <div class="row col-12">
-                        <div class="col-6 col-md-6 col-lg-5">
+                        <div class="col-6 col-md-5 col-lg-5">
                             <a id="comprar" href="pagoProductos.php" type="button" class="btn btn-warning btn-block">
                                 <i class="fas fa-shopping-cart"></i>
                                 Comprar
                             </a>
                         </div>
-                        <div class="col-6 col-md-6 col-lg-7">
+                        <div class="col-6 col-md-7 col-lg-7">
                             <a id="btnLimpiarCarrito" class="btn btn-danger btn-block">
-                                <i class="fas fa-broom"></i>Limpiar el Carrito
+                                <i class="fas fa-broom"></i>Limpiar Carrito
                             </a>
                         </div>
                     </div>
@@ -149,7 +149,7 @@ $pagina = !empty($pagina) ? $pagina : 1;
                 <div class="sidebar  has-scrollbar" data-mobile-menu>
                     <div class="sidebar-category">
                         <div class="sidebar-top d-flex justify-content-center">
-                            <h2 class="sidebar-title ">CATEGORIAS</h2>
+                            <h2 class="h4" >CATEGORIAS</h2>
                         </div>
                         <!--Listado de categorias  -->
                         <ul id="categoriaMenu" class="sidebar-menu-category-list">

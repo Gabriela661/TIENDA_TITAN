@@ -79,7 +79,7 @@ if (isset($_GET['id_producto'])) {
                         </div>
                         <div class="col-6 col-md-6 col-lg-7">
                             <a id="btnLimpiarCarrito" class="btn btn-danger btn-block">
-                                <i class="fas fa-broom"></i>Limpiar el Carrito
+                                <i class="fas fa-broom"></i>Limpiar Carrito
                             </a>
                         </div>
                     </div>

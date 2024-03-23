@@ -61,7 +61,7 @@
 
                     <div class="col-md-6 col-sm-12 mb-2 d-flex justify-content-center align-items-center bg-white">
 
-                            <iframe src="https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/FIERROSACEROSTITAN/videos/373578148397800/" width="400" height="600" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+                        <iframe src="https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/FIERROSACEROSTITAN/videos/373578148397800/" width="400" height="600" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
                     </div>
                 </div>
 
@@ -72,15 +72,12 @@
                 <h2 class="text-white">COTIZAR</h2>
                 <hr style="border-top: 2px solid orangered; width: 50%;">
                 <div>
-                    <!-- Botón de WhatsApp -->
-                    <a href="https://api.whatsapp.com/send?phone=51934890639&text=Hola,%20estoy%20interesado%20en%20obtener%20una%20cotización%20para:." target="_blank" class="btn btn-secondary btn-lg mr-3">
+                    <a href="https://api.whatsapp.com/send?phone=51943212297&text=Hola,%20estoy%20interesado%20en%20obtener%20una%20cotización%20para:." target="_blank" class="btn btn-secondary btn-lg mr-3" style="background-color: orangered;">
                         <i class="fab fa-whatsapp"></i> WhatsApp
                     </a>
 
-                    <!-- Botón de Messenger -->
-                    <a href="https://m.me/TUNOMBREDEUSUARIO" target="_blank" class="btn btn-secondary btn-lg">
-                        <i class="fab fa-facebook-messenger"></i> Messenger
-                    </a>
+
+
                 </div>
             </section>
         </center>

@@ -74,15 +74,12 @@
                 <h2 class="text-white">COTIZAR</h2>
                 <hr style="border-top: 2px solid orangered; width: 50%;">
                 <div>
-                    <!-- Botón de WhatsApp -->
-                    <a href="https://api.whatsapp.com/send?phone=51934890639&text=Hola,%20estoy%20interesado%20en%20obtener%20una%20cotización%20para:." target="_blank" class="btn btn-secondary btn-lg mr-3">
+                    <a href="https://api.whatsapp.com/send?phone=51943212297&text=Hola,%20estoy%20interesado%20en%20obtener%20una%20cotización%20para:." target="_blank" class="btn btn-secondary btn-lg mr-3" style="background-color: orangered;">
                         <i class="fab fa-whatsapp"></i> WhatsApp
                     </a>
 
-                    <!-- Botón de Messenger -->
-                    <a href="https://m.me/TUNOMBREDEUSUARIO" target="_blank" class="btn btn-secondary btn-lg">
-                        <i class="fab fa-facebook-messenger"></i> Messenger
-                    </a>
+
+
                 </div>
             </section>
         </center>

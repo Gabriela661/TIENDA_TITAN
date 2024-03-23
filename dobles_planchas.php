@@ -36,7 +36,7 @@
 
         <section class="">
             <center>
-                <h2 class="text-white">CORTE EN PLASMA CNC COMPUTARIZADO</h2>
+                <h2 class="text-white">DOBLES DE PLANCHAS</h2>
                 <hr style="border-top: 2px solid orangered; width: 50%;">
             </center>
             <div class="container">
@@ -44,27 +44,28 @@
                     <div class="col-md-6 col-sm-12 mb-2 d-flex justify-content-center align-items-stretch">
                         <div class="text-white" style="background-color: #f8f9fa; padding: 20px; border-radius: 10px; height: 100%;">
                             <p class="h5" style="color:black; text-align: justify; margin-bottom: 20px;">
-                                En Titan, ofrecemos un servicio de corte en plasma CNC computarizado de última generación para satisfacer las demandas de corte más exigentes en la industria metalúrgica. Nuestro equipo de corte en plasma utiliza tecnología avanzada y está respaldado por un equipo experimentado para proporcionar cortes precisos y de alta calidad en una amplia gama de materiales y espesores.
+                                En Titan, ofrecemos un servicio de doblado de plancha de 2.45 mts con nuestra dobladora de plancha con dados, capaz de trabajar con planchas de hasta 1/16" o 1.5mm de espesor. Contamos con maquinaria de primera calidad y personal técnico calificado para realizar el servicio de corte, doblez y rolado de planchas, cumpliendo con los más altos estándares de calidad en la industria metalúrgica.
                             </p>
                             <div style="color:black; background-color: #ffffff; padding: 15px; border-radius: 5px; margin-bottom: 20px;">
                                 <h6 style="color: #007bff;">Características y Beneficios:</h6>
                                 <ul style="list-style-type: none; padding-left: 0;">
-                                    <li><i class="fas fa-check-circle" style="color: #28a745;"></i> Precisión y Calidad: Nuestra máquina de corte en plasma CNC garantiza cortes precisos y limpios, con una calidad de borde superior, lo que minimiza el desperdicio de material y reduce los costos de acabado.</li>
-                                    <li><i class="fas fa-check-circle" style="color: #28a745;"></i> Versatilidad: Con capacidad para cortar una variedad de materiales conductores, como acero al carbono, acero inoxidable, aluminio y cobre, nuestro servicio de corte en plasma es adecuado para una amplia gama de aplicaciones industriales.</li>
-                                    <li><i class="fas fa-check-circle" style="color: #28a745;"></i> Eficiencia y Productividad: La automatización del proceso mediante control numérico por computadora (CNC) garantiza una mayor eficiencia y productividad, reduciendo los tiempos de ciclo y aumentando la capacidad de producción.</li>
-                                    <li><i class="fas fa-check-circle" style="color: #28a745;"></i> Flexibilidad de Diseño: Aprovechando la tecnología CAD/CAM, podemos trabajar con una amplia variedad de diseños personalizados y geometrías complejas, ofreciendo flexibilidad en la creación de piezas y componentes según las especificaciones del cliente.</li>
-                                    <li><i class="fas fa-check-circle" style="color: #28a745;"></i> Entrega Rápida y Fiabilidad: Nuestro equipo de corte en plasma está capacitado para manejar proyectos de cualquier tamaño con plazos ajustados, garantizando una entrega rápida y confiable para satisfacer las necesidades de nuestros clientes.</li>
+                                    <li><i class="fas fa-check-circle" style="color: #28a745;"></i> Precision y Calidad: Nuestra dobladora de plancha garantiza dobleces precisos y uniformes, asegurando una calidad de acabado óptima y minimizando el desperdicio de material.</li>
+                                    <li><i class="fas fa-check-circle" style="color: #28a745;"></i> Versatilidad: Con capacidad para trabajar con una variedad de materiales, nuestro servicio de doblado es adecuado para múltiples aplicaciones industriales.</li>
+                                    <li><i class="fas fa-check-circle" style="color: #28a745;"></i> Eficiencia y Productividad: Nuestra maquinaria de última generación garantiza una alta eficiencia en el proceso de doblado, lo que se traduce en tiempos de producción reducidos y una mayor productividad.</li>
+                                    <li><i class="fas fa-check-circle" style="color: #28a745;"></i> Flexibilidad de Diseño: Podemos trabajar con una amplia variedad de diseños y especificaciones, brindando flexibilidad para adaptarnos a las necesidades específicas de cada cliente.</li>
+                                    <li><i class="fas fa-check-circle" style="color: #28a745;"></i> Entrega Rápida y Fiabilidad: Comprometidos con la satisfacción del cliente, garantizamos una entrega rápida y confiable de los productos terminados.</li>
                                 </ul>
                             </div>
                         </div>
                     </div>
 
-                    <div class="col-md-6 col-sm-12 mb-2 d-flex justify-content-center align-items-center bg-white">
-                        <div style="height: 100%;">
-                            <iframe src="https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/FIERROSACEROSTITAN/videos/373578148397800/" width="400" height="600" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+                    <div class="col-md-6 col-sm-12 mb-2 d-flex justify-content-center align-items-center">
+                        <div class="img-fluid">
+                            <img src="assets/img/servicios/dobles_planchas.jpg" style="width: 600px;" alt="">
                         </div>
                     </div>
                 </div>
+
 
             </div>
         </section>

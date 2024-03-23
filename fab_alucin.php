@@ -44,7 +44,7 @@
                     <div class="col-md-6 col-sm-12 mb-2 d-flex justify-content-center align-items-stretch">
                         <div class="text-white" style="background-color: #f8f9fa; padding: 20px; border-radius: 10px; height: 100%;">
                             <p class="h5" style="color:black; text-align: justify; margin-bottom: 20px;">
-                                En Titan, ofrecemos un servicio de fabricación de aluzinc con tecnología de vanguardia para satisfacer las necesidades más exigentes en la industria metalúrgica. Nuestro equipo de fabricación de aluzinc utiliza procesos avanzados y está respaldado por profesionales experimentados para ofrecer productos de alta calidad y rendimiento en una amplia variedad de aplicaciones.
+                                En Titan, ofrecemos la fabricación de aluzinc curvo o recto tecnología de vanguardia para satisfacer las necesidades más exigentes en la industria metalúrgica. Nuestro equipo de fabricación de aluzinc utiliza procesos avanzados y está respaldado por profesionales experimentados para ofrecer productos de alta calidad y rendimiento en una amplia variedad de aplicaciones.
                             </p>
                             <div style="color:black; background-color: #ffffff; padding: 15px; border-radius: 5px; margin-bottom: 20px;">
                                 <h6 style="color: #007bff;">Características y Beneficios:</h6>

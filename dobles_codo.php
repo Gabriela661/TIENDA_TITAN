@@ -36,7 +36,7 @@
 
         <section class="">
             <center>
-                <h2 class="text-white">CORTE EN PLASMA CNC COMPUTARIZADO</h2>
+                <h2 class="text-white">DOBLES DE CODOS</h2>
                 <hr style="border-top: 2px solid orangered; width: 50%;">
             </center>
             <div class="container">
@@ -44,25 +44,33 @@
                     <div class="col-md-6 col-sm-12 mb-2 d-flex justify-content-center align-items-stretch">
                         <div class="text-white" style="background-color: #f8f9fa; padding: 20px; border-radius: 10px; height: 100%;">
                             <p class="h5" style="color:black; text-align: justify; margin-bottom: 20px;">
-                                En Titan, ofrecemos un servicio de corte en plasma CNC computarizado de última generación para satisfacer las demandas de corte más exigentes en la industria metalúrgica. Nuestro equipo de corte en plasma utiliza tecnología avanzada y está respaldado por un equipo experimentado para proporcionar cortes precisos y de alta calidad en una amplia gama de materiales y espesores.
+                                En Titan, ofrecemos un servicio especializado en el rolado de tubos, brindando las curvas más precisas para las planchas y tubos que necesitan nuestros clientes. Nuestro compromiso es ofrecer un servicio de calidad en la habilitación de material, asegurando estándares óptimos en cada proceso.
                             </p>
-                            <div style="color:black; background-color: #ffffff; padding: 15px; border-radius: 5px; margin-bottom: 20px;">
+                            <p style="color:black; text-align: justify; margin-bottom: 20px;">
+                                Contamos con la tecnología más avanzada y personal altamente calificado para garantizar la precisión y rapidez en cada proyecto. Desde la selección del material hasta el acabado final, mantenemos un enfoque constante en la calidad.
+                            </p>
+                            <p style="color:black; text-align: justify; margin-bottom: 20px;">
+                                Nuestro servicio de rolado cubre tubos de todas las medidas. Somos especialistas en proporcionar soluciones adaptadas a las necesidades específicas de cada cliente, garantizando resultados sobresalientes en cada trabajo.
+                            </p>
+                            <div style="color:black; background-color: #ffffff; padding: 15px; border-radius: 5px;">
                                 <h6 style="color: #007bff;">Características y Beneficios:</h6>
                                 <ul style="list-style-type: none; padding-left: 0;">
-                                    <li><i class="fas fa-check-circle" style="color: #28a745;"></i> Precisión y Calidad: Nuestra máquina de corte en plasma CNC garantiza cortes precisos y limpios, con una calidad de borde superior, lo que minimiza el desperdicio de material y reduce los costos de acabado.</li>
-                                    <li><i class="fas fa-check-circle" style="color: #28a745;"></i> Versatilidad: Con capacidad para cortar una variedad de materiales conductores, como acero al carbono, acero inoxidable, aluminio y cobre, nuestro servicio de corte en plasma es adecuado para una amplia gama de aplicaciones industriales.</li>
-                                    <li><i class="fas fa-check-circle" style="color: #28a745;"></i> Eficiencia y Productividad: La automatización del proceso mediante control numérico por computadora (CNC) garantiza una mayor eficiencia y productividad, reduciendo los tiempos de ciclo y aumentando la capacidad de producción.</li>
-                                    <li><i class="fas fa-check-circle" style="color: #28a745;"></i> Flexibilidad de Diseño: Aprovechando la tecnología CAD/CAM, podemos trabajar con una amplia variedad de diseños personalizados y geometrías complejas, ofreciendo flexibilidad en la creación de piezas y componentes según las especificaciones del cliente.</li>
-                                    <li><i class="fas fa-check-circle" style="color: #28a745;"></i> Entrega Rápida y Fiabilidad: Nuestro equipo de corte en plasma está capacitado para manejar proyectos de cualquier tamaño con plazos ajustados, garantizando una entrega rápida y confiable para satisfacer las necesidades de nuestros clientes.</li>
+                                    <li><i class="fas fa-check-circle" style="color: #28a745;"></i> Precisión en las curvas: Nuestra tecnología y personal altamente calificado garantizan curvas precisas en cada tubo.</li>
+                                    <li><i class="fas fa-check-circle" style="color: #28a745;"></i> Rapidez en el servicio: Gracias a nuestra experiencia y eficiencia, ofrecemos un servicio rápido sin comprometer la calidad.</li>
+                                    <li><i class="fas fa-check-circle" style="color: #28a745;"></i> Adaptabilidad: Podemos manejar tubos de todas las medidas, adaptándonos a las necesidades específicas de cada proyecto.</li>
+                                    <li><i class="fas fa-check-circle" style="color: #28a745;"></i> Calidad garantizada: Mantenemos un enfoque constante en la calidad, asegurando resultados sobresalientes en cada trabajo.</li>
                                 </ul>
                             </div>
                         </div>
                     </div>
 
-                    <div class="col-md-6 col-sm-12 mb-2 d-flex justify-content-center align-items-center bg-white">                  
-                            <iframe src="https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/FIERROSACEROSTITAN/videos/373578148397800/" width="400" height="600" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+                    <div class="col-md-6 col-sm-12 mb-2 d-flex justify-content-center align-items-center">
+                        <div class="img-fluid">
+                            <img src="assets/img/servicios/rolado_planchas.jpg" style="width: 600px;" alt="">
+                        </div>
                     </div>
                 </div>
+
 
             </div>
         </section>

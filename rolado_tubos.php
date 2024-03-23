@@ -73,8 +73,8 @@
 
 
                     <div class="col-md-6 col-sm-12 mb-2 d-flex justify-content-center align-items-center bg-white">
-                        <div style="height: 100%;">
-                            <iframe src="https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/FIERROSACEROSTITAN/videos/373578148397800/" width="400" height="600" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+                        <div class="img-fluid" >
+                            <img src="assets/img/servicios/rolado_tubos.jpg" style="height: 500px;" alt="">
                         </div>
                     </div>
                 </div>

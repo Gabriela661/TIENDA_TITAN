@@ -36,7 +36,7 @@
         <br>
         <br>
         <div class="banner-especial -lr">
-            <img class="img-responsive vdk" src="assets/img/3.png" alt="Combo" width="100%" height="auto">
+            <img class="img-responsive vdk" src="assets/img/contacto1.jpeg" alt="Combo" width="100%" height="auto">
             <br><br><br>
         </div>
 
